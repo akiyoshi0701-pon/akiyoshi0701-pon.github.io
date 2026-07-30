@@ -5,22 +5,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1億円投資家の四季報からの優しい高配当株選び</title>
     <style>
-        /* フォントをスマホでも読みやすいモダンなゴシック体に最適化 */
+        /* ベーススタイル */
         body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; background-color: #f8fafc; color: #4a5568; margin: 0; padding: 0; line-height: 1.7; }
         
-        /* ヘッダー：親しみやすく信頼感のある爽やかなブルー */
+        /* ヘッダー */
         header { background-color: #3182ce; color: white; padding: 40px 20px; text-align: center; border-bottom: 4px solid #2b6cb0; }
         h1 { margin: 0; font-size: 26px; letter-spacing: 1px; font-weight: bold; }
         header p { margin-top: 10px; opacity: 0.9; font-size: 14px; }
         
-        /* メインコンテンツの枠組み */
+        /* コンテナ */
         .container { max-width: 800px; margin: -20px auto 40px; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); position: relative; }
         
-        /* 見出し：ブルーのアクセントと下線 */
+        /* 見出しとコンセプト */
         h2 { border-bottom: 2px dashed #90cdf4; padding-bottom: 10px; color: #2c5282; font-size: 22px; margin-top: 30px; font-weight: bold; }
-        
-        /* コンセプトボックス：薄いブルーで優しく強調 */
         .concept-box { background-color: #ebf8ff; padding: 20px; border-radius: 12px; border-left: 6px solid #4299e1; margin-bottom: 30px; font-size: 15px; }
+
+        /* 銘柄カードのスタイル */
+        .stock-card { border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; margin-bottom: 25px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .stock-header { background-color: #2b6cb0; color: white; padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; }
+        .stock-name { font-size: 20px; font-weight: bold; margin: 0; }
+        .stock-code { font-size: 14px; background-color: rgba(255,255,255,0.2); padding: 4px 8px; border-radius: 4px; }
+        
+        /* 指標グリッド */
+        .metrics-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; padding: 20px; background-color: #f7fafc; border-bottom: 1px solid #e2e8f0; text-align: center; }
+        .metric-item { display: flex; flex-direction: column; }
+        .metric-label { font-size: 12px; color: #718096; margin-bottom: 4px; }
+        .metric-value { font-size: 18px; font-weight: bold; color: #2d3748; }
+        .highlight { color: #e53e3e; } /* 良い数値を赤で強調 */
+
+        /* 投資家の一言コメント */
+        .investor-comment { padding: 20px; background-color: white; }
+        .comment-title { font-size: 14px; font-weight: bold; color: #3182ce; margin-bottom: 8px; display: flex; align-items: center; }
+        .comment-title::before { content: "💬"; margin-right: 6px; }
+        .comment-text { font-size: 15px; margin: 0; }
+
+        /* PRボタン */
+        .ad-container { text-align: center; margin: 40px 0; padding: 20px; background-color: #fffaf0; border: 1px solid #fbd38d; border-radius: 8px; }
+        .ad-label { display: inline-block; background-color: #718096; color: white; font-size: 12px; padding: 2px 8px; border-radius: 4px; margin-bottom: 10px; font-weight: bold; }
+        .ad-button { display: inline-block; background-color: #ed8936; color: white; padding: 15px 30px; text-decoration: none; border-radius: 8px; font-weight: bold; box-shadow: 0 4px 6px rgba(237, 137, 54, 0.3); transition: all 0.3s ease; }
+        .ad-button:hover { background-color: #dd6b20; transform: translateY(-2px); }
     </style>
 </head>
 <body>
@@ -35,8 +58,42 @@
             個人資産1億円を築いた投資家が、全3,800銘柄から独自の基準でスクリーニングした「今月の厳選高配当バリュー株」を、初心者の方にもわかりやすくお届けします。</p>
         </div>
         
-        <h2>最新の厳選銘柄リスト（準備中）</h2>
-        <p>ここに、プログラムと四季報の読み込みを掛け合わせた、独自の厳選銘柄ダッシュボード（表）が表示される予定です。</p>
+        <h2>🏆 今月の厳選銘柄ピックアップ</h2>
+        <p>独自のスクリーニング（配当3%以上、増収増益予想、低PERなど）をクリアし、さらに四季報を読み込んで厳選した銘柄です。</p>
+
+        <div class="stock-card">
+            <div class="stock-header">
+                <h3 class="stock-name">三菱商事</h3>
+                <span class="stock-code">証券コード：8058</span>
+            </div>
+            <div class="metrics-grid">
+                <div class="metric-item">
+                    <span class="metric-label">予想配当利回り</span>
+                    <span class="metric-value highlight">3.1%</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-label">予想PER</span>
+                    <span class="metric-value">11.8倍</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-label">PBR</span>
+                    <span class="metric-value">1.25倍</span>
+                </div>
+                <div class="metric-item">
+                    <span class="metric-label">配当方針</span>
+                    <span class="metric-value">累進配当</span>
+                </div>
+            </div>
+            <div class="investor-comment">
+                <div class="comment-title">1億円投資家の視点・選定理由</div>
+                <p class="comment-text">総合商社の雄。資源分野の強さはもちろん、非資源分野（DXや食品など）での着実な増収増益予想が四季報から読み取れます。累進配当を掲げており、PER10〜20、PBR1.5以下という私の基準もクリア。長期保有で安定したインカムゲインを狙うためのポートフォリオの核となる銘柄です。</p>
+            </div>
+        </div>
+        <div class="ad-container">
+            <span class="ad-label">※PR（証券口座の開設はこちら）</span><br>
+            <a href="#" class="ad-button">SBI証券で無料口座開設をする</a>
+            <p style="font-size: 12px; color: #718096; margin-top: 10px;">※当サイトはアフィリエイトプログラムに参加しており、上記リンクから口座開設されると当サイトに収益が発生する場合があります。</p>
+        </div>
     </div>
 </body>
 </html>
