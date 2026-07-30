@@ -9,12 +9,17 @@
         body { font-family: 'Helvetica Neue', Arial, 'Hiragino Kaku Gothic ProN', 'Hiragino Sans', Meiryo, sans-serif; background-color: #f8fafc; color: #4a5568; margin: 0; padding: 0; line-height: 1.7; }
         
         /* ヘッダー */
-        header { background-color: #3182ce; color: white; padding: 40px 20px; text-align: center; border-bottom: 4px solid #2b6cb0; }
+        header { background-color: #3182ce; color: white; padding: 40px 20px; text-align: center; }
         h1 { margin: 0; font-size: 26px; letter-spacing: 1px; font-weight: bold; }
         header p { margin-top: 10px; opacity: 0.9; font-size: 14px; }
         
+        /* ナビゲーションメニュー */
+        nav { background-color: #2b6cb0; display: flex; justify-content: center; flex-wrap: wrap; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+        nav a { color: white; text-decoration: none; padding: 15px 25px; font-weight: bold; font-size: 15px; transition: background-color 0.3s; }
+        nav a:hover { background-color: #1a365d; }
+        
         /* コンテナ */
-        .container { max-width: 800px; margin: -20px auto 40px; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); position: relative; }
+        .container { max-width: 800px; margin: 40px auto; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); position: relative; }
         
         /* プロフィールカード */
         .profile-card { background-color: white; border: 2px solid #e2e8f0; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
@@ -58,8 +63,14 @@
         <p>〜全3,800銘柄から厳選！初心者でもわかる増収増益・低PERバリュー投資〜</p>
     </header>
     
+    <nav>
+        <a href="#">ホーム</a>
+        <a href="#">投資手法</a>
+        <a href="#">2026年夏号</a>
+        <a href="#">2026年春号</a>
+    </nav>
+    
     <div class="container">
-        
         <div class="profile-card">
             <div class="profile-icon">👤</div>
             <div class="profile-text">
@@ -104,6 +115,7 @@
                 <p class="comment-text">総合商社の雄。資源分野の強さはもちろん、非資源分野（DXや食品など）での着実な増収増益予想が四季報から読み取れます。累進配当を掲げており、PER10〜20、PBR1.5以下という私の基準もクリア。長期保有で安定したインカムゲインを狙うためのポートフォリオの核となる銘柄です。</p>
             </div>
         </div>
+
         <div class="ad-container">
             <span class="ad-label">※PR（証券口座の開設はこちら）</span><br>
             <a href="#" class="ad-button">SBI証券で無料口座開設をする</a>
