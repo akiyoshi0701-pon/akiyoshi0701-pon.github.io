@@ -16,6 +16,12 @@
         /* コンテナ */
         .container { max-width: 800px; margin: -20px auto 40px; background: white; padding: 40px; border-radius: 16px; box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1); position: relative; }
         
+        /* プロフィールカード */
+        .profile-card { background-color: white; border: 2px solid #e2e8f0; border-radius: 12px; padding: 20px; display: flex; align-items: center; gap: 20px; margin-bottom: 30px; }
+        .profile-icon { font-size: 36px; background-color: #ebf8ff; width: 70px; height: 70px; display: flex; justify-content: center; align-items: center; border-radius: 50%; color: #3182ce; flex-shrink: 0; }
+        .profile-text { font-size: 14px; }
+        .profile-text strong { color: #2c5282; font-size: 16px; margin-bottom: 4px; display: inline-block; }
+
         /* 見出しとコンセプト */
         h2 { border-bottom: 2px dashed #90cdf4; padding-bottom: 10px; color: #2c5282; font-size: 22px; margin-top: 30px; font-weight: bold; }
         .concept-box { background-color: #ebf8ff; padding: 20px; border-radius: 12px; border-left: 6px solid #4299e1; margin-bottom: 30px; font-size: 15px; }
@@ -53,6 +59,15 @@
     </header>
     
     <div class="container">
+        
+        <div class="profile-card">
+            <div class="profile-icon">👤</div>
+            <div class="profile-text">
+                <strong>運営者について</strong><br>
+                個人資産約1億円を運用中の個人投資家。商社、銀行、保険系を中心に約30銘柄を保有。四季報の「業績数字・業績記事」を徹底的に読み込み、高配当・増収増益・低PER・配当性向を重視した堅実なバリュー投資を実践しています。
+            </div>
+        </div>
+
         <div class="concept-box">
             <p><strong>ようこそ！当サイトのコンセプト🔰</strong><br>
             個人資産1億円を築いた投資家が、全3,800銘柄から独自の基準でスクリーニングした「今月の厳選高配当バリュー株」を、初心者の方にもわかりやすくお届けします。</p>
