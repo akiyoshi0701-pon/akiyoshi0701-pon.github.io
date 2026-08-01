@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026四季報夏号 - 1億円投資家の四季報からの優しい高配当株選び</title>
     <style>
-        /* index.htmlと同じ基本設定・ヘッダー・ナビゲーション・サイドバーのスタイル */
+        /* 基本設定 */
         body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; background-color: #f0f4f8; color: #333; margin: 0; padding: 0; line-height: 1.6; }
         header { background-color: #2c7cbf; color: white; padding: 30px 20px; text-align: center; }
         header h1 { margin: 0; font-size: 24px; }
@@ -29,110 +29,34 @@
         .pr-button { display: inline-block; background-color: #f39c12; color: white; text-decoration: none; font-weight: bold; padding: 15px 20px; border-radius: 6px; width: 90%; box-sizing: border-box; box-shadow: 0 3px 0 #d68910; }
         .pr-disclaimer { font-size: 11px; color: #999; margin-top: 10px; }
 
-        /* ▼▼▼ ここから四季報リスト用のアコーディオン装飾 ▼▼▼ */
-        .page-title {
-            background-color: white;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            margin-bottom: 20px;
-            border-left: 5px solid #ff9800;
-        }
+        /* 四季報リスト用のアコーディオン装飾 */
+        .page-title { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 5px solid #ff9800; }
         .page-title h2 { margin: 0; color: #2c7cbf; font-size: 22px; }
         .page-title p { margin: 10px 0 0 0; color: #555; font-size: 14px; }
-
-        .stock-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        
-        /* アコーディオンの大枠 */
-        .stock-card {
-            background-color: white;
-            border-radius: 8px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-            overflow: hidden;
-            border: 1px solid #e0e0e0;
-        }
-        
-        /* クリックする見出し部分 */
-        .stock-summary {
-            padding: 15px 20px;
-            font-size: 18px;
-            font-weight: bold;
-            color: #1a5b92;
-            cursor: pointer;
-            list-style: none; /* デフォルトの三角マークを消す */
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            background-color: #f9fbfd;
-            transition: background-color 0.2s;
-        }
+        .stock-list { display: flex; flex-direction: column; gap: 15px; }
+        .stock-card { background-color: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #e0e0e0; }
+        .stock-summary { padding: 15px 20px; font-size: 18px; font-weight: bold; color: #1a5b92; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background-color: #f9fbfd; transition: background-color 0.2s; }
         .stock-summary:hover { background-color: #f0f4f8; }
-        .stock-summary::-webkit-details-marker { display: none; } /* Safari用三角消し */
-        
-        /* 開閉アイコンのカスタマイズ */
-        .stock-summary::after {
-            content: "▼ 開く";
-            font-size: 13px;
-            color: #888;
-            background-color: #fff;
-            padding: 4px 10px;
-            border-radius: 20px;
-            border: 1px solid #ddd;
-        }
-        .stock-card[open] .stock-summary::after {
-            content: "▲ 閉じる";
-            background-color: #e2eef7;
-            color: #1a5b92;
-            border-color: #2c7cbf;
-        }
-
-        /* 詳細データの中身 */
-        .stock-details {
-            padding: 20px;
-            border-top: 1px solid #eee;
-        }
-        
-        /* 表のデザイン */
-        .data-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 10px;
-        }
-        .data-table th, .data-table td {
-            border: 1px solid #e0e0e0;
-            padding: 12px;
-            font-size: 14px;
-        }
-        .data-table th {
-            background-color: #f4f7fa;
-            width: 30%;
-            text-align: left;
-            color: #333;
-            font-weight: bold;
-        }
-        .data-table td {
-            background-color: #fff;
-            color: #444;
-        }
-        
-        /* ハイライト用の文字色 */
+        .stock-summary::-webkit-details-marker { display: none; }
+        .stock-summary::after { content: "▼ 開く"; font-size: 13px; color: #888; background-color: #fff; padding: 4px 10px; border-radius: 20px; border: 1px solid #ddd; }
+        .stock-card[open] .stock-summary::after { content: "▲ 閉じる"; background-color: #e2eef7; color: #1a5b92; border-color: #2c7cbf; }
+        .stock-details { padding: 20px; border-top: 1px solid #eee; }
+        .data-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .data-table th, .data-table td { border: 1px solid #e0e0e0; padding: 12px; font-size: 14px; }
+        .data-table th { background-color: #f4f7fa; width: 30%; text-align: left; color: #333; font-weight: bold; }
+        .data-table td { background-color: #fff; color: #444; }
         .highlight-red { color: #d32f2f; font-weight: bold; }
         .highlight-blue { color: #1976d2; font-weight: bold; }
+        .note { font-size: 12px; color: #666; background-color: #fff3cd; padding: 5px; border-radius: 4px; display: inline-block; margin-bottom: 10px; border: 1px solid #ffeeba; }
     </style>
 </head>
 <body>
 
-    <!-- ヘッダー -->
     <header>
         <h1>1億円投資家の四季報からの優しい高配当株選び</h1>
         <p>〜全3,800銘柄から厳選！初心者でも安心のバリュー投資〜</p>
     </header>
 
-    <!-- ナビゲーションメニュー（四季報夏号をアクティブに） -->
     <nav>
         <a href="index.html">ホーム</a>
         <a href="weekly.html">株価早報</a>
@@ -142,69 +66,136 @@
 
     <div class="container">
         
-        <!-- 左側：メイン記事エリア -->
         <div class="main-content">
-            
             <div class="page-title">
                 <h2>📚 2026四季報夏号 厳選リスト</h2>
-                <p>四季報夏号の全ページを読み込み、当サイトの厳しいスクリーニング基準（増収増益・高財務・高配当）をクリアしたお宝銘柄をご紹介します。各銘柄をクリックすると詳細な分析データを確認できます。</p>
+                <p>四季報夏号の全ページを読み込み、当サイトの厳しいスクリーニング基準をクリアしたお宝銘柄をご紹介します。各銘柄をクリックすると詳細な分析データを確認できます。</p>
             </div>
 
-            <!-- 銘柄リストエリア -->
             <div class="stock-list">
                 
-                <!-- 銘柄カード1：日比谷綜合設備 -->
+                <!-- 1982 日比谷綜合設備 -->
                 <details class="stock-card">
                     <summary class="stock-summary">1982 日比谷綜合設備 (株価: 3,055円)</summary>
                     <div class="stock-details">
                         <table class="data-table">
-                            <tr>
-                                <th>業種</th>
-                                <td>建設業（設備工事）</td>
-                            </tr>
-                            <tr>
-                                <th>どんな会社か</th>
-                                <td>空調主体の設備工事会社。NTTグループ向けに強みがあり、現在はデータセンター等の情報通信向けが大きく伸びている。</td>
-                            </tr>
-                            <tr>
-                                <th>四季報の評価</th>
-                                <td><strong>【最高益】</strong>期初繰越高は1,031億円（前期比20%増）。データセンターや大型再開発、生産・物流施設の大型工事が牽引。資材費増をこなしている。</td>
-                            </tr>
-                            <tr>
-                                <th>実績PER / PBR</th>
-                                <td>PER 16.0倍 / PBR 1.66倍</td>
-                            </tr>
-                            <tr>
-                                <th>配当利回り</th>
-                                <td><span class="highlight-red">予想 3.60%</span></td>
-                            </tr>
-                            <tr>
-                                <th>業績予想<br>(売上高 / 純利益)</th>
-                                <td>
-                                    ・25年3月(実績)：940億円 / 86億円<br>
-                                    <span class="highlight-blue">・26年3月(予想)：1,050億円 / 87億円</span><br>
-                                    <span class="highlight-blue">・27年3月(予想)：1,080億円 / 90億円</span><br>
-                                    ※2期先までしっかり増収増益予想！
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>自己資本比率 / ROE</th>
-                                <td>自己資本比率 71.6% (超優良) / ROE 11.6%</td>
-                            </tr>
-                            <tr>
-                                <th>増配の有無</th>
-                                <td><span class="highlight-red">驚異の「28年連続増配」！</span><br>記念配10円を含め、今期も大幅な増配予想（前期75円→今期110円予想）。株主還元姿勢は極めて高い。</td>
-                            </tr>
+                            <tr><th>業種</th><td>建設業（設備工事）</td></tr>
+                            <tr><th>どんな会社か</th><td>空調主体の設備工事会社。NTTグループ向けに強みがあり、現在はデータセンター等の情報通信向けが大きく伸びている。</td></tr>
+                            <tr><th>四季報の評価</th><td><strong>【最高益】</strong>期初繰越高は1,031億円（前期比20%増）。データセンターや大型再開発、生産・物流施設の大型工事が牽引。</td></tr>
+                            <tr><th>実績PER / PBR</th><td>PER 16.0倍 / PBR 1.66倍</td></tr>
+                            <tr><th>配当利回り</th><td><span class="highlight-red">予想 3.60%</span></td></tr>
+                            <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：940億円 / 86億円<br><span class="highlight-blue">・26年3月(予想)：1,050億円 / 87億円</span><br><span class="highlight-blue">・27年3月(予想)：1,080億円 / 90億円</span></td></tr>
+                            <tr><th>自己資本比率 / ROE</th><td>71.6% / 11.6%</td></tr>
+                            <tr><th>増配の有無</th><td><span class="highlight-red">28年連続増配！</span>（前期75円→今期110円予想）。</td></tr>
                         </table>
                     </div>
                 </details>
-                
-                <!-- 今後、ここに別の銘柄（detailsタグのブロック）を追加していく -->
+
+                <!-- 8020 兼松 -->
+                <details class="stock-card">
+                    <summary class="stock-summary">8020 兼松 (株価: 2,468円)</summary>
+                    <div class="stock-details">
+                        <table class="data-table">
+                            <tr><th>業種</th><td>卸売業</td></tr>
+                            <tr><th>どんな会社か</th><td>老舗商社。電子・IT、食料、鉄鋼・プラントが収益の3本柱。</td></tr>
+                            <tr><th>四季報の評価</th><td><strong>【連続最高益】</strong>モバイル需要旺盛なICT分野が牽引。</td></tr>
+                            <tr><th>実績PER / PBR</th><td>PER 10.2倍 / PBR 1.70倍</td></tr>
+                            <tr><th>配当利回り</th><td><span class="highlight-red">予想 3.28%</span></td></tr>
+                            <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・26年3月(予想)：1兆1,000億円 / 350億円<br><span class="highlight-blue">・27年3月(予想)：1兆1,500億円 / 370億円</span></td></tr>
+                            <tr><th>自己資本比率 / ROE</th><td>28.4% / 17.0%</td></tr>
+                            <tr><th>増配の有無</th><td>25.3期から90円を維持し、27.3期は95〜100円の増配予想。安定感抜群。</td></tr>
+                        </table>
+                    </div>
+                </details>
+
+                <!-- 7433 伯東 -->
+                <details class="stock-card">
+                    <summary class="stock-summary">7433 伯東 (株価: 4,440円)</summary>
+                    <div class="stock-details">
+                        <table class="data-table">
+                            <tr><th>業種</th><td>卸売業</td></tr>
+                            <tr><th>どんな会社か</th><td>半導体や機器の専門商社。自社製の産機開発に特色。</td></tr>
+                            <tr><th>四季報の評価</th><td><strong>【急改善】</strong>工業向けは半導体が自動化設備投資の回復で底打ち。</td></tr>
+                            <tr><th>実績PER / PBR</th><td>PER 13.8倍 / PBR 1.22倍</td></tr>
+                            <tr><th>配当利回り</th><td><span class="highlight-red">予想 4.95%</span> （超高配当！）</td></tr>
+                            <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・26年3月(予想)：2,250億円 / 50億円<br><span class="highlight-blue">・27年3月(予想)：2,400億円 / 61億円</span></td></tr>
+                            <tr><th>自己資本比率 / ROE</th><td>41.6% / 7.5%</td></tr>
+                            <tr><th>増配の有無</th><td>前期減配から反転し、今期200円、来期230円へと増配予想シナリオ。</td></tr>
+                        </table>
+                    </div>
+                </details>
+
+                <!-- 7175 今村証券 -->
+                <details class="stock-card">
+                    <summary class="stock-summary">7175 今村証券 (株価: 1,350円)</summary>
+                    <div class="stock-details">
+                        <table class="data-table">
+                            <tr><th>業種</th><td>証券・商品先物</td></tr>
+                            <tr><th>どんな会社か</th><td>独立系、地方証券会社の雄。北陸3県が主地盤。</td></tr>
+                            <tr><th>四季報の評価</th><td><strong>【好調】</strong>国内株式市場の好調を受け、委託手数料が堅調。</td></tr>
+                            <tr><th>実績PER / PBR</th><td>PER 8.5倍 / PBR 0.52倍 （超割安水準）</td></tr>
+                            <tr><th>配当利回り</th><td><span class="highlight-red">予想 5.41%</span> （驚異の5%超え）</td></tr>
+                            <tr><th>業績予想<br>(営業収益 / 純利益)</th><td>・27年3月(予想)：51億円 / 11.5億円<br><span class="highlight-blue">・28年3月(予想)：53億円 / 12億円</span></td></tr>
+                            <tr><th>自己資本比率 / ROE</th><td>49.6% (自己資本規制比率675.0%) / 8.4%</td></tr>
+                            <tr><th>増配の有無</th><td>業績連動型。27.3期は53〜60円、28.3期は73〜83円へ大幅増配見通し。</td></tr>
+                        </table>
+                    </div>
+                </details>
+
+                <!-- 4658 日本空調サービス -->
+                <details class="stock-card">
+                    <summary class="stock-summary">4658 日本空調サービス (株価: 1,735円)</summary>
+                    <div class="stock-details">
+                        <table class="data-table">
+                            <tr><th>業種</th><td>サービス業</td></tr>
+                            <tr><th>どんな会社か</th><td>建物設備のメンテナンスが主体。独立系で、病院や工場向けに強み。</td></tr>
+                            <tr><th>四季報の評価</th><td><strong>【最高益】</strong>空調設備は新設物件獲得などで好調維持。</td></tr>
+                            <tr><th>実績PER / PBR</th><td>PER 13.6倍 / PBR 1.80倍</td></tr>
+                            <tr><th>配当利回り</th><td><span class="highlight-red">予想 3.58%</span></td></tr>
+                            <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・26年3月(予想)：740億円 / 36.9億円<br><span class="highlight-blue">・27年3月(予想)：793億円 / 43.7億円</span></td></tr>
+                            <tr><th>自己資本比率 / ROE</th><td>57.6% (好財務) / 13.1%</td></tr>
+                            <tr><th>増配の有無</th><td>安定増配傾向（25.3期54円→26.3期以降57円予想）。</td></tr>
+                        </table>
+                    </div>
+                </details>
+
+                <!-- 4012 アクシス -->
+                <details class="stock-card">
+                    <summary class="stock-summary">4012 アクシス (株価: 1,611円)</summary>
+                    <div class="stock-details">
+                        <span class="note">💡 利回りは基準ギリギリですが、圧倒的な高財務と成長性を評価してピックアップ！</span>
+                        <table class="data-table">
+                            <tr><th>業種</th><td>情報・通信</td></tr>
+                            <tr><th>どんな会社か</th><td>金融機関、公的機関向け主体にシステム開発。クラウドサービスも展開。</td></tr>
+                            <tr><th>四季報の評価</th><td><strong>【増額】</strong>昨秋獲得した大型システム案件が通期寄与。</td></tr>
+                            <tr><th>実績PER / PBR</th><td>PER 12.3倍 / PBR 1.69倍</td></tr>
+                            <tr><th>配当利回り</th><td><span class="highlight-red">予想 3.54%</span></td></tr>
+                            <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年12月(実績)：95億円 / 7.3億円<br><span class="highlight-blue">・26年12月(予想)：110億円 / 8.4億円</span></td></tr>
+                            <tr><th>自己資本比率 / ROE</th><td>75.7% (超優良) / 16.8%</td></tr>
+                            <tr><th>増配の有無</th><td>57〜59円を維持、または微増配の予想。</td></tr>
+                        </table>
+                    </div>
+                </details>
+
+                <!-- 285A キオクシアホールディングス -->
+                <details class="stock-card">
+                    <summary class="stock-summary">285A キオクシアホールディングス (IPO枠)</summary>
+                    <div class="stock-details">
+                        <span class="note">💡 2024年12月上場。当サイトの基本配当基準からは外れますが、半導体サイクルの波に乗る「爆益成長枠」として特別監視。</span>
+                        <table class="data-table">
+                            <tr><th>業種</th><td>電気機器</td></tr>
+                            <tr><th>どんな会社か</th><td>半導体メモリー（NAND専業の世界大手）。SSD＆ストレージで米ウエスタンデジタルと共同運営。</td></tr>
+                            <tr><th>四季報の評価</th><td><strong>【爆益】</strong>生成AI需要でデータセンター向けが高単価のエンタープライズSSDを中心に想定以上の急拡大。</td></tr>
+                            <tr><th>配当利回り</th><td>無配（0%）</td></tr>
+                            <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・26年3月(予想)：2兆3,376億円 / 5,544億円<br><span class="highlight-blue">・27年3月(予想)：2兆8,000億円 / 3,850億円</span></td></tr>
+                            <tr><th>自己資本比率 / ROE</th><td>37.9% / 51.9% (異常値レベルの高効率)</td></tr>
+                        </table>
+                    </div>
+                </details>
 
             </div>
         </div>
 
-        <!-- 右側：サイドバー（index.htmlと同一） -->
         <div class="sidebar">
             <div class="profile-card">
                 <h3 class="profile-title">運営者プロフィール</h3>
