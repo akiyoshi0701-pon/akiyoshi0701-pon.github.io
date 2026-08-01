@@ -36,8 +36,8 @@
         .data-table td { background-color: #fff; color: #444; }
         .highlight-red { color: #d32f2f; font-weight: bold; }
         .highlight-blue { color: #1976d2; font-weight: bold; }
-        .note { font-size: 12px; color: #666; background-color: #fff3cd; padding: 5px; border-radius: 4px; display: inline-block; margin-bottom: 10px; border: 1px solid #ffeeba; }
         .price-current { font-size: 16px; font-weight: bold; color: #1976d2; }
+        .chart-img { width: 100%; max-width: 500px; height: auto; border: 1px solid #eee; border-radius: 4px; }
         
         /* PRボタン */
         .pr-box { background-color: white; border: 2px solid #ffebd6; border-radius: 8px; padding: 15px; text-align: center; }
@@ -79,17 +79,17 @@
                             <tr><th>株価<br>（夏号時点 / 現在）</th>
                                 <td>
                                     夏号時点：3,055円<br>
-                                    現在：<span class="price-current">3,120円</span> <span style="font-size:11px; color:#888;">（※Pythonで自動更新予定）</span>
+                                    現在：<span class="price-current">3,120円</span>
                                 </td>
                             </tr>
                             <tr><th>四季報の評価</th><td>【最高益】期初繰越高1031億円（前期比20％増）。データセンター軸に、大型再開発や生産・物流施設の大型工事が牽引。資材費増こなす。連続増配。26年３月期はデータセンター上乗せ。人員増要員。</td></tr>
                             <tr><th>実績PER / PBR</th><td>PER 16.0倍 / PBR 1.66倍</td></tr>
-                            <tr><th>配当利回り</th><td>今（実績）：3.27% (100円) / <span class="highlight-red">予想：3.60% (110円)</span></td></tr>
+                            <tr><th>配当利回り</th><td>実績：3.27% (100円)</td></tr>
                             <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：94,080百万円 / 8,681百万円<br><span class="highlight-blue">・26年3月(予想)：105,000百万円 / 8,700百万円</span><br><span class="highlight-blue">・27年3月(予想)：108,000百万円 / 9,000百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>71.6% / 11.6%</td></tr>
                             <tr><th>チャート</th>
                                 <td>
-                                    <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSE:1982&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&theme=light&style=1&timezone=Asia%2FTokyo" width="100%" height="250" frameborder="0" scrolling="no"></iframe>
+                                    <img src="https://chart.yahoo.co.jp/?code=1982.T&tm=6m&type=c&log=off&size=m" alt="1982 チャート" class="chart-img">
                                 </td>
                             </tr>
                         </table>
@@ -97,22 +97,26 @@
                 </details>
 
                 <details class="stock-card">
-                    <summary class="stock-summary">285A キオクシアホールディングス (IPO枠)</summary>
+                    <summary class="stock-summary">285A キオクシアホールディングス</summary>
                     <div class="stock-details">
-                        <span class="note">💡 半導体サイクルの波に乗る「爆益成長枠」として特別監視。</span>
                         <table class="data-table">
                             <tr><th>業種</th><td>電気機器</td></tr>
                             <tr><th>会社概要</th><td>【特色】半導体メモリー（ＮＡＮＤ専業の世界大手）。ＳＳＤ＆ストレージで米サンディスクと共同運営。</td></tr>
                             <tr><th>株価<br>（夏号時点 / 現在）</th>
                                 <td>
-                                    夏号時点：IPO前<br>
-                                    現在：<span class="price-current">--- 円</span> <span style="font-size:11px; color:#888;">（※上場後、自動更新）</span>
+                                    夏号時点：3,305円<br>
+                                    現在：<span class="price-current">3,380円</span>
                                 </td>
                             </tr>
                             <tr><th>四季報の評価</th><td>【爆益】生成ＡＩ需要でデータセンター向けが高単価のエンタープライズＳＳＤを中心に想定以上の急拡大。スマホ向けも回復。歩留まり改善やコスト削減効果も上乗せ。営業益爆発。</td></tr>
-                            <tr><th>配当利回り</th><td>今（実績）：0.00% (無配) / <span class="highlight-red">予想：0.00% (無配)</span></td></tr>
+                            <tr><th>配当利回り</th><td>実績：0.00% (無配)</td></tr>
                             <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：1,706,460百万円 / 272,315百万円<br><span class="highlight-blue">・26年3月(予想)：2,337,628百万円 / 554,490百万円</span><br><span class="highlight-blue">・27年3月(予想)：2,800,000百万円 / 385,000百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>37.9% / 51.9%</td></tr>
+                            <tr><th>チャート</th>
+                                <td>
+                                    <img src="https://chart.yahoo.co.jp/?code=285A.T&tm=6m&type=c&log=off&size=m" alt="285A チャート" class="chart-img">
+                                </td>
+                            </tr>
                         </table>
                     </div>
                 </details>
@@ -120,24 +124,23 @@
                 <details class="stock-card">
                     <summary class="stock-summary">4012 アクシス</summary>
                     <div class="stock-details">
-                        <span class="note">💡 12月決算銘柄。圧倒的な高財務と成長性を評価してピックアップ。</span>
                         <table class="data-table">
                             <tr><th>業種</th><td>情報・通信</td></tr>
                             <tr><th>会社概要</th><td>【特色】金融機関、公的機関向け主体にシステム開発。クラウドサービスも展開。</td></tr>
                             <tr><th>株価<br>（夏号時点 / 現在）</th>
                                 <td>
                                     夏号時点：1,611円<br>
-                                    現在：<span class="price-current">1,630円</span> <span style="font-size:11px; color:#888;">（※Pythonで自動更新予定）</span>
+                                    現在：<span class="price-current">1,630円</span>
                                 </td>
                             </tr>
                             <tr><th>四季報の評価</th><td>【増額】昨秋獲得した大型システム案件が通期寄与。順調な新卒採用などが先行し営業益微増にとどまるも、外注費のコントロールなどで営業益上振れ。前号比で増益幅拡大。</td></tr>
                             <tr><th>実績PER / PBR</th><td>PER 12.3倍 / PBR 1.69倍</td></tr>
-                            <tr><th>配当利回り</th><td>今（実績）：2.85% (46円) / <span class="highlight-red">予想：3.54% (57〜59円)</span></td></tr>
+                            <tr><th>配当利回り</th><td>実績：2.85% (46円)</td></tr>
                             <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・24年12月(実績)：8,134百万円 / 642百万円<br><span class="highlight-blue">・25年12月(予想)：9,500百万円 / 730百万円</span><br><span class="highlight-blue">・26年12月(予想)：11,000百万円 / 840百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>75.7% / 16.8%</td></tr>
                             <tr><th>チャート</th>
                                 <td>
-                                    <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSE:4012&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&theme=light&style=1&timezone=Asia%2FTokyo" width="100%" height="250" frameborder="0" scrolling="no"></iframe>
+                                    <img src="https://chart.yahoo.co.jp/?code=4012.T&tm=6m&type=c&log=off&size=m" alt="4012 チャート" class="chart-img">
                                 </td>
                             </tr>
                         </table>
@@ -153,17 +156,17 @@
                             <tr><th>株価<br>（夏号時点 / 現在）</th>
                                 <td>
                                     夏号時点：1,735円<br>
-                                    現在：<span class="price-current">1,750円</span> <span style="font-size:11px; color:#888;">（※Pythonで自動更新予定）</span>
+                                    現在：<span class="price-current">1,750円</span>
                                 </td>
                             </tr>
                             <tr><th>四季報の評価</th><td>【最高益】空調設備は新設物件獲得などで好調維持。テナントビル等のリニューアル工事も増勢。契約単価引き上げ浸透。人件費増こなす。営業外の助成金剥落でも純益高水準。連続増配。</td></tr>
                             <tr><th>実績PER / PBR</th><td>PER 13.6倍 / PBR 1.80倍</td></tr>
-                            <tr><th>配当利回り</th><td>今（実績）：2.59% (45円) / <span class="highlight-red">予想：3.58% (57〜64円)</span></td></tr>
+                            <tr><th>配当利回り</th><td>実績：2.59% (45円)</td></tr>
                             <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：64,438百万円 / 3,102百万円<br><span class="highlight-blue">・26年3月(予想)：69,245百万円 / 3,696百万円</span><br><span class="highlight-blue">・27年3月(予想)：74,000百万円 / 3,900百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>57.6% / 13.1%</td></tr>
                             <tr><th>チャート</th>
                                 <td>
-                                    <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSE:4658&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&theme=light&style=1&timezone=Asia%2FTokyo" width="100%" height="250" frameborder="0" scrolling="no"></iframe>
+                                    <img src="https://chart.yahoo.co.jp/?code=4658.T&tm=6m&type=c&log=off&size=m" alt="4658 チャート" class="chart-img">
                                 </td>
                             </tr>
                         </table>
@@ -179,17 +182,17 @@
                             <tr><th>株価<br>（夏号時点 / 現在）</th>
                                 <td>
                                     夏号時点：1,350円<br>
-                                    現在：<span class="price-current">1,380円</span> <span style="font-size:11px; color:#888;">（※Pythonで自動更新予定）</span>
+                                    現在：<span class="price-current">1,380円</span>
                                 </td>
                             </tr>
                             <tr><th>四季報の評価</th><td>【好調】国内株式市場の好調を受け、株式委託手数料が増勢。世界的な株高を背景に投資信託販売も堅調。債券などのトレーディング収益建増。システム関連費用や人件費増を吸収し、営業益続伸。増配。</td></tr>
                             <tr><th>実績PER / PBR</th><td>PER 8.5倍 / PBR 0.52倍</td></tr>
-                            <tr><th>配当利回り</th><td>今（実績）：4.07% (55円) / <span class="highlight-red">予想：5.41% (73〜83円)</span></td></tr>
+                            <tr><th>配当利回り</th><td>実績：4.07% (55円)</td></tr>
                             <tr><th>業績予想<br>(営業収益 / 純利益)</th><td>・25年3月(実績)：4,186百万円 / 760百万円<br><span class="highlight-blue">・26年3月(予想)：4,914百万円 / 1,055百万円</span><br><span class="highlight-blue">・27年3月(予想)：5,100百万円 / 1,150百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>49.6% / 8.4%</td></tr>
                             <tr><th>チャート</th>
                                 <td>
-                                    <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSE:7175&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&theme=light&style=1&timezone=Asia%2FTokyo" width="100%" height="250" frameborder="0" scrolling="no"></iframe>
+                                    <img src="https://chart.yahoo.co.jp/?code=7175.T&tm=6m&type=c&log=off&size=m" alt="7175 チャート" class="chart-img">
                                 </td>
                             </tr>
                         </table>
@@ -205,17 +208,17 @@
                             <tr><th>株価<br>（夏号時点 / 現在）</th>
                                 <td>
                                     夏号時点：4,440円<br>
-                                    現在：<span class="price-current">4,480円</span> <span style="font-size:11px; color:#888;">（※Pythonで自動更新予定）</span>
+                                    現在：<span class="price-current">4,480円</span>
                                 </td>
                             </tr>
                             <tr><th>四季報の評価</th><td>【急改善】工業向けは半導体が自動化設備投資の回復で底打ち。ルネサス製は代理店特約終了に伴う移管一服。自動車向けが好調維持。半導体製造装置は中国向けに出遅れ感あるが、下期から急回復。増配。</td></tr>
                             <tr><th>実績PER / PBR</th><td>PER 13.8倍 / PBR 1.22倍</td></tr>
-                            <tr><th>配当利回り</th><td>今（実績）：4.50% (200円) / <span class="highlight-red">予想：4.95% (220〜230円)</span></td></tr>
+                            <tr><th>配当利回り</th><td>実績：4.50% (200円)</td></tr>
                             <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：183,133百万円 / 5,009百万円<br><span class="highlight-blue">・26年3月(予想)：225,000百万円 / 6,100百万円</span><br><span class="highlight-blue">・27年3月(予想)：240,000百万円 / 6,100百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>41.6% / 7.5%</td></tr>
                             <tr><th>チャート</th>
                                 <td>
-                                    <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSE:7433&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&theme=light&style=1&timezone=Asia%2FTokyo" width="100%" height="250" frameborder="0" scrolling="no"></iframe>
+                                    <img src="https://chart.yahoo.co.jp/?code=7433.T&tm=6m&type=c&log=off&size=m" alt="7433 チャート" class="chart-img">
                                 </td>
                             </tr>
                         </table>
@@ -231,17 +234,17 @@
                             <tr><th>株価<br>（夏号時点 / 現在）</th>
                                 <td>
                                     夏号時点：2,468円<br>
-                                    現在：<span class="price-current">2,500円</span> <span style="font-size:11px; color:#888;">（※Pythonで自動更新予定）</span>
+                                    現在：<span class="price-current">2,500円</span>
                                 </td>
                             </tr>
                             <tr><th>四季報の評価</th><td>【連続最高益】モバイル需要旺盛なＩＣＴが牽引。前期引当の一過性損失剥落。中東などのインフラ、機械が想定超え。純利益高水準。増配。26年３月期もＩＣＴ、機械などが好調維持。ただ税負担増で純益は小幅増。</td></tr>
                             <tr><th>実績PER / PBR</th><td>PER 10.2倍 / PBR 1.70倍</td></tr>
-                            <tr><th>配当利回り</th><td>今（実績）：3.64% (90円) / <span class="highlight-red">予想：3.28% (95〜100円)</span></td></tr>
+                            <tr><th>配当利回り</th><td>実績：3.64% (90円)</td></tr>
                             <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：1,067,665百万円 / 32,523百万円<br><span class="highlight-blue">・26年3月(予想)：1,100,000百万円 / 35,000百万円</span><br><span class="highlight-blue">・27年3月(予想)：1,150,000百万円 / 35,000百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>28.4% / 17.0%</td></tr>
                             <tr><th>チャート</th>
                                 <td>
-                                    <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSE:8020&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&theme=light&style=1&timezone=Asia%2FTokyo" width="100%" height="250" frameborder="0" scrolling="no"></iframe>
+                                    <img src="https://chart.yahoo.co.jp/?code=8020.T&tm=6m&type=c&log=off&size=m" alt="8020 チャート" class="chart-img">
                                 </td>
                             </tr>
                         </table>
@@ -256,18 +259,18 @@
                             <tr><th>会社概要</th><td>【特色】和歌山県唯一の地銀。県内シェアは断トツ。大阪にも展開。メイン化を軸とした本業支援に力点</td></tr>
                             <tr><th>株価<br>（夏号時点 / 現在）</th>
                                 <td>
-                                    夏号時点：--- 円<br>
-                                    現在：<span class="price-current">1,900円</span> <span style="font-size:11px; color:#888;">（※Pythonで自動更新予定）</span>
+                                    夏号時点：1,850円<br>
+                                    現在：<span class="price-current">1,900円</span>
                                 </td>
                             </tr>
                             <tr><th>四季報の評価</th><td>【最高益続く】大阪軸にメイン化進め貸出金順調。利回り改善進む。有価証券利息も増勢。与信費用は例年並み。人件費や物件費増こなす。0.75％前提で最高益更新。配当性向40％目標。増配。【生産性】ＡＩ導入含め業務プロセス見直し、捻出した人員は大阪での営業強化に。人的資本投資による生産性測る独自指標も向上。株主優待新設。</td></tr>
                             <tr><th>実績PER / PBR</th><td>--- 倍 / --- 倍</td></tr>
-                            <tr><th>配当利回り</th><td>今（実績）：6.28% (137円) / <span class="highlight-red">予想：3.55% (156円)</span></td></tr>
+                            <tr><th>配当利回り</th><td>実績：6.28% (137円)</td></tr>
                             <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：98,720百万円 / 17,618百万円<br><span class="highlight-blue">・26年3月(予想)：114,870百万円 / 21,819百万円</span><br><span class="highlight-blue">・27年3月(予想)：125,000百万円 / 25,000百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>4.0% / 9.0%</td></tr>
                             <tr><th>チャート</th>
                                 <td>
-                                    <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSE:8370&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&theme=light&style=1&timezone=Asia%2FTokyo" width="100%" height="250" frameborder="0" scrolling="no"></iframe>
+                                    <img src="https://chart.yahoo.co.jp/?code=8370.T&tm=6m&type=c&log=off&size=m" alt="8370 チャート" class="chart-img">
                                 </td>
                             </tr>
                         </table>
@@ -283,17 +286,17 @@
                             <tr><th>株価<br>（夏号時点 / 現在）</th>
                                 <td>
                                     夏号時点：1,499円<br>
-                                    現在：<span class="price-current">1,510円</span> <span style="font-size:11px; color:#888;">（※Pythonで自動更新予定）</span>
+                                    現在：<span class="price-current">1,510円</span>
                                 </td>
                             </tr>
                             <tr><th>四季報の評価</th><td>【連続増配】貸出金利回りの上昇に伴い、資金利益が順調に拡大。貸出先への事業支援などを通じた役務取引等利益も伸長。人件費やシステム費増の重しこなし、実質的に純益増。与信費用を抑制し純益連続増。増配。【中計】28年度に純利益100億円以上（26年３月期89億円）を目指す新中計スタート。生産性を引き上げ、新たな事業領域などへ人員を再配置。女性活躍推進で優良企業認定取得。</td></tr>
                             <tr><th>実績PER / PBR</th><td>PER 8.2倍 / PBR 0.28倍</td></tr>
-                            <tr><th>配当利回り</th><td>今（実績）：8.40% (126円) / <span class="highlight-red">予想：2.76% (108円)</span></td></tr>
+                            <tr><th>配当利回り</th><td>実績：8.40% (126円)</td></tr>
                             <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：90,007百万円 / 13,700百万円<br><span class="highlight-blue">・26年3月(予想)：108,556百万円 / 18,857百万円</span><br><span class="highlight-blue">・27年3月(予想)：116,500百万円 / 21,000百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>6.6% / 5.2%</td></tr>
                             <tr><th>チャート</th>
                                 <td>
-                                    <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSE:8386&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&theme=light&style=1&timezone=Asia%2FTokyo" width="100%" height="250" frameborder="0" scrolling="no"></iframe>
+                                    <img src="https://chart.yahoo.co.jp/?code=8386.T&tm=6m&type=c&log=off&size=m" alt="8386 チャート" class="chart-img">
                                 </td>
                             </tr>
                         </table>
@@ -309,17 +312,17 @@
                             <tr><th>株価<br>（夏号時点 / 現在）</th>
                                 <td>
                                     夏号時点：6,080円<br>
-                                    現在：<span class="price-current">6,120円</span> <span style="font-size:11px; color:#888;">（※Pythonで自動更新予定）</span>
+                                    現在：<span class="price-current">6,120円</span>
                                 </td>
                             </tr>
                             <tr><th>四季報の評価</th><td>【連続最高益】利上げで預貸金利ザヤが拡大。有価証券利息配当金も増え資金利益は堅調。人件費増こなし、与信費用は低水準。前段の政策保有株売却益減っても経常増益。配当性向40％メドに増配。【経営統合】28年４月をメドにしずおかＦＧと経営統合で基本合意、合併や店舗統廃合はしない方針。27年度純利益目標は280億円に引き上げ。</td></tr>
                             <tr><th>実績PER / PBR</th><td>PER 12.4倍 / PBR 0.95倍</td></tr>
-                            <tr><th>配当利回り</th><td>今（実績）：1.97% (120円) / <span class="highlight-red">予想：3.29% (100円)</span></td></tr>
+                            <tr><th>配当利回り</th><td>実績：1.97% (120円)</td></tr>
                             <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：102,788百万円 / 14,730百万円<br><span class="highlight-blue">・26年3月(予想)：124,456百万円 / 20,269百万円</span><br><span class="highlight-blue">・27年3月(予想)：142,800百万円 / 23,000百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>5.0% / 6.9%</td></tr>
                             <tr><th>チャート</th>
                                 <td>
-                                    <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSE:8522&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&theme=light&style=1&timezone=Asia%2FTokyo" width="100%" height="250" frameborder="0" scrolling="no"></iframe>
+                                    <img src="https://chart.yahoo.co.jp/?code=8522.T&tm=6m&type=c&log=off&size=m" alt="8522 チャート" class="chart-img">
                                 </td>
                             </tr>
                         </table>
@@ -335,17 +338,17 @@
                             <tr><th>株価<br>（夏号時点 / 現在）</th>
                                 <td>
                                     夏号時点：1,512円<br>
-                                    現在：<span class="price-current">1,530円</span> <span style="font-size:11px; color:#888;">（※Pythonで自動更新予定）</span>
+                                    現在：<span class="price-current">1,530円</span>
                                 </td>
                             </tr>
                             <tr><th>四季報の評価</th><td>【伸長】貸出金利回りの上昇で預貸金利益が拡大。役務取引等利益も投信販売などが牽引し堅調に推移。不良債権処理費用は例年並みに。人件費などの経費増を吸収して経常増益。株価上昇で有価証券評価損益改善。【生成ＡＩ】業務効率化に向け生成ＡＩを導入。行内規定やマニュアルなどの検索システムなどで活用。セキュリティに配慮し、外部サービスに頼らない独自のシステムを構築。</td></tr>
                             <tr><th>実績PER / PBR</th><td>PER 11.0倍 / PBR 0.37倍</td></tr>
-                            <tr><th>配当利回り</th><td>今（実績）：1.65% (25円) / <span class="highlight-red">予想：3.31% (25円)</span></td></tr>
+                            <tr><th>配当利回り</th><td>実績：1.65% (25円)</td></tr>
                             <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：25,661百万円 / 1,817百万円<br><span class="highlight-blue">・26年3月(予想)：26,577百万円 / 1,970百万円</span><br><span class="highlight-blue">・27年3月(予想)：29,500百万円 / 2,000百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>4.1% / 3.4%</td></tr>
                             <tr><th>チャート</th>
                                 <td>
-                                    <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSE:8542&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&theme=light&style=1&timezone=Asia%2FTokyo" width="100%" height="250" frameborder="0" scrolling="no"></iframe>
+                                    <img src="https://chart.yahoo.co.jp/?code=8542.T&tm=6m&type=c&log=off&size=m" alt="8542 チャート" class="chart-img">
                                 </td>
                             </tr>
                         </table>
@@ -360,18 +363,18 @@
                             <tr><th>会社概要</th><td>【特色】富裕層の個人営業主体で投信、ファンドラップ積上げに重心。中小型株中心に調査力に定評</td></tr>
                             <tr><th>株価<br>（夏号時点 / 現在）</th>
                                 <td>
-                                    夏号時点：--- 円<br>
-                                    現在：<span class="price-current">900円</span> <span style="font-size:11px; color:#888;">（※Pythonで自動更新予定）</span>
+                                    夏号時点：850円<br>
+                                    現在：<span class="price-current">900円</span>
                                 </td>
                             </tr>
                             <tr><th>四季報の評価</th><td>【高水準】収益柱の投信やファンドラップの残高が資金流入と運用益で伸長。信託報酬が着実に増え、営業収益を牽引。人件費などの経費増を吸収し、営業益は高水準。特損見込まず純増。記念配ないが普通配増配。【新中計】28年度末の預かり資産残高は３兆円（26年３月末は２・６兆円）目標。中途採用の強化や、若手社員の定着率向上に向けた人事制度改定などを進め、人員純増へ。</td></tr>
                             <tr><th>実績PER / PBR</th><td>--- 倍 / --- 倍</td></tr>
-                            <tr><th>配当利回り</th><td>今（実績）：7.61% (59円) / <span class="highlight-red">予想：5.52% (36円)</span></td></tr>
+                            <tr><th>配当利回り</th><td>実績：7.61% (59円)</td></tr>
                             <tr><th>業績予想<br>(営業収益 / 純利益)</th><td>・25年3月(実績)：18,837百万円 / 1,929百万円<br><span class="highlight-blue">・26年3月(予想)：24,579百万円 / 4,392百万円</span><br><span class="highlight-blue">・27年3月(予想)：25,000百万円 / 4,400百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>56.2% / 15.0%</td></tr>
                             <tr><th>チャート</th>
                                 <td>
-                                    <iframe src="https://s.tradingview.com/widgetembed/?symbol=TSE:8624&interval=D&hidesidetoolbar=1&symboledit=1&saveimage=1&toolbarbg=f1f3f6&theme=light&style=1&timezone=Asia%2FTokyo" width="100%" height="250" frameborder="0" scrolling="no"></iframe>
+                                    <img src="https://chart.yahoo.co.jp/?code=8624.T&tm=6m&type=c&log=off&size=m" alt="8624 チャート" class="chart-img">
                                 </td>
                             </tr>
                         </table>
