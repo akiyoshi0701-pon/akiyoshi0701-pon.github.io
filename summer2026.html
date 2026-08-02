@@ -81,8 +81,9 @@
         .data-table td { background-color: #fff; color: #444; }
         
         /* 比較テーブル用の装飾 */
-        .perf-table th { background-color: #e2eef7; text-align: center; }
-        .perf-table td { text-align: center; }
+        /* 改行させないための white-space: nowrap; を追加 */
+        .perf-table th { background-color: #e2eef7; text-align: center; white-space: nowrap; }
+        .perf-table td { text-align: center; white-space: nowrap; }
         .highlight-red { color: #d32f2f; font-weight: bold; }
         .highlight-blue { color: #1976d2; font-weight: bold; }
         .price-current { font-size: 16px; font-weight: bold; color: #1976d2; }
@@ -105,7 +106,7 @@
             .data-table th { width: 35%; }
             .stock-details { padding: 10px; }
             /* スマホで表がはみ出さないように横スクロールを許可 */
-            .table-responsive { overflow-x: auto; white-space: nowrap; }
+            .table-responsive { overflow-x: auto; }
         }
     </style>
 </head>
@@ -116,7 +117,6 @@
         <p>〜全3,800銘柄から厳選！初心者でも安心のバリュー投資〜</p>
     </header>
 
-    <!-- ナビゲーションメニュー（夏号をアクティブに） -->
     <nav>
         <a href="index.html">ホーム</a>
         <a href="weekly.html">株価早報</a>
@@ -131,7 +131,6 @@
                 <h2>📚 2026四季報夏号 厳選リスト</h2>
                 <p>四季報夏号の全ページを読み込み、スクリーニング基準をクリアした銘柄を紹介します。各銘柄をクリックすると詳細な分析データを確認できます。</p>
                 
-                <!-- 日経平均との比較仮説検証アコーディオン -->
                 <details class="stock-card" style="margin-top: 15px; border-left: 5px solid #2c7cbf;">
                     <summary class="stock-summary" style="background-color: #f4f7fa; color: #1a5b92;">
                         📊 日経平均とのパフォーマンス比較
@@ -139,14 +138,12 @@
                     <div class="stock-details">
                         <p style="font-size: 14px; color: #555;">日経平均の上がり率よりもピックアップ銘柄が上がっているか検証</p>
                         
-                        <!-- 勝率の表示 -->
                         <div style="background-color: #e2eef7; padding: 10px; border-radius: 6px; margin-bottom: 15px; text-align: center;">
                             <span style="font-size: 14px; font-weight: bold;">🎯 日経平均超え：</span>
                             <span style="font-size: 20px; font-weight: bold; color: #1976d2;">75.0%</span>
                             <span style="font-size: 14px; color: #444;">（9銘柄 / 12銘柄中）</span>
                         </div>
 
-                        <!-- 比較テーブル -->
                         <div class="table-responsive">
                             <table class="data-table perf-table">
                                 <tr>
@@ -155,7 +152,6 @@
                                     <th>現在の株価</th>
                                     <th>増減率</th>
                                 </tr>
-                                <!-- 日経平均（基準） -->
                                 <tr style="background-color: #fffde7; font-weight: bold;">
                                     <td style="text-align: left;">日経平均株価 (基準)</td>
                                     <td>38,000円</td>
@@ -242,7 +238,6 @@
 
             <div class="stock-list">
                 
-                <!-- 1952 新日本空調 -->
                 <details class="stock-card">
                     <summary class="stock-summary">1952 新日本空調</summary>
                     <div class="stock-details">
@@ -257,43 +252,10 @@
                             <tr><th>配当利回り</th><td>実績：3.60% (120円)</td></tr>
                             <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：154,884百万円 / 9,656百万円<br><span class="highlight-blue">・26年3月(予想)：160,000百万円 / 12,800百万円</span><br><span class="highlight-blue">・27年3月(予想)：168,000百万円 / 13,500百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>61.0% / 16.0%</td></tr>
-                            <tr><th>チャート (6ヶ月)</th>
-                                <td>
-                                    <!-- URLジャンプを無効化した公式チャート専用ウィジェット -->
-                                    <div class="tradingview-widget-container" style="height: 250px;">
-                                      <div class="tradingview-widget-container__widget"></div>
-                                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-                                      {
-                                        "symbols": [["TSE:1952|6M"]],
-                                        "chartOnly": true,
-                                        "width": "100%",
-                                        "height": "250",
-                                        "locale": "ja",
-                                        "colorTheme": "light",
-                                        "autosize": false,
-                                        "showVolume": false,
-                                        "showMA": false,
-                                        "hideDateRanges": true,
-                                        "hideMarketStatus": true,
-                                        "hideSymbolLogo": true,
-                                        "scalePosition": "right",
-                                        "scaleMode": "Normal",
-                                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-                                        "fontSize": "10",
-                                        "noTimeScale": false,
-                                        "valuesTracking": "1",
-                                        "changeMode": "price-and-percent",
-                                        "chartType": "line"
-                                      }
-                                      </script>
-                                    </div>
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </details>
 
-                <!-- 1982 日比谷綜合設備 -->
                 <details class="stock-card">
                     <summary class="stock-summary">1982 日比谷綜合設備</summary>
                     <div class="stock-details">
@@ -308,42 +270,10 @@
                             <tr><th>配当利回り</th><td>実績：3.27% (100円)</td></tr>
                             <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：94,080百万円 / 8,681百万円<br><span class="highlight-blue">・26年3月(予想)：105,000百万円 / 8,700百万円</span><br><span class="highlight-blue">・27年3月(予想)：108,000百万円 / 9,000百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>71.6% / 11.6%</td></tr>
-                            <tr><th>チャート (6ヶ月)</th>
-                                <td>
-                                    <div class="tradingview-widget-container" style="height: 250px;">
-                                      <div class="tradingview-widget-container__widget"></div>
-                                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-                                      {
-                                        "symbols": [["TSE:1982|6M"]],
-                                        "chartOnly": true,
-                                        "width": "100%",
-                                        "height": "250",
-                                        "locale": "ja",
-                                        "colorTheme": "light",
-                                        "autosize": false,
-                                        "showVolume": false,
-                                        "showMA": false,
-                                        "hideDateRanges": true,
-                                        "hideMarketStatus": true,
-                                        "hideSymbolLogo": true,
-                                        "scalePosition": "right",
-                                        "scaleMode": "Normal",
-                                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-                                        "fontSize": "10",
-                                        "noTimeScale": false,
-                                        "valuesTracking": "1",
-                                        "changeMode": "price-and-percent",
-                                        "chartType": "line"
-                                      }
-                                      </script>
-                                    </div>
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </details>
 
-                <!-- 4012 アクシス -->
                 <details class="stock-card">
                     <summary class="stock-summary">4012 アクシス</summary>
                     <div class="stock-details">
@@ -358,42 +288,10 @@
                             <tr><th>配当利回り</th><td>実績：2.85% (46円)</td></tr>
                             <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・24年12月(実績)：8,134百万円 / 642百万円<br><span class="highlight-blue">・25年12月(予想)：9,500百万円 / 730百万円</span><br><span class="highlight-blue">・26年12月(予想)：11,000百万円 / 840百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>75.7% / 16.8%</td></tr>
-                            <tr><th>チャート (6ヶ月)</th>
-                                <td>
-                                    <div class="tradingview-widget-container" style="height: 250px;">
-                                      <div class="tradingview-widget-container__widget"></div>
-                                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-                                      {
-                                        "symbols": [["TSE:4012|6M"]],
-                                        "chartOnly": true,
-                                        "width": "100%",
-                                        "height": "250",
-                                        "locale": "ja",
-                                        "colorTheme": "light",
-                                        "autosize": false,
-                                        "showVolume": false,
-                                        "showMA": false,
-                                        "hideDateRanges": true,
-                                        "hideMarketStatus": true,
-                                        "hideSymbolLogo": true,
-                                        "scalePosition": "right",
-                                        "scaleMode": "Normal",
-                                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-                                        "fontSize": "10",
-                                        "noTimeScale": false,
-                                        "valuesTracking": "1",
-                                        "changeMode": "price-and-percent",
-                                        "chartType": "line"
-                                      }
-                                      </script>
-                                    </div>
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </details>
 
-                <!-- 4658 日本空調サービス -->
                 <details class="stock-card">
                     <summary class="stock-summary">4658 日本空調サービス</summary>
                     <div class="stock-details">
@@ -408,42 +306,10 @@
                             <tr><th>配当利回り</th><td>実績：2.59% (45円)</td></tr>
                             <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：64,438百万円 / 3,102百万円<br><span class="highlight-blue">・26年3月(予想)：69,245百万円 / 3,696百万円</span><br><span class="highlight-blue">・27年3月(予想)：74,000百万円 / 3,900百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>57.6% / 13.1%</td></tr>
-                            <tr><th>チャート (6ヶ月)</th>
-                                <td>
-                                    <div class="tradingview-widget-container" style="height: 250px;">
-                                      <div class="tradingview-widget-container__widget"></div>
-                                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-                                      {
-                                        "symbols": [["TSE:4658|6M"]],
-                                        "chartOnly": true,
-                                        "width": "100%",
-                                        "height": "250",
-                                        "locale": "ja",
-                                        "colorTheme": "light",
-                                        "autosize": false,
-                                        "showVolume": false,
-                                        "showMA": false,
-                                        "hideDateRanges": true,
-                                        "hideMarketStatus": true,
-                                        "hideSymbolLogo": true,
-                                        "scalePosition": "right",
-                                        "scaleMode": "Normal",
-                                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-                                        "fontSize": "10",
-                                        "noTimeScale": false,
-                                        "valuesTracking": "1",
-                                        "changeMode": "price-and-percent",
-                                        "chartType": "line"
-                                      }
-                                      </script>
-                                    </div>
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </details>
 
-                <!-- 7175 今村証券 -->
                 <details class="stock-card">
                     <summary class="stock-summary">7175 今村証券</summary>
                     <div class="stock-details">
@@ -458,42 +324,10 @@
                             <tr><th>配当利回り</th><td>実績：4.07% (55円)</td></tr>
                             <tr><th>業績予想<br>(営業収益 / 純利益)</th><td>・25年3月(実績)：4,186百万円 / 760百万円<br><span class="highlight-blue">・26年3月(予想)：4,914百万円 / 1,055百万円</span><br><span class="highlight-blue">・27年3月(予想)：5,100百万円 / 1,150百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>49.6% / 8.4%</td></tr>
-                            <tr><th>チャート (6ヶ月)</th>
-                                <td>
-                                    <div class="tradingview-widget-container" style="height: 250px;">
-                                      <div class="tradingview-widget-container__widget"></div>
-                                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-                                      {
-                                        "symbols": [["TSE:7175|6M"]],
-                                        "chartOnly": true,
-                                        "width": "100%",
-                                        "height": "250",
-                                        "locale": "ja",
-                                        "colorTheme": "light",
-                                        "autosize": false,
-                                        "showVolume": false,
-                                        "showMA": false,
-                                        "hideDateRanges": true,
-                                        "hideMarketStatus": true,
-                                        "hideSymbolLogo": true,
-                                        "scalePosition": "right",
-                                        "scaleMode": "Normal",
-                                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-                                        "fontSize": "10",
-                                        "noTimeScale": false,
-                                        "valuesTracking": "1",
-                                        "changeMode": "price-and-percent",
-                                        "chartType": "line"
-                                      }
-                                      </script>
-                                    </div>
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </details>
 
-                <!-- 7433 伯東 -->
                 <details class="stock-card">
                     <summary class="stock-summary">7433 伯東</summary>
                     <div class="stock-details">
@@ -508,42 +342,10 @@
                             <tr><th>配当利回り</th><td>実績：4.50% (200円)</td></tr>
                             <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：183,133百万円 / 5,009百万円<br><span class="highlight-blue">・26年3月(予想)：225,000百万円 / 6,100百万円</span><br><span class="highlight-blue">・27年3月(予想)：240,000百万円 / 6,100百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>41.6% / 7.5%</td></tr>
-                            <tr><th>チャート (6ヶ月)</th>
-                                <td>
-                                    <div class="tradingview-widget-container" style="height: 250px;">
-                                      <div class="tradingview-widget-container__widget"></div>
-                                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-                                      {
-                                        "symbols": [["TSE:7433|6M"]],
-                                        "chartOnly": true,
-                                        "width": "100%",
-                                        "height": "250",
-                                        "locale": "ja",
-                                        "colorTheme": "light",
-                                        "autosize": false,
-                                        "showVolume": false,
-                                        "showMA": false,
-                                        "hideDateRanges": true,
-                                        "hideMarketStatus": true,
-                                        "hideSymbolLogo": true,
-                                        "scalePosition": "right",
-                                        "scaleMode": "Normal",
-                                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-                                        "fontSize": "10",
-                                        "noTimeScale": false,
-                                        "valuesTracking": "1",
-                                        "changeMode": "price-and-percent",
-                                        "chartType": "line"
-                                      }
-                                      </script>
-                                    </div>
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </details>
 
-                <!-- 8020 兼松 -->
                 <details class="stock-card">
                     <summary class="stock-summary">8020 兼松</summary>
                     <div class="stock-details">
@@ -558,42 +360,10 @@
                             <tr><th>配当利回り</th><td>実績：3.64% (90円)</td></tr>
                             <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：1,067,665百万円 / 32,523百万円<br><span class="highlight-blue">・26年3月(予想)：1,100,000百万円 / 35,000百万円</span><br><span class="highlight-blue">・27年3月(予想)：1,150,000百万円 / 35,000百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>28.4% / 17.0%</td></tr>
-                            <tr><th>チャート (6ヶ月)</th>
-                                <td>
-                                    <div class="tradingview-widget-container" style="height: 250px;">
-                                      <div class="tradingview-widget-container__widget"></div>
-                                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-                                      {
-                                        "symbols": [["TSE:8020|6M"]],
-                                        "chartOnly": true,
-                                        "width": "100%",
-                                        "height": "250",
-                                        "locale": "ja",
-                                        "colorTheme": "light",
-                                        "autosize": false,
-                                        "showVolume": false,
-                                        "showMA": false,
-                                        "hideDateRanges": true,
-                                        "hideMarketStatus": true,
-                                        "hideSymbolLogo": true,
-                                        "scalePosition": "right",
-                                        "scaleMode": "Normal",
-                                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-                                        "fontSize": "10",
-                                        "noTimeScale": false,
-                                        "valuesTracking": "1",
-                                        "changeMode": "price-and-percent",
-                                        "chartType": "line"
-                                      }
-                                      </script>
-                                    </div>
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </details>
 
-                <!-- 8370 紀陽銀行 -->
                 <details class="stock-card">
                     <summary class="stock-summary">8370 紀陽銀行</summary>
                     <div class="stock-details">
@@ -608,42 +378,10 @@
                             <tr><th>配当利回り</th><td>実績：6.28% (137円)</td></tr>
                             <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：98,720百万円 / 17,618百万円<br><span class="highlight-blue">・26年3月(予想)：114,870百万円 / 21,819百万円</span><br><span class="highlight-blue">・27年3月(予想)：125,000百万円 / 25,000百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>4.0% / 9.0%</td></tr>
-                            <tr><th>チャート (6ヶ月)</th>
-                                <td>
-                                    <div class="tradingview-widget-container" style="height: 250px;">
-                                      <div class="tradingview-widget-container__widget"></div>
-                                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-                                      {
-                                        "symbols": [["TSE:8370|6M"]],
-                                        "chartOnly": true,
-                                        "width": "100%",
-                                        "height": "250",
-                                        "locale": "ja",
-                                        "colorTheme": "light",
-                                        "autosize": false,
-                                        "showVolume": false,
-                                        "showMA": false,
-                                        "hideDateRanges": true,
-                                        "hideMarketStatus": true,
-                                        "hideSymbolLogo": true,
-                                        "scalePosition": "right",
-                                        "scaleMode": "Normal",
-                                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-                                        "fontSize": "10",
-                                        "noTimeScale": false,
-                                        "valuesTracking": "1",
-                                        "changeMode": "price-and-percent",
-                                        "chartType": "line"
-                                      }
-                                      </script>
-                                    </div>
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </details>
 
-                <!-- 8386 百十四銀行 -->
                 <details class="stock-card">
                     <summary class="stock-summary">8386 百十四銀行</summary>
                     <div class="stock-details">
@@ -658,42 +396,10 @@
                             <tr><th>配当利回り</th><td>実績：8.40% (126円)</td></tr>
                             <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：90,007百万円 / 13,700百万円<br><span class="highlight-blue">・26年3月(予想)：108,556百万円 / 18,857百万円</span><br><span class="highlight-blue">・27年3月(予想)：116,500百万円 / 21,000百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>6.6% / 5.2%</td></tr>
-                            <tr><th>チャート (6ヶ月)</th>
-                                <td>
-                                    <div class="tradingview-widget-container" style="height: 250px;">
-                                      <div class="tradingview-widget-container__widget"></div>
-                                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-                                      {
-                                        "symbols": [["TSE:8386|6M"]],
-                                        "chartOnly": true,
-                                        "width": "100%",
-                                        "height": "250",
-                                        "locale": "ja",
-                                        "colorTheme": "light",
-                                        "autosize": false,
-                                        "showVolume": false,
-                                        "showMA": false,
-                                        "hideDateRanges": true,
-                                        "hideMarketStatus": true,
-                                        "hideSymbolLogo": true,
-                                        "scalePosition": "right",
-                                        "scaleMode": "Normal",
-                                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-                                        "fontSize": "10",
-                                        "noTimeScale": false,
-                                        "valuesTracking": "1",
-                                        "changeMode": "price-and-percent",
-                                        "chartType": "line"
-                                      }
-                                      </script>
-                                    </div>
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </details>
 
-                <!-- 8522 名古屋銀行 -->
                 <details class="stock-card">
                     <summary class="stock-summary">8522 名古屋銀行</summary>
                     <div class="stock-details">
@@ -708,42 +414,10 @@
                             <tr><th>配当利回り</th><td>実績：1.97% (120円)</td></tr>
                             <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：102,788百万円 / 14,730百万円<br><span class="highlight-blue">・26年3月(予想)：124,456百万円 / 20,269百万円</span><br><span class="highlight-blue">・27年3月(予想)：142,800百万円 / 23,000百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>5.0% / 6.9%</td></tr>
-                            <tr><th>チャート (6ヶ月)</th>
-                                <td>
-                                    <div class="tradingview-widget-container" style="height: 250px;">
-                                      <div class="tradingview-widget-container__widget"></div>
-                                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-                                      {
-                                        "symbols": [["TSE:8522|6M"]],
-                                        "chartOnly": true,
-                                        "width": "100%",
-                                        "height": "250",
-                                        "locale": "ja",
-                                        "colorTheme": "light",
-                                        "autosize": false,
-                                        "showVolume": false,
-                                        "showMA": false,
-                                        "hideDateRanges": true,
-                                        "hideMarketStatus": true,
-                                        "hideSymbolLogo": true,
-                                        "scalePosition": "right",
-                                        "scaleMode": "Normal",
-                                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-                                        "fontSize": "10",
-                                        "noTimeScale": false,
-                                        "valuesTracking": "1",
-                                        "changeMode": "price-and-percent",
-                                        "chartType": "line"
-                                      }
-                                      </script>
-                                    </div>
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </details>
 
-                <!-- 8542 トマト銀行 -->
                 <details class="stock-card">
                     <summary class="stock-summary">8542 トマト銀行</summary>
                     <div class="stock-details">
@@ -758,42 +432,10 @@
                             <tr><th>配当利回り</th><td>実績：1.65% (25円)</td></tr>
                             <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：25,661百万円 / 1,817百万円<br><span class="highlight-blue">・26年3月(予想)：26,577百万円 / 1,970百万円</span><br><span class="highlight-blue">・27年3月(予想)：29,500百万円 / 2,000百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>4.1% / 3.4%</td></tr>
-                            <tr><th>チャート (6ヶ月)</th>
-                                <td>
-                                    <div class="tradingview-widget-container" style="height: 250px;">
-                                      <div class="tradingview-widget-container__widget"></div>
-                                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-                                      {
-                                        "symbols": [["TSE:8542|6M"]],
-                                        "chartOnly": true,
-                                        "width": "100%",
-                                        "height": "250",
-                                        "locale": "ja",
-                                        "colorTheme": "light",
-                                        "autosize": false,
-                                        "showVolume": false,
-                                        "showMA": false,
-                                        "hideDateRanges": true,
-                                        "hideMarketStatus": true,
-                                        "hideSymbolLogo": true,
-                                        "scalePosition": "right",
-                                        "scaleMode": "Normal",
-                                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-                                        "fontSize": "10",
-                                        "noTimeScale": false,
-                                        "valuesTracking": "1",
-                                        "changeMode": "price-and-percent",
-                                        "chartType": "line"
-                                      }
-                                      </script>
-                                    </div>
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </details>
 
-                <!-- 8624 いちよし証券 -->
                 <details class="stock-card">
                     <summary class="stock-summary">8624 いちよし証券</summary>
                     <div class="stock-details">
@@ -808,37 +450,6 @@
                             <tr><th>配当利回り</th><td>実績：7.61% (59円)</td></tr>
                             <tr><th>業績予想<br>(営業収益 / 純利益)</th><td>・25年3月(実績)：18,837百万円 / 1,929百万円<br><span class="highlight-blue">・26年3月(予想)：24,579百万円 / 4,392百万円</span><br><span class="highlight-blue">・27年3月(予想)：25,000百万円 / 4,400百万円</span></td></tr>
                             <tr><th>自己資本比率 / ROE</th><td>56.2% / 15.0%</td></tr>
-                            <tr><th>チャート (6ヶ月)</th>
-                                <td>
-                                    <div class="tradingview-widget-container" style="height: 250px;">
-                                      <div class="tradingview-widget-container__widget"></div>
-                                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
-                                      {
-                                        "symbols": [["TSE:8624|6M"]],
-                                        "chartOnly": true,
-                                        "width": "100%",
-                                        "height": "250",
-                                        "locale": "ja",
-                                        "colorTheme": "light",
-                                        "autosize": false,
-                                        "showVolume": false,
-                                        "showMA": false,
-                                        "hideDateRanges": true,
-                                        "hideMarketStatus": true,
-                                        "hideSymbolLogo": true,
-                                        "scalePosition": "right",
-                                        "scaleMode": "Normal",
-                                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
-                                        "fontSize": "10",
-                                        "noTimeScale": false,
-                                        "valuesTracking": "1",
-                                        "changeMode": "price-and-percent",
-                                        "chartType": "line"
-                                      }
-                                      </script>
-                                    </div>
-                                </td>
-                            </tr>
                         </table>
                     </div>
                 </details>
