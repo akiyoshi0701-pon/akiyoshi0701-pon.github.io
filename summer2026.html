@@ -8,62 +8,35 @@
         /* 基本設定 */
         body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; background-color: #f0f4f8; color: #333; margin: 0; padding: 0; line-height: 1.6; }
         
-        /* ヘッダー（背景画像とダークオーバーレイ） */
+        /* ヘッダー */
         header { 
-            position: relative;
-            /* 東京証券取引所の画像を指定 */
-            background-image: url('IMG_0372.jpeg'); 
-            background-size: cover;
-            background-position: center;
-            color: white; 
-            padding: 50px 20px; 
-            text-align: center; 
+            position: relative; background-image: url('IMG_0372.jpeg'); background-size: cover; background-position: center;
+            color: white; padding: 50px 20px; text-align: center; 
         }
-        /* 画像を暗くして文字を読みやすくする */
         header::before {
-            content: '';
-            position: absolute;
-            top: 0; right: 0; bottom: 0; left: 0;
-            background-color: rgba(26, 91, 146, 0.7); /* 青系の半透明 */
-            z-index: 1;
+            content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+            background-color: rgba(26, 91, 146, 0.7); z-index: 1;
         }
-        header h1, header p {
-            position: relative;
-            z-index: 2; /* 文字を一番上に */
-        }
+        header h1, header p { position: relative; z-index: 2; }
         header h1 { margin: 0; font-size: 26px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
         header p { margin: 10px 0 0; font-size: 15px; opacity: 0.95; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
 
-        /* ナビゲーションメニュー（横スクロール対応） */
+        /* ナビゲーションメニュー */
         nav { 
-            background-color: #1a5b92; 
-            display: flex; 
-            justify-content: flex-start; /* 左寄せにしてスクロールを自然に */
-            overflow-x: auto; /* 横スクロールを許可 */
-            white-space: nowrap; /* メニューを折り返さない */
-            -webkit-overflow-scrolling: touch; /* スマホで滑らかにスクロール */
+            background-color: #1a5b92; display: flex; justify-content: flex-start; 
+            overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; 
         }
-        /* スクロールバーを見えなくする（PC・一部スマホ向け） */
         nav::-webkit-scrollbar { display: none; }
         nav { -ms-overflow-style: none; scrollbar-width: none; }
-
-        nav a { 
-            color: white; 
-            text-decoration: none; 
-            padding: 15px 25px; 
-            font-size: 15px; 
-            transition: background-color 0.3s; 
-            flex-shrink: 0; /* 文字が縮まないようにする */
-        }
+        nav a { color: white; text-decoration: none; padding: 15px 25px; font-size: 15px; transition: background-color 0.3s; flex-shrink: 0; }
         nav a:hover { background-color: #134674; }
-        /* 夏号のタブをアクティブにする */
         .active-nav { background-color: #134674; font-weight: bold; }
         
         .container { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 20px auto; padding: 0 15px; gap: 20px; }
         .main-content { flex: 1 1 600px; }
         .sidebar { flex: 1 1 300px; }
         
-        /* 四季報リスト用のアコーディオン装飾 */
+        /* アコーディオン装飾 */
         .page-title { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 5px solid #ff9800; }
         .page-title h2 { margin: 0; color: #2c7cbf; font-size: 22px; }
         .page-title p { margin: 10px 0 0 0; color: #555; font-size: 14px; }
@@ -80,8 +53,6 @@
         .data-table th { background-color: #f4f7fa; width: 28%; text-align: left; color: #333; font-weight: bold; }
         .data-table td { background-color: #fff; color: #444; }
         
-        /* 比較テーブル用の装飾 */
-        /* 改行させないための white-space: nowrap; を追加 */
         .perf-table th { background-color: #e2eef7; text-align: center; white-space: nowrap; }
         .perf-table td { text-align: center; white-space: nowrap; }
         .highlight-red { color: #d32f2f; font-weight: bold; }
@@ -94,7 +65,6 @@
         .pr-button { display: inline-block; background-color: #f39c12; color: white; text-decoration: none; font-weight: bold; padding: 15px 20px; border-radius: 6px; width: 90%; box-sizing: border-box; box-shadow: 0 3px 0 #d68910; }
         .pr-disclaimer { font-size: 11px; color: #999; margin-top: 10px; }
 
-        /* スマホ対応（レスポンシブ設定） */
         @media (max-width: 600px) {
             header { padding: 30px 15px; }
             header h1 { font-size: 18px; word-break: keep-all; }
@@ -105,7 +75,6 @@
             .data-table th, .data-table td { font-size: 12px; padding: 8px; }
             .data-table th { width: 35%; }
             .stock-details { padding: 10px; }
-            /* スマホで表がはみ出さないように横スクロールを許可 */
             .table-responsive { overflow-x: auto; }
         }
     </style>
@@ -119,7 +88,7 @@
 
     <nav>
         <a href="index.html">ホーム</a>
-        <a href="weekly.html">株価早報</a>
+        <a href="hotstocks.html">注目株</a>
         <a href="summer2026.html" class="active-nav">2026四季報夏号</a>
         <a href="spring2026.html">2026四季報春号</a>
     </nav>
@@ -158,78 +127,18 @@
                                     <td>39,000円</td>
                                     <td>+2.6%</td>
                                 </tr>
-                                <tr>
-                                    <td style="text-align: left;">1952 新日本空調</td>
-                                    <td>3,090円</td>
-                                    <td>3,250円</td>
-                                    <td class="highlight-blue">+5.2%</td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">1982 日比谷綜合設備</td>
-                                    <td>3,055円</td>
-                                    <td>3,200円</td>
-                                    <td class="highlight-blue">+4.7%</td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">4012 アクシス</td>
-                                    <td>1,611円</td>
-                                    <td>1,600円</td>
-                                    <td class="highlight-red">-0.7%</td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">4658 日本空調サービス</td>
-                                    <td>1,735円</td>
-                                    <td>1,800円</td>
-                                    <td class="highlight-blue">+3.7%</td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">7175 今村証券</td>
-                                    <td>1,350円</td>
-                                    <td>1,400円</td>
-                                    <td class="highlight-blue">+3.7%</td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">7433 伯東</td>
-                                    <td>4,440円</td>
-                                    <td>4,600円</td>
-                                    <td class="highlight-blue">+3.6%</td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">8020 兼松</td>
-                                    <td>2,468円</td>
-                                    <td>2,500円</td>
-                                    <td class="highlight-red">+1.3%</td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">8370 紀陽銀行</td>
-                                    <td>1,850円</td>
-                                    <td>1,950円</td>
-                                    <td class="highlight-blue">+5.4%</td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">8386 百十四銀行</td>
-                                    <td>1,499円</td>
-                                    <td>1,550円</td>
-                                    <td class="highlight-blue">+3.4%</td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">8522 名古屋銀行</td>
-                                    <td>6,080円</td>
-                                    <td>6,300円</td>
-                                    <td class="highlight-blue">+3.6%</td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">8542 トマト銀行</td>
-                                    <td>1,512円</td>
-                                    <td>1,500円</td>
-                                    <td class="highlight-red">-0.8%</td>
-                                </tr>
-                                <tr>
-                                    <td style="text-align: left;">8624 いちよし証券</td>
-                                    <td>850円</td>
-                                    <td>900円</td>
-                                    <td class="highlight-blue">+5.9%</td>
-                                </tr>
+                                <tr><td style="text-align: left;">1952 新日本空調</td><td>3,090円</td><td>3,250円</td><td class="highlight-blue">+5.2%</td></tr>
+                                <tr><td style="text-align: left;">1982 日比谷綜合設備</td><td>3,055円</td><td>3,200円</td><td class="highlight-blue">+4.7%</td></tr>
+                                <tr><td style="text-align: left;">4012 アクシス</td><td>1,611円</td><td>1,600円</td><td class="highlight-red">-0.7%</td></tr>
+                                <tr><td style="text-align: left;">4658 日本空調サービス</td><td>1,735円</td><td>1,800円</td><td class="highlight-blue">+3.7%</td></tr>
+                                <tr><td style="text-align: left;">7175 今村証券</td><td>1,350円</td><td>1,400円</td><td class="highlight-blue">+3.7%</td></tr>
+                                <tr><td style="text-align: left;">7433 伯東</td><td>4,440円</td><td>4,600円</td><td class="highlight-blue">+3.6%</td></tr>
+                                <tr><td style="text-align: left;">8020 兼松</td><td>2,468円</td><td>2,500円</td><td class="highlight-red">+1.3%</td></tr>
+                                <tr><td style="text-align: left;">8370 紀陽銀行</td><td>1,850円</td><td>1,950円</td><td class="highlight-blue">+5.4%</td></tr>
+                                <tr><td style="text-align: left;">8386 百十四銀行</td><td>1,499円</td><td>1,550円</td><td class="highlight-blue">+3.4%</td></tr>
+                                <tr><td style="text-align: left;">8522 名古屋銀行</td><td>6,080円</td><td>6,300円</td><td class="highlight-blue">+3.6%</td></tr>
+                                <tr><td style="text-align: left;">8542 トマト銀行</td><td>1,512円</td><td>1,500円</td><td class="highlight-red">-0.8%</td></tr>
+                                <tr><td style="text-align: left;">8624 いちよし証券</td><td>850円</td><td>900円</td><td class="highlight-blue">+5.9%</td></tr>
                             </table>
                         </div>
                     </div>
@@ -237,222 +146,125 @@
             </div>
 
             <div class="stock-list">
-                
-                <details class="stock-card">
-                    <summary class="stock-summary">1952 新日本空調</summary>
-                    <div class="stock-details">
-                        <table class="data-table">
-                            <tr><th>業種</th><td>建設業（設備工事）</td></tr>
-                            <tr><th>会社概要</th><td>【特色】三井系の空調設備工事会社。微粒子可視化システムなど独自技術を持つ。原子力施設向けに強み。</td></tr>
-                            <tr><th>株価<br>（夏号時点 / 現在）</th>
-                                <td>夏号時点：3,090円<br>現在：<span class="price-current">3,250円</span></td>
-                            </tr>
-                            <tr><th>四季報の評価</th><td>【最高益】期初繰越高1487億円（前期比18%増）。大規模再開発や工場関連、データセンターが推移。リニューアルも寄与。生産性向上も効く。原子力は再稼働対応など増勢。人件費増こなし連続増益。増配。【中計】29年度売上高2000億円、営業利益240億円目標。成長投資額300億円。成長事業と生産性向上がカギ。建築設備CADの自動作図機能の共同開発始動。</td></tr>
-                            <tr><th>実績PER / PBR</th><td>PER 11.8倍 / PBR 1.83倍</td></tr>
-                            <tr><th>配当利回り</th><td>実績：3.60% (120円)</td></tr>
-                            <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：154,884百万円 / 9,656百万円<br><span class="highlight-blue">・26年3月(予想)：160,000百万円 / 12,800百万円</span><br><span class="highlight-blue">・27年3月(予想)：168,000百万円 / 13,500百万円</span></td></tr>
-                            <tr><th>自己資本比率 / ROE</th><td>61.0% / 16.0%</td></tr>
-                        </table>
-                    </div>
-                </details>
+                <details class="stock-card"><summary class="stock-summary">1952 新日本空調</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>建設業（設備工事）</td></tr>
+                    <tr><th>会社概要</th><td>【特色】三井系の空調設備工事会社。微粒子可視化システムなど独自技術を持つ。原子力施設向けに強み。</td></tr>
+                    <tr><th>株価<br>（夏号時点 / 現在）</th><td>夏号時点：3,090円<br>現在：<span class="price-current">3,250円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【最高益】期初繰越高1487億円（前期比18%増）。大規模再開発や工場関連、データセンターが推移。リニューアルも寄与。生産性向上も効く。原子力は再稼働対応など増勢。人件費増こなし連続増益。増配。【中計】29年度売上高2000億円、営業利益240億円目標。成長投資額300億円。成長事業と生産性向上がカギ。建築設備CADの自動作図機能の共同開発始動。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 11.8倍 / PBR 1.83倍</td></tr><tr><th>配当利回り</th><td>実績：3.60% (120円)</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：154,884百万円 / 9,656百万円<br><span class="highlight-blue">・26年3月(予想)：160,000百万円 / 12,800百万円</span><br><span class="highlight-blue">・27年3月(予想)：168,000百万円 / 13,500百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>61.0% / 16.0%</td></tr>
+                </table></div></details>
 
-                <details class="stock-card">
-                    <summary class="stock-summary">1982 日比谷綜合設備</summary>
-                    <div class="stock-details">
-                        <table class="data-table">
-                            <tr><th>業種</th><td>建設業（設備工事）</td></tr>
-                            <tr><th>会社概要</th><td>【特色】空調主体の設備工事会社。ＮＴＴグループ向けに強み。データセンター等情報通信向けが伸びる。</td></tr>
-                            <tr><th>株価<br>（夏号時点 / 現在）</th>
-                                <td>夏号時点：3,055円<br>現在：<span class="price-current">3,200円</span></td>
-                            </tr>
-                            <tr><th>四季報の評価</th><td>【最高益】期初繰越高1031億円（前期比20％増）。データセンター軸に、大型再開発や生産・物流施設の大型工事が牽引。資材費増こなす。連続増配。26年３月期はデータセンター上乗せ。人員増要員。</td></tr>
-                            <tr><th>実績PER / PBR</th><td>PER 16.0倍 / PBR 1.66倍</td></tr>
-                            <tr><th>配当利回り</th><td>実績：3.27% (100円)</td></tr>
-                            <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：94,080百万円 / 8,681百万円<br><span class="highlight-blue">・26年3月(予想)：105,000百万円 / 8,700百万円</span><br><span class="highlight-blue">・27年3月(予想)：108,000百万円 / 9,000百万円</span></td></tr>
-                            <tr><th>自己資本比率 / ROE</th><td>71.6% / 11.6%</td></tr>
-                        </table>
-                    </div>
-                </details>
+                <details class="stock-card"><summary class="stock-summary">1982 日比谷綜合設備</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>建設業（設備工事）</td></tr>
+                    <tr><th>会社概要</th><td>【特色】空調主体の設備工事会社。ＮＴＴグループ向けに強み。データセンター等情報通信向けが伸びる。</td></tr>
+                    <tr><th>株価<br>（夏号時点 / 現在）</th><td>夏号時点：3,055円<br>現在：<span class="price-current">3,200円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【最高益】期初繰越高1031億円（前期比20％増）。データセンター軸に、大型再開発や生産・物流施設の大型工事が牽引。資材費増こなす。連続増配。26年３月期はデータセンター上乗せ。人員増要員。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 16.0倍 / PBR 1.66倍</td></tr><tr><th>配当利回り</th><td>実績：3.27% (100円)</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：94,080百万円 / 8,681百万円<br><span class="highlight-blue">・26年3月(予想)：105,000百万円 / 8,700百万円</span><br><span class="highlight-blue">・27年3月(予想)：108,000百万円 / 9,000百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>71.6% / 11.6%</td></tr>
+                </table></div></details>
 
-                <details class="stock-card">
-                    <summary class="stock-summary">4012 アクシス</summary>
-                    <div class="stock-details">
-                        <table class="data-table">
-                            <tr><th>業種</th><td>情報・通信</td></tr>
-                            <tr><th>会社概要</th><td>【特色】金融機関、公的機関向け主体にシステム開発。クラウドサービスも展開。</td></tr>
-                            <tr><th>株価<br>（夏号時点 / 現在）</th>
-                                <td>夏号時点：1,611円<br>現在：<span class="price-current">1,600円</span></td>
-                            </tr>
-                            <tr><th>四季報の評価</th><td>【増額】昨秋獲得した大型システム案件が通期寄与。順調な新卒採用などが先行し営業益微増にとどまるも、外注費のコントロールなどで営業益上振れ。前号比で増益幅拡大。</td></tr>
-                            <tr><th>実績PER / PBR</th><td>PER 12.3倍 / PBR 1.69倍</td></tr>
-                            <tr><th>配当利回り</th><td>実績：2.85% (46円)</td></tr>
-                            <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・24年12月(実績)：8,134百万円 / 642百万円<br><span class="highlight-blue">・25年12月(予想)：9,500百万円 / 730百万円</span><br><span class="highlight-blue">・26年12月(予想)：11,000百万円 / 840百万円</span></td></tr>
-                            <tr><th>自己資本比率 / ROE</th><td>75.7% / 16.8%</td></tr>
-                        </table>
-                    </div>
-                </details>
+                <details class="stock-card"><summary class="stock-summary">4012 アクシス</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>情報・通信</td></tr>
+                    <tr><th>会社概要</th><td>【特色】金融機関、公的機関向け主体にシステム開発。クラウドサービスも展開。</td></tr>
+                    <tr><th>株価<br>（夏号時点 / 現在）</th><td>夏号時点：1,611円<br>現在：<span class="price-current">1,600円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【増額】昨秋獲得した大型システム案件が通期寄与。順調な新卒採用などが先行し営業益微増にとどまるも、外注費のコントロールなどで営業益上振れ。前号比で増益幅拡大。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 12.3倍 / PBR 1.69倍</td></tr><tr><th>配当利回り</th><td>実績：2.85% (46円)</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・24年12月(実績)：8,134百万円 / 642百万円<br><span class="highlight-blue">・25年12月(予想)：9,500百万円 / 730百万円</span><br><span class="highlight-blue">・26年12月(予想)：11,000百万円 / 840百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>75.7% / 16.8%</td></tr>
+                </table></div></details>
 
-                <details class="stock-card">
-                    <summary class="stock-summary">4658 日本空調サービス</summary>
-                    <div class="stock-details">
-                        <table class="data-table">
-                            <tr><th>業種</th><td>サービス業</td></tr>
-                            <tr><th>会社概要</th><td>【特色】建物設備のメンテナンスが主体。独立系。工場や病院向けに強み。リニューアル工事も。</td></tr>
-                            <tr><th>株価<br>（夏号時点 / 現在）</th>
-                                <td>夏号時点：1,735円<br>現在：<span class="price-current">1,800円</span></td>
-                            </tr>
-                            <tr><th>四季報の評価</th><td>【最高益】空調設備は新設物件獲得などで好調維持。テナントビル等のリニューアル工事も増勢。契約単価引き上げ浸透。人件費増こなす。営業外の助成金剥落でも純益高水準。連続増配。</td></tr>
-                            <tr><th>実績PER / PBR</th><td>PER 13.6倍 / PBR 1.80倍</td></tr>
-                            <tr><th>配当利回り</th><td>実績：2.59% (45円)</td></tr>
-                            <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：64,438百万円 / 3,102百万円<br><span class="highlight-blue">・26年3月(予想)：69,245百万円 / 3,696百万円</span><br><span class="highlight-blue">・27年3月(予想)：74,000百万円 / 3,900百万円</span></td></tr>
-                            <tr><th>自己資本比率 / ROE</th><td>57.6% / 13.1%</td></tr>
-                        </table>
-                    </div>
-                </details>
+                <details class="stock-card"><summary class="stock-summary">4658 日本空調サービス</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>サービス業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】建物設備のメンテナンスが主体。独立系。工場や病院向けに強み。リニューアル工事も。</td></tr>
+                    <tr><th>株価<br>（夏号時点 / 現在）</th><td>夏号時点：1,735円<br>現在：<span class="price-current">1,800円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【最高益】空調設備は新設物件獲得などで好調維持。テナントビル等のリニューアル工事も増勢。契約単価引き上げ浸透。人件費増こなす。営業外の助成金剥落でも純益高水準。連続増配。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 13.6倍 / PBR 1.80倍</td></tr><tr><th>配当利回り</th><td>実績：2.59% (45円)</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：64,438百万円 / 3,102百万円<br><span class="highlight-blue">・26年3月(予想)：69,245百万円 / 3,696百万円</span><br><span class="highlight-blue">・27年3月(予想)：74,000百万円 / 3,900百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>57.6% / 13.1%</td></tr>
+                </table></div></details>
 
-                <details class="stock-card">
-                    <summary class="stock-summary">7175 今村証券</summary>
-                    <div class="stock-details">
-                        <table class="data-table">
-                            <tr><th>業種</th><td>証券・商品先物</td></tr>
-                            <tr><th>会社概要</th><td>【特色】独立系、地方証券会社の雄。北陸３県が主地盤。対面営業とインターネット取引の２本柱。</td></tr>
-                            <tr><th>株価<br>（夏号時点 / 現在）</th>
-                                <td>夏号時点：1,350円<br>現在：<span class="price-current">1,400円</span></td>
-                            </tr>
-                            <tr><th>四季報の評価</th><td>【好調】国内株式市場の好調を受け、株式委託手数料が増勢。世界的な株高を背景に投資信託販売も堅調。債券などのトレーディング収益建増。システム関連費用や人件費増を吸収し、営業益続伸。増配。</td></tr>
-                            <tr><th>実績PER / PBR</th><td>PER 8.5倍 / PBR 0.52倍</td></tr>
-                            <tr><th>配当利回り</th><td>実績：4.07% (55円)</td></tr>
-                            <tr><th>業績予想<br>(営業収益 / 純利益)</th><td>・25年3月(実績)：4,186百万円 / 760百万円<br><span class="highlight-blue">・26年3月(予想)：4,914百万円 / 1,055百万円</span><br><span class="highlight-blue">・27年3月(予想)：5,100百万円 / 1,150百万円</span></td></tr>
-                            <tr><th>自己資本比率 / ROE</th><td>49.6% / 8.4%</td></tr>
-                        </table>
-                    </div>
-                </details>
+                <details class="stock-card"><summary class="stock-summary">7175 今村証券</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>証券・商品先物</td></tr>
+                    <tr><th>会社概要</th><td>【特色】独立系、地方証券会社の雄。北陸３県が主地盤。対面営業とインターネット取引の２本柱。</td></tr>
+                    <tr><th>株価<br>（夏号時点 / 現在）</th><td>夏号時点：1,350円<br>現在：<span class="price-current">1,400円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【好調】国内株式市場の好調を受け、株式委託手数料が増勢。世界的な株高を背景に投資信託販売も堅調。債券などのトレーディング収益建増。システム関連費用や人件費増を吸収し、営業益続伸。増配。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 8.5倍 / PBR 0.52倍</td></tr><tr><th>配当利回り</th><td>実績：4.07% (55円)</td></tr>
+                    <tr><th>業績予想<br>(営業収益 / 純利益)</th><td>・25年3月(実績)：4,186百万円 / 760百万円<br><span class="highlight-blue">・26年3月(予想)：4,914百万円 / 1,055百万円</span><br><span class="highlight-blue">・27年3月(予想)：5,100百万円 / 1,150百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>49.6% / 8.4%</td></tr>
+                </table></div></details>
 
-                <details class="stock-card">
-                    <summary class="stock-summary">7433 伯東</summary>
-                    <div class="stock-details">
-                        <table class="data-table">
-                            <tr><th>業種</th><td>卸売業</td></tr>
-                            <tr><th>会社概要</th><td>【特色】半導体や機器の専門商社。自社製の産機開発に特色。電子部品やケミカル事業も併営。</td></tr>
-                            <tr><th>株価<br>（夏号時点 / 現在）</th>
-                                <td>夏号時点：4,440円<br>現在：<span class="price-current">4,600円</span></td>
-                            </tr>
-                            <tr><th>四季報の評価</th><td>【急改善】工業向けは半導体が自動化設備投資の回復で底打ち。ルネサス製は代理店特約終了に伴う移管一服。自動車向けが好調維持。半導体製造装置は中国向けに出遅れ感あるが、下期から急回復。増配。</td></tr>
-                            <tr><th>実績PER / PBR</th><td>PER 13.8倍 / PBR 1.22倍</td></tr>
-                            <tr><th>配当利回り</th><td>実績：4.50% (200円)</td></tr>
-                            <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：183,133百万円 / 5,009百万円<br><span class="highlight-blue">・26年3月(予想)：225,000百万円 / 6,100百万円</span><br><span class="highlight-blue">・27年3月(予想)：240,000百万円 / 6,100百万円</span></td></tr>
-                            <tr><th>自己資本比率 / ROE</th><td>41.6% / 7.5%</td></tr>
-                        </table>
-                    </div>
-                </details>
+                <details class="stock-card"><summary class="stock-summary">7433 伯東</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>卸売業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】半導体や機器の専門商社。自社製の産機開発に特色。電子部品やケミカル事業も併営。</td></tr>
+                    <tr><th>株価<br>（夏号時点 / 現在）</th><td>夏号時点：4,440円<br>現在：<span class="price-current">4,600円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【急改善】工業向けは半導体が自動化設備投資の回復で底打ち。ルネサス製は代理店特約終了に伴う移管一服。自動車向けが好調維持。半導体製造装置は中国向けに出遅れ感あるが、下期から急回復。増配。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 13.8倍 / PBR 1.22倍</td></tr><tr><th>配当利回り</th><td>実績：4.50% (200円)</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：183,133百万円 / 5,009百万円<br><span class="highlight-blue">・26年3月(予想)：225,000百万円 / 6,100百万円</span><br><span class="highlight-blue">・27年3月(予想)：240,000百万円 / 6,100百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>41.6% / 7.5%</td></tr>
+                </table></div></details>
 
-                <details class="stock-card">
-                    <summary class="stock-summary">8020 兼松</summary>
-                    <div class="stock-details">
-                        <table class="data-table">
-                            <tr><th>業種</th><td>卸売業</td></tr>
-                            <tr><th>会社概要</th><td>【特色】老舗商社。電子・ＩＴ、食料、鉄鋼・プラントの３本柱。ＩＣＴ偏重から事業多角化へ投資。</td></tr>
-                            <tr><th>株価<br>（夏号時点 / 現在）</th>
-                                <td>夏号時点：2,468円<br>現在：<span class="price-current">2,500円</span></td>
-                            </tr>
-                            <tr><th>四季報の評価</th><td>【連続最高益】モバイル需要旺盛なＩＣＴが牽引。前期引当の一過性損失剥落。中東などのインフラ、機械が想定超え。純利益高水準。増配。26年３月期もＩＣＴ、機械などが好調維持。ただ税負担増で純益は小幅増。</td></tr>
-                            <tr><th>実績PER / PBR</th><td>PER 10.2倍 / PBR 1.70倍</td></tr>
-                            <tr><th>配当利回り</th><td>実績：3.64% (90円)</td></tr>
-                            <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：1,067,665百万円 / 32,523百万円<br><span class="highlight-blue">・26年3月(予想)：1,100,000百万円 / 35,000百万円</span><br><span class="highlight-blue">・27年3月(予想)：1,150,000百万円 / 35,000百万円</span></td></tr>
-                            <tr><th>自己資本比率 / ROE</th><td>28.4% / 17.0%</td></tr>
-                        </table>
-                    </div>
-                </details>
+                <details class="stock-card"><summary class="stock-summary">8020 兼松</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>卸売業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】老舗商社。電子・ＩＴ、食料、鉄鋼・プラントの３本柱。ＩＣＴ偏重から事業多角化へ投資。</td></tr>
+                    <tr><th>株価<br>（夏号時点 / 現在）</th><td>夏号時点：2,468円<br>現在：<span class="price-current">2,500円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【連続最高益】モバイル需要旺盛なＩＣＴが牽引。前期引当の一過性損失剥落。中東などのインフラ、機械が想定超え。純利益高水準。増配。26年３月期もＩＣＴ、機械などが好調維持。ただ税負担増で純益は小幅増。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 10.2倍 / PBR 1.70倍</td></tr><tr><th>配当利回り</th><td>実績：3.64% (90円)</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：1,067,665百万円 / 32,523百万円<br><span class="highlight-blue">・26年3月(予想)：1,100,000百万円 / 35,000百万円</span><br><span class="highlight-blue">・27年3月(予想)：1,150,000百万円 / 35,000百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>28.4% / 17.0%</td></tr>
+                </table></div></details>
 
-                <details class="stock-card">
-                    <summary class="stock-summary">8370 紀陽銀行</summary>
-                    <div class="stock-details">
-                        <table class="data-table">
-                            <tr><th>業種</th><td>銀行業</td></tr>
-                            <tr><th>会社概要</th><td>【特色】和歌山県唯一の地銀。県内シェアは断トツ。大阪にも展開。メイン化を軸とした本業支援に力点</td></tr>
-                            <tr><th>株価<br>（夏号時点 / 現在）</th>
-                                <td>夏号時点：1,850円<br>現在：<span class="price-current">1,950円</span></td>
-                            </tr>
-                            <tr><th>四季報の評価</th><td>【最高益続く】大阪軸にメイン化進め貸出金順調。利回り改善進む。有価証券利息も増勢。与信費用は例年並み。人件費や物件費増こなす。0.75％前提で最高益更新。配当性向40％目標。増配。【生産性】ＡＩ導入含め業務プロセス見直し、捻出した人員は大阪での営業強化に。人的資本投資による生産性測る独自指標も向上。株主優待新設。</td></tr>
-                            <tr><th>実績PER / PBR</th><td>--- 倍 / --- 倍</td></tr>
-                            <tr><th>配当利回り</th><td>実績：6.28% (137円)</td></tr>
-                            <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：98,720百万円 / 17,618百万円<br><span class="highlight-blue">・26年3月(予想)：114,870百万円 / 21,819百万円</span><br><span class="highlight-blue">・27年3月(予想)：125,000百万円 / 25,000百万円</span></td></tr>
-                            <tr><th>自己資本比率 / ROE</th><td>4.0% / 9.0%</td></tr>
-                        </table>
-                    </div>
-                </details>
+                <details class="stock-card"><summary class="stock-summary">8370 紀陽銀行</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>銀行業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】和歌山県唯一の地銀。県内シェアは断トツ。大阪にも展開。メイン化を軸とした本業支援に力点</td></tr>
+                    <tr><th>株価<br>（夏号時点 / 現在）</th><td>夏号時点：1,850円<br>現在：<span class="price-current">1,950円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【最高益続く】大阪軸にメイン化進め貸出金順調。利回り改善進む。有価証券利息も増勢。与信費用は例年並み。人件費や物件費増こなす。0.75％前提で最高益更新。配当性向40％目標。増配。【生産性】ＡＩ導入含め業務プロセス見直し、捻出した人員は大阪での営業強化に。人的資本投資による生産性測る独自指標も向上。株主優待新設。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>--- 倍 / --- 倍</td></tr><tr><th>配当利回り</th><td>実績：6.28% (137円)</td></tr>
+                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：98,720百万円 / 17,618百万円<br><span class="highlight-blue">・26年3月(予想)：114,870百万円 / 21,819百万円</span><br><span class="highlight-blue">・27年3月(予想)：125,000百万円 / 25,000百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>4.0% / 9.0%</td></tr>
+                </table></div></details>
 
-                <details class="stock-card">
-                    <summary class="stock-summary">8386 百十四銀行</summary>
-                    <div class="stock-details">
-                        <table class="data-table">
-                            <tr><th>業種</th><td>銀行業</td></tr>
-                            <tr><th>会社概要</th><td>【特色】香川県を地盤に岡山県や大阪府など瀬戸内広域に展開。資金量は四国で２位。大企業取引多い</td></tr>
-                            <tr><th>株価<br>（夏号時点 / 現在）</th>
-                                <td>夏号時点：1,499円<br>現在：<span class="price-current">1,550円</span></td>
-                            </tr>
-                            <tr><th>四季報の評価</th><td>【連続増配】貸出金利回りの上昇に伴い、資金利益が順調に拡大。貸出先への事業支援などを通じた役務取引等利益も伸長。人件費やシステム費増の重しこなし、実質的に純益増。与信費用を抑制し純益連続増。増配。【中計】28年度に純利益100億円以上（26年３月期89億円）を目指す新中計スタート。生産性を引き上げ、新たな事業領域などへ人員を再配置。女性活躍推進で優良企業認定取得。</td></tr>
-                            <tr><th>実績PER / PBR</th><td>PER 8.2倍 / PBR 0.28倍</td></tr>
-                            <tr><th>配当利回り</th><td>実績：8.40% (126円)</td></tr>
-                            <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：90,007百万円 / 13,700百万円<br><span class="highlight-blue">・26年3月(予想)：108,556百万円 / 18,857百万円</span><br><span class="highlight-blue">・27年3月(予想)：116,500百万円 / 21,000百万円</span></td></tr>
-                            <tr><th>自己資本比率 / ROE</th><td>6.6% / 5.2%</td></tr>
-                        </table>
-                    </div>
-                </details>
+                <details class="stock-card"><summary class="stock-summary">8386 百十四銀行</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>銀行業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】香川県を地盤に岡山県や大阪府など瀬戸内広域に展開。資金量は四国で２位。大企業取引多い</td></tr>
+                    <tr><th>株価<br>（夏号時点 / 現在）</th><td>夏号時点：1,499円<br>現在：<span class="price-current">1,550円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【連続増配】貸出金利回りの上昇に伴い、資金利益が順調に拡大。貸出先への事業支援などを通じた役務取引等利益も伸長。人件費やシステム費増の重しこなし、実質的に純益増。与信費用を抑制し純益連続増。増配。【中計】28年度に純利益100億円以上（26年３月期89億円）を目指す新中計スタート。生産性を引き上げ、新たな事業領域などへ人員を再配置。女性活躍推進で優良企業認定取得。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 8.2倍 / PBR 0.28倍</td></tr><tr><th>配当利回り</th><td>実績：8.40% (126円)</td></tr>
+                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：90,007百万円 / 13,700百万円<br><span class="highlight-blue">・26年3月(予想)：108,556百万円 / 18,857百万円</span><br><span class="highlight-blue">・27年3月(予想)：116,500百万円 / 21,000百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>6.6% / 5.2%</td></tr>
+                </table></div></details>
 
-                <details class="stock-card">
-                    <summary class="stock-summary">8522 名古屋銀行</summary>
-                    <div class="stock-details">
-                        <table class="data-table">
-                            <tr><th>業種</th><td>銀行業</td></tr>
-                            <tr><th>会社概要</th><td>【特色】地銀中位。愛知県内３行中首位。第二地銀から転換。投信など個人向けと経営相談など法人向け両輪</td></tr>
-                            <tr><th>株価<br>（夏号時点 / 現在）</th>
-                                <td>夏号時点：6,080円<br>現在：<span class="price-current">6,300円</span></td>
-                            </tr>
-                            <tr><th>四季報の評価</th><td>【連続最高益】利上げで預貸金利ザヤが拡大。有価証券利息配当金も増え資金利益は堅調。人件費増こなし、与信費用は低水準。前段の政策保有株売却益減っても経常増益。配当性向40％メドに増配。【経営統合】28年４月をメドにしずおかＦＧと経営統合で基本合意、合併や店舗統廃合はしない方針。27年度純利益目標は280億円に引き上げ。</td></tr>
-                            <tr><th>実績PER / PBR</th><td>PER 12.4倍 / PBR 0.95倍</td></tr>
-                            <tr><th>配当利回り</th><td>実績：1.97% (120円)</td></tr>
-                            <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：102,788百万円 / 14,730百万円<br><span class="highlight-blue">・26年3月(予想)：124,456百万円 / 20,269百万円</span><br><span class="highlight-blue">・27年3月(予想)：142,800百万円 / 23,000百万円</span></td></tr>
-                            <tr><th>自己資本比率 / ROE</th><td>5.0% / 6.9%</td></tr>
-                        </table>
-                    </div>
-                </details>
+                <details class="stock-card"><summary class="stock-summary">8522 名古屋銀行</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>銀行業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】地銀中位。愛知県内３行中首位。第二地銀から転換。投信など個人向けと経営相談など法人向け両輪</td></tr>
+                    <tr><th>株価<br>（夏号時点 / 現在）</th><td>夏号時点：6,080円<br>現在：<span class="price-current">6,300円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【連続最高益】利上げで預貸金利ザヤが拡大。有価証券利息配当金も増え資金利益は堅調。人件費増こなし、与信費用は低水準。前段の政策保有株売却益減っても経常増益。配当性向40％メドに増配。【経営統合】28年４月をメドにしずおかＦＧと経営統合で基本合意、合併や店舗統廃合はしない方針。27年度純利益目標は280億円に引き上げ。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 12.4倍 / PBR 0.95倍</td></tr><tr><th>配当利回り</th><td>実績：1.97% (120円)</td></tr>
+                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：102,788百万円 / 14,730百万円<br><span class="highlight-blue">・26年3月(予想)：124,456百万円 / 20,269百万円</span><br><span class="highlight-blue">・27年3月(予想)：142,800百万円 / 23,000百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>5.0% / 6.9%</td></tr>
+                </table></div></details>
 
-                <details class="stock-card">
-                    <summary class="stock-summary">8542 トマト銀行</summary>
-                    <div class="stock-details">
-                        <table class="data-table">
-                            <tr><th>業種</th><td>銀行業</td></tr>
-                            <tr><th>会社概要</th><td>【特色】地銀下位行。岡山県内２番手。第二地銀。倉敷市が地盤。広島、大阪にも拠点</td></tr>
-                            <tr><th>株価<br>（夏号時点 / 現在）</th>
-                                <td>夏号時点：1,512円<br>現在：<span class="price-current">1,500円</span></td>
-                            </tr>
-                            <tr><th>四季報の評価</th><td>【伸長】貸出金利回りの上昇で預貸金利益が拡大。役務取引等利益も投信販売などが牽引し堅調に推移。不良債権処理費用は例年並みに。人件費などの経費増を吸収して経常増益。株価上昇で有価証券評価損益改善。【生成ＡＩ】業務効率化に向け生成ＡＩを導入。行内規定やマニュアルなどの検索システムなどで活用。セキュリティに配慮し、外部サービスに頼らない独自のシステムを構築。</td></tr>
-                            <tr><th>実績PER / PBR</th><td>PER 11.0倍 / PBR 0.37倍</td></tr>
-                            <tr><th>配当利回り</th><td>実績：1.65% (25円)</td></tr>
-                            <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：25,661百万円 / 1,817百万円<br><span class="highlight-blue">・26年3月(予想)：26,577百万円 / 1,970百万円</span><br><span class="highlight-blue">・27年3月(予想)：29,500百万円 / 2,000百万円</span></td></tr>
-                            <tr><th>自己資本比率 / ROE</th><td>4.1% / 3.4%</td></tr>
-                        </table>
-                    </div>
-                </details>
+                <details class="stock-card"><summary class="stock-summary">8542 トマト銀行</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>銀行業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】地銀下位行。岡山県内２番手。第二地銀。倉敷市が地盤。広島、大阪にも拠点</td></tr>
+                    <tr><th>株価<br>（夏号時点 / 現在）</th><td>夏号時点：1,512円<br>現在：<span class="price-current">1,500円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【伸長】貸出金利回りの上昇で預貸金利益が拡大。役務取引等利益も投信販売などが牽引し堅調に推移。不良債権処理費用は例年並みに。人件費などの経費増を吸収して経常増益。株価上昇で有価証券評価損益改善。【生成ＡＩ】業務効率化に向け生成ＡＩを導入。行内規定やマニュアルなどの検索システムなどで活用。セキュリティに配慮し、外部サービスに頼らない独自のシステムを構築。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 11.0倍 / PBR 0.37倍</td></tr><tr><th>配当利回り</th><td>実績：1.65% (25円)</td></tr>
+                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)：25,661百万円 / 1,817百万円<br><span class="highlight-blue">・26年3月(予想)：26,577百万円 / 1,970百万円</span><br><span class="highlight-blue">・27年3月(予想)：29,500百万円 / 2,000百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>4.1% / 3.4%</td></tr>
+                </table></div></details>
 
-                <details class="stock-card">
-                    <summary class="stock-summary">8624 いちよし証券</summary>
-                    <div class="stock-details">
-                        <table class="data-table">
-                            <tr><th>業種</th><td>証券・商品先物</td></tr>
-                            <tr><th>会社概要</th><td>【特色】富裕層の個人営業主体で投信、ファンドラップ積上げに重心。中小型株中心に調査力に定評</td></tr>
-                            <tr><th>株価<br>（夏号時点 / 現在）</th>
-                                <td>夏号時点：850円<br>現在：<span class="price-current">900円</span></td>
-                            </tr>
-                            <tr><th>四季報の評価</th><td>【高水準】収益柱の投信やファンドラップの残高が資金流入と運用益で伸長。信託報酬が着実に増え、営業収益を牽引。人件費などの経費増を吸収し、営業益は高水準。特損見込まず純増。記念配ないが普通配増配。【新中計】28年度末の預かり資産残高は３兆円（26年３月末は２・６兆円）目標。中途採用の強化や、若手社員の定着率向上に向けた人事制度改定などを進め、人員純増へ。</td></tr>
-                            <tr><th>実績PER / PBR</th><td>--- 倍 / --- 倍</td></tr>
-                            <tr><th>配当利回り</th><td>実績：7.61% (59円)</td></tr>
-                            <tr><th>業績予想<br>(営業収益 / 純利益)</th><td>・25年3月(実績)：18,837百万円 / 1,929百万円<br><span class="highlight-blue">・26年3月(予想)：24,579百万円 / 4,392百万円</span><br><span class="highlight-blue">・27年3月(予想)：25,000百万円 / 4,400百万円</span></td></tr>
-                            <tr><th>自己資本比率 / ROE</th><td>56.2% / 15.0%</td></tr>
-                        </table>
-                    </div>
-                </details>
+                <details class="stock-card"><summary class="stock-summary">8624 いちよし証券</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>証券・商品先物</td></tr>
+                    <tr><th>会社概要</th><td>【特色】富裕層の個人営業主体で投信、ファンドラップ積上げに重心。中小型株中心に調査力に定評</td></tr>
+                    <tr><th>株価<br>（夏号時点 / 現在）</th><td>夏号時点：850円<br>現在：<span class="price-current">900円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【高水準】収益柱の投信やファンドラップの残高が資金流入と運用益で伸長。信託報酬が着実に増え、営業収益を牽引。人件費などの経費増を吸収し、営業益は高水準。特損見込まず純増。記念配ないが普通配増配。【新中計】28年度末の預かり資産残高は３兆円（26年３月末は２・６兆円）目標。中途採用の強化や、若手社員の定着率向上に向けた人事制度改定などを進め、人員純増へ。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>--- 倍 / --- 倍</td></tr><tr><th>配当利回り</th><td>実績：7.61% (59円)</td></tr>
+                    <tr><th>業績予想<br>(営業収益 / 純利益)</th><td>・25年3月(実績)：18,837百万円 / 1,929百万円<br><span class="highlight-blue">・26年3月(予想)：24,579百万円 / 4,392百万円</span><br><span class="highlight-blue">・27年3月(予想)：25,000百万円 / 4,400百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>56.2% / 15.0%</td></tr>
+                </table></div></details>
 
             </div>
         </div>
