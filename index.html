@@ -7,32 +7,82 @@
     <style>
         /* 基本設定 */
         body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; background-color: #f0f4f8; color: #333; margin: 0; padding: 0; line-height: 1.6; }
-        header { background-color: #2c7cbf; color: white; padding: 30px 20px; text-align: center; }
-        header h1 { margin: 0; font-size: 24px; }
-        header p { margin: 10px 0 0; font-size: 14px; opacity: 0.9; }
-        nav { background-color: #1a5b92; display: flex; justify-content: center; flex-wrap: wrap; }
-        nav a { color: white; text-decoration: none; padding: 15px 20px; font-size: 14px; transition: background-color 0.3s; }
+        
+        /* ヘッダー（背景画像とダークオーバーレイ） */
+        header { 
+            position: relative;
+            /* 東京証券取引所の画像を指定 */
+            background-image: url('IMG_0372.jpeg'); 
+            background-size: cover;
+            background-position: center;
+            color: white; 
+            padding: 50px 20px; 
+            text-align: center; 
+        }
+        /* 画像を暗くして文字を読みやすくする */
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; right: 0; bottom: 0; left: 0;
+            background-color: rgba(26, 91, 146, 0.7); /* 青系の半透明 */
+            z-index: 1;
+        }
+        header h1, header p {
+            position: relative;
+            z-index: 2; /* 文字を一番上に */
+        }
+        header h1 { margin: 0; font-size: 26px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        header p { margin: 10px 0 0; font-size: 15px; opacity: 0.95; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+
+        /* ナビゲーションメニュー（横スクロール対応） */
+        nav { 
+            background-color: #1a5b92; 
+            display: flex; 
+            justify-content: flex-start; /* 左寄せにしてスクロールを自然に */
+            overflow-x: auto; /* 横スクロールを許可 */
+            white-space: nowrap; /* メニューを折り返さない */
+            -webkit-overflow-scrolling: touch; /* スマホで滑らかにスクロール */
+        }
+        /* スクロールバーを見えなくする（PC・一部スマホ向け） */
+        nav::-webkit-scrollbar { display: none; }
+        nav { -ms-overflow-style: none; scrollbar-width: none; }
+
+        nav a { 
+            color: white; 
+            text-decoration: none; 
+            padding: 15px 25px; 
+            font-size: 15px; 
+            transition: background-color 0.3s; 
+            flex-shrink: 0; /* 文字が縮まないようにする */
+        }
         nav a:hover { background-color: #134674; }
         .active-nav { background-color: #134674; font-weight: bold; }
+        
         .container { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 20px auto; padding: 0 15px; gap: 20px; }
         .main-content { flex: 1 1 600px; }
         .sidebar { flex: 1 1 300px; }
         
         /* メイン記事装飾 */
-        .article-card { background-color: white; border-radius: 8px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-left: 5px solid #ff9800; }
-        .article-card h2 { margin-top: 0; font-size: 22px; color: #2c7cbf; border-bottom: 2px solid #f0f4f8; padding-bottom: 10px; }
-        .article-badge { display: inline-block; background-color: #ffe0b2; color: #e65100; padding: 4px 8px; border-radius: 4px; font-size: 12px; font-weight: bold; margin-bottom: 15px; }
+        .article-card { background-color: white; border-radius: 8px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-left: 5px solid #2c7cbf; }
+        .article-card h2 { margin-top: 0; font-size: 22px; color: #1a5b92; border-bottom: 2px solid #f0f4f8; padding-bottom: 10px; }
         .article-content h3 { color: #1a5b92; font-size: 18px; margin-top: 30px; margin-bottom: 15px; border-left: 4px solid #2c7cbf; padding-left: 10px; }
         .article-content p { font-size: 15px; color: #444; margin-bottom: 15px; }
         .article-content ul { background-color: #f9fbfd; padding: 15px 15px 15px 35px; border-radius: 6px; font-size: 15px; color: #444; margin-bottom: 20px; }
         .article-content li { margin-bottom: 8px; }
 
-        /* サイドバープロフィール */
+        /* サイドバープロフィール（丸い画像） */
         .profile-card { background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px; }
         .profile-title { margin-top: 0; color: #1a5b92; border-bottom: 2px solid #f0f4f8; padding-bottom: 10px; text-align: center; font-size: 16px; }
-        .profile-icon { width: 80px; height: 80px; background-color: #e2eef7; border-radius: 50%; margin: 15px auto; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+        .profile-img-wrap { text-align: center; margin: 15px 0; }
+        .profile-img { 
+            width: 100px; 
+            height: 100px; 
+            border-radius: 50%; /* 丸く切り抜く */
+            object-fit: cover; /* 画像の比率を保ちながら枠に収める */
+            border: 3px solid #e2eef7;
+        }
         .profile-name { text-align: center; font-size: 16px; font-weight: bold; color: #333; margin-bottom: 10px; }
-        .profile-bio { font-size: 13px; color: #555; margin-bottom: 15px; line-height: 1.5; text-align: center; }
+        .profile-bio { font-size: 13px; color: #555; margin-bottom: 15px; line-height: 1.5; text-align: left; }
         .profile-details { list-style-type: none; padding: 0; margin: 0; font-size: 13px; color: #444; }
         .profile-details li { margin-bottom: 8px; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
 
@@ -41,6 +91,15 @@
         .pr-label { font-size: 12px; color: #888; margin-bottom: 5px; }
         .pr-button { display: inline-block; background-color: #f39c12; color: white; text-decoration: none; font-weight: bold; padding: 15px 20px; border-radius: 6px; width: 90%; box-sizing: border-box; box-shadow: 0 3px 0 #d68910; }
         .pr-disclaimer { font-size: 11px; color: #999; margin-top: 10px; }
+
+        /* スマホ対応 */
+        @media (max-width: 600px) {
+            header { padding: 30px 15px; }
+            header h1 { font-size: 20px; }
+            header p { font-size: 13px; }
+            .article-card { padding: 20px; }
+            .article-card h2 { font-size: 20px; }
+        }
     </style>
 </head>
 <body>
@@ -61,29 +120,27 @@
         
         <div class="main-content">
             <div class="article-card">
-                <span class="article-badge">📌 固定記事</span>
-                <h2>当サイトの紹介と、私の株取引・保有ポリシー</h2>
+                <h2>サイト紹介</h2>
                 
                 <div class="article-content">
-                    <h3>【はじめに：10年で資産1.2億円。私が四季報から「優しい高配当株」を選ぶ理由】</h3>
+                    <h3>【はじめに】</h3>
                     <p>はじめまして。当サイトの運営者です。<br>
                     私は約10年前、1,000万円から株式投資をスタートし、現在は約1億2,000万円の資産を運用しています。</p>
                     <p>しかし、最初から順風満帆だったわけではありません。投資を始めたばかりの頃は、値動きの激しいベンチャー株などを買い漁り、数百万円のマイナスを抱えて精神的にもかなり辛い時期を経験しました。<br>
                     そんな時に出会ったのが「配当金」という存在でした。万が一株価が下がっても、定期的に入ってくる配当が精神的な安定剤（クッション）となってくれる。この安心感を知って以来、私は「配当をもらいながら、安定して成長する会社」を厳選する現在のスタイルに行き着きました。</p>
 
-                    <h3>【私の投資手法】</h3>
+                    <h3>【投資手法】</h3>
                     <p>私がベースにしているのは、総合商社・銀行・保険系といった金融インフラ株です。現在はおよそ40銘柄に分散投資を行っています。<br>
                     特に総合商社は、「いい意味で主力商品がない」ため、一つの事業が不調でも他でカバーできる完璧な体系を持っています。私はこの安定感に惚れ込みました。</p>
                     <p>また、個別の銘柄だけでなく「四季報を使って、業種全体の成長の波を読む」ことも重視しています。<br>
                     全体として伸びている分野の中で評価の良い会社を買えば、外的要因がない限り、そう簡単に崩れることはありません。一つの業種に偏らないようバランスを取り、ポートフォリオを組んでいます。</p>
 
-                    <h3>【具体的なスクリーニング基準】</h3>
-                    <p>当サイトで紹介する銘柄は、私が四季報を泥臭く読み込み、以下の厳しいポリシー（基準）をクリアしたお宝銘柄のみをピックアップしています。</p>
+                    <h3>【厳選基準】</h3>
+                    <p>当サイトで紹介する銘柄は、私が四季報を泥臭く読み込み、以下の厳しい基準をクリアしたお宝銘柄のみをピックアップしています。</p>
 
                     <p><strong>① 数値で弾き出す「基本フィルター」</strong><br>
                     まずはベースとして、以下の厳しい基準で優良バリュー株を絞り込みます。</p>
                     <ul>
-                        <li><strong>配当率:</strong> 3.0〜3.5%</li>
                         <li><strong>成長性:</strong> 今期〜2期先まで増収増益予想</li>
                         <li><strong>割安性:</strong> PER 10〜20程度、PBR 1.5以下</li>
                         <li><strong>還元姿勢:</strong> 配当性向 50%以上（※累進配当の宣言があればなお良し！）</li>
@@ -107,9 +164,13 @@
         <div class="sidebar">
             <div class="profile-card">
                 <h3 class="profile-title">運営者プロフィール</h3>
-                <div class="profile-icon">👨‍💼</div>
+                <div class="profile-img-wrap">
+                    <img src="IMG_6424.jpg" alt="ぽんあさ" class="profile-img">
+                </div>
                 <div class="profile-name">ぽんあさ</div>
-                <p class="profile-bio">考え中</p>
+                <p class="profile-bio">
+                    30代の会社員で、2人の子育てに奮闘しながら株式投資をしています。年間約400万円の配当金と、少しの株主優待をもらいながら、日々四季報を読み込んで優良株を探すのが日課です。
+                </p>
                 <ul class="profile-details">
                     <li>📈 <strong>投資歴:</strong> 約10年</li>
                     <li>💰 <strong>運用資産:</strong> 約1.2億円</li>
