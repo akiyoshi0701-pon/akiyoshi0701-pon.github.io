@@ -116,6 +116,7 @@
         <p>〜全3,800銘柄から厳選！初心者でも安心のバリュー投資〜</p>
     </header>
 
+    <!-- ナビゲーションメニュー（夏号をアクティブに） -->
     <nav>
         <a href="index.html">ホーム</a>
         <a href="weekly.html">株価早報</a>
@@ -130,6 +131,7 @@
                 <h2>📚 2026四季報夏号 厳選リスト</h2>
                 <p>四季報夏号の全ページを読み込み、スクリーニング基準をクリアした銘柄を紹介します。各銘柄をクリックすると詳細な分析データを確認できます。</p>
                 
+                <!-- 日経平均との比較仮説検証アコーディオン -->
                 <details class="stock-card" style="margin-top: 15px; border-left: 5px solid #2c7cbf;">
                     <summary class="stock-summary" style="background-color: #f4f7fa; color: #1a5b92;">
                         📊 日経平均とのパフォーマンス比較
@@ -137,12 +139,14 @@
                     <div class="stock-details">
                         <p style="font-size: 14px; color: #555;">日経平均の上がり率よりもピックアップ銘柄が上がっているか検証</p>
                         
+                        <!-- 勝率の表示 -->
                         <div style="background-color: #e2eef7; padding: 10px; border-radius: 6px; margin-bottom: 15px; text-align: center;">
                             <span style="font-size: 14px; font-weight: bold;">🎯 日経平均超え：</span>
-                            <span style="font-size: 20px; font-weight: bold; color: #1976d2;">72.7%</span>
-                            <span style="font-size: 14px; color: #444;">（8銘柄 / 11銘柄中）</span>
+                            <span style="font-size: 20px; font-weight: bold; color: #1976d2;">75.0%</span>
+                            <span style="font-size: 14px; color: #444;">（9銘柄 / 12銘柄中）</span>
                         </div>
 
+                        <!-- 比較テーブル -->
                         <div class="table-responsive">
                             <table class="data-table perf-table">
                                 <tr>
@@ -151,11 +155,18 @@
                                     <th>現在の株価</th>
                                     <th>増減率</th>
                                 </tr>
+                                <!-- 日経平均（基準） -->
                                 <tr style="background-color: #fffde7; font-weight: bold;">
                                     <td style="text-align: left;">日経平均株価 (基準)</td>
                                     <td>38,000円</td>
                                     <td>39,000円</td>
                                     <td>+2.6%</td>
+                                </tr>
+                                <tr>
+                                    <td style="text-align: left;">1952 新日本空調</td>
+                                    <td>3,090円</td>
+                                    <td>3,250円</td>
+                                    <td class="highlight-blue">+5.2%</td>
                                 </tr>
                                 <tr>
                                     <td style="text-align: left;">1982 日比谷綜合設備</td>
@@ -231,6 +242,58 @@
 
             <div class="stock-list">
                 
+                <!-- 1952 新日本空調 -->
+                <details class="stock-card">
+                    <summary class="stock-summary">1952 新日本空調</summary>
+                    <div class="stock-details">
+                        <table class="data-table">
+                            <tr><th>業種</th><td>建設業（設備工事）</td></tr>
+                            <tr><th>会社概要</th><td>【特色】三井系の空調設備工事会社。微粒子可視化システムなど独自技術を持つ。原子力施設向けに強み。</td></tr>
+                            <tr><th>株価<br>（夏号時点 / 現在）</th>
+                                <td>夏号時点：3,090円<br>現在：<span class="price-current">3,250円</span></td>
+                            </tr>
+                            <tr><th>四季報の評価</th><td>【最高益】期初繰越高1487億円（前期比18%増）。大規模再開発や工場関連、データセンターが推移。リニューアルも寄与。生産性向上も効く。原子力は再稼働対応など増勢。人件費増こなし連続増益。増配。【中計】29年度売上高2000億円、営業利益240億円目標。成長投資額300億円。成長事業と生産性向上がカギ。建築設備CADの自動作図機能の共同開発始動。</td></tr>
+                            <tr><th>実績PER / PBR</th><td>PER 11.8倍 / PBR 1.83倍</td></tr>
+                            <tr><th>配当利回り</th><td>実績：3.60% (120円)</td></tr>
+                            <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：154,884百万円 / 9,656百万円<br><span class="highlight-blue">・26年3月(予想)：160,000百万円 / 12,800百万円</span><br><span class="highlight-blue">・27年3月(予想)：168,000百万円 / 13,500百万円</span></td></tr>
+                            <tr><th>自己資本比率 / ROE</th><td>61.0% / 16.0%</td></tr>
+                            <tr><th>チャート (6ヶ月)</th>
+                                <td>
+                                    <!-- URLジャンプを無効化した公式チャート専用ウィジェット -->
+                                    <div class="tradingview-widget-container" style="height: 250px;">
+                                      <div class="tradingview-widget-container__widget"></div>
+                                      <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-symbol-overview.js" async>
+                                      {
+                                        "symbols": [["TSE:1952|6M"]],
+                                        "chartOnly": true,
+                                        "width": "100%",
+                                        "height": "250",
+                                        "locale": "ja",
+                                        "colorTheme": "light",
+                                        "autosize": false,
+                                        "showVolume": false,
+                                        "showMA": false,
+                                        "hideDateRanges": true,
+                                        "hideMarketStatus": true,
+                                        "hideSymbolLogo": true,
+                                        "scalePosition": "right",
+                                        "scaleMode": "Normal",
+                                        "fontFamily": "-apple-system, BlinkMacSystemFont, Trebuchet MS, Roboto, Ubuntu, sans-serif",
+                                        "fontSize": "10",
+                                        "noTimeScale": false,
+                                        "valuesTracking": "1",
+                                        "changeMode": "price-and-percent",
+                                        "chartType": "line"
+                                      }
+                                      </script>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </details>
+
+                <!-- 1982 日比谷綜合設備 -->
                 <details class="stock-card">
                     <summary class="stock-summary">1982 日比谷綜合設備</summary>
                     <div class="stock-details">
@@ -280,6 +343,7 @@
                     </div>
                 </details>
 
+                <!-- 4012 アクシス -->
                 <details class="stock-card">
                     <summary class="stock-summary">4012 アクシス</summary>
                     <div class="stock-details">
@@ -329,6 +393,7 @@
                     </div>
                 </details>
 
+                <!-- 4658 日本空調サービス -->
                 <details class="stock-card">
                     <summary class="stock-summary">4658 日本空調サービス</summary>
                     <div class="stock-details">
@@ -378,6 +443,7 @@
                     </div>
                 </details>
 
+                <!-- 7175 今村証券 -->
                 <details class="stock-card">
                     <summary class="stock-summary">7175 今村証券</summary>
                     <div class="stock-details">
@@ -427,6 +493,7 @@
                     </div>
                 </details>
 
+                <!-- 7433 伯東 -->
                 <details class="stock-card">
                     <summary class="stock-summary">7433 伯東</summary>
                     <div class="stock-details">
@@ -476,6 +543,7 @@
                     </div>
                 </details>
 
+                <!-- 8020 兼松 -->
                 <details class="stock-card">
                     <summary class="stock-summary">8020 兼松</summary>
                     <div class="stock-details">
@@ -525,6 +593,7 @@
                     </div>
                 </details>
 
+                <!-- 8370 紀陽銀行 -->
                 <details class="stock-card">
                     <summary class="stock-summary">8370 紀陽銀行</summary>
                     <div class="stock-details">
@@ -574,6 +643,7 @@
                     </div>
                 </details>
 
+                <!-- 8386 百十四銀行 -->
                 <details class="stock-card">
                     <summary class="stock-summary">8386 百十四銀行</summary>
                     <div class="stock-details">
@@ -623,6 +693,7 @@
                     </div>
                 </details>
 
+                <!-- 8522 名古屋銀行 -->
                 <details class="stock-card">
                     <summary class="stock-summary">8522 名古屋銀行</summary>
                     <div class="stock-details">
@@ -672,6 +743,7 @@
                     </div>
                 </details>
 
+                <!-- 8542 トマト銀行 -->
                 <details class="stock-card">
                     <summary class="stock-summary">8542 トマト銀行</summary>
                     <div class="stock-details">
@@ -721,6 +793,7 @@
                     </div>
                 </details>
 
+                <!-- 8624 いちよし証券 -->
                 <details class="stock-card">
                     <summary class="stock-summary">8624 いちよし証券</summary>
                     <div class="stock-details">
