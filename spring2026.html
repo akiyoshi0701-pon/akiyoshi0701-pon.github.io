@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026四季報春号 - 1億円投資家の四季報からの優しい高配当株選び</title>
+    <style>
+        /* 基本設定 */
+        body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; background-color: #f0f4f8; color: #333; margin: 0; padding: 0; line-height: 1.6; }
+        
+        /* ヘッダー */
+        header { 
+            position: relative; background-image: url('IMG_0372.jpeg'); background-size: cover; background-position: center;
+            color: white; padding: 50px 20px; text-align: center; 
+        }
+        header::before {
+            content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0;
+            background-color: rgba(26, 91, 146, 0.7); z-index: 1;
+        }
+        header h1, header p { position: relative; z-index: 2; }
+        header h1 { margin: 0; font-size: 26px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        header p { margin: 10px 0 0; font-size: 15px; opacity: 0.95; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+
+        /* ナビゲーションメニュー */
+        nav { 
+            background-color: #1a5b92; display: flex; justify-content: flex-start; 
+            overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; 
+        }
+        nav::-webkit-scrollbar { display: none; }
+        nav { -ms-overflow-style: none; scrollbar-width: none; }
+        nav a { color: white; text-decoration: none; padding: 15px 25px; font-size: 15px; transition: background-color 0.3s; flex-shrink: 0; }
+        nav a:hover { background-color: #134674; }
+        .active-nav { background-color: #134674; font-weight: bold; }
+        
+        .container { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 20px auto; padding: 0 15px; gap: 20px; }
+        .main-content { flex: 1 1 600px; }
+        .sidebar { flex: 1 1 300px; }
+        
+        /* アコーディオン装飾 */
+        .page-title { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 5px solid #ff9800; }
+        .page-title h2 { margin: 0; color: #2c7cbf; font-size: 22px; }
+        .page-title p { margin: 10px 0 0 0; color: #555; font-size: 14px; }
+        .stock-list { display: flex; flex-direction: column; gap: 15px; }
+        .stock-card { background-color: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #e0e0e0; }
+        .stock-summary { padding: 15px 20px; font-size: 18px; font-weight: bold; color: #1a5b92; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background-color: #f9fbfd; transition: background-color 0.2s; }
+        .stock-summary:hover { background-color: #f0f4f8; }
+        .stock-summary::-webkit-details-marker { display: none; }
+        .stock-summary::after { content: "▼ 開く"; font-size: 13px; color: #888; background-color: #fff; padding: 4px 10px; border-radius: 20px; border: 1px solid #ddd; white-space: nowrap; }
+        .stock-card[open] .stock-summary::after { content: "▲ 閉じる"; background-color: #e2eef7; color: #1a5b92; border-color: #2c7cbf; }
+        .stock-details { padding: 20px; border-top: 1px solid #eee; }
+        .data-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
+        .data-table th, .data-table td { border: 1px solid #e0e0e0; padding: 12px; font-size: 14px; }
+        .data-table th { background-color: #f4f7fa; width: 28%; text-align: left; color: #333; font-weight: bold; }
+        .data-table td { background-color: #fff; color: #444; }
+        
+        .perf-table th { background-color: #e2eef7; text-align: center; white-space: nowrap; }
+        .perf-table td { text-align: center; white-space: nowrap; }
+        .highlight-red { color: #d32f2f; font-weight: bold; }
+        .highlight-blue { color: #1976d2; font-weight: bold; }
+        .price-current { font-size: 16px; font-weight: bold; color: #1976d2; }
+        
+        /* PRボタン */
+        .pr-box { background-color: white; border: 2px solid #ffebd6; border-radius: 8px; padding: 15px; text-align: center; }
+        .pr-label { font-size: 12px; color: #888; margin-bottom: 5px; }
+        .pr-button { display: inline-block; background-color: #f39c12; color: white; text-decoration: none; font-weight: bold; padding: 15px 20px; border-radius: 6px; width: 90%; box-sizing: border-box; box-shadow: 0 3px 0 #d68910; }
+        .pr-disclaimer { font-size: 11px; color: #999; margin-top: 10px; }
+
+        @media (max-width: 600px) {
+            header { padding: 30px 15px; }
+            header h1 { font-size: 18px; word-break: keep-all; }
+            header p { font-size: 12px; }
+            nav a { padding: 10px; font-size: 12px; }
+            .page-title h2 { font-size: 18px; }
+            .stock-summary { font-size: 15px; padding: 12px 15px; }
+            .data-table th, .data-table td { font-size: 12px; padding: 8px; }
+            .data-table th { width: 35%; }
+            .stock-details { padding: 10px; }
+            .table-responsive { overflow-x: auto; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>1億円投資家の四季報からの優しい高配当株選び</h1>
+        <p>〜全3,800銘柄から厳選！初心者でも安心のバリュー投資〜</p>
+    </header>
+
+    <nav>
+        <a href="index.html">ホーム</a>
+        <a href="hotstocks.html">注目株</a>
+        <a href="summer2026.html">2026四季報夏号</a>
+        <a href="spring2026.html" class="active-nav">2026四季報春号</a>
+    </nav>
+
+    <div class="container">
+        
+        <div class="main-content">
+            <div class="page-title">
+                <h2>🌸 2026四季報春号 厳選リスト</h2>
+                <p>四季報春号の全ページを読み込み、スクリーニング基準をクリアした全15銘柄を紹介します。各銘柄をクリックすると詳細な分析データを確認できます。</p>
+                
+                <details class="stock-card" style="margin-top: 15px; border-left: 5px solid #2c7cbf;">
+                    <summary class="stock-summary" style="background-color: #f4f7fa; color: #1a5b92;">
+                        📊 日経平均とのパフォーマンス比較
+                    </summary>
+                    <div class="stock-details">
+                        <p style="font-size: 14px; color: #555;">日経平均の上がり率よりもピックアップ銘柄が上がっているか検証</p>
+                        
+                        <div style="background-color: #e2eef7; padding: 10px; border-radius: 6px; margin-bottom: 15px; text-align: center;">
+                            <span style="font-size: 14px; font-weight: bold;">🎯 日経平均超え：</span>
+                            <span style="font-size: 20px; font-weight: bold; color: #1976d2;">73.3%</span>
+                            <span style="font-size: 14px; color: #444;">（11銘柄 / 15銘柄中）</span>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="data-table perf-table">
+                                <tr>
+                                    <th style="text-align: left;">銘柄名</th>
+                                    <th>春号時点</th>
+                                    <th>現在の株価</th>
+                                    <th>増減率</th>
+                                </tr>
+                                <tr style="background-color: #fffde7; font-weight: bold;">
+                                    <td style="text-align: left;">日経平均株価 (基準)</td>
+                                    <td>39,000円</td>
+                                    <td>40,014円</td>
+                                    <td>+2.6%</td>
+                                </tr>
+                                <tr><td style="text-align: left;">2674 ハードオフコーポレーション</td><td>2,048円</td><td>2,150円</td><td class="highlight-blue">+5.0%</td></tr>
+                                <tr><td style="text-align: left;">296A 令和アカウンティング</td><td>711円</td><td>730円</td><td class="highlight-blue">+2.7%</td></tr>
+                                <tr><td style="text-align: left;">3231 野村不動産ホールディングス</td><td>4,207円</td><td>4,400円</td><td class="highlight-blue">+4.6%</td></tr>
+                                <tr><td style="text-align: left;">3766 システムズ・デザイン</td><td>718円</td><td>710円</td><td class="highlight-red">-1.1%</td></tr>
+                                <tr><td style="text-align: left;">3934 ベネフィットジャパン</td><td>1,366円</td><td>1,400円</td><td class="highlight-red">+2.5%</td></tr>
+                                <tr><td style="text-align: left;">4012 アクシス</td><td>1,417円</td><td>1,450円</td><td class="highlight-red">+2.3%</td></tr>
+                                <tr><td style="text-align: left;">4221 大倉工業</td><td>2,937円</td><td>3,100円</td><td class="highlight-blue">+5.6%</td></tr>
+                                <tr><td style="text-align: left;">4463 日華化学</td><td>1,083円</td><td>1,150円</td><td class="highlight-blue">+6.2%</td></tr>
+                                <tr><td style="text-align: left;">5576 オービーシステム</td><td>2,686円</td><td>2,800円</td><td class="highlight-blue">+4.2%</td></tr>
+                                <tr><td style="text-align: left;">5832 ちゅうぎんＦＧ</td><td>1,234円</td><td>1,300円</td><td class="highlight-blue">+5.3%</td></tr>
+                                <tr><td style="text-align: left;">6349 小森コーポレーション</td><td>1,662円</td><td>1,600円</td><td class="highlight-red">-3.7%</td></tr>
+                                <tr><td style="text-align: left;">7337 ひろぎんホールディングス</td><td>1,008円</td><td>1,050円</td><td class="highlight-blue">+4.2%</td></tr>
+                                <tr><td style="text-align: left;">8334 群馬銀行</td><td>957円</td><td>1,000円</td><td class="highlight-blue">+4.5%</td></tr>
+                                <tr><td style="text-align: left;">8554 南日本銀行</td><td>1,128円</td><td>1,180円</td><td class="highlight-blue">+4.6%</td></tr>
+                                <tr><td style="text-align: left;">8622 水戸証券</td><td>577円</td><td>600円</td><td class="highlight-blue">+4.0%</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="stock-list">
+                
+                <details class="stock-card"><summary class="stock-summary">2674 ハードオフコーポレーション</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>小売業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】総合リユース業。PC、家電、衣料等。直営やFCで展開。</td></tr>
+                    <tr><th>株価<br>（春号時点 / 現在）</th><td>春号時点：2,048円<br>現在：<span class="price-current">2,150円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【続伸】前期純増20が通期化。既存店が活性化策効き期末に向け前年同期超え。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 13.7倍 / PBR 1.70倍</td></tr><tr><th>配当利回り</th><td>実績：78〜82円</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・26年3月(予想)：38,500百万円 / 2,600百万円</td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>60.7% / 13.2%</td></tr>
+                </table></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">296A 令和アカウンティング・ホールディングス</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>サービス業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】税理士法人や公認会計士が起業。コンサルティング業務等。</td></tr>
+                    <tr><th>株価<br>（春号時点 / 現在）</th><td>春号時点：711円<br>現在：<span class="price-current">730円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【続伸】会計コンサル堅調。税理士法人等連携で案件増。生産性向上効き増益。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER ---倍 / PBR 12.21倍</td></tr><tr><th>配当利回り</th><td>予想：12.5円</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年12月(予想)：3,527百万円 / 614百万円</td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>63.8% / 37.3%</td></tr>
+                </table></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">3231 野村不動産ホールディングス</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>不動産</td></tr>
+                    <tr><th>会社概要</th><td>【特色】野村証券系。マンション開発等。</td></tr>
+                    <tr><th>株価<br>（春号時点 / 現在）</th><td>春号時点：4,207円<br>現在：<span class="price-current">4,400円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【連続最高益】マンション好調。物件売却等も寄与し最高益。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 8.6倍 / PBR 0.87倍</td></tr><tr><th>配当利回り</th><td>予想：145円</td></tr>
+                    <tr><th>業績予想<br>(営業収益 / 純利益)</th><td>・26年3月(予想)：950,000百万円 / 75,000百万円</td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>26.3% / 10.4%</td></tr>
+                </table></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">3766 システムズ・デザイン</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>情報・通信</td></tr>
+                    <tr><th>会社概要</th><td>【特色】独立系。システム開発等が中心。</td></tr>
+                    <tr><th>株価<br>（春号時点 / 現在）</th><td>春号時点：718円<br>現在：<span class="price-current">710円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【着実増】教育事業。開発案件牽引。保険業務等も拡大。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER ---倍 / PBR 0.94倍</td></tr><tr><th>配当利回り</th><td>予想：27円</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・26年3月(予想)：10,100百万円 / 400百万円</td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>72.7% / 6.6%</td></tr>
+                </table></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">3934 ベネフィットジャパン</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>情報・通信</td></tr>
+                    <tr><th>会社概要</th><td>【特色】持ち運び可能なWi-Fi端末等。</td></tr>
+                    <tr><th>株価<br>（春号時点 / 現在）</th><td>春号時点：1,366円<br>現在：<span class="price-current">1,400円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【連続増益】拡大期。店舗獲得等の初期費用こなし利益拡大。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 14.8倍 / PBR 1.49倍</td></tr><tr><th>配当利回り</th><td>予想：43円</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・26年3月(予想)：19,500百万円 / 1,700百万円</td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>62.4% / 11.0%</td></tr>
+                </table></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">4012 アクシス</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>情報・通信</td></tr>
+                    <tr><th>会社概要</th><td>【特色】金融機関向けシステム開発が主力。</td></tr>
+                    <tr><th>株価<br>（春号時点 / 現在）</th><td>春号時点：1,417円<br>現在：<span class="price-current">1,450円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【続伸】システム構築等堅調。中堅向け等クラウドも順調。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 14.2倍 / PBR 1.34倍</td></tr><tr><th>配当利回り</th><td>予想：46円</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年12月(予想)：9,400百万円 / 700百万円</td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>75.4% / 16.8%</td></tr>
+                </table></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">4221 大倉工業</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>化学</td></tr>
+                    <tr><th>会社概要</th><td>【特色】包装用フィルム等。</td></tr>
+                    <tr><th>株価<br>（春号時点 / 現在）</th><td>春号時点：2,937円<br>現在：<span class="price-current">3,100円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【強含み】円安一服等による原料高落ち着き寄与。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 15.3倍 / PBR 0.65倍</td></tr><tr><th>配当利回り</th><td>予想：110円</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年12月(予想)：98,700百万円 / 4,300百万円</td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>61.2% / 6.1%</td></tr>
+                </table></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">4463 日華化学</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>化学</td></tr>
+                    <tr><th>会社概要</th><td>【特色】繊維加工用界面活性剤等。</td></tr>
+                    <tr><th>株価<br>（春号時点 / 現在）</th><td>春号時点：1,083円<br>現在：<span class="price-current">1,150円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【反発】価格改定効果等で増益。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 13.3倍 / PBR 0.83倍</td></tr><tr><th>配当利回り</th><td>予想：35円</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年12月(予想)：55,705百万円 / 1,752百万円</td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>47.5% / 6.9%</td></tr>
+                </table></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">5576 オービーシステム</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>情報・通信</td></tr>
+                    <tr><th>会社概要</th><td>【特色】独立系。金融向け等システム構築。</td></tr>
+                    <tr><th>株価<br>（春号時点 / 現在）</th><td>春号時点：2,686円<br>現在：<span class="price-current">2,800円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【続伸】主力の金融は順調。人材投資等こなし増益基調。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 17.4倍 / PBR 1.14倍</td></tr><tr><th>配当利回り</th><td>予想：50〜70円</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・26年3月(予想)：9,400百万円 / 580百万円</td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>74.9% / 9.9%</td></tr>
+                </table></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">5832 ちゅうぎんフィナンシャルグループ</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>銀行</td></tr>
+                    <tr><th>会社概要</th><td>【特色】中国銀行を中核とするFG。</td></tr>
+                    <tr><th>株価<br>（春号時点 / 現在）</th><td>春号時点：1,234円<br>現在：<span class="price-current">1,300円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【増益続く】貸出金利息等増え資金利益拡大。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 10.8倍 / PBR 0.90倍</td></tr><tr><th>配当利回り</th><td>予想：46円</td></tr>
+                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・26年3月(予想)：242,000百万円 / 37,000百万円</td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>5.3% / 4.8%</td></tr>
+                </table></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">6349 小森コーポレーション</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>機械</td></tr>
+                    <tr><th>会社概要</th><td>【特色】印刷機械専業で首位。</td></tr>
+                    <tr><th>株価<br>（春号時点 / 現在）</th><td>春号時点：1,662円<br>現在：<span class="price-current">1,600円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【好調】国内は横ばいもインド等アジア堅調。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 12.0倍 / PBR 0.79倍</td></tr><tr><th>配当利回り</th><td>予想：35〜40円</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・26年3月(予想)：124,500百万円 / 7,300百万円</td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>66.3% / 6.3%</td></tr>
+                </table></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">7337 ひろぎんホールディングス</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>銀行</td></tr>
+                    <tr><th>会社概要</th><td>【特色】広島銀行が中核。</td></tr>
+                    <tr><th>株価<br>（春号時点 / 現在）</th><td>春号時点：1,008円<br>現在：<span class="price-current">1,050円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【連続最高益】事業性融資等伸び資金利益想定超。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 9.6倍 / PBR 0.99倍</td></tr><tr><th>配当利回り</th><td>予想：31円</td></tr>
+                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・26年3月(予想)：260,000百万円 / 46,000百万円</td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>4.4% / 6.9%</td></tr>
+                </table></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">8334 群馬銀行</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>銀行</td></tr>
+                    <tr><th>会社概要</th><td>【特色】県内シェアは預金、貸出金とも約35％。</td></tr>
+                    <tr><th>株価<br>（春号時点 / 現在）</th><td>春号時点：957円<br>現在：<span class="price-current">1,000円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【連続増益】貸出金利回り上昇で資金利益拡大。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 10.4倍 / PBR 1.30倍</td></tr><tr><th>配当利回り</th><td>予想：30円</td></tr>
+                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・26年3月(予想)：260,000百万円 / 41,000百万円</td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>16.20% / 7.7%</td></tr>
+                </table></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">8554 南日本銀行</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>銀行</td></tr>
+                    <tr><th>会社概要</th><td>【特色】鹿児島県が地盤の第二地銀。</td></tr>
+                    <tr><th>株価<br>（春号時点 / 現在）</th><td>春号時点：1,128円<br>現在：<span class="price-current">1,180円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【小幅増益】貸出金利回り上昇等で資金利益増。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 7.3倍 / PBR 0.47倍</td></tr><tr><th>配当利回り</th><td>予想：50円</td></tr>
+                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・26年3月(予想)：16,700百万円 / 2,400百万円</td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>5.1% / 5.3%</td></tr>
+                </table></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">8622 水戸証券</summary><div class="stock-details"><table class="data-table">
+                    <tr><th>業種</th><td>証券・商品先物</td></tr>
+                    <tr><th>会社概要</th><td>【特色】対面営業が軸。関東中心。</td></tr>
+                    <tr><th>株価<br>（春号時点 / 現在）</th><td>春号時点：577円<br>現在：<span class="price-current">600円</span></td></tr>
+                    <tr><th>四季報の評価</th><td>【伸長】日本株の売買堅調。営業益反発。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 15.9倍 / PBR 1.63倍</td></tr><tr><th>配当利回り</th><td>予想：15円</td></tr>
+                    <tr><th>業績予想<br>(営業収益 / 純利益)</th><td>・26年3月(予想)：15,000百万円 / 3,000百万円</td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>51.9% / 5.8%</td></tr>
+                </table></div></details>
+
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="pr-box">
+                <div class="pr-label">※PR</div>
+                <p style="font-size: 14px; font-weight: bold; margin-top: 0;">手数料0円！おすすめ証券口座</p>
+                <a href="#" class="pr-button">楽天証券の口座開設はこちら</a>
+                <div class="pr-disclaimer">※当サイトはアフィリエイトプログラムに参加しています。</div>
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
