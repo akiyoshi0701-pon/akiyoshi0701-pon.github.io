@@ -32,20 +32,23 @@
         .stock-card[open] .stock-summary::after { content: "▲ 閉じる"; background-color: #e2eef7; color: #1a5b92; border-color: #2c7cbf; }
         .stock-details { padding: 20px; border-top: 1px solid #eee; }
         
-        /* スマホの表崩れ防止のための設定 */
         .table-responsive { overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
         .data-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         .data-table th, .data-table td { border: 1px solid #e0e0e0; padding: 12px; font-size: 14px; white-space: nowrap; }
-        .data-table th { background-color: #f4f7fa; text-align: left; color: #333; font-weight: bold; }
+        .data-table th { background-color: #f4f7fa; width: 28%; text-align: left; color: #333; font-weight: bold; }
         .data-table td { background-color: #fff; color: #444; }
-        .perf-table th { background-color: #e2eef7; text-align: center; }
-        .perf-table td { text-align: center; }
+        
+        /* 比較テーブル専用の装飾（ズレ防止） */
+        .perf-table th { background-color: #e2eef7; text-align: center; width: auto !important; }
+        .perf-table td:first-child { text-align: left; }
+        .perf-table td:not(:first-child) { text-align: right; padding-right: 15px; }
         
         .highlight-red { color: #d32f2f; font-weight: bold; }
         .highlight-blue { color: #1976d2; font-weight: bold; }
         .price-current { font-size: 16px; font-weight: bold; color: #1976d2; }
         .pr-box { background-color: white; border: 2px solid #ffebd6; border-radius: 8px; padding: 15px; text-align: center; }
         .pr-button { display: inline-block; background-color: #f39c12; color: white; text-decoration: none; font-weight: bold; padding: 15px 20px; border-radius: 6px; width: 90%; box-sizing: border-box; box-shadow: 0 3px 0 #d68910; }
+        
         @media (max-width: 600px) {
             header { padding: 30px 15px; }
             header h1 { font-size: 18px; word-break: keep-all; }
@@ -54,6 +57,8 @@
             .page-title h2 { font-size: 18px; }
             .stock-summary { font-size: 14px; padding: 12px 15px; }
             .data-table th, .data-table td { font-size: 12px; padding: 8px; }
+            .data-table th { width: 35%; }
+            .perf-table th { width: auto !important; }
             .stock-details { padding: 10px; }
         }
     </style>
@@ -95,32 +100,32 @@
                         <div class="table-responsive">
                             <table class="data-table perf-table">
                                 <tr>
-                                    <th style="text-align: left;">銘柄名</th>
+                                    <th>銘柄名</th>
                                     <th>春号時点</th>
                                     <th>現在の株価</th>
                                     <th>増減率</th>
                                 </tr>
                                 <tr style="background-color: #fffde7; font-weight: bold;">
-                                    <td style="text-align: left;">日経平均株価 (基準)</td>
+                                    <td>日経平均株価 (基準)</td>
                                     <td>39,000円</td>
                                     <td>40,014円</td>
                                     <td>+2.6%</td>
                                 </tr>
-                                <tr><td style="text-align: left;">2674 ハードオフコーポレーション</td><td>2,048円</td><td>2,150円</td><td class="highlight-blue">+5.0%</td></tr>
-                                <tr><td style="text-align: left;">296A 令和アカウンティング</td><td>711円</td><td>730円</td><td class="highlight-blue">+2.7%</td></tr>
-                                <tr><td style="text-align: left;">3231 野村不動産ホールディングス</td><td>4,207円</td><td>4,400円</td><td class="highlight-blue">+4.6%</td></tr>
-                                <tr><td style="text-align: left;">3766 システムズ・デザイン</td><td>718円</td><td>710円</td><td class="highlight-red">-1.1%</td></tr>
-                                <tr><td style="text-align: left;">3934 ベネフィットジャパン</td><td>1,366円</td><td>1,400円</td><td class="highlight-red">+2.5%</td></tr>
-                                <tr><td style="text-align: left;">4012 アクシス</td><td>1,417円</td><td>1,450円</td><td class="highlight-red">+2.3%</td></tr>
-                                <tr><td style="text-align: left;">4221 大倉工業</td><td>2,937円</td><td>3,100円</td><td class="highlight-blue">+5.6%</td></tr>
-                                <tr><td style="text-align: left;">4463 日華化学</td><td>1,083円</td><td>1,150円</td><td class="highlight-blue">+6.2%</td></tr>
-                                <tr><td style="text-align: left;">5576 オービーシステム</td><td>2,686円</td><td>2,800円</td><td class="highlight-blue">+4.2%</td></tr>
-                                <tr><td style="text-align: left;">5832 ちゅうぎんＦＧ</td><td>1,234円</td><td>1,300円</td><td class="highlight-blue">+5.3%</td></tr>
-                                <tr><td style="text-align: left;">6349 小森コーポレーション</td><td>1,662円</td><td>1,600円</td><td class="highlight-red">-3.7%</td></tr>
-                                <tr><td style="text-align: left;">7337 ひろぎんホールディングス</td><td>1,008円</td><td>1,050円</td><td class="highlight-blue">+4.2%</td></tr>
-                                <tr><td style="text-align: left;">8334 群馬銀行</td><td>957円</td><td>1,000円</td><td class="highlight-blue">+4.5%</td></tr>
-                                <tr><td style="text-align: left;">8554 南日本銀行</td><td>1,128円</td><td>1,180円</td><td class="highlight-blue">+4.6%</td></tr>
-                                <tr><td style="text-align: left;">8622 水戸証券</td><td>577円</td><td>600円</td><td class="highlight-blue">+4.0%</td></tr>
+                                <tr><td>2674 ハードオフコーポレーション</td><td>2,048円</td><td>2,150円</td><td class="highlight-blue">+5.0%</td></tr>
+                                <tr><td>296A 令和アカウンティング</td><td>711円</td><td>730円</td><td class="highlight-blue">+2.7%</td></tr>
+                                <tr><td>3231 野村不動産ホールディングス</td><td>4,207円</td><td>4,400円</td><td class="highlight-blue">+4.6%</td></tr>
+                                <tr><td>3766 システムズ・デザイン</td><td>718円</td><td>710円</td><td class="highlight-red">-1.1%</td></tr>
+                                <tr><td>3934 ベネフィットジャパン</td><td>1,366円</td><td>1,400円</td><td class="highlight-red">+2.5%</td></tr>
+                                <tr><td>4012 アクシス</td><td>1,417円</td><td>1,450円</td><td class="highlight-red">+2.3%</td></tr>
+                                <tr><td>4221 大倉工業</td><td>2,937円</td><td>3,100円</td><td class="highlight-blue">+5.6%</td></tr>
+                                <tr><td>4463 日華化学</td><td>1,083円</td><td>1,150円</td><td class="highlight-blue">+6.2%</td></tr>
+                                <tr><td>5576 オービーシステム</td><td>2,686円</td><td>2,800円</td><td class="highlight-blue">+4.2%</td></tr>
+                                <tr><td>5832 ちゅうぎんＦＧ</td><td>1,234円</td><td>1,300円</td><td class="highlight-blue">+5.3%</td></tr>
+                                <tr><td>6349 小森コーポレーション</td><td>1,662円</td><td>1,600円</td><td class="highlight-red">-3.7%</td></tr>
+                                <tr><td>7337 ひろぎんホールディングス</td><td>1,008円</td><td>1,050円</td><td class="highlight-blue">+4.2%</td></tr>
+                                <tr><td>8334 群馬銀行</td><td>957円</td><td>1,000円</td><td class="highlight-blue">+4.5%</td></tr>
+                                <tr><td>8554 南日本銀行</td><td>1,128円</td><td>1,180円</td><td class="highlight-blue">+4.6%</td></tr>
+                                <tr><td>8622 水戸証券</td><td>577円</td><td>600円</td><td class="highlight-blue">+4.0%</td></tr>
                             </table>
                         </div>
                     </div>
