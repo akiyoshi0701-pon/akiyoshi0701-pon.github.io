@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>2026四季報夏号 - 1億円投資家の優良配当株選び</title>
     <style>
+        /* ズレ防止の根本設定を追加 */
+        * { box-sizing: border-box; }
+        
         body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; background-color: #f0f4f8; color: #333; margin: 0; padding: 0; line-height: 1.6; }
         header { position: relative; background-image: url('IMG_0372.jpeg'); background-size: cover; background-position: center; color: white; padding: 50px 20px; text-align: center; }
         header::before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(26, 91, 146, 0.7); z-index: 1; }
@@ -18,13 +21,16 @@
         nav a:hover { background-color: #134674; }
         .active-nav { background-color: #134674; font-weight: bold; }
         .container { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 20px auto; padding: 0 15px; gap: 20px; }
-        .main-content { flex: 1 1 600px; }
-        .sidebar { flex: 1 1 300px; }
+        
+        /* ページ全体が横に広がるのを防ぐ設定 */
+        .main-content { flex: 1 1 600px; min-width: 0; max-width: 100%; }
+        .sidebar { flex: 1 1 300px; min-width: 0; max-width: 100%; }
+        
         .page-title { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 5px solid #ff9800; }
         .page-title h2 { margin: 0; color: #2c7cbf; font-size: 22px; }
         .page-title p { margin: 10px 0 0 0; color: #555; font-size: 14px; }
         .stock-list { display: flex; flex-direction: column; gap: 15px; }
-        .stock-card { background-color: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #e0e0e0; }
+        .stock-card { background-color: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #e0e0e0; width: 100%; }
         .stock-summary { padding: 15px 20px; font-size: 18px; font-weight: bold; color: #1a5b92; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background-color: #f9fbfd; transition: background-color 0.2s; word-break: keep-all; }
         .stock-summary:hover { background-color: #f0f4f8; }
         .stock-summary::-webkit-details-marker { display: none; }
@@ -32,15 +38,15 @@
         .stock-card[open] .stock-summary::after { content: "▲ 閉じる"; background-color: #e2eef7; color: #1a5b92; border-color: #2c7cbf; }
         .stock-details { padding: 20px; border-top: 1px solid #eee; }
         
-        .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+        /* 表のスクロール領域設定 */
+        .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
         
-        /* 詳細データ表の基本設定 */
         .data-table { width: 100%; border-collapse: collapse; margin-top: 10px; }
         .data-table th, .data-table td { border: 1px solid #e0e0e0; padding: 12px; font-size: 14px; }
         .data-table th { background-color: #f4f7fa; width: 28%; text-align: left; color: #333; font-weight: bold; }
         .data-table td { background-color: #fff; color: #444; line-height: 1.5; }
         
-        /* 比較テーブル専用の装飾（ズレ防止） */
+        /* 比較テーブル専用の装飾 */
         .perf-table th, .perf-table td { white-space: nowrap; }
         .perf-table th { background-color: #e2eef7; }
         .perf-table th:first-child, .perf-table td:first-child { text-align: left; width: auto !important; }
@@ -137,7 +143,7 @@
                     <tr><th>業種</th><td>建設業（設備工事）</td></tr>
                     <tr><th>会社概要</th><td>【特色】三井系の空調設備工事会社。微粒子可視化システムなど独自技術を持つ。原子力施設向けに強み。</td></tr>
                     <tr><th>株価<br>（夏号時点 / 現在）</th><td>夏号時点：3,090円<br>現在：<span class="price-current">3,250円</span></td></tr>
-                    <tr><th>四季報の評価</th><td>【最高益】期初繰越高1487億円（前期比18%増）。大規模再開発や工場関連、データセンターが推移。リニューアルも寄与。生産性向上も効く。原子力は再稼働対応など増勢。人件費増こなし連続増益。増配。【中計】29年度売上高2000億円、営業利益240億円目標。成長投資額300億円。成長事業と生産性向上がカギ。建築設備CADの自動作図機能の共同開発始動。</td></tr>
+                    <tr><th>四季報の評価</th><td>【最高益】期初繰越高1487億円（前期比18%増）。大規模再開発や工場関連、データセンターが推移。リニューアルも寄寄与。生産性向上も効く。原子力は再稼働対応など増勢。人件費増こなし連続増益。増配。【中計】29年度売上高2000億円、営業利益240億円目標。成長投資額300億円。成長事業と生産性向上がカギ。建築設備CADの自動作図機能の共同開発始動。</td></tr>
                     <tr><th>実績PER / PBR</th><td>PER 11.8倍 / PBR 1.83倍</td></tr><tr><th>配当利回り</th><td>実績：3.60% (120円)</td></tr>
                     <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)：154,884百万円 / 9,656百万円<br><span class="highlight-blue">・26年3月(予想)：160,000百万円 / 12,800百万円</span><br><span class="highlight-blue">・27年3月(予想)：168,000百万円 / 13,500百万円</span></td></tr>
                     <tr><th>自己資本比率 / ROE</th><td>61.0% / 16.0%</td></tr>
