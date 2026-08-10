@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBSS7W0R67"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
@@ -13,9 +12,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>1億円投資家の優良配当株選び</title>
     <style>
-        /* ズレ防止の根本設定 */
         * { box-sizing: border-box; }
-        
         body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; background-color: #f0f4f8; color: #333; margin: 0; padding: 0; line-height: 1.6; }
         header { position: relative; background-image: url('IMG_0372.jpeg'); background-size: cover; background-position: center; color: white; padding: 50px 20px; text-align: center; }
         header::before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(26, 91, 146, 0.7); z-index: 1; }
@@ -29,34 +26,25 @@
         nav a:hover { background-color: #134674; }
         .active-nav { background-color: #134674; font-weight: bold; }
         .container { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 20px auto; padding: 0 15px; gap: 20px; }
-        
-        /* ページ全体が横に広がるのを防ぐ設定 */
         .main-content { flex: 1 1 600px; min-width: 0; max-width: 100%; overflow: hidden; }
         .sidebar { flex: 1 1 300px; min-width: 0; max-width: 100%; overflow: hidden; }
-        
-        .article-card { background-color: white; border-radius: 8px; padding: 30px; margin-bottom: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); border-left: 5px solid #2c7cbf; }
-        .article-card h2 { margin-top: 0; font-size: 22px; color: #1a5b92; border-bottom: 2px solid #f0f4f8; padding-bottom: 10px; }
-        .article-content h3 { color: #1a5b92; font-size: 18px; margin-top: 30px; margin-bottom: 15px; border-left: 4px solid #2c7cbf; padding-left: 10px; }
-        .article-content p { font-size: 15px; color: #444; margin-bottom: 15px; }
-        .article-content ul { background-color: #f9fbfd; padding: 15px 15px 15px 35px; border-radius: 6px; font-size: 15px; color: #444; margin-bottom: 20px; }
-        .article-content li { margin-bottom: 8px; }
-        .profile-card { background-color: white; border-radius: 8px; padding: 20px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px; }
-        .profile-title { margin-top: 0; color: #1a5b92; border-bottom: 2px solid #f0f4f8; padding-bottom: 10px; text-align: center; font-size: 16px; }
-        .profile-img-wrap { text-align: center; margin: 15px 0; }
-        .profile-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; border: 3px solid #e2eef7; }
-        .profile-name { text-align: center; font-size: 16px; font-weight: bold; color: #333; margin-bottom: 10px; }
-        .profile-bio { font-size: 13px; color: #555; margin-bottom: 15px; line-height: 1.5; text-align: left; }
-        .profile-details { list-style-type: none; padding: 0; margin: 0; font-size: 13px; color: #444; }
-        .profile-details li { margin-bottom: 8px; border-bottom: 1px dashed #eee; padding-bottom: 5px; }
-        .pr-box { background-color: white; border: 2px solid #ffebd6; border-radius: 8px; padding: 15px; text-align: center; margin-bottom: 20px; }
+        .page-title { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 5px solid #ff9800; }
+        .page-title h2 { margin: 0; color: #2c7cbf; font-size: 22px; }
+        .page-title p { margin: 10px 0 0 0; color: #555; font-size: 14px; }
+        .pr-box { background-color: white; border: 2px solid #ffebd6; border-radius: 8px; padding: 15px; text-align: center; margin-bottom: 20px;}
         .pr-button { display: inline-block; background-color: #f39c12; color: white; text-decoration: none; font-weight: bold; padding: 15px 20px; border-radius: 6px; width: 90%; box-sizing: border-box; box-shadow: 0 3px 0 #d68910; }
-        
+        .profile-box { background-color: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); padding: 20px; text-align: center; margin-bottom: 20px; border-top: 5px solid #1a5b92; }
+        .profile-img { width: 100px; height: 100px; border-radius: 50%; object-fit: cover; margin-bottom: 10px; border: 3px solid #e2eef7; }
+        .profile-name { font-size: 18px; font-weight: bold; color: #1a5b92; margin: 0 0 10px 0; }
+        .profile-desc { font-size: 13px; color: #555; text-align: left; margin-bottom: 15px; line-height: 1.5; }
+        .profile-list { font-size: 13px; color: #333; text-align: left; padding-left: 0; list-style: none; margin: 0; }
+        .profile-list li { margin-bottom: 8px; padding-left: 20px; text-indent: -20px; }
         @media (max-width: 600px) {
             header { padding: 30px 15px; }
-            header h1 { font-size: 20px; word-break: keep-all; }
-            header p { font-size: 13px; }
-            .article-card { padding: 20px; }
-            .article-card h2 { font-size: 20px; }
+            header h1 { font-size: 18px; word-break: keep-all; }
+            header p { font-size: 12px; }
+            nav a { padding: 10px; font-size: 12px; }
+            .page-title h2 { font-size: 18px; }
         }
     </style>
 </head>
@@ -75,70 +63,56 @@
     </nav>
 
     <div class="container">
-        
         <div class="main-content">
-            <div class="article-card">
-                <h2>サイト紹介</h2>
-                <div class="article-content">
-                    <h3>【はじめに】</h3>
-                    <p>はじめまして。当サイトの運営者です。<br>
-                    私は約10年前、1,000万円から株式投資をスタートし、現在は約1億2,000万円の資産を運用しています。</p>
-                    <p>しかし、最初から順風満帆だったわけではありません。投資を始めたばかりの頃は、値動きの激しいベンチャー株などを買い漁り、数百万円のマイナスを抱えて精神的にもかなり辛い時期を経験しました。<br>
-                    そんな時に出会ったのが「配当金」という存在でした。万が一株価が下がっても、定期的に入ってくる配当が精神的な安定剤（クッション）となってくれる。この安心感を知って以来、私は「配当をもらいながら、安定して成長する会社」を厳選する現在のスタイルに行き着きました。</p>
-
-                    <h3>【投資手法】</h3>
-                    <p>私がベースにしているのは、総合商社・銀行・保険系といった金融インフラ株です。現在はおよそ40銘柄に分散投資を行っています。<br>
-                    特に総合商社は、「いい意味で主力商品がない」ため、一つの事業が不調でも他でカバーできる完璧な体系を持っています。私はこの安定感に惚れ込みました。</p>
-                    <p>また、個別の銘柄だけでなく「四季報を使って、業種全体の成長の波を読む」ことも重視しています。<br>
-                    全体として伸びている分野の中で評価の良い会社を買えば、外的要因がない限り、そう簡単に崩れることはありません。一つの業種に偏らないようバランスを取り、ポートフォリオを組んでいます。</p>
-
-                    <h3>【厳選基準】</h3>
-                    <p>当サイトで紹介する銘柄は、私が四季報を泥臭く読み込み、以下の厳しい基準をクリアしたお宝銘柄のみをピックアップしています。</p>
-                    <p><strong>① 数値で弾き出す「基本フィルター」</strong><br>
-                    まずはベースとして、以下の厳しい基準で優良バリュー株を絞り込みます。</p>
-                    <ul>
-                        <li><strong>成長性:</strong> 今期〜2期先まで増収増益予想</li>
-                        <li><strong>割安性:</strong> PER 10〜20程度、PBR 1.5以下</li>
-                        <li><strong>還元姿勢:</strong> 配当性向 50%以上（※累進配当の宣言があればなお良し！）</li>
-                    </ul>
-
-                    <p><strong>② 四季報を読み解く</strong><br>
-                    数値フィルターを通過した銘柄に対し、さらに以下の観点で「本当に長期で安心して持てるか」を精査します。</p>
-                    <ul>
-                        <li><strong>直近数年の増配実績:</strong> 今の利回りが高いだけでなく、「実際に株主への還元を増やし続けている歴史と姿勢があるか」</li>
-                        <li><strong>業種全体の上向き傾向:</strong> 個別の数字だけでなく、四季報の記事から「その業界自体に成長の追い風が吹いているか」</li>
-                        <li><strong>大株主情報:</strong> どのような企業や経営者が株を保有しているかを確認し、経営の安定性や将来の期待値の裏付け</li>
-                    </ul>
-
-                    <h3>【最後に】</h3>
-                    <p>投資とは本来、企業の応援です。単純な勝ち負けだけで相場と向き合うと、いつか必ず精神的にキツくなる時が来ます。<br>
-                    「この会社を応援したい」という別の視点を持ちながら企業とお付き合いしていくと、投資はもっと楽しく、長く続けられるものになります。ぜひ当サイトのポリシーや厳選銘柄を参考にしてみてください！</p>
-                </div>
+            <div class="page-title">
+                <h2>🏠 サイト紹介</h2>
+                <p>はじめまして。当サイトの運営者「ぽんあさ」です。私が四季報から「優しい高配当株」を選ぶ理由やポリシーをご紹介します。</p>
             </div>
+            <div style="background-color: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); padding: 25px; line-height: 1.8; color: #333;">
+                <h3 style="color: #2c7cbf; border-bottom: 2px solid #e2eef7; padding-bottom: 8px;">はじめに</h3>
+                <p>私は約10年前、1,000万円から株式投資をスタートし、現在は約1億2,000万円の資産を運用しています。</p>
+                <p>しかし、最初から順風満帆だったわけではありません。投資を始めたばかりの頃は、値動きの激しいベンチャー株などを買い漁り、数百万円のマイナスを抱えて精神的にもかなり辛い時期を経験しました。</p>
+                <p>そんな時に出会ったのが<strong>「配当金」</strong>という存在でした。万が一株価が下がっても、定期的に入ってくる配当が精神的な安定剤（クッション）となってくれる。この安心感を知って以来、私は「配当をもらいながら、安定して成長する会社」を厳選する現在のスタイルに行き着きました。</p>
 
-            <div class="pr-box" style="margin: 30px 0;">
-                <p style="font-size: 16px; font-weight: bold; margin-top: 0; text-align: center;">高配当株投資を始めるなら！手数料0円の松井証券</p>
-                <a href="https://px.a8.net/svt/ejp?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" rel="nofollow" class="pr-button">松井証券の口座開設はこちら</a>
-                <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" alt="">
+                <h3 style="color: #2c7cbf; border-bottom: 2px solid #e2eef7; padding-bottom: 8px; margin-top: 30px;">投資手法</h3>
+                <p>私がベースにしているのは、<strong>総合商社・銀行・保険系</strong>といった金融インフラ株です。現在はおよそ40銘柄に分散投資を行っています。</p>
+                <p>特に総合商社は、「いい意味で主力商品がない」ため、一つの事業が不調でも他でカバーできる完璧な体系を持っています。私はこの安定感に惚れ込みました。</p>
+                <p>また、個別の銘柄だけでなく<strong>「四季報を使って、業種全体の成長の波を読む」</strong>ことも重視しています。全体として伸びている分野の中で評価の良い会社を買えば、外的要因がない限り、そう簡単に崩れることはありません。一つの業種に偏らないようバランスを取り、ポートフォリオを組んでいます。</p>
+
+                <h3 style="color: #2c7cbf; border-bottom: 2px solid #e2eef7; padding-bottom: 8px; margin-top: 30px;">厳選基準</h3>
+                <p>当サイトで紹介する銘柄は、私が四季報を泥臭く読み込み、以下の厳しいポリシー（基準）をクリアしたお宝銘柄のみをピックアップしています。</p>
+                
+                <h4 style="color: #1a5b92; margin-bottom: 5px;">① 数値で弾き出す「基本フィルター」</h4>
+                <ul style="background-color: #f9fbfd; padding: 15px 20px 15px 40px; border-radius: 6px; border: 1px solid #e0e0e0;">
+                    <li><strong>配当率:</strong> 3.0〜3.5%</li>
+                    <li><strong>成長性:</strong> 今期〜2期先まで増収増益予想</li>
+                    <li><strong>割安性:</strong> PER 10〜20程度、PBR 1.5以下</li>
+                    <li><strong>還元姿勢:</strong> 配当性向 50%以上（※累進配当の宣言があればなお良し！）</li>
+                </ul>
+
+                <h4 style="color: #1a5b92; margin-bottom: 5px; margin-top: 20px;">② 四季報を読み解く</h4>
+                <p style="margin-top: 0; font-size: 14px;">数値フィルターを通過した銘柄に対し、さらに以下の観点で「本当に長期で安心して持てるか」を精査します。</p>
+                <ul style="background-color: #f9fbfd; padding: 15px 20px 15px 40px; border-radius: 6px; border: 1px solid #e0e0e0;">
+                    <li><strong>直近数年の増配実績:</strong> 今の利回りが高いだけでなく、「実際に株主への還元を増やし続けている歴史と姿勢があるか」</li>
+                    <li><strong>業種全体の上向き傾向:</strong> 個別の数字だけでなく、四季報の記事から「その業界自体に成長の追い風が吹いているか」</li>
+                    <li><strong>大株主情報:</strong> どのような企業や経営者が株を保有しているかを確認し、経営の安定性や将来の期待値の裏付け</li>
+                </ul>
+
+                <h3 style="color: #2c7cbf; border-bottom: 2px solid #e2eef7; padding-bottom: 8px; margin-top: 30px;">最後に</h3>
+                <p>投資とは本来、<strong>企業の応援</strong>です。単純な勝ち負けだけで相場と向き合うと、いつか必ず精神的にキツくなる時が来ます。</p>
+                <p>「この会社を応援したい」という別の視点を持ちながら企業とお付き合いしていくと、投資はもっと楽しく、長く続けられるものになります。ぜひ当サイトのポリシーや厳選銘柄を参考にしてみてください！</p>
             </div>
-
         </div>
 
         <div class="sidebar">
-            <div class="profile-card">
-                <h3 class="profile-title">運営者プロフィール</h3>
-                <div class="profile-img-wrap">
-                    <img src="IMG_6424.jpg" alt="ぽんあさ" class="profile-img">
-                </div>
-                <div class="profile-name">ぽんあさ</div>
-                <p class="profile-bio">
-                    30代の会社員で、2人の子育てに奮闘しながら株式投資をしています。年間約400万円の配当金と、少しの株主優待をもらいながら、日々四季報を読み込んで優良株を探すのが日課です。
-                </p>
-                <ul class="profile-details">
-                    <li>📈 <strong>投資歴:</strong> 約10年</li>
-                    <li>💰 <strong>運用資産:</strong> 約1.2億円</li>
-                    <li>💼 <strong>スタイル:</strong> 高配当・長期保有</li>
-                    <li>🏢 <strong>保有銘柄:</strong> 商社・銀行など約40銘柄</li>
+            <div class="profile-box">
+                <img src="IMG_6424.jpg" alt="ぽんあさ" class="profile-img">
+                <h3 class="profile-name">ぽんあさ</h3>
+                <p class="profile-desc">30代、子ども2人。会社員をしながら株取引を行い、日々の配当は年間約400万。株主優待も少しもらいつつ、優良株を探す日々を送っています。</p>
+                <ul class="profile-list">
+                    <li>💰 <strong>資産:</strong> 約1.2億円</li>
+                    <li>📈 <strong>手法:</strong> 高配当バリュー株投資</li>
+                    <li>💼 <strong>保有:</strong> 商社・銀行・保険など約40銘柄</li>
                 </ul>
             </div>
             
@@ -148,8 +122,6 @@
                 <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4B9X1F+4JQ84Y+2HOM+6V4LU" alt="">
             </div>
         </div>
-
     </div>
-
 </body>
 </html>
