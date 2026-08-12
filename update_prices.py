@@ -44,6 +44,7 @@ BASE_PRICES = {
     }
 }
 
+# 💡 ここで「どのページを更新するか」を指定しています
 TARGET_FILES = ["summer2026.html", "spring2026.html", "weekly.html"]
 price_cache = {}
 
