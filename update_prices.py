@@ -5,8 +5,7 @@ import os
 import time
 
 # =========================================================
-# 📝 事前設定：四季報発売日時点の「基準価格」
-# （※この数字をもとに、プログラムが増減率を自動計算します）
+# 📝 正確な基準価格（四季報発売日時点の実績終値）
 # =========================================================
 BASE_PRICES = {
     "summer2026.html": {
@@ -39,12 +38,11 @@ BASE_PRICES = {
         "6349": 1616.0,
         "7337": 1775.76,
         "8334": 2052.8,
-        "8554": 1494.0,  # 8554（南日本銀行）を1,494円で手動設定
+        "8554": 1494.0,  # 8554（南日本銀行）を手動設定
         "8622": 693.15,
     }
 }
 
-# 💡 ここで「どのページを更新するか」を指定しています
 TARGET_FILES = ["summer2026.html", "spring2026.html", "weekly.html"]
 price_cache = {}
 
@@ -60,7 +58,7 @@ def get_latest_price(code):
         
         latest_price = float(hist['Close'].iloc[-1])
         price_cache[code] = latest_price
-        time.sleep(0.5) # APIへの負荷軽減
+        time.sleep(0.5)
         return latest_price
     except Exception as e:
         print(f"❌ {code} の取得に失敗: {e}")
@@ -69,15 +67,14 @@ def get_latest_price(code):
 def check_anomaly(old_text, new_price):
     match = re.search(r'([0-9,\.]+)', old_text)
     if not match:
-        return False
+        return False  # 「---円」の場合は更新を許可
         
     old_price = float(match.group(1).replace(',', ''))
     if old_price == 0:
         return False
         
     change_rate = abs(new_price - old_price) / old_price
-    # 安全装置：前回から30%以上一気に変動した場合はストップ
-    if change_rate > 0.30:
+    if change_rate > 0.30:  # 30%以上の異常変動はブロック
         return True
     return False
 
