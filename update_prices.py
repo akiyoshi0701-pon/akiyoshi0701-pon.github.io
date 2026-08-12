@@ -5,42 +5,42 @@ import os
 import time
 
 # =========================================================
-# 📝 事前設定：四季報発売日時点の「基準価格」を入力してください
+# 📝 事前設定：四季報発売日時点の「基準価格」
 # （※この数字をもとに、プログラムが増減率を自動計算します）
 # =========================================================
 BASE_PRICES = {
     "summer2026.html": {
-        "NIKKEI": 38102.44, # TODO: 6月17日の日経平均終値を入れてください
-        "1952": 2500,       # TODO: 1952(新日本空調)の6/17終値を入力...
-        "1982": 1000,
-        "4012": 1000,
-        "4658": 1000,
-        "7175": 1000,
-        "7433": 1000,
-        "8020": 1000,
-        "8370": 1000,
-        "8386": 1000,
-        "8522": 1000,
-        "8542": 1000,
-        "8624": 1000
+        "NIKKEI": 69902.25,
+        "1952": 3515.0,
+        "1982": 3075.0,
+        "4012": 1600.0,
+        "4658": 1552.0,
+        "7175": 1347.0,
+        "7433": 4500.0,
+        "8020": 2092.0,
+        "8370": 4440.0,
+        "8386": 2431.0,
+        "8522": 5830.0,
+        "8542": 1490.0,
+        "8624": 1365.0,
     },
     "spring2026.html": {
-        "NIKKEI": 38707.64, # TODO: 3月17日(直前営業日)の日経平均終値を入れてください
-        "2674": 1000,       # TODO: 各銘柄の3/17直前終値を入力...
-        "296A": 1000,
-        "3231": 1000,
-        "3766": 1000,
-        "3934": 1000,
-        "4012": 1000,
-        "4221": 1000,
-        "4463": 1000,
-        "5576": 1000,
-        "5832": 1000,
-        "6349": 1000,
-        "7337": 1000,
-        "8334": 1000,
-        "8554": 1000,
-        "8622": 1000
+        "NIKKEI": 53700.39,
+        "2674": 1928.55,
+        "296A": 637.89,
+        "3231": 1039.48,
+        "3766": 1217.56,
+        "3934": 1910.5,
+        "4012": 1509.0,
+        "4221": 4571.11,
+        "4463": 1677.44,
+        "5576": 2574.13,
+        "5832": 2760.0,
+        "6349": 1616.0,
+        "7337": 1775.76,
+        "8334": 2052.8,
+        "8554": 1494.0,  # 8554（南日本銀行）を1,494円で手動設定
+        "8622": 693.15,
     }
 }
 
@@ -53,30 +53,29 @@ def get_latest_price(code):
     try:
         ticker_symbol = "^N225" if code == "NIKKEI" else f"{code}.T"
         ticker = yf.Ticker(ticker_symbol)
-        hist = ticker.history(period="5d") # 直近5日分を取得し、最新の取引日を確実にとる
+        hist = ticker.history(period="5d")
         if hist.empty:
             return None
         
         latest_price = float(hist['Close'].iloc[-1])
         price_cache[code] = latest_price
-        time.sleep(0.5) # APIへの優しさ（負荷軽減）
+        time.sleep(0.5) # APIへの負荷軽減
         return latest_price
     except Exception as e:
         print(f"❌ {code} の取得に失敗: {e}")
         return None
 
 def check_anomaly(old_text, new_price):
-    # HTML内の「1,500円」などから数字だけを抽出
     match = re.search(r'([0-9,\.]+)', old_text)
     if not match:
-        return False # 最初が「---円」などの場合はスキップ
+        return False
         
     old_price = float(match.group(1).replace(',', ''))
     if old_price == 0:
         return False
         
     change_rate = abs(new_price - old_price) / old_price
-    # 安全装置：前回から30%以上一気に変動した場合はストップ（株式分割やAPIエラー対策）
+    # 安全装置：前回から30%以上一気に変動した場合はストップ
     if change_rate > 0.30:
         return True
     return False
@@ -120,7 +119,6 @@ def update_html():
             if latest_price is None or base_price is None or base_price == 0:
                 continue
 
-            # 増減率の計算: (現在株価 / 基準価格) - 1
             perf_rate = (latest_price / base_price) - 1
             perf_percentage = perf_rate * 100
             
@@ -160,7 +158,6 @@ def update_html():
                     if win_rate_el.string != new_win_text:
                         win_rate_el.string = new_win_text
                         changed = True
-                        # 隣の (X銘柄 / Y銘柄中) も自動更新
                         count_el = win_rate_el.find_next_sibling("span")
                         if count_el:
                             count_el.string = f"（{win_count}銘柄 / {total_count}銘柄中）"
