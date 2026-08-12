@@ -44,7 +44,7 @@ BASE_PRICES = {
     }
 }
 
-TARGET_FILES = ["summer2026.html", "spring2026.html", "hotstocks.html"]
+TARGET_FILES = ["summer2026.html", "spring2026.html", "weekly.html"]
 price_cache = {}
 
 def get_latest_price(code):
