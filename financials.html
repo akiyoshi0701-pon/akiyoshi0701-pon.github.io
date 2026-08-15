@@ -1,0 +1,522 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBSS7W0R67"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZBSS7W0R67');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>決算情報 - 1億円投資家の優良配当株選び</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; background-color: #f0f4f8; color: #333; margin: 0; padding: 0; line-height: 1.6; }
+        header { position: relative; background-image: url('IMG_0372.jpeg'); background-size: cover; background-position: center; color: white; padding: 50px 20px; text-align: center; }
+        header::before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(26, 91, 146, 0.7); z-index: 1; }
+        header h1, header p { position: relative; z-index: 2; }
+        header h1 { margin: 0; font-size: 26px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        header p { margin: 10px 0 0; font-size: 15px; opacity: 0.95; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        nav { background-color: #1a5b92; display: flex; justify-content: flex-start; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+        nav::-webkit-scrollbar { display: none; }
+        nav { -ms-overflow-style: none; scrollbar-width: none; }
+        nav a { color: white; text-decoration: none; padding: 15px 25px; font-size: 15px; transition: background-color 0.3s; flex-shrink: 0; }
+        nav a:hover { background-color: #134674; }
+        .active-nav { background-color: #134674; font-weight: bold; }
+        .container { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 20px auto; padding: 0 15px; gap: 20px; }
+        .main-content { flex: 1 1 600px; min-width: 0; max-width: 100%; overflow: hidden; }
+        .sidebar { flex: 1 1 300px; min-width: 0; max-width: 100%; overflow: hidden; }
+        .page-title { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 5px solid #ff9800; }
+        .page-title h2 { margin: 0; color: #2c7cbf; font-size: 22px; }
+        .page-title p { margin: 10px 0 0 0; color: #555; font-size: 14px; }
+        
+        .stock-list { display: flex; flex-direction: column; gap: 15px; }
+        .stock-card { background-color: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #e0e0e0; width: 100%; }
+        .stock-summary { padding: 15px 20px; font-size: 17px; font-weight: bold; color: #1a5b92; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background-color: #f9fbfd; transition: background-color 0.2s; word-break: break-all; }
+        .stock-summary:hover { background-color: #f0f4f8; }
+        .stock-summary::-webkit-details-marker { display: none; }
+        .stock-summary::after { content: "▼ 開く"; font-size: 13px; color: #888; background-color: #fff; padding: 4px 10px; border-radius: 20px; border: 1px solid #ddd; white-space: nowrap; margin-left: 10px; }
+        .stock-card[open] .stock-summary::after { content: "▲ 閉じる"; background-color: #e2eef7; color: #1a5b92; border-color: #2c7cbf; }
+        .stock-details { padding: 20px; border-top: 1px solid #eee; }
+        
+        .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; margin-bottom: 15px; }
+        .data-table { width: 100%; border-collapse: collapse; table-layout: fixed; word-wrap: break-word; }
+        .data-table th, .data-table td { border: 1px solid #e0e0e0; padding: 10px 12px; font-size: 14px; }
+        .data-table th { background-color: #f4f7fa; width: 30%; text-align: left; color: #1a5b92; font-weight: bold; }
+        .data-table td { background-color: #fff; color: #333; }
+        
+        .comment-box { background-color: #f9fbfd; border-left: 4px solid #2c7cbf; padding: 12px 15px; font-size: 14px; color: #444; line-height: 1.6; border-radius: 0 6px 6px 0; }
+        
+        .pr-box { background-color: white; border: 2px solid #ffebd6; border-radius: 8px; padding: 15px; text-align: center; margin-bottom: 20px;}
+        .pr-button { display: inline-block; background-color: #f39c12; color: white; text-decoration: none; font-weight: bold; padding: 15px 20px; border-radius: 6px; width: 90%; box-sizing: border-box; box-shadow: 0 3px 0 #d68910; }
+        
+        @media (max-width: 600px) {
+            header { padding: 30px 15px; }
+            header h1 { font-size: 18px; word-break: keep-all; }
+            header p { font-size: 12px; }
+            nav a { padding: 10px; font-size: 12px; }
+            .page-title h2 { font-size: 18px; }
+            .stock-summary { font-size: 14px; padding: 12px 15px; }
+            .data-table th, .data-table td { font-size: 12px; padding: 8px; }
+            .data-table th { width: 35%; }
+            .stock-details { padding: 12px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>1億円投資家の優良配当株選び</h1>
+        <p>〜全3,800銘柄から厳選！初心者でも安心のバリュー投資〜</p>
+    </header>
+
+    <nav>
+        <a href="index.html">ホーム</a>
+        <a href="weekly.html">株価速報</a>
+        <a href="financials.html" class="active-nav">決算情報</a>
+        <a href="summer2026.html">2026四季報夏号</a>
+        <a href="spring2026.html">2026四季報春号</a>
+    </nav>
+
+    <div class="container">
+        
+        <div class="main-content">
+            <div class="page-title">
+                <h2>📑 決算情報速報</h2>
+                <p>注目の高配当バリュー株の最新決算発表内容とポイントのまとめです。</p>
+            </div>
+
+            <div class="stock-list">
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/14 GMOインターネットグループ 26年12月期 2Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>利益</th><td>129億6,000万円（+142.1%）</td></tr>
+                                <tr><th>通期予想</th><td>非開示</td></tr>
+                                <tr><th>利益進捗率</th><td>算出不可（通期予想が開示されていないため）</td></tr>
+                                <tr><th>配当金</th><td>第1四半期 17.5円、第2四半期 18円</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            GMOインターネットグループ 26年12月期 2Q決算発表。中間期の最終利益は約129億円となり、前年同期比で約2.4倍と爆発的な伸びを記録しています。売上収益や本業の儲けを示す事業利益もしっかりと二桁成長を達成しており、極めて強い着地です。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/14 データセクション 27年3月期 1Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>利益</th><td>39億1,300万円（前年同期は3億3,300万円の赤字から黒字転換）</td></tr>
+                                <tr><th>通期予想</th><td>87億400万円</td></tr>
+                                <tr><th>利益進捗率</th><td>約45.0% （39.1億円 / 87.0億円）</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            データセクション 27年3月期 1Q決算発表。売上高は前年同期比約9.5倍の63.2億円へと爆増し、営業利益も48.4億円の特大黒字を叩き出しました。3ヶ月間だけで通期利益目標に対する進捗率が約45.0%に達する、凄まじいロケットスタートに見えます。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/14 荏原製作所 26年12月期 2Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>利益</th><td>335億7,400万円（+7.1%）</td></tr>
+                                <tr><th>通期予想</th><td>99,500百万円（+29.8%）</td></tr>
+                                <tr><th>利益進捗率</th><td>約33.7% （335億円 / 995億円）</td></tr>
+                                <tr><th>配当金</th><td>年間予想 66円</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            荏原製作所 26年12月期 2Q決算発表。受注高、売上収益、営業利益、最終利益のすべての項目において、中間期として過去最高額を更新する素晴らしい着地となりました。生成AI向け需要が市場を牽引し、顧客の半導体工場などの稼働率上昇や増産投資が拡大しています。通期の受注高予想を1兆700億円から1兆2,450億円へ、売上収益を1兆2,000億円から1兆5,300億円へ大きく上方修正しました。最終利益の予想は995億円で据え置かれたため進捗率は約33.7%と控えめに見えますが、半導体関連の投資拡大を取り込めており、今後のさらなる上振れにも期待が持てる内容です。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/14 MS&AD 27年3月期 1Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>利益</th><td>3,286億1,800万円（+33.4%）</td></tr>
+                                <tr><th>通期予想</th><td>4,250億円（▲16.8%）</td></tr>
+                                <tr><th>利益進捗率</th><td>約77.3% （3,286億円 / 4,250億円）</td></tr>
+                                <tr><th>配当金</th><td>年間予想 170円（中間85円、期末85円予想）</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            MS&AD 27年3月期 1Q決算発表。通期目標に対する進捗率は約77.3%に達しています。また、配当金は前年度の160円から10円増配となる、年間170円の予想を掲げています。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/14 SOMPOホールディングス 27年3月期 1Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>利益</th><td>1,811億6,800万円（+52.8%）</td></tr>
+                                <tr><th>通期予想</th><td>4,900億円（▲23.4%）</td></tr>
+                                <tr><th>利益進捗率</th><td>約37.0% （1,811億円 / 4,900億円）</td></tr>
+                                <tr><th>配当金</th><td>年間予想 200円</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            SOMPOホールディングス 27年3月期 1Q決算発表。最終利益は前年同期比+52.8%の1,811億円となり、通期目標4,900億円に対する進捗率も約37.0%と非常に好調なロケットスタートを切っています。通期予想が減益見通しとなっている中でこの進捗は、秋以降の「上方修正」への期待を大きく抱かせる内容です。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/14 アシックス 26年12月期 2Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>売上高</th><td>5,344億円（+32.7%）</td></tr>
+                                <tr><th>最終利益</th><td>821億円（前年同期比 +53.3%）</td></tr>
+                                <tr><th>通期予想</th><td>最終利益：1,200億円（従来予想1,100億円から上方修正）</td></tr>
+                                <tr><th>利益進捗率</th><td>約68.4% （821億円 / 1,200億円）</td></tr>
+                                <tr><th>配当金</th><td>年間予想 44円（中間20円、期末24円予想 ※従来予想38円から6円増配）</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            アシックス 26年12月期 2Q決算発表。インバウンド需要も絶好調で、売上高は前年同期から約1.4倍の308億円へと急拡大しています。売上高は為替の影響を除いても1兆円を突破し、最終利益は史上初の1,000億円超えを見込むという、歴史的な成長フェーズに入っています。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/14 アサヒグループ 26年12月期 2Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>利益</th><td>991億4,800万円（+68.8%）</td></tr>
+                                <tr><th>通期予想</th><td>1,940億円（+59.6%）</td></tr>
+                                <tr><th>利益進捗率</th><td>約51.1% （991億円 / 1,940億円）</td></tr>
+                                <tr><th>配当金</th><td>年間予想 57円（中間26円、期末31円予想）</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            アサヒグループ 26年12月期 2Q決算発表。最終的な利益は前年同期から約7割増と大きく伸びており、通期予想に対する進捗率も51.1%と、中間期として目安となる50%をしっかりとクリアしています。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/13 パワーエックス 26年12月期 2Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>売上高</th><td>68億9,300万円（+48.3%）</td></tr>
+                                <tr><th>営業利益（損失）</th><td>▲10億7,300万円（前年は15億6,300万円赤字から改善）</td></tr>
+                                <tr><th>最終利益（損失）</th><td>▲15億5,100万円（前年は22億3,000万円赤字から改善）</td></tr>
+                                <tr><th>通期予想</th><td>売上高 400億円（380億円から上方修正） / 営業利益 20〜25億円</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            パワーエックス26年12月期 2Q決算発表。今期売上の82%が下期に計上される予定であり、先行して作る生産の進捗率は既に60%に達しているため、計画通りの推移です。さらに驚くべきは今後のパイプラインで、2026〜2030年の正式受注および受注見込みの総額は1,019億円に達しています。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/13 メタプラネット 26年12月期 2Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>売上高</th><td>49億4,400万円（+133.7%）</td></tr>
+                                <tr><th>営業利益</th><td>33億3,100万円（+136.3%）</td></tr>
+                                <tr><th>経常利益（損失）</th><td>▲1,828億7,400万円（前年は105億円黒字）</td></tr>
+                                <tr><th>最終利益（損失）</th><td>▲1,827億7,400万円（前年は60億円黒字）</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            メタプラネット 26年12月期 2Q決算発表。最終損益が1,827億円の赤字となっていますが、これは本業が赤字なわけではありません。本業の儲けを示す営業利益は前年比+136.3%と絶好調です。この巨額赤字の正体は、保有するビットコインの価格下落に伴い、期末時点で約1,842億円の「評価損」を計上したことによる会計上の（現金流出を伴わない）赤字です。同社はビットコインを財務資産として猛烈な勢いで買い集めており、保有量は前年6月末の13,350 BTCから、2026年6月末時点で43,000 BTCにまで急増しています。これにより、マイクロストラテジーなどに次いで、ビットコイン保有量で世界で3番目の上場企業となっています。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/13 すかいらーくHD 26年12月期 2Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>売上収益</th><td>2,424億5,700万円（+9.7%）</td></tr>
+                                <tr><th>事業利益</th><td>169億5,900万円（+13.4%）</td></tr>
+                                <tr><th>最終利益</th><td>101億8,100万円（+29.2%）</td></tr>
+                                <tr><th>通期予想</th><td>最終利益：20,500百万円</td></tr>
+                                <tr><th>配当金</th><td>年間予想 27円</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            すかいらーくHD 26年12月期 2Q決算発表。客数・客単価ともに伸長し、既存店売上高は前年同期比106.4%と好調に推移しています。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/12 東京海上ホールディングス 27年3月期 1Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>最終利益</th><td>2,855億円（+113.6%）</td></tr>
+                                <tr><th>通期予想</th><td>最終利益：8,700億円</td></tr>
+                                <tr><th>利益進捗率</th><td>約32.8%</td></tr>
+                                <tr><th>配当金</th><td>年間予想 179円</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            東京海上ホールディングス27年3月期 1Q決算発表。第1四半期の最終利益は2,855億円と、前年同期からなんと2倍以上に拡大しています。損保の王者にふさわしい、圧倒的な稼ぐ力を見せつけました。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/12 兼松 27年3月期 1Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>収益</th><td>2,721億6,700万円（+8.4%）</td></tr>
+                                <tr><th>営業利益</th><td>174億3,100万円（+63.8%）</td></tr>
+                                <tr><th>最終利益</th><td>117億300万円（+67.6%）</td></tr>
+                                <tr><th>配当金</th><td>年間予想 70円</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            兼松27年3月期 1Q決算発表。営業利益・最終利益ともに前年同期比で60%を超える驚異的な伸びを記録し、大幅な増益を達成しています。中堅商社の中でも際立った成長力を見せつけました。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/10 みずほFG 27年3月期 1Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>経常利益</th><td>3,543億円（+20.4%）</td></tr>
+                                <tr><th>最終利益</th><td>2,893億円（+17.9%）</td></tr>
+                                <tr><th>利益進捗率</th><td>約38.5%</td></tr>
+                                <tr><th>配当金</th><td>年間予想 115円</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            みずほフィナンシャルグループ27年3月期 1Q決算発表。通期目標に対する進捗率はなんと約38.5%に達しています。三菱UFJや三井住友と比較しても、頭一つ抜けた驚異的なロケットスタートです。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/10 三井住友FG 27年3月期 1Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>経常利益</th><td>6,931億円（+43.4%）</td></tr>
+                                <tr><th>最終利益</th><td>5,013億円（+33.0%）</td></tr>
+                                <tr><th>利益進捗率</th><td>約29.5%</td></tr>
+                                <tr><th>配当金</th><td>年間予想 180円</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            三井住友フィナンシャルグループ27年3月期 1Q決算発表。最終利益は前年同期比33.0%増の5,013億円を叩き出しました。通期目標1兆7,000億円に対する進捗率も約29.5%に達しており、好調な滑り出しです。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/10 三菱UFJ 27年3月期 1Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>経常利益</th><td>1兆1,179億円（+57.8%）</td></tr>
+                                <tr><th>最終利益</th><td>8,094億円（+48.2%）</td></tr>
+                                <tr><th>利益進捗率</th><td>約30.0%</td></tr>
+                                <tr><th>配当金</th><td>年間予想 96円</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            三菱UFJ 27年3月期 1Q決算発表。最終利益が8,094億円と、前年同期から約1.5倍に拡大。通期目標2兆7,000億円という高いハードルに対しても、進捗率約30%と文句なしの好発進です。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/10 サッポロHD 26年12月期 2Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>売上収益</th><td>2,359億円（+0.3%）</td></tr>
+                                <tr><th>営業利益</th><td>58億円</td></tr>
+                                <tr><th>最終利益</th><td>2,954億円</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            サッポロHD26年12月期 2Q決算発表。前年同期の最終利益が17億円だったのに対し、今回はなんと2,954億円というジャンプを記録しています。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/10 キリンHD 26年12月期 2Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>売上収益</th><td>1兆2,178億円（+7.2%）</td></tr>
+                                <tr><th>最終利益</th><td>1,017億円（+92.5%）</td></tr>
+                                <tr><th>通期予想</th><td>最終利益 1,600億円</td></tr>
+                                <tr><th>配当金</th><td>予想 76円（中間38円、期末38円予想）</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            キリンHD26年12月期 2Q決算発表。通期予想の最終利益1,600億円に対して第2四半期時点で1,017億円を稼ぎ出しており、非常に強い進捗を見せています。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/7 住友商事 26年度1Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>1Q利益</th><td>1,901億円</td></tr>
+                                <tr><th>通期予想</th><td>6,300億円</td></tr>
+                                <tr><th>利益進捗率</th><td>30%</td></tr>
+                                <tr><th>配当金</th><td>40円変更無し</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            住友商事26年度1Q決算発表。1Q利益1,901億円、利益進捗率30%、配当金40円。進捗率良く、次回の上半期決算で通期見通しの変更を宣言。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/7 双日 26年度1Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>1Q利益</th><td>302億円（+43.4%）</td></tr>
+                                <tr><th>通期予想</th><td>1,300億円変更無し</td></tr>
+                                <tr><th>利益進捗率</th><td>23%</td></tr>
+                                <tr><th>配当金</th><td>180円変更無し</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            双日26年度1Q決算発表。1Q利益302億円、通期予想1,300億円、利益進捗率23%、配当金180円。特にサプライズなし、進捗率やや低めです。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/7 丸紅 26年度1Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>1Q利益</th><td>1,864億円（+20.7%）</td></tr>
+                                <tr><th>通期予想</th><td>5,800億円変更無し</td></tr>
+                                <tr><th>利益進捗率</th><td>32%</td></tr>
+                                <tr><th>配当金</th><td>115円変更無し</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            丸紅26年度1Q決算発表。1Q利益1,864億円、利益進捗率32%、配当金115円。上方修正、増配はないですが前期比大幅増益で進捗率高く、自己株買い1,000億円。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/7 豊田通商 26年度1Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>1Q利益</th><td>1,353億円（+37.5%）</td></tr>
+                                <tr><th>通期予想</th><td>4,000→4,500億円上方修正</td></tr>
+                                <tr><th>利益進捗率</th><td>修正後 29%</td></tr>
+                                <tr><th>配当金</th><td>125円変更無し</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            豊田通商26年度1Q決算発表。1Q利益1,353億円、通期予想4,000→4,500億円上方修正、利益進捗率29%、配当金125円。第一四半期決算で上方修正は強い。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/7 三井物産 26年1Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>1Q利益</th><td>2,941億円（+53%）</td></tr>
+                                <tr><th>通期予想</th><td>9,200億円変更無し</td></tr>
+                                <tr><th>利益進捗率</th><td>32%</td></tr>
+                                <tr><th>配当金</th><td>140円変更無し</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            三井物産26年1Q決算発表。1Q利益2,941億円、利益進捗率32%、配当金140円。自己株買い2,000億円、基礎営業CF累計に対して50%超えに更新。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/7 三菱商事 26年度1Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>1Q利益</th><td>2,985億円（+47%）</td></tr>
+                                <tr><th>通期予想</th><td>1.1兆円変更無し</td></tr>
+                                <tr><th>利益進捗率</th><td>27%</td></tr>
+                                <tr><th>配当金</th><td>125円変更無し</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            三菱商事26年度1Q決算発表。1Q利益2,985億円、利益進捗率27%、配当金125円。今回上方修正はありませんでしたが、第2四半期に上方修正余地を精査と匂わせありです。
+                        </div>
+                    </div>
+                </details>
+
+                <details class="stock-card">
+                    <summary class="stock-summary">2026/8/7 伊藤忠商事 26年度1Q決算</summary>
+                    <div class="stock-details">
+                        <div class="table-responsive">
+                            <table class="data-table">
+                                <tr><th>1Q利益</th><td>2,938億円（+3%）</td></tr>
+                                <tr><th>通期予想</th><td>9,500億円変更無し</td></tr>
+                                <tr><th>利益進捗率</th><td>31%</td></tr>
+                                <tr><th>配当金</th><td>44円変更無し</td></tr>
+                            </table>
+                        </div>
+                        <div class="comment-box">
+                            伊藤忠商事26年度1Q決算発表。1Q利益2,938億円、利益進捗率31%、配当金44円。今回の決算発表に合わせて3,000億円の自社株買いの開始が発表。
+                        </div>
+                    </div>
+                </details>
+
+            </div>
+
+            <div class="pr-box" style="margin: 30px 0;">
+                <p style="font-size: 16px; font-weight: bold; margin-top: 0; text-align: center;">高配当株投資を始めるなら！手数料0円の松井証券</p>
+                <a href="https://px.a8.net/svt/ejp?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" rel="nofollow" class="pr-button">松井証券の口座開設はこちら</a>
+                <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" alt="">
+            </div>
+
+        </div>
+
+        <div class="sidebar">
+            <div class="pr-box">
+                <p style="font-size: 14px; font-weight: bold; margin-top: 0;">投資の必須アイテム！</p>
+                <a href="https://rpx.a8.net/svt/ejp?a8mat=4B9X1F+4JQ84Y+2HOM+6V4LU&rakuten=y&a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2F0eac8dc2.9a477d4e.0eac8dc3.0aa56a48%2Fa26080341016_4B9X1F_4JQ84Y_2HOM_6V4LU%3Fpc%3Dhttp%253A%252F%252Fbooks.rakuten.co.jp%252F%26m%3Dhttp%253A%252F%252Fbooks.rakuten.co.jp%252F" rel="nofollow" class="pr-button">楽天ブックスで四季報を探す</a>
+                <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4B9X1F+4JQ84Y+2HOM+6V4LU" alt="">
+            </div>
+        </div>
+
+    </div>
+
+</body>
+</html>
