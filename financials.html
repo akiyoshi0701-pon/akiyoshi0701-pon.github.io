@@ -47,6 +47,13 @@
         .comment-box { background-color: #f9fbfd; border-left: 4px solid #2c7cbf; padding: 12px 15px; font-size: 14px; color: #444; line-height: 1.6; border-radius: 0 6px 6px 0; }
         .pr-box { background-color: white; border: 2px solid #ffebd6; border-radius: 8px; padding: 15px; text-align: center; margin-bottom: 20px;}
         .pr-button { display: inline-block; background-color: #f39c12; color: white; text-decoration: none; font-weight: bold; padding: 15px 20px; border-radius: 6px; width: 90%; box-sizing: border-box; box-shadow: 0 3px 0 #d68910; }
+        
+        /* 検索バーのデザイン */
+        .search-box { margin-bottom: 20px; }
+        .search-box input { width: 100%; padding: 15px; font-size: 16px; border: 2px solid #e2eef7; border-radius: 8px; outline: none; transition: border-color 0.3s; box-sizing: border-box; }
+        .search-box input:focus { border-color: #2c7cbf; }
+        .no-result-msg { display: none; text-align: center; padding: 20px; background-color: white; border-radius: 8px; color: #888; border: 1px solid #e0e0e0; margin-bottom: 20px; }
+
         @media (max-width: 600px) {
             header { padding: 30px 15px; }
             header h1 { font-size: 18px; word-break: keep-all; }
@@ -80,6 +87,13 @@
             <div class="page-title">
                 <h2>📑 決算情報速報</h2>
                 <p>注目の高配当バリュー株の最新決算発表内容とポイントのまとめです。</p>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 銘柄名やキーワード（増配・上方修正など）で検索...">
+            </div>
+            <div id="noResultMessage" class="no-result-msg">
+                該当する銘柄が見つかりませんでした。
             </div>
 
             <div class="stock-list">
@@ -127,7 +141,7 @@
 <details class="stock-card"><summary class="stock-summary">2026/8/10 キリンHD 26年12月期 2Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>売上収益</th><td>1兆2,178億円（+7.2%）</td></tr><tr><th>最終利益</th><td>1,017億円（+92.5%）</td></tr><tr><th>通期予想</th><td>最終利益 1,600億円</td></tr><tr><th>配当金</th><td>予想 76円（中間38円、期末38円予想）</td></tr></table></div><div class="comment-box">キリンHD26年12月期 2Q決算発表。通期予想の最終利益1,600億円に対して第2四半期時点で1,017億円を稼ぎ出しており、非常に強い進捗を見せています。</div></div></details>
 
 <!-- 2026/8/7 -->
-<details class="stock-card"><summary class="stock-summary">2026/8/7 理研ビタミン 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>18億6,900万円（+2.4%）</td></tr><tr><th>通期予想</th><td>75億円（+6.6%）</td></tr><tr><th>利益進捗率</th><td>約24.9% （18.69億円 / 75.0億円）</td></tr><tr><th>配当金</th><td>年間予想 110円</td></tr></table></div><div class="comment-box">理研ビタミン 27年3月期 1Q決算発表。国内食品、国内化成品その他、海外事業のすべてのセグメントで増収となり、売上高は前年同期比+8.1%の251億33百万円を達成しました。特に海外事業は、世界各地での販売数量回復や為替効果、米国関税の還付などが寄与し、前年同期の赤字（△0百万円）から1億5,100万円の黒字へ転換しています。前第3四半期に行ったアスベスト除去費用に関する資産除去債務の見積もり変更（約1.88億円の利益押し下げ要因）や人件費の増加により、営業利益は同△4.9%の22億48百万円となりました。しかし、受取配当金や投資有価証券売却益などの寄与もあり、最終利益は前年同期比+2.4%の18億6,900万円と増益を維持しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 理研ビタミン 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>18億6,900万円（+2.4%）</td></tr><tr><th>通期予想</th><td>75億円（+6.6%）</td></tr><tr><th>利益進捗率</th><td>約24.9% （18.69億円 / 75.0億円）</td></tr><tr><th>配当金</th><td>年間予想 110円</td></tr></table></div><div class="comment-box">理研ビタミン 27年3月期 1Q決算発表。国内食品、国内化成品その他、海外事業のすべてのセグメントで増収となり、売上高は前年同期比+8.1%の251億33百万円を達成しました。特に海外事業は、世界各地での販売数量回復や為替効果、米国関税の還付などが寄寄し、前年同期の赤字（△0百万円）から1億5,100万円の黒字へ転換しています。前第3四半期に行ったアスベスト除去費用に関する資産除去債務の見積もり変更（約1.88億円の利益押し下げ要因）や人件費の増加により、営業利益は同△4.9%の22億48百万円となりました。しかし、受取配当金や投資有価証券売却益などの寄与もあり、最終利益は前年同期比+2.4%の18億6,900万円と増益を維持しています。</div></div></details>
 <details class="stock-card"><summary class="stock-summary">2026/8/7 モスフードサービス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>5億8,300万円（△53.8%）</td></tr><tr><th>通期予想</th><td>36億円（+21.5%）</td></tr><tr><th>利益進捗率</th><td>約16.2% （5.83億円 / 36.00億円）</td></tr><tr><th>配当金</th><td>年間予想 34円</td></tr></table></div><div class="comment-box">モスフードサービス 27年3月期 1Q決算発表。国内モスバーガー事業において「価格のグラデーション化戦略」や定番商品のリニューアルが奏功し、売上高は前年同期比+3.6%の246億36百万円と増収を確保しました。一方で、原材料価格の高騰や店舗・運営コストの上昇を吸収しきれず、営業利益は同△52.9%の8億11百万円、最終利益は同△53.8%の5億83百万円と大幅な減益スタートとなっています。2026年7月31日付で「おぼん de ごはん」や「だし茶漬け えん」等を展開する株式会社ビー・ワイ・オーの全株式を取得し、完全子会社化を完了しました。第2四半期から連結寄与する見込みです。1Qの進捗率は約16.2%と出遅れが見られるものの、M&Aによるシナジー創出や高収益店舗モデルの開発を進め、通期の増益・配当維持を目指す方針です。</div></div></details>
 <details class="stock-card"><summary class="stock-summary">2026/8/7 サイバーエージェント 26年9月期 3Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>360億3,500万円（+49.5%）</td></tr><tr><th>通期予想</th><td>410億円（+29.5%）</td></tr><tr><th>利益進捗率</th><td>約87.9% （360.35億円 / 410.0億円）</td></tr><tr><th>配当金</th><td>年間予想 20円</td></tr></table></div><div class="comment-box">サイバーエージェント 26年9月期 3Q決算発表。主力ゲームタイトルの好調に加え、カジュアルゲームがグローバル規模でヒットしたことで、ゲーム事業の売上高は1,933億9,100万円、営業利益は509億2,300万円と爆発的な伸びを記録しました。グループ全体の利益成長を大きく牽引しています。メディア＆IP事業は「ABEMA」や「WINTICKET」、アニメ＆IP事業が重層的に売上を積み上げ、売上高1,839億3,100万円となりました。特に「ABEMA」の黒字化定着が寄与し、同セグメントの営業利益は131億7,800万円と利益体質への転換が鮮明になっています。</div></div></details>
 <details class="stock-card"><summary class="stock-summary">2026/8/7 AOKIホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>3億1,800万円（△75.6%）</td></tr><tr><th>通期予想</th><td>100億円（+5.7%）</td></tr><tr><th>利益進捗率</th><td>約3.2% （3.18億円 / 100.0億円）</td></tr><tr><th>配当金</th><td>年間予想 90円</td></tr></table></div><div class="comment-box">AOKIホールディングス 27年3月期 1Q決算発表。主力のファッション事業（AOKI・ORIHICA）において、高通気スーツやビジカジ商品の拡充を図ったものの、6月の天候不順・気温低下が影響し既存店売上が鈍化。ファッション事業単体で2億2百万円の営業損失に転落したことが全体の利益を大きく押し下げました。複合カフェ「快活CLUB」での鍵付完全個室の拡大や期間限定メニューの投入、フィットネス「FiT24」の会員獲得が奏功。エンターテイメント事業の売上高は185億96百万円、営業利益は16億8百万円と堅調に推移し、グループの収益を支えています。</div></div></details>
@@ -162,9 +176,9 @@
 <details class="stock-card"><summary class="stock-summary">2026/8/3 大和証券グループ本社 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>564億1,400万円（+80.6%）</td></tr><tr><th>通期予想</th><td>非開示</td></tr><tr><th>利益進捗率</th><td>—</td></tr><tr><th>配当金</th><td>年間予想 44円</td></tr></table></div><div class="comment-box">大和証券グループ本社 27年3月期 1Q決算発表。活発な株式市場を背景に委託手数料や大型IPO等の引受手数料、トレーディング損益が大きく伸長しました。純営業収益は2,203億99百万円、経常利益は880億89百万円、最終利益は564億14百万円と極めて強い決算です。2026年8月3日付でオリックス銀行の全株式を取得し完全子会社化を完了。大和ネクスト銀行の預金基盤とオリックス銀行の不動産融資・信託機能を融合させ、富裕層向けコンサルティングおよびグループの安定収益力の大幅な底上げを図っています。</div></div></details>
 
 <!-- 2026/7/31 -->
+<details class="stock-card"><summary class="stock-summary">2026/7/31 王将フードサービス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>9億8,800万円（△53.7%）</td></tr><tr><th>通期予想</th><td>70億9,600万円（△5.0%）</td></tr><tr><th>利益進捗率</th><td>約13.9% （9.88億円 / 70.96億円）</td></tr><tr><th>配当金</th><td>年間予想 56円</td></tr></table></div><div class="comment-box">王将フードサービス 27年3月期 1Q決算発表。原材料高や包材費・光熱費の上昇に加え、人件費等の増加が重なり、営業利益は同△52.8%の14億15百万円、最終利益は同△53.7%の9億88百万円と減益を余儀なくされています。ファン組織「ぎょうざ倶楽部」の会員数は過去最多の136万人を突破。1Qの利益進捗率は約13.9%にとどまったものの、7月から展開している同社史上初の季節限定「夏餃子」や「夏ラーメン」が好調に推移しており、第2四半期以降の収益回復を見込んで通期予想・配当予想ともに据え置いています。</div></div></details>
 <details class="stock-card"><summary class="stock-summary">2026/7/31 三井住友フィナンシャルグループ 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>5,013億7,200万円（+33.0%）</td></tr><tr><th>通期予想</th><td>1兆7,000億円（+7.4%）</td></tr><tr><th>利益進捗率</th><td>約29.5% （5,013.7億円 / 17,000.0億円）</td></tr><tr><th>配当金</th><td>年間予想 180円</td></tr></table></div><div class="comment-box">三井住友フィナンシャルグループ 27年3月期 1Q決算発表。国内外での資金運用収益の拡大や各種手数料ビジネスの伸長により、経常収益は前年同期比+16.6%の2兆8,504億円、最終利益は同+33.0%の5,013億円と大幅な増収増益を達成しました。 全事業部門が好調で進捗率約29.5%の好発進：通期の最終利益予想（1兆7,000億円）に対して、第1四半期時点で約29.5%という高い進捗率を叩き出しました。ホールセールやリテール、グローバル、市場事業部門の全てにおいて本業の儲けを示す「業務純益」が前年を上回っており、死角のない決算となっています。</div></div></details>
 <details class="stock-card"><summary class="stock-summary">2026/7/31 ヤクルト本社 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>135億9,100万円（+17.2%）</td></tr><tr><th>通期予想</th><td>465億円（+5.1%）</td></tr><tr><th>利益進捗率</th><td>約29.2% （135.91億円 / 465.0億円）</td></tr><tr><th>配当金</th><td>年間予想 72円</td></tr></table></div><div class="comment-box">ヤクルト本社 27年3月期 1Q決算発表。国内では物価高の影響で主力飲料が苦戦し、経常利益は156億47百万円と減益スタートになりました。しかし、アジア・オセアニア地域や米州地域など海外事業が力強く成長。投資有価証券売却益などの特別利益も加わり、最終利益は前年同期比+17.2%の増益を確保しています。成長エンジンのアジア市場では、インドネシアでの「ストロベリー風味」や中国での「マンゴー風味」、ベトナムでの「ピーチ風味」など、現地の嗜好に合わせた新商品を次々と投入。給食・病院への販路拡大やEC強化により、海外販売本数を着実に伸ばしています。自社株買い（553万株の消却）や、前期実績から2円の増配（年間72円予想）を実施しており、強固な財務と株主還元姿勢が光る決算です。</div></div></details>
-<details class="stock-card"><summary class="stock-summary">2026/7/31 王将フードサービス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>9億8,800万円（△53.7%）</td></tr><tr><th>通期予想</th><td>70億9,600万円（△5.0%）</td></tr><tr><th>利益進捗率</th><td>約13.9% （9.88億円 / 70.96億円）</td></tr><tr><th>配当金</th><td>年間予想 56円</td></tr></table></div><div class="comment-box">王将フードサービス 27年3月期 1Q決算発表。原材料高や包材費・光熱費の上昇に加え、人件費等の増加が重なり、営業利益は同△52.8%の14億15百万円、最終利益は同△53.7%の9億88百万円と減益を余儀なくされています。ファン組織「ぎょうざ倶楽部」の会員数は過去最多の136万人を突破。1Qの利益進捗率は約13.9%にとどまったものの、7月から展開している同社史上初の季節限定「夏餃子」や「夏ラーメン」が好調に推移しており、第2四半期以降の収益回復を見込んで通期予想・配当予想ともに据え置いています。</div></div></details>
 
 <!-- 2026/7/30 -->
 <details class="stock-card"><summary class="stock-summary">2026/7/30 オリエンタルランド 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>412億9,700万円（+50.3%）</td></tr><tr><th>通期予想</th><td>1,137億9,700万円（+6.6%）</td></tr><tr><th>利益進捗率</th><td>約36.3% （412.97億円 / 1,137.97億円）</td></tr><tr><th>配当金</th><td>年間予想 16円</td></tr></table></div><div class="comment-box">オリエンタルランド 27年3月期 1Q決算発表。最終純利益は412億97百万円と力強い成長を達成しました。テーマパーク事業においてアトラクション・ショー収入や商品・飲食販売が軒並み伸長し、業績を大きく押し上げています。通期の最終利益予想（1,137億97百万円）に対して、第1四半期だけで約36.3%を稼ぎ出しています。夏休みやハロウィーン、クリスマスといった後半の繁忙期を前に、年間目標達成に向けて非常に余裕のある好スタートです。今期より新規事業であるディズニークルーズの展開に向け「株式会社オリエンタルランド・クルーズ」を新たに連結子会社化しました。高い収益基盤と自己資本比率69.5%という強固な財務体質を背景に、年間配当は前期実績から16円への増配を予定しています。</div></div></details>
@@ -256,27 +270,32 @@
                 <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www26.a8.net/svt/bgt?aid=260828404189&wid=001&eno=01&mid=s00000025262002010000&mc=1"></a>
                 <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BAGHG+34IY42+5EX8+BYT9D" alt="">
             </div>
-            
-            <div class="pr-box" style="padding: 10px;">
-　　　　　　　　　　<a href="https://px.a8.net/svt/ejp?a8mat=4BC36J+6D7WOI+4X1W+TSJ41" rel="nofollow">
-　　　　　　　　　　<img border="0" width="300" height="250" alt="" src="https://www29.a8.net/svt/bgt?aid=260904475385&wid=001&eno=01&mid=s00000022946005004000&mc=1"></a>
-　　　　　　　　　　<img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BC36J+6D7WOI+4X1W+TSJ41" alt="">
-            </div>
-
-             <div class="pr-box" style="padding: 10px;">
-　　　　　　　　　　<a href="https://px.a8.net/svt/ejp?a8mat=4BC36J+79YQYA+5WG2+5YZ75" rel="nofollow">
-　　　　　　　　　　<img border="0" width="300" height="250" alt="" src="https://www23.a8.net/svt/bgt?aid=260904475440&wid=001&eno=01&mid=s00000027533001003000&mc=1"></a>
-　　　　　　　　　　<img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4BC36J+79YQYA+5WG2+5YZ75" alt="">
-            </div>
-            
-             <div class="pr-box" style="padding: 10px;">
-　　　　　　　　　　<a href="https://px.a8.net/svt/ejp?a8mat=4BC36J+7WL7XU+5NJ8+5Z6WX" rel="nofollow">
-　　　　　　　　　　<img border="0" width="300" height="250" alt="" src="https://www21.a8.net/svt/bgt?aid=260904475478&wid=001&eno=01&mid=s00000026378001004000&mc=1"></a>
-　　　　　　　　　　<img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BC36J+7WL7XU+5NJ8+5Z6WX" alt="">
-            </div>
         </div>
-
     </div>
 
+    <script>
+        document.getElementById('searchInput').addEventListener('input', function() {
+            const searchQuery = this.value.toLowerCase();
+            const stockCards = document.querySelectorAll('.stock-card');
+            let visibleCount = 0;
+
+            stockCards.forEach(function(card) {
+                const cardText = card.textContent.toLowerCase();
+                if (cardText.includes(searchQuery)) {
+                    card.style.display = '';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+
+            const noResultMessage = document.getElementById('noResultMessage');
+            if (visibleCount === 0) {
+                noResultMessage.style.display = 'block';
+            } else {
+                noResultMessage.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
