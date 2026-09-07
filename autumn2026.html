@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBSS7W0R67"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-ZBSS7W0R67');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026四季報秋号 - 1億円投資家の優良配当株選び</title>
+    <style>
+        * { box-sizing: border-box; }
+        body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; background-color: #f0f4f8; color: #333; margin: 0; padding: 0; line-height: 1.6; }
+        header { position: relative; background-image: url('IMG_0372.jpeg'); background-size: cover; background-position: center; color: white; padding: 50px 20px; text-align: center; }
+        header::before { content: ''; position: absolute; top: 0; right: 0; bottom: 0; left: 0; background-color: rgba(26, 91, 146, 0.7); z-index: 1; }
+        header h1, header p { position: relative; z-index: 2; }
+        header h1 { margin: 0; font-size: 26px; text-shadow: 1px 1px 3px rgba(0,0,0,0.5); }
+        header p { margin: 10px 0 0; font-size: 15px; opacity: 0.95; text-shadow: 1px 1px 2px rgba(0,0,0,0.5); }
+        nav { background-color: #1a5b92; display: flex; justify-content: flex-start; overflow-x: auto; white-space: nowrap; -webkit-overflow-scrolling: touch; }
+        nav::-webkit-scrollbar { display: none; }
+        nav { -ms-overflow-style: none; scrollbar-width: none; }
+        nav a { color: white; text-decoration: none; padding: 15px 25px; font-size: 15px; transition: background-color 0.3s; flex-shrink: 0; }
+        nav a:hover { background-color: #134674; }
+        .active-nav { background-color: #134674; font-weight: bold; }
+        .container { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 20px auto; padding: 0 15px; gap: 20px; }
+        .main-content { flex: 1 1 600px; min-width: 0; max-width: 100%; overflow: hidden; }
+        .sidebar { flex: 1 1 300px; min-width: 0; max-width: 100%; overflow: hidden; }
+        .page-title { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 5px solid #ff9800; }
+        .page-title h2 { margin: 0; color: #2c7cbf; font-size: 22px; }
+        .page-title p { margin: 10px 0 0 0; color: #555; font-size: 14px; }
+        .stock-list { display: flex; flex-direction: column; gap: 15px; }
+        .stock-card { background-color: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #e0e0e0; width: 100%; }
+        .stock-summary { padding: 15px 20px; font-size: 18px; font-weight: bold; color: #1a5b92; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background-color: #f9fbfd; transition: background-color 0.2s; word-break: keep-all; }
+        .stock-summary:hover { background-color: #f0f4f8; }
+        .stock-summary::-webkit-details-marker { display: none; }
+        .stock-summary::after { content: "▼ 開く"; font-size: 13px; color: #888; background-color: #fff; padding: 4px 10px; border-radius: 20px; border: 1px solid #ddd; white-space: nowrap; }
+        .stock-card[open] .stock-summary::after { content: "▲ 閉じる"; background-color: #e2eef7; color: #1a5b92; border-color: #2c7cbf; }
+        .stock-details { padding: 20px; border-top: 1px solid #eee; }
+        .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
+        .data-table { width: 100%; border-collapse: collapse; margin-top: 10px; table-layout: fixed; word-wrap: break-word; }
+        .data-table th, .data-table td { border: 1px solid #e0e0e0; padding: 12px; font-size: 14px; }
+        .data-table th { background-color: #f4f7fa; width: 28%; text-align: left; color: #333; font-weight: bold; }
+        .data-table td { background-color: #fff; color: #444; line-height: 1.5; }
+        .perf-table th, .perf-table td { white-space: nowrap; }
+        .perf-table th { background-color: #e2eef7; text-align: center; }
+        .perf-table th:not(:first-child), .perf-table td:not(:first-child) { text-align: right; width: 25%; }
+        .highlight-red { color: #d32f2f; font-weight: bold; }
+        .highlight-blue { color: #1976d2; font-weight: bold; }
+        .pr-box { background-color: white; border: 2px solid #ffebd6; border-radius: 8px; padding: 15px; text-align: center; margin-bottom: 20px; }
+        .pr-button { display: inline-block; background-color: #f39c12; color: white; text-decoration: none; font-weight: bold; padding: 15px 20px; border-radius: 6px; width: 90%; box-sizing: border-box; box-shadow: 0 3px 0 #d68910; }
+        
+        /* 検索バーのデザイン（大型化版） */
+        .search-box { margin-bottom: 25px; }
+        .search-box input { width: 100%; padding: 18px 20px; font-size: 18px; border: 2px solid #c8dfee; border-radius: 12px; outline: none; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05); transition: all 0.3s ease; box-sizing: border-box; }
+        .search-box input:focus { border-color: #1a5b92; box-shadow: 0 4px 12px rgba(26, 91, 146, 0.15); }
+        .db-result-area { margin-bottom: 40px; }
+        .no-result-msg { display: none; text-align: center; padding: 20px; background-color: white; border-radius: 8px; color: #888; border: 1px solid #e0e0e0; margin-bottom: 20px; }
+        
+        @media (max-width: 600px) {
+            header { padding: 30px 15px; }
+            header h1 { font-size: 18px; word-break: keep-all; }
+            header p { font-size: 12px; }
+            nav a { padding: 10px; font-size: 12px; }
+            .page-title h2 { font-size: 18px; }
+            .stock-summary { font-size: 14px; padding: 12px 15px; }
+            .data-table th, .data-table td { font-size: 12px; padding: 8px; }
+            .data-table th { width: 32%; }
+            .stock-details { padding: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>1億円投資家の優良配当株選び</h1>
+        <p>〜全3,800銘柄から厳選！初心者でも安心のバリュー投資〜</p>
+    </header>
+
+    <nav>
+        <a href="index.html">ホーム</a>
+        <a href="financials.html">決算情報</a>
+        <a href="summer2026.html">2026四季報夏号</a>
+        <a href="autumn2026.html" class="active-nav">2026四季報秋号</a>
+        <a href="spring2026.html">2026四季報春号</a>
+    </nav>
+
+    <div class="container">
+        <div class="main-content">
+            
+            <!-- ① データベース検索エリア -->
+            <div class="page-title" style="border-left-color: #4CAF50;">
+                <h2>🔍 2026四季報秋号 情報検索</h2>
+                <p>四季報データから気になる銘柄を検索できます。銘柄名・コード・キーワード（増配など）を入力してください。</p>
+            </div>
+            <div class="search-box">
+                <input type="text" id="shikihoSearchInput" placeholder="例：8001、伊藤忠商事、増配...">
+            </div>
+            <div id="shikihoSearchResults" class="db-result-area stock-list"></div>
+
+            <!-- ② 厳選リストエリア -->
+            <div class="page-title">
+                <h2>🍂 2026四季報秋号 厳選リスト</h2>
+                <p>9月16日発売の四季報秋号から、スクリーニング基準をクリアしたお宝銘柄を随時追加していきます。</p>
+                
+                <details class="stock-card" style="margin-top: 15px; border-left: 5px solid #2c7cbf;">
+                    <summary class="stock-summary" style="background-color: #f4f7fa; color: #1a5b92;">
+                        📊 日経平均との比較（集計待ち）
+                    </summary>
+                    <div class="stock-details">
+                        <p style="font-size: 14px; color: #555;">日経平均の上がり率よりもピックアップ銘柄が上がっているか検証</p>
+                        <div style="background-color: #f4f7fa; padding: 20px; border-radius: 6px; text-align: center; color: #888;">
+                            ※秋号発売後に集計を開始します。
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="stock-list">
+                <!-- 発売後にここへ銘柄を追加していきます -->
+                <div style="text-align: center; padding: 40px 20px; color: #888; background-color: white; border-radius: 8px; border: 1px dashed #ddd;">
+                    📝 2026四季報秋号の発売（9/16）をお待ちください。
+                </div>
+            </div>
+
+            <div class="pr-box" style="margin: 30px 0;">
+                <p style="font-size: 16px; font-weight: bold; margin-top: 0; text-align: center;">高配当株投資を始めるなら！手数料0円の松井証券</p>
+                <a href="https://px.a8.net/svt/ejp?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" rel="nofollow" class="pr-button">松井証券の口座開設はこちら</a>
+                <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" alt="">
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <div class="pr-box">
+                <p style="font-size: 14px; font-weight: bold; margin-top: 0;">投資の必須アイテム！</p>
+                <a href="https://rpx.a8.net/svt/ejp?a8mat=4B9X1F+4JQ84Y+2HOM+6V4LU&rakuten=y&a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2F0eac8dc2.9a477d4e.0eac8dc3.0aa56a48%2Fa26080341016_4B9X1F_4JQ84Y_2HOM_6V4LU%3Fpc%3Dhttp%253A%252F%252Fbooks.rakuten.co.jp%252F%26m%3Dhttp%253A%252F%252Fbooks.rakuten.co.jp%252F" rel="nofollow" class="pr-button">楽天ブックスで四季報を探す</a>
+                <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4B9X1F+4JQ84Y+2HOM+6V4LU" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BAEXE+7EQ7SI+5W58+5YZ75" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www21.a8.net/svt/bgt?aid=260826386448&wid=001&eno=01&mid=s00000027494001003000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BAEXE+7EQ7SI+5W58+5YZ75" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4B9XT9+C4ER76+3XCC+BYT9D" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www22.a8.net/svt/bgt?aid=260804205733&wid=001&eno=01&mid=s00000018318002010000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4B9XT9+C4ER76+3XCC+BYT9D" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+2A5U9E+2PEO+1I5DGX" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www29.a8.net/svt/bgt?aid=260828404138&wid=001&eno=01&mid=s00000012624009095000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BAGHG+2A5U9E+2PEO+1I5DGX" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+30YCHE+50+7S2AYP" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www20.a8.net/svt/bgt?aid=260828404183&wid=001&eno=01&mid=s00000000018047040000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BAGHG+30YCHE+50+7S2AYP" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+3BO5DE+5VDQ+BXB8X" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www27.a8.net/svt/bgt?aid=260828404201&wid=001&eno=01&mid=s00000027395002003000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BAGHG+3BO5DE+5VDQ+BXB8X" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+34IY42+5EX8+BYT9D" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www26.a8.net/svt/bgt?aid=260828404189&wid=001&eno=01&mid=s00000025262002010000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BAGHG+34IY42+5EX8+BYT9D" alt="">
+            </div>
+        </div>
+    </div>
+
+    <!-- 👇データベース検索の仕組み（JavaScript）👇 -->
+    <script>
+        // ▼▼▼ 今後ここに秋号データを追加していきます ▼▼▼
+        const shikihoData = [
+            
+        ];
+        // ▲▲▲ データ追加エリア ここまで ▲▲▲
+
+        const searchInput = document.getElementById('shikihoSearchInput');
+        const resultsContainer = document.getElementById('shikihoSearchResults');
+        const noResultMessage = document.getElementById('noResultMessage');
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            resultsContainer.innerHTML = ''; 
+
+            if (query.length === 0) {
+                noResultMessage.style.display = 'none';
+                return; 
+            }
+
+            let matchCount = 0;
+
+            shikihoData.forEach(item => {
+                const searchTarget = `${item.code} ${item.name} ${item.industry} ${item.outline} ${item.evaluation}`.toLowerCase();
+                
+                if (searchTarget.includes(query)) {
+                    matchCount++;
+                    const cardHTML = `
+                        <details class="stock-card" open style="border: 2px solid #2c7cbf;">
+                            <summary class="stock-summary" style="background-color: #e2eef7;">${item.code} ${item.name}</summary>
+                            <div class="stock-details">
+                                <div class="table-responsive">
+                                    <table class="data-table">
+                                        <tr><th>業種</th><td>${item.industry}</td></tr>
+                                        <tr><th>会社概要</th><td>${item.outline}</td></tr>
+                                        <tr><th>四季報の評価</th><td>${item.evaluation}</td></tr>
+                                        <tr><th>実績PER / PBR</th><td>${item.perPbr}</td></tr>
+                                        <tr><th>配当利回り</th><td>${item.yield}</td></tr>
+                                        <tr><th>業績予想<br>(売上高 / 純利益)</th><td>${item.forecast}</td></tr>
+                                        <tr><th>自己資本比率 / ROE</th><td>${item.equityRoe}</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </details>
+                    `;
+                    resultsContainer.insertAdjacentHTML('beforeend', cardHTML);
+                }
+            });
+
+            if (matchCount === 0) {
+                noResultMessage.style.display = 'block';
+            } else {
+                noResultMessage.style.display = 'none';
+            }
+        });
+    </script>
+</body>
+</html>
