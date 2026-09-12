@@ -10,7 +10,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026四季報夏号 - 1億円投資家の優良配当株選び</title>
+    <title>決算情報 - 1億円投資家の優良配当株選び</title>
     <style>
         * { box-sizing: border-box; }
         body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; background-color: #f0f4f8; color: #333; margin: 0; padding: 0; line-height: 1.6; }
@@ -33,31 +33,44 @@
         .page-title p { margin: 10px 0 0 0; color: #555; font-size: 14px; }
         .stock-list { display: flex; flex-direction: column; gap: 15px; }
         .stock-card { background-color: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); overflow: hidden; border: 1px solid #e0e0e0; width: 100%; }
-        .stock-summary { padding: 15px 20px; font-size: 18px; font-weight: bold; color: #1a5b92; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background-color: #f9fbfd; transition: background-color 0.2s; word-break: keep-all; }
+        .stock-summary { padding: 15px 20px; font-size: 17px; font-weight: bold; color: #1a5b92; cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: center; background-color: #f9fbfd; transition: background-color 0.2s; word-break: break-all; }
         .stock-summary:hover { background-color: #f0f4f8; }
         .stock-summary::-webkit-details-marker { display: none; }
-        .stock-summary::after { content: "▼ 開く"; font-size: 13px; color: #888; background-color: #fff; padding: 4px 10px; border-radius: 20px; border: 1px solid #ddd; white-space: nowrap; }
+        .stock-summary::after { content: "▼ 開く"; font-size: 13px; color: #888; background-color: #fff; padding: 4px 10px; border-radius: 20px; border: 1px solid #ddd; white-space: nowrap; margin-left: 10px; }
         .stock-card[open] .stock-summary::after { content: "▲ 閉じる"; background-color: #e2eef7; color: #1a5b92; border-color: #2c7cbf; }
         .stock-details { padding: 20px; border-top: 1px solid #eee; }
-        .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; }
-        .data-table { width: 100%; border-collapse: collapse; margin-top: 10px; table-layout: fixed; word-wrap: break-word; }
-        .data-table th, .data-table td { border: 1px solid #e0e0e0; padding: 12px; font-size: 14px; }
-        .data-table th { background-color: #f4f7fa; width: 28%; text-align: left; color: #333; font-weight: bold; }
-        .data-table td { background-color: #fff; color: #444; line-height: 1.5; }
-        .perf-table th, .perf-table td { white-space: nowrap; }
-        .perf-table th { background-color: #e2eef7; text-align: center; }
-        .perf-table th:not(:first-child), .perf-table td:not(:first-child) { text-align: right; width: 25%; }
-        .highlight-red { color: #d32f2f; font-weight: bold; }
-        .highlight-blue { color: #1976d2; font-weight: bold; }
-        .pr-box { background-color: white; border: 2px solid #ffebd6; border-radius: 8px; padding: 15px; text-align: center; margin-bottom: 20px; }
+        .table-responsive { overflow-x: auto; -webkit-overflow-scrolling: touch; width: 100%; margin-bottom: 15px; }
+        .data-table { width: 100%; border-collapse: collapse; table-layout: fixed; word-wrap: break-word; }
+        .data-table th, .data-table td { border: 1px solid #e0e0e0; padding: 10px 12px; font-size: 14px; }
+        .data-table th { background-color: #f4f7fa; width: 30%; text-align: left; color: #1a5b92; font-weight: bold; }
+        .data-table td { background-color: #fff; color: #333; }
+        .comment-box { background-color: #f9fbfd; border-left: 4px solid #2c7cbf; padding: 12px 15px; font-size: 14px; color: #444; line-height: 1.6; border-radius: 0 6px 6px 0; }
+        .pr-box { background-color: white; border: 2px solid #ffebd6; border-radius: 8px; padding: 15px; text-align: center; margin-bottom: 20px;}
         .pr-button { display: inline-block; background-color: #f39c12; color: white; text-decoration: none; font-weight: bold; padding: 15px 20px; border-radius: 6px; width: 90%; box-sizing: border-box; box-shadow: 0 3px 0 #d68910; }
         
         /* 検索バーのデザイン（大型化版） */
         .search-box { margin-bottom: 25px; }
-        .search-box input { width: 100%; padding: 18px 20px; font-size: 18px; border: 2px solid #c8dfee; border-radius: 12px; outline: none; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05); transition: all 0.3s ease; box-sizing: border-box; }
-        .search-box input:focus { border-color: #1a5b92; box-shadow: 0 4px 12px rgba(26, 91, 146, 0.15); }
-        .db-result-area { margin-bottom: 40px; }
+        .search-box input { 
+            width: 100%; 
+            padding: 18px 20px; 
+            font-size: 18px; 
+            border: 2px solid #c8dfee; 
+            border-radius: 12px; 
+            outline: none; 
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05); 
+            transition: all 0.3s ease; 
+            box-sizing: border-box; 
+        }
+        .search-box input:focus { 
+            border-color: #1a5b92; 
+            box-shadow: 0 4px 12px rgba(26, 91, 146, 0.15); 
+        }
         .no-result-msg { display: none; text-align: center; padding: 20px; background-color: white; border-radius: 8px; color: #888; border: 1px solid #e0e0e0; margin-bottom: 20px; }
+        
+        /* もっと見るボタンのデザイン */
+        .load-more-container { text-align: center; margin: 30px 0; }
+        .load-more-btn { background-color: #1a5b92; color: white; border: none; padding: 14px 40px; font-size: 16px; border-radius: 30px; cursor: pointer; font-weight: bold; box-shadow: 0 4px 6px rgba(0,0,0,0.1); transition: background-color 0.3s, transform 0.2s; }
+        .load-more-btn:hover { background-color: #134674; transform: translateY(-2px); }
 
         @media (max-width: 600px) {
             header { padding: 30px 15px; }
@@ -67,8 +80,9 @@
             .page-title h2 { font-size: 18px; }
             .stock-summary { font-size: 14px; padding: 12px 15px; }
             .data-table th, .data-table td { font-size: 12px; padding: 8px; }
-            .data-table th { width: 32%; }
-            .stock-details { padding: 10px; }
+            .data-table th { width: 35%; }
+            .stock-details { padding: 12px; }
+            .load-more-btn { width: 100%; box-sizing: border-box; }
         }
     </style>
 </head>
@@ -81,187 +95,192 @@
 
     <nav>
         <a href="index.html">ホーム</a>
-        <a href="financials.html">決算情報</a>
+        <a href="financials.html" class="active-nav">決算情報</a>
         <a href="autumn2026.html">2026四季報秋号</a>
-        <a href="summer2026.html" class="active-nav">2026四季報夏号</a>
+        <a href="summer2026.html">2026四季報夏号</a>
         <a href="spring2026.html">2026四季報春号</a>
     </nav>
 
     <div class="container">
         <div class="main-content">
-            
-            <!-- ① データベース検索エリア -->
-            <div class="page-title" style="border-left-color: #4CAF50;">
-                <h2>🔍 2026四季報夏号 情報検索</h2>
-                <p>四季報データから気になる銘柄を検索できます。銘柄名・コード・キーワード（増配など）を入力してください。</p>
-            </div>
-            <div class="search-box">
-                <input type="text" id="shikihoSearchInput" placeholder="例：新日本空調、8020、増配...">
-            </div>
-            <!-- 検索結果がここに入ります（普段は空っぽ） -->
-            <div id="shikihoSearchResults" class="db-result-area stock-list"></div>
-
-            <!-- ② 厳選リストエリア -->
             <div class="page-title">
-                <h2>📚 2026四季報夏号 厳選リスト</h2>
-                <p>四季報夏号の全ページを読み込み、スクリーニング基準をクリアした銘柄を紹介します。各銘柄をクリックすると詳細な分析データを確認できます。</p>
-                
-                <details class="stock-card" style="margin-top: 15px; border-left: 5px solid #2c7cbf;">
-                    <summary class="stock-summary" style="background-color: #f4f7fa; color: #1a5b92;">
-                        📊 日経平均との比較
-                    </summary>
-                    <div class="stock-details">
-                        <p style="font-size: 14px; color: #555;">日経平均の上がり率よりもピックアップ銘柄が上がっているか検証</p>
-                        
-                        <div style="background-color: #e2eef7; padding: 10px; border-radius: 6px; margin-bottom: 15px; text-align: center;">
-                            <span style="font-size: 14px; font-weight: bold;">🎯 日経平均超え：</span>
-                            <span style="font-size: 20px; font-weight: bold; color: #1976d2;" id="nikkei-win-rate">72.7%</span>
-                            <span style="font-size: 14px; color: #444;">（8銘柄 / 11銘柄中）</span>
-                        </div>
+                <h2>📑 決算情報速報</h2>
+                <p>1億円投資家の視点でチェックした、主要・注目銘柄の最新決算とポイントの速報まとめです。</p>
+            </div>
 
-                        <div class="table-responsive">
-                            <table class="data-table perf-table">
-                                <tr>
-                                    <th>銘柄名</th>
-                                    <th>増減率</th>
-                                </tr>
-                                <tr style="background-color: #fffde7; font-weight: bold;">
-                                    <td>日経平均株価 (基準)</td>
-                                    <td class="stock-perf" data-code="NIKKEI">+2.6%</td>
-                                </tr>
-                                <tr><td>1952 新日本空調</td><td class="stock-perf highlight-blue" data-code="1952">+5.2%</td></tr>
-                                <tr><td>1982 日比谷綜合設備</td><td class="stock-perf highlight-blue" data-code="1982">+4.7%</td></tr>
-                                <tr><td>4012 アクシス</td><td class="stock-perf highlight-red" data-code="4012">-0.7%</td></tr>
-                                <tr><td>4658 日本空調サービス</td><td class="stock-perf highlight-blue" data-code="4658">+3.7%</td></tr>
-                                <tr><td>7175 今村証券</td><td class="stock-perf highlight-blue" data-code="7175">+3.7%</td></tr>
-                                <tr><td>7433 伯東</td><td class="stock-perf highlight-blue" data-code="7433">+3.6%</td></tr>
-                                <tr><td>8020 兼松</td><td class="stock-perf highlight-red" data-code="8020">+1.3%</td></tr>
-                                <tr><td>8370 紀陽銀行</td><td class="stock-perf highlight-blue" data-code="8370">+5.4%</td></tr>
-                                <tr><td>8386 百十四銀行</td><td class="stock-perf highlight-blue" data-code="8386">+3.4%</td></tr>
-                                <tr><td>8522 名古屋銀行</td><td class="stock-perf highlight-blue" data-code="8522">+3.6%</td></tr>
-                                <tr><td>8542 トマト銀行</td><td class="stock-perf highlight-red" data-code="8542">-0.8%</td></tr>
-                                <tr><td>8624 いちよし証券</td><td class="stock-perf highlight-blue" data-code="8624">+5.9%</td></tr>
-                            </table>
-                        </div>
-                    </div>
-                </details>
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="🔍 銘柄名やキーワード（増配・上方修正など）で検索...">
+            </div>
+            <div id="noResultMessage" class="no-result-msg">
+                該当する銘柄が見つかりませんでした。
             </div>
 
             <div class="stock-list">
-                <details class="stock-card"><summary class="stock-summary">1952 新日本空調</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-                    <tr><th>業種</th><td>建設業（設備工事）</td></tr>
-                    <tr><th>会社概要</th><td>【特色】三井系の空調設備工事会社。微粒子可視化システムなど独自技術を持つ。原子力施設向けに強み。</td></tr>
-                    <tr><th>四季報の評価</th><td>【最高益】期初繰越高1487億円（前期比18%増）。大規模再開発や工場関連、データセンターが推移。リニューアルも寄与。生産性向上も効く。原子力は再稼働対応など増勢。人件費増こなし連続増益。増配。【中計】29年度売上高2000億円、営業利益240億円目標。成長投資額300億円。成長事業と生産性向上がカギ。建築設備CADの自動作図機能の共同開発始動。</td></tr>
-                    <tr><th>実績PER / PBR</th><td>PER 11.8倍 / PBR 1.83倍</td></tr><tr><th>配当利回り</th><td>実績：3.60% (120円)</td></tr>
-                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 154,884百万円 / 9,656百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 160,000百万円 / 12,800百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 168,000百万円 / 13,500百万円</span></td></tr>
-                    <tr><th>自己資本比率 / ROE</th><td>61.0% / 16.0%</td></tr>
-                </table></div></div></details>
 
-                <details class="stock-card"><summary class="stock-summary">1982 日比谷綜合設備</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-                    <tr><th>業種</th><td>建設業（設備工事）</td></tr>
-                    <tr><th>会社概要</th><td>【特色】空調主体の設備工事会社。ＮＴＴグループ向けに強み。データセンター等情報通信向けが伸びる。</td></tr>
-                    <tr><th>四季報の評価</th><td>【最高益】期初繰越高1031億円（前期比20％増）。データセンター軸に、大型再開発や生産・物流施設の大型工事が牽引。資材費増こなす。連続増配。26年３月期はデータセンター上乗せ。人員増要員。</td></tr>
-                    <tr><th>実績PER / PBR</th><td>PER 16.0倍 / PBR 1.66倍</td></tr><tr><th>配当利回り</th><td>実績：3.27% (100円)</td></tr>
-                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 94,080百万円 / 8,681百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 105,000百万円 / 8,700百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 108,000百万円 / 9,000百万円</span></td></tr>
-                    <tr><th>自己資本比率 / ROE</th><td>71.6% / 11.6%</td></tr>
-                </table></div></div></details>
+<!-- 2026/8/14 -->
+<details class="stock-card"><summary class="stock-summary">2026/8/14 ワタミ 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>16億2,100万円（+221.9%）</td></tr><tr><th>通期予想</th><td>非開示</td></tr><tr><th>利益進捗率</th><td>—</td></tr><tr><th>配当金</th><td>年間予想 未定</td></tr></table></div><div class="comment-box">ワタミ 27年3月期 1Q決算発表。国内外食や宅食の伸長により、売上高は前年同期比+9.3%の241億59百万円となりました。原材料高や人件費上昇により営業利益は10億58百万円と小幅な減益となったものの、円安に伴う為替差益の計上など営業外損益が大幅に改善し、経常利益は同約2.9倍、四半期純利益は同約3.2倍の16億21百万円へと跳ね上がりました。国内外食事業は居酒屋・焼肉業態に加え、SUBWAY事業の展開や固定費削減が奏功しセグメント増収増益を達成。宅食事業も高齢者向け「好い日の御膳」の投入などで調理済み商品のお届け食数が前年同期比115.1%（約1,596万食）へ伸長し、売上高107億90百万円と成長を牽引しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 コナカ 26年9月期 3Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>29億800万円（+88.4%）</td></tr><tr><th>通期予想</th><td>15億8,500万円</td></tr><tr><th>利益進捗率</th><td>約183.5% （29.08億円 / 15.85億円）</td></tr><tr><th>配当金</th><td>年間予想 10円</td></tr></table></div><div class="comment-box">コナカ 26年9月期 3Q決算発表。主力のファッション事業において、猛暑対策アイテム『氷撃 FREEZE TECH』やビジカジ向け商品の拡充を進めたものの、6月の気温低下や台風等の天候不順が響き夏物商材が低調に推移しました。売上高は前年同期比7.1%減の420億73百万円、営業利益は同56.3%減の5億71百万円となった一方、投資有価証券売却益（約26.2億円）や固定資産売却益（約7.6億円）の特別利益計上により、四半期純利益は同+88.4%の29億8百万円と急伸しました。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 トリドールホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>30億3,100万円（△31.0%）</td></tr><tr><th>通期予想</th><td>70億円（+202.9%）</td></tr><tr><th>利益進捗率</th><td>約43.3% （30.31億円 / 70.0億円）</td></tr><tr><th>配当金</th><td>年間予想 12円</td></tr></table></div><div class="comment-box">トリドールホールディングス 27年3月期 1Q決算発表。売上収益は前年同期比+3.5%の723億18百万円と第1四半期として過去最高を更新しました。一方で、丸亀製麺などにおける人件費・出店費用の増加に加え、英国子会社の事業再建に伴う店舗撤退など一過性の構造改革費用を計上したため、営業利益は同34.3%減、最終利益は同31.0%減となっています。香港などで展開するスパイシー米線「Tam Jai」が既存店好調とコストコントロールで伸長したほか、「MARUGAME UDON」のアジア・北米拠点が順調に拡大。海外事業セグメントの事業利益は前年同期比+62.6%の18億53百万円となり、1Qとして過去最高益を記録しました。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 出光興産 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>2,175億400万円（+696.0%）</td></tr><tr><th>通期予想</th><td>750億円（△57.4%）</td></tr><tr><th>利益進捗率</th><td>約290.0% （2,175.04億円 / 750.0億円）</td></tr><tr><th>配当金</th><td>年間予想 36円</td></tr></table></div><div class="comment-box">出光興産 27年3月期 1Q決算発表。売上収益は前年同期比+23.8%の2兆2,717億53百万円、営業利益は3,074億62百万円、四半期純利益は前年比+696.0%の2,175億4百万円と記録的な好決算となりました。今期よりIFRS（国際会計基準）および新表示基準IFRS第18号を早期適用しています。主力の燃料油セグメントにおいて、原油価格の上昇に加え、中東情勢による航海日数増加でコストの期ずれが長期化したことで、プラスのタイムラグ影響が大きく拡大しました。同セグメント損益が2,938億円（前年同期比+3,126億円）と跳ね上がり、全社利益を強烈に押し上げています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 GMOインターネット 26年12月期 2Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>129億6,000万円（+142.1%）</td></tr><tr><th>通期予想</th><td>非開示</td></tr><tr><th>利益進捗率</th><td>算出不可（通期予想が開示されていないため）</td></tr><tr><th>配当金</th><td>第1四半期 17.5円、第2四半期 18円</td></tr></table></div><div class="comment-box">GMOインターネット 26年12月期 2Q決算発表。中間期の最終利益は約129億円となり、前年同期比で約2.4倍と爆発的な伸びを記録しています。売上収益や本業の儲けを示す事業利益もしっかりと二桁成長を達成しており、極めて強い着地です。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 データセクション 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>39億1,300万円（前年同期は3億3,300万円の赤字から黒字転換）</td></tr><tr><th>通期予想</th><td>87億400万円</td></tr><tr><th>利益進捗率</th><td>約45.0% （39.1億円 / 87.0億円）</td></tr></table></div><div class="comment-box">データセクション 27年3月期 1Q決算発表。売上高は前年同期比約9.5倍の63.2億円へと爆増し、営業利益も48.4億円の特大黒字を叩き出しました。3ヶ月間だけで通期利益目標に対する進捗率が約45.0%に達する、凄まじいロケットスタートに見えます。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 荏原製作所 26年12月期 2Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>335億7,400万円（+7.1%）</td></tr><tr><th>通期予想</th><td>99,500百万円（+29.8%）</td></tr><tr><th>利益進捗率</th><td>約33.7% （335億円 / 995億円）</td></tr><tr><th>配当金</th><td>年間予想 66円</td></tr></table></div><div class="comment-box">荏原製作所 26年12月期 2Q決算発表。受注高、売上収益、営業利益、最終利益のすべての項目において、中間期として過去最高額を更新する素晴らしい着地となりました。生成AI向け需要が市場を牽引し、顧客の半導体工場などの稼働率上昇や増産投資が拡大しています。通期の受注高予想を1兆700億円から1兆2,450億円へ、売上収益を1兆2,000億円から1兆5,300億円へ大きく上方修正しました。最終利益の予想は995億円で据え置かれたため進捗率は約33.7%と控えめに見えますが、半導体関連の投資拡大を取り込めており、今後のさらなる上振れにも期待が持てる内容です。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 MS&AD 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>3,286億1,800万円（+33.4%）</td></tr><tr><th>通期予想</th><td>4,250億円（▲16.8%）</td></tr><tr><th>利益進捗率</th><td>約77.3% （3,286億円 / 4,250億円）</td></tr><tr><th>配当金</th><td>年間予想 170円（中間85円、期末85円予想）</td></tr></table></div><div class="comment-box">MS&AD 27年3月期 1Q決算発表。通期目標に対する進捗率は約77.3%に達しています。また、配当金は前年度の160円から10円増配となる、年間170円の予想を掲げています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 SOMPOホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>1,811億6,800万円（+52.8%）</td></tr><tr><th>通期予想</th><td>4,900億円（▲23.4%）</td></tr><tr><th>利益進捗率</th><td>約37.0% （1,811億円 / 4,900億円）</td></tr><tr><th>配当金</th><td>年間予想 200円</td></tr></table></div><div class="comment-box">SOMPOホールディングス 27年3月期 1Q決算発表。最終利益は前年同期比+52.8%の1,811億円となり、通期目標4,900億円に対する進捗率も約37.0%と非常に好調なロケットスタートを切っています。通期予想が減益見通しとなっている中でこの進捗は、秋以降の「上方修正」への期待を大きく抱かせる内容です。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 アシックス 26年12月期 2Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>売上高</th><td>5,344億円（+32.7%）</td></tr><tr><th>最終利益</th><td>821億円（前年同期比 +53.3%）</td></tr><tr><th>通期予想</th><td>最終利益：1,200億円（従来予想1,100億円から上方修正）</td></tr><tr><th>利益進捗率</th><td>約68.4% （821億円 / 1,200億円）</td></tr><tr><th>配当金</th><td>年間予想 44円（中間20円、期末24円予想 ※従来予想38円から6円増配）</td></tr></table></div><div class="comment-box">アシックス 26年12月期 2Q決算発表。インバウンド需要も絶好調で、売上高は前年同期から約1.4倍の308億円へと急拡大しています。売上高は為替の影響を除いても1兆円を突破し、最終利益は史上初の1,000億円超えを見込むという、歴史的な成長フェーズに入っています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 アサヒグループ 26年12月期 2Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>991億4,800万円（+68.8%）</td></tr><tr><th>通期予想</th><td>1,940億円（+59.6%）</td></tr><tr><th>利益進捗率</th><td>約51.1% （991億円 / 1,940億円）</td></tr><tr><th>配当金</th><td>年間予想 57円（中間26円、期末31円予想）</td></tr></table></div><div class="comment-box">アサヒグループ 26年12月期 2Q決算発表。最終的な利益は前年同期から約7割増と大きく伸びており、通期予想に対する進捗率も51.1%と、中間期として目安となる50%をしっかりとクリアしています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 電通グループ 26年12月期 2Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>219億800万円</td></tr><tr><th>通期予想</th><td>367億円</td></tr><tr><th>利益進捗率</th><td>約59.7% （219億円 / 367億円）</td></tr><tr><th>配当金</th><td>年間予想 139円（中間69.5円、期末69.5円予想）</td></tr></table></div><div class="comment-box">電通グループ 26年12月期 2Q決算発表。中間期の最終利益は約219億円となり、前年同期の約2億円から比べるととてつもない変化率で回復しています。前年が低水準だった反動もありますが、しっかりと利益を稼ぎ出す力を取り戻していることが確認できます。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 AIロボティクス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>営業損益 ▲531百万円</td></tr><tr><th>通期予想</th><td>56,000〜60,000百万円</td></tr><tr><th>営業利益</th><td>7,500〜10,000百万円</td></tr></table></div><div class="comment-box">AIロボティクス 27年3月期 1Q決算発表。第1四半期の売上高は110億7,500万円と前年同期比で約2.5倍に急増しました。主力の美容家電ブランドやM&Aで加わったBJCなどが牽引し、店頭卸売上は前年同期比で約8倍に拡大しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 シチズン時計 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>82億4,500万円（+41.1%）</td></tr><tr><th>通期予想</th><td>220億円</td></tr><tr><th>利益進捗率</th><td>約37.5% （82.4億円 / 220.0億円）</td></tr><tr><th>配当金</th><td>年間予想 42円（第2四半期末21円、期末21円予想）</td></tr></table></div><div class="comment-box">シチズン時計 27年3月期 1Q決算発表。売上高は前年同期比+30.3%の981億円と大幅な増収を達成し、営業利益はなんと約2.1倍の99億円を叩き出しています。通期の最終利益目標220億円に対して、1Qのわずか3ヶ月間で82億円以上を稼ぎ出し、進捗率は約37.5%に達しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 フェローテック 26年12月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>215億1,900万円</td></tr><tr><th>通期予想</th><td>360億円</td></tr><tr><th>利益進捗率</th><td>約59.8% （215.1億円 / 360.0億円）</td></tr><tr><th>配当金</th><td>年間予想 200円</td></tr></table></div><div class="comment-box">フェローテック 26年12月期 1Q決算発表。最終利益目標360億円に対して、すでに215億円を稼ぎ出しています。子会社の持分変動による特別利益の押し上げ効果もありますが、配当も年間200円と手厚く、半導体関連株として非常に見応えのある内容です。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 GMOペイメントゲートウェイ 26年9月期 3Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>売上収益</th><td>697億2,800万円（+14.3%）</td></tr><tr><th>通期予想</th><td>234億600万円</td></tr><tr><th>利益進捗率</th><td>約81.1%</td></tr><tr><th>配当金</th><td>配当予想の記載無し</td></tr></table></div><div class="comment-box">GMOペイメントゲートウェイ 26年9月期 3Q決算発表。営業利益は前年同期比+24.2%の291億円と、会社側の計画を上回るペースで進捗しています。最終利益ベースでの進捗率はすでに81.1%に達しており、通期業績の上振れ着地がほぼ確実視される非常に安心感のある決算です。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/14 松屋フーズ 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>7億300万円（+26.8%）</td></tr><tr><th>通期予想</th><td>38億円</td></tr><tr><th>利益進捗率</th><td>約18.5% （7.03億円 / 38.0億円）</td></tr><tr><th>配当金</th><td>年間予想 26円（増配見通し）</td></tr></table></div><div class="comment-box">松屋フーズ 27年3月期 1Q決算発表。既存店売上高が102.6%と好調に推移したことに加え、国内外での新規出店やM&Aが寄与し、売上高は前年比+17.4%と大きく伸びました。</div></div></details>
 
-                <details class="stock-card"><summary class="stock-summary">4012 アクシス</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-                    <tr><th>業種</th><td>情報・通信</td></tr>
-                    <tr><th>会社概要</th><td>【特色】金融機関、公的機関向け主体にシステム開発。クラウドサービスも展開。</td></tr>
-                    <tr><th>四季報の評価</th><td>【増額】昨秋獲得した大型システム案件が通期寄与。順調な新卒採用などが先行し営業益微増にとどまるも、外注費のコントロールなどで営業益上振れ。前号比で増益幅拡大。</td></tr>
-                    <tr><th>実績PER / PBR</th><td>PER 12.3倍 / PBR 1.69倍</td></tr><tr><th>配当利回り</th><td>実績：2.85% (46円)</td></tr>
-                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・24年12月(実績)<br>&nbsp;&nbsp;- 8,134百万円 / 642百万円<br><span style="color: #1976d2; font-weight: bold;">・25年12月(予想)<br>&nbsp;&nbsp;- 9,500百万円 / 730百万円</span><br><span style="color: #1976d2; font-weight: bold;">・26年12月(予想)<br>&nbsp;&nbsp;- 11,000百万円 / 840百万円</span></td></tr>
-                    <tr><th>自己資本比率 / ROE</th><td>75.7% / 16.8%</td></tr>
-                </table></div></div></details>
+<!-- 2026/8/13 -->
+<details class="stock-card"><summary class="stock-summary">2026/8/13 安楽亭 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>1億5,600万円（+98.7%）</td></tr><tr><th>通期予想</th><td>7億6,200万円</td></tr><tr><th>利益進捗率</th><td>約20.5%</td></tr><tr><th>配当金</th><td>年間予想 15円</td></tr></table></div><div class="comment-box">安楽亭 27年3月期 1Q決算発表。物価高や節約志向、人件費・エネルギーコスト高が続く中、売上高は前年同期比△0.1%の74億64百万円、営業利益は同△18.1%の2億33百万円となりました。「安楽亭・七輪房」はコスパメニューや食べ放題拡充でセグメント増益を確保した一方、ステーキ業態などの「アークミール」は減益となっています。一方、受取補償金（約6,200万円）の特別利益計上や税金費用の減少等により、四半期純利益は前年同期比+98.7%の1億56百万円とほぼ倍増を記録しました。通期予想（純利益7億6,200万円）および年間15円配当は据え置かれています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/13 はごろもフーズ 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>16億2,300万円（+78.2%）</td></tr><tr><th>通期予想</th><td>30億円</td></tr><tr><th>利益進捗率</th><td>約54.1%</td></tr><tr><th>配当金</th><td>年間予想 70円</td></tr></table></div><div class="comment-box">はごろもフーズ 27年3月期 1Q決算発表。主力の「シーチキン」などのツナ製品（売上高+7.9%）やコンビニ向け業務用食品が堅調に推移し、売上高は前年同期比+4.7%の199億73百万円となりました。原材料・物流費高騰に伴う価格改定を実施したものの、広告宣伝費や運賃・保管料の増加により営業利益は同△1.5%の10億23百万円と微減。一方、投資有価証券売却益（約10.5億円）を特別利益に計上したことで、純利益は同+78.2%の16億23百万円と大幅増益を達成しました。通期純利益目標（30億円）に対する1Q進捗率は約54.1%と高い進捗を見せています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/13 力の源ホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>1億8,500万円（△71.0%）</td></tr><tr><th>通期予想</th><td>18億7,000万円（△1.2%）</td></tr><tr><th>利益進捗率</th><td>約10.2% （1.85億円 / 18.7億円）</td></tr><tr><th>配当金</th><td>年間予想 24円</td></tr></table></div><div class="comment-box">力の源ホールディングス 27年3月期 1Q決算発表。「一風堂」の国内外での新規出店やインバウンド需要、季節メニューの投入により売上高は90億6百万円と増収を確保しました。しかし、原材料費・物流費・人件費の高騰に加え、前年同期に計上していた固定資産売却益の剥落が響き、営業利益は同△48.6%の2億3,900万円、最終利益は同△71.0%の大幅減益となりました。国内では2026年8月からの価格改定実施に加え、接客・製造力強化のための「現場力推進ブロック」の創設やチャーハン自動調理器の導入などDXによる生産性向上を推進。海外では不採算店舗の戦略的閉店や新業態へのポートフォリオ最適化を進めています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/13 三越伊勢丹ホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>223億1,600万円（+18.5%）</td></tr><tr><th>通期予想</th><td>630億円（+17.2%）</td></tr><tr><th>利益進捗率</th><td>約35.4% （223.16億円 / 630.0億円）</td></tr><tr><th>配当金</th><td>年間予想 80円（分割前換算）</td></tr></table></div><div class="comment-box">三越伊勢丹ホールディングス 27年3月期 1Q決算発表。伊勢丹新宿本店や三越日本橋本店、三越銀座店を中心に高付加価値商品が好調に推移し、最終利益は223億16百万円と二桁の増益を達成しました。足元の好調な業績動向を踏まえ、通期の売上高・各段階利益を揃って上方修正しています。各種エムアイカードやアプリを通じた国内識別顧客数が849万人に拡大したほか、年間300万円以上を購入するロイヤルカスタマーの売上高が前年比116%と大幅に伸長しました。訪日外国人向けアプリの会員数も108万人に達し、インバウンド需要も力強く業績を牽引しています。10月1日を効力発生日として普通株式1株につき2株の割合で株式分割を実施することを発表しました。さらに年間配当は分割前換算で80円へと引き上げられ、株式分割に伴い自己株式取得枠の上限株数も3,600万株（上限300億円）へ拡充されるなど、積極的な株主還元姿勢が示されています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/13 パワーエックス 26年12月期 2Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>売上高</th><td>68億9,300万円（+48.3%）</td></tr><tr><th>営業利益（損失）</th><td>▲10億7,300万円（前年は15億6,300万円赤字から改善）</td></tr><tr><th>最終利益（損失）</th><td>▲15億5,100万円（前年は22億3,000万円赤字から改善）</td></tr><tr><th>通期予想</th><td>売上高 400億円（380億円から上方修正） / 営業利益 20〜25億円</td></tr></table></div><div class="comment-box">パワーエックス26年12月期 2Q決算発表。今期売上の82%が下期に計上される予定であり、先行して作る生産の進捗率は既に60%に達しているため、計画通りの推移です。さらに驚くべきは今後のパイプラインで、2026〜2030年の正式受注および受注見込みの総額は1,019億円に達しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/13 メタプラネット 26年12月期 2Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>売上高</th><td>49億4,400万円（+133.7%）</td></tr><tr><th>営業利益</th><td>33億3,100万円（+136.3%）</td></tr><tr><th>経常利益（損失）</th><td>▲1,828億7,400万円（前年は105億円黒字）</td></tr><tr><th>最終利益（損失）</th><td>▲1,827億7,400万円（前年は60億円黒字）</td></tr></table></div><div class="comment-box">メタプラネット 26年12月期 2Q決算発表。最終損益が1,827億円の赤字となっていますが、これは本業が赤字なわけではありません。本業の儲けを示す営業利益は前年比+136.3%と絶好調です。この巨額赤字の正体は、保有するビットコインの価格下落に伴い、期末時点で約1,842億円の「評価損」を計上したことによる会計上の（現金流出を伴わない）赤字です。同社はビットコインを財務資産として猛烈な勢いで買い集めており、保有量は前年6月末の13,350 BTCから、2026年6月末時点で43,000 BTCにまで急増しています。これにより、マイクロストラテジーなどに次いで、ビットコイン保有量で世界で3番目の上場企業となっています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/13 すかいらーくHD 26年12月期 2Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>売上収益</th><td>2,424億5,700万円（+9.7%）</td></tr><tr><th>事業利益</th><td>169億5,900万円（+13.4%）</td></tr><tr><th>最終利益</th><td>101億8,100万円（+29.2%）</td></tr><tr><th>通期予想</th><td>最終利益：20,500百万円</td></tr><tr><th>配当金</th><td>年間予想 27円</td></tr></table></div><div class="comment-box">すかいらーくHD 26年12月期 2Q決算発表。客数・客単価ともに伸長し、既存店売上高は前年同期比106.4%と好調に推移しています。</div></div></details>
 
-                <details class="stock-card"><summary class="stock-summary">4658 日本空調サービス</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-                    <tr><th>業種</th><td>サービス業</td></tr>
-                    <tr><th>会社概要</th><td>【特色】建物設備のメンテナンスが主体。独立系。工場や病院向けに強み。リニューアル工事も。</td></tr>
-                    <tr><th>四季報の評価</th><td>【最高益】空調設備は新設物件獲得などで好調維持。テナントビル等のリニューアル工事も増勢。契約単価引き上げ浸透。人件費増こなす。営業外の助成金剥落でも純益高水準。連続増配。</td></tr>
-                    <tr><th>実績PER / PBR</th><td>PER 13.6倍 / PBR 1.80倍</td></tr><tr><th>配当利回り</th><td>実績：2.59% (45円)</td></tr>
-                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 64,438百万円 / 3,102百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 69,245百万円 / 3,696百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 74,000百万円 / 3,900百万円</span></td></tr>
-                    <tr><th>自己資本比率 / ROE</th><td>57.6% / 13.1%</td></tr>
-                </table></div></div></details>
+<!-- 2026/8/12 -->
+<details class="stock-card"><summary class="stock-summary">2026/8/12 木曽路 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>△1億3,100万円（前年同期は5,100万円の赤字）</td></tr><tr><th>通期予想</th><td>21億円</td></tr><tr><th>利益進捗率</th><td>—</td></tr><tr><th>配当金</th><td>年間予想 30円</td></tr></table></div><div class="comment-box">木曽路 27年3月期 1Q決算発表。行楽需要やサービス消費の回復を背景に「木曽路」部門などで「ハレの日」需要の獲得や60周年企画を展開したものの、消費者の節約志向や食材・エネルギー・人件費の高止まりが直撃しました。売上高は前年同期比△0.4%の119億46百万円、営業損益は△2億38百万円の赤字（前年同期は△7,400万円）、四半期純損益は△1億31百万円の赤字に悪化しています。なお、5月には働き方改革の一環で全店2日間の休業を実施。同社は冬季（3Q・4Q）にしゃぶしゃぶ需要が偏重する構造であり、通期の純利益予想（21億円）と年間30円配当は据え置かれています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/12 大戸屋ホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>3億2,300万円（+25.6%）</td></tr><tr><th>通期予想</th><td>13億9,900万円</td></tr><tr><th>利益進捗率</th><td>約23.1%</td></tr><tr><th>配当金</th><td>年間予想 20円</td></tr></table></div><div class="comment-box">大戸屋ホールディングス 27年3月期 1Q決算発表。グランドメニューの刷新や「ご当地ごちそう巡り」フェアなどの積極的なメニュー施策が奏功し、国内直営・FCともに客数・売上が堅調に拡大しました。食材費や人件費の高騰が続くものの増収効果でカバーし、売上高は前年同期比+18.0%の102億73百万円、営業利益は同+22.2%の5億54百万円、四半期純利益は同+25.6%の3億23百万円と2桁の増収増益を達成しました。通期の純利益目標（13億99百万円）に対する進捗率は約23.1%で、年間20円配当予想を据え置いています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/12 デリカフーズホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>4億9百万円（△36.7%）</td></tr><tr><th>通期予想</th><td>17億5,000万円</td></tr><tr><th>利益進捗率</th><td>約23.4%</td></tr><tr><th>配当金</th><td>年間予想 27円</td></tr></table></div><div class="comment-box">デリカフーズホールディングス 27年3月期 1Q決算発表。外食産業向けのカット野菜需要や物流事業の拡大が牽引し、売上高は前年同期比+2.0%の154億51百万円と1Qとしての過去最高を更新しました。一方、採用・処遇見直しに伴う人件費増や、中東情勢に伴う物流費・資材費の高騰に加え、4月に開設した東海マザーセンターの立ち上げ費用が重しとなり、営業利益は同△39.9%の5億66百万円、純利益は同△36.7%の4億9百万円と減益になりました。通期純利益予想（17億5,000万円）に対する進捗率は約23.4%で、年間27円への増配予想は維持されています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/12 紀文食品 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>△1億5,300万円（前年同期は4,800万円の黒字）</td></tr><tr><th>通期予想</th><td>25億5,900万円</td></tr><tr><th>利益進捗率</th><td>—</td></tr><tr><th>配当金</th><td>年間予想 23円</td></tr></table></div><div class="comment-box">紀文食品 27年3月期 1Q決算発表。「The SURIMI」などの独自スリミ製品や物流事業（食品関連）は堅調に推移したものの、中華惣菜の価格競争激化や米国向け販売の反動減、中東情勢に伴う資材コストの高騰が響き、売上高は前年同期比△2.7%の242億13百万円、営業利益は同△93.7%の2,200万円、純損益は△1億5,300万円の赤字となりました。ただし、同社は秋・冬のおでん鍋物需要や12月のおせち需要が集中する3Q偏重型のビジネスモデルです。9月からの価格改定浸透を見据え、通期の大幅増益予想および年間23円への増配予想は据え置かれています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/12 カッパ・クリエイト 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>△7億6,500万円</td></tr><tr><th>通期予想</th><td>9億3,600万円</td></tr><tr><th>利益進捗率</th><td>— （1Q赤字計上のため）</td></tr><tr><th>配当金</th><td>年間予想 未定（中間0円、期末未定 ※前期実績0円）</td></tr></table></div><div class="comment-box">カッパ・クリエイト 27年3月期 1Q決算発表。売上高は前年同期比2.4%減の177億51百万円にとどまり、原材料や消耗品・光熱費の高騰に加え、人件費の上昇が利益を圧迫しました。売上総利益率が前年同期から2.2%悪化したことで、営業損益は前年同期の3億22百万円の黒字から△7億7百万円の赤字へ転落しています。節約志向の高まりに対応し、平日限定の一部商品「税込90円」販売やおトクなランチセットの再開、「お値段そのまま50%増量祭り」などを実施。人気キャラクターや有名シェフ監修スイーツとのコラボを展開し、顧客体験価値と集客力の向上に注力しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/12 東京海上ホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>最終利益</th><td>2,855億円（+113.6%）</td></tr><tr><th>通期予想</th><td>最終利益：8,700億円</td></tr><tr><th>利益進捗率</th><td>約32.8%</td></tr><tr><th>配当金</th><td>年間予想 179円</td></tr></table></div><div class="comment-box">東京海上ホールディングス27年3月期 1Q決算発表。第1四半期の最終利益は2,855億円と、前年同期からなんと2倍以上に拡大しています。損保の王者にふさわしい、圧倒的な稼ぐ力を見せつけました。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/12 兼松 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>収益</th><td>2,721億6,700万円（+8.4%）</td></tr><tr><th>営業利益</th><td>174億3,100万円（+63.8%）</td></tr><tr><th>最終利益</th><td>117億300万円（+67.6%）</td></tr><tr><th>配当金</th><td>年間予想 70円</td></tr></table></div><div class="comment-box">兼松27年3月期 1Q決算発表。営業利益・最終利益ともに前年同期比で60%を超える驚異的な伸びを記録し、大幅な増益を達成しています。中堅商社の中でも際立った成長力を見せつけました。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/12 コロワイド 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>8億3,400万円（+78.0%）</td></tr><tr><th>通期予想</th><td>26億7,000万円</td></tr><tr><th>利益進捗率</th><td>約31.2% （8.3億円 / 26.7億円）</td></tr><tr><th>配当金</th><td>年間予想 5円</td></tr></table></div><div class="comment-box">コロワイド 27年3月期 1Q決算発表。最終利益は前年同期比+78.0%と大きく伸び、進捗率も31.2%で悪くないスタートです。しかし、本業の儲けを示す「事業利益」は前年同期比19.6%減の24億円と減益になっています。6月の悪天候による客足鈍化や、「カルビ大将」の食べ放題施策、「かっぱ寿司」の増量フェアなどによる売上総利益率の低下が響きました。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/12 サガミホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>4億7,600万円（▲20.5%）</td></tr><tr><th>通期予想</th><td>1,200百万円</td></tr><tr><th>利益進捗率</th><td>約39.7% （4.76億円 / 12.0億円）</td></tr><tr><th>配当金</th><td>年間予想 6円</td></tr></table></div><div class="comment-box">サガミホールディングス 27年3月期 1Q決算発表。売上高は前年同期比+4.5%の98億円と堅調に推移しました。しかし、原材料費や物流・水光熱費の高騰が重しとなっています。さらに、人材の定着やワークライフバランス実現のために「給与・新卒初任給の引き上げ」や「全店休業日の設定」などを実施したことでコストが先行し、最終利益は20.5%の減益となりました。</div></div></details>
 
-                <details class="stock-card"><summary class="stock-summary">7175 今村証券</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-                    <tr><th>業種</th><td>証券・商品先物</td></tr>
-                    <tr><th>会社概要</th><td>【特色】独立系、地方証券会社の雄。北陸３県が主地盤。対面営業とインターネット取引の２本柱。</td></tr>
-                    <tr><th>四季報の評価</th><td>【好調】国内株式市場の好調を受け、株式委託手数料が増勢。世界的な株高を背景に投資信託販売も堅調。債券などのトレーディング収益建増。システム関連費用や人件費増を吸収し、営業益続伸。増配。</td></tr>
-                    <tr><th>実績PER / PBR</th><td>PER 8.5倍 / PBR 0.52倍</td></tr><tr><th>配当利回り</th><td>実績：4.07% (55円)</td></tr>
-                    <tr><th>業績予想<br>(営業収益 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 4,186百万円 / 760百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 4,914百万円 / 1,055百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 5,100百万円 / 1,150百万円</span></td></tr>
-                    <tr><th>自己資本比率 / ROE</th><td>49.6% / 8.4%</td></tr>
-                </table></div></div></details>
+<!-- 2026/8/10 -->
+<details class="stock-card"><summary class="stock-summary">2026/8/10 名古屋鉄道 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>125億79百万円（+86.7%）</td></tr><tr><th>通期予想</th><td>390億円</td></tr><tr><th>利益進捗率</th><td>約32.3%</td></tr><tr><th>配当金</th><td>年間予想 60円</td></tr></table></div><div class="comment-box">名古屋鉄道 27年3月期 1Q決算発表。不動産事業の売却反動等により営業収益は前年同期比△6.9%の1,568億75百万円、営業利益は同△4.2%の88億88百万円となりました。一方で、持分法投資利益が大きく拡大したことで経常利益は同+16.0%の124億67百万円に伸長し、特別利益の計上や税金費用の減少も寄与して親会社株主帰属の純利益は同+86.7%の125億79百万円と大幅増益を達成しました。通期純利益目標（390億円）に対する進捗率は約32.3%と順調で、前期実績40円から20円増配となる年間60円配当予想を据え置いています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/10 ピエトロ 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>1,200万円（△81.6%）</td></tr><tr><th>通期予想</th><td>1億1,000万円</td></tr><tr><th>利益進捗率</th><td>約11.3%</td></tr><tr><th>配当金</th><td>年間予想 24円</td></tr></table></div><div class="comment-box">ピエトロ 27年3月期 1Q決算発表。新商品「ピエトロドレッシング うま塩」の好調やパスタソースの伸長、レストラン店舗事業の客数・客単価アップが牽引し、売上高は前年同期比+12.8%の33億50百万円、営業利益は同+109.2%（約2.1倍）の9,300万円と本業ベースで大幅増益を達成しました。純利益の大幅減は前年同期に計上していた旧工場売却益（約1.94億円）の反動によるものです。新工場稼働に伴う一時費用や借入利息をこなしつつ経常損益も黒字転換しており、通期純利益予想（1億1,000万円）と年間24円配当は据え置きとなっています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/10 マツキヨココカラ＆カンパニー 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>148億6,500万円（+14.9%）</td></tr><tr><th>通期予想</th><td>480億円（+6.8%）</td></tr><tr><th>利益進捗率</th><td>約31.0% （148.65億円 / 480.0億円）</td></tr><tr><th>配当金</th><td>年間予想 56円</td></tr></table></div><div class="comment-box">マツキヨココカラ＆カンパニー 27年3月期 1Q決算発表。化粧品の戦略的成長が力強く牽引し、売上高は前年同期比+5.7%の2,893億48百万円となりました。医薬品や化粧品の強化により売上総利益率が改善し、営業利益は同+8.5%の214億87百万円、最終利益は同+14.9%の148億65百万円と、事前の計画を上回る素晴らしい着地を見せています。プライベートブランド商品や共創品、高付加価値商品の販売を重点的に強化したことで、「美と健康」カテゴリーの売上構成比が全体の72.7%まで拡大しました。また、利益率の高いPB商品の売上構成比も14.7%に上昇しており、収益性の底上げに直結しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/10 サンリオ 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>155億1,600万円（+9.3%）</td></tr><tr><th>通期予想</th><td>638億円（+16.8%）</td></tr><tr><th>利益進捗率</th><td>約24.3% （155.1億円 / 638.0億円）</td></tr><tr><th>配当金</th><td>年間予想 16円</td></tr></table></div><div class="comment-box">サンリオ 27年3月期 1Q決算発表。売上高は前年同期比+20.7%の520億35百万円、営業利益は同+11.1%の224億35百万円、最終利益は同+9.3%の155億16百万円と力強く伸長しました。30周年を迎えた『ポムポムプリン』が「サンリオキャラクター大賞2026」で1位を獲得するなど人気を集めたほか、グローバルでのSNS・YouTubeフォロワー数が1億人を突破し、会員サービス「Sanrio＋」も約348万人に拡大しています。海外では、欧州や南米でファストファッションや玩具向けライセンスが大幅に拡大しました。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/10 ラウンドワン 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>33億6,800万円（△1.1%）</td></tr><tr><th>通期予想</th><td>182億6,000万円（+9.9%）</td></tr><tr><th>利益進捗率</th><td>約18.4% （33.68億円 / 182.60億円）</td></tr><tr><th>配当金</th><td>年間予想 18円</td></tr></table></div><div class="comment-box">ラウンドワン 27年3月期 1Q決算発表。日本・米国の両市場でクレーンゲームを中心としたアミューズメント事業や人気コンテンツとのコラボが牽引し、売上収益は前年同期比+18.2%の513億77百万円、営業利益は同+4.3%の63億39百万円と伸長しました。日本国内ではクレーンゲーム専用エリア「とれすぎ〜のアイランド」の店舗展開が76店舗まで拡大しています。売上原価や人件費・出店関連費用の増加、金融費用の増加等により最終利益は33億68百万円（前年同期比△1.1%）と小幅な減益となりましたが、キャッシュ創出力を示す調整後EBITDAは175億82百万円（前年同期比+6.2%）と力強さを保っています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/10 みずほFG 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>経常利益</th><td>3,543億円（+20.4%）</td></tr><tr><th>最終利益</th><td>2,893億円（+17.9%）</td></tr><tr><th>利益進捗率</th><td>約38.5%</td></tr><tr><th>配当金</th><td>年間予想 115円</td></tr></table></div><div class="comment-box">みずほフィナンシャルグループ27年3月期 1Q決算発表。通期目標に対する進捗率はなんと約38.5%に達しています。三菱UFJや三井住友と比較しても、頭一つ抜けた驚異的なロケットスタートです。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/10 三井住友FG 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>経常利益</th><td>6,931億円（+43.4%）</td></tr><tr><th>最終利益</th><td>5,013億円（+33.0%）</td></tr><tr><th>利益進捗率</th><td>約29.5%</td></tr><tr><th>配当金</th><td>年間予想 180円</td></tr></table></div><div class="comment-box">三井住友フィナンシャルグループ27年3月期 1Q決算発表。最終利益は前年同期比33.0%増の5,013億円を叩き出しました。通期目標1兆7,000億円に対する進捗率も約29.5%に達しており、好調な滑り出しです。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/10 三菱UFJ 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>経常利益</th><td>1兆1,179億円（+57.8%）</td></tr><tr><th>最終利益</th><td>8,094億円（+48.2%）</td></tr><tr><th>利益進捗率</th><td>約30.0%</td></tr><tr><th>配当金</th><td>年間予想 96円</td></tr></table></div><div class="comment-box">三菱UFJ 27年3月期 1Q決算発表。最終利益が8,094億円と、前年同期から約1.5倍に拡大。通期目標2兆7,000億円という高いハードルに対しても、進捗率約30%と文句なしの好発進です。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/10 サッポロHD 26年12月期 2Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>売上収益</th><td>2,359億円（+0.3%）</td></tr><tr><th>営業利益</th><td>58億円</td></tr><tr><th>最終利益</th><td>2,954億円</td></tr></table></div><div class="comment-box">サッポロHD26年12月期 2Q決算発表。前年同期の最終利益が17億円だったのに対し、今回はなんと2,954億円というジャンプを記録しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/10 キリンHD 26年12月期 2Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>売上収益</th><td>1兆2,178億円（+7.2%）</td></tr><tr><th>最終利益</th><td>1,017億円（+92.5%）</td></tr><tr><th>通期予想</th><td>最終利益 1,600億円</td></tr><tr><th>配当金</th><td>予想 76円（中間38円、期末38円予想）</td></tr></table></div><div class="comment-box">キリンHD26年12月期 2Q決算発表。通期予想の最終利益1,600億円に対して第2四半期時点で1,017億円を稼ぎ出しており、非常に強い進捗を見せています。</div></div></details>
 
-                <details class="stock-card"><summary class="stock-summary">7433 伯東</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-                    <tr><th>業種</th><td>卸売業</td></tr>
-                    <tr><th>会社概要</th><td>【特色】半導体や機器の専門商社。自社製の産機開発に特色。電子部品やケミカル事業も併営。</td></tr>
-                    <tr><th>四季報の評価</th><td>【急改善】工業向けは半導体が自動化設備投資の回復で底打ち。ルネサス製は代理店特約終了に伴う移管一服。自動車向けが好調維持。半導体製造装置は中国向けに出遅れ感あるが、下期から急回復。増配。</td></tr>
-                    <tr><th>実績PER / PBR</th><td>PER 13.8倍 / PBR 1.22倍</td></tr><tr><th>配当利回り</th><td>実績：4.50% (200円)</td></tr>
-                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 183,133百万円 / 5,009百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 225,000百万円 / 6,100百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 240,000百万円 / 6,100百万円</span></td></tr>
-                    <tr><th>自己資本比率 / ROE</th><td>41.6% / 7.5%</td></tr>
-                </table></div></div></details>
+<!-- 2026/8/7 -->
+<details class="stock-card"><summary class="stock-summary">2026/8/7 井村屋グループ 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>2億2,700万円（+25.5%）</td></tr><tr><th>通期予想</th><td>24億円</td></tr><tr><th>利益進捗率</th><td>約9.5%</td></tr><tr><th>配当金</th><td>年間予想 38円</td></tr></table></div><div class="comment-box">井村屋グループ 27年3月期 1Q決算発表。主力「あずきバー」をはじめとする冷菓カテゴリーの好調や、肉まん・あんまんなどの点心・デリ、調味料OEMの拡大により、売上高は前年同期比+6.6%の115億69百万円となりました。新工場「アイス FACTORY」稼働に伴う減価償却費増や原材料高で営業利益は同△25.4%の2億57百万円と減益になったものの、為替差益の計上などにより四半期純利益は同+25.5%の2億27百万円と増益を確保しました。夏場の最盛期や冬場の点心商戦を控えており、通期予想および年間38円配当は据え置かれています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 森永乳業 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>66億7,800万円（△3.4%）</td></tr><tr><th>通期予想</th><td>210億円</td></tr><tr><th>利益進捗率</th><td>約31.8%</td></tr><tr><th>配当金</th><td>年間予想 25円（株式分割後換算）</td></tr></table></div><div class="comment-box">森永乳業 27年3月期 1Q決算発表。国内は牛乳の数量減や原材料・エネルギー・物流コストの増加で減益となったものの、ホエイプロテイン市況の上昇を背景に独子会社のMILEI社が大幅な増収増益を達成し、海外事業の営業利益が約1.8倍に急拡大しました。これにより連結売上高は前年同期比+2.4%の1,470億99百万円、営業利益は同+12.9%の99億77百万円と本業ベースで二桁増益となりました。純利益は前年の一過性特益剥落により△3.4%の66億78百万円となりましたが、進捗率は約31.8%と目安の25%を上回るペースです。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 三井松島ホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>33億7,800万円（+18.0%）</td></tr><tr><th>通期予想</th><td>86億円</td></tr><tr><th>利益進捗率</th><td>約39.3%</td></tr><tr><th>配当金</th><td>年間予想 130円（株式分割後換算）</td></tr></table></div><div class="comment-box">三井松島ホールディングス 27年3月期 1Q決算発表。電子部品や電力関連部材を手掛ける産業用製品セグメントが売上高+29.9%、営業利益+24.5%と大きく牽引し、全体の売上高は前年同期比+15.2%の177億12百万円、営業利益は同+7.9%の28億29百万円となりました。さらに投資有価証券売却益15億53百万円の計上もあり、純利益は同+18.0%の33億78百万円へ伸長しました。また、綿棒国内最大手で半導体向け清浄綿棒などを手掛ける「山洋」の完全子会社化（M&A）を発表。通期進捗率は約39.3%と高く、年間130円の高配当計画を維持しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 ニチレイ 26年12月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>69億1,900万円</td></tr><tr><th>通期予想</th><td>204億円</td></tr><tr><th>利益進捗率</th><td>約33.9%</td></tr><tr><th>配当金</th><td>年間予想 50円</td></tr></table></div><div class="comment-box">ニチレイ 26年12月期 1Q決算発表。決算期を3月から12月へ変更したことに伴う変則決算（国内3か月、海外6か月）となっています。コスト上昇等を考慮し通期の純利益予想を204億円（前回予想比△48億円）へ下方修正しましたが、1Q実績は投資有価証券売却益（32億65百万円）の計上などもあり純利益69億19百万円を確保し、進捗率は約33.9%と手堅い水準です。ASEAN展開に向けてインドネシアの低温物流大手2社を買収した一方、7月に発生したシステム障害の影響が今後の注視点となります。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 日本ハム 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>107億7,200万円（△5.6%）</td></tr><tr><th>通期予想</th><td>380億円</td></tr><tr><th>利益進捗率</th><td>約28.3%</td></tr><tr><th>配当金</th><td>年間予想 180円</td></tr></table></div><div class="comment-box">日本ハム 27年3月期 1Q決算発表。輸入食肉の適正な価格設定や在庫管理、豪州牛肉事業の単価上昇により主力の食肉事業本部が事業利益+20.4%と躍進しました。また、「エスコンフィールドHOKKAIDO」の観客動員増や飲食・グッズ販売が好調で、新設されたスポーツ・エンターテイメント事業部の事業利益も同+29.2%（49億11百万円）と高成長を記録。売上高は前年同期比+8.7%の3,849億46百万円、事業利益は同+19.5%の194億15百万円と力強く伸長しました。通期進捗率は約28.3%と順調で、年間180円への20円増配予想を据え置いています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 理研ビタミン 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>18億6,900万円（+2.4%）</td></tr><tr><th>通期予想</th><td>75億円（+6.6%）</td></tr><tr><th>利益進捗率</th><td>約24.9% （18.69億円 / 75.0億円）</td></tr><tr><th>配当金</th><td>年間予想 110円</td></tr></table></div><div class="comment-box">理研ビタミン 27年3月期 1Q決算発表。国内食品、国内化成品その他、海外事業のすべてのセグメントで増収となり、売上高は前年同期比+8.1%の251億33百万円を達成しました。特に海外事業は、世界各地での販売数量回復や為替効果、米国関税の還付などが寄寄し、前年同期の赤字（△0百万円）から1億5,100万円の黒字へ転換しています。前第3四半期に行ったアスベスト除去費用に関する資産除去債務の見積もり変更（約1.88億円の利益押し下げ要因）や人件費の増加により、営業利益は同△4.9%の22億48百万円となりました。しかし、受取配当金や投資有価証券売却益などの寄与もあり、最終利益は前年同期比+2.4%の18億6,900万円と増益を維持しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 モスフードサービス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>5億8,300万円（△53.8%）</td></tr><tr><th>通期予想</th><td>36億円（+21.5%）</td></tr><tr><th>利益進捗率</th><td>約16.2% （5.83億円 / 36.00億円）</td></tr><tr><th>配当金</th><td>年間予想 34円</td></tr></table></div><div class="comment-box">モスフードサービス 27年3月期 1Q決算発表。国内モスバーガー事業において「価格のグラデーション化戦略」や定番商品のリニューアルが奏功し、売上高は前年同期比+3.6%の246億36百万円と増収を確保しました。一方で、原材料価格の高騰や店舗・運営コストの上昇を吸収しきれず、営業利益は同△52.9%の8億11百万円、最終利益は同△53.8%の5億83百万円と大幅な減益スタートとなっています。2026年7月31日付で「おぼん de ごはん」や「だし茶漬け えん」等を展開する株式会社ビー・ワイ・オーの全株式を取得し、完全子会社化を完了しました。第2四半期から連結寄与する見込みです。1Qの進捗率は約16.2%と出遅れが見られるものの、M&Aによるシナジー創出や高収益店舗モデルの開発を進め、通期の増益・配当維持を目指す方針です。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 サイバーエージェント 26年9月期 3Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>360億3,500万円（+49.5%）</td></tr><tr><th>通期予想</th><td>410億円（+29.5%）</td></tr><tr><th>利益進捗率</th><td>約87.9% （360.35億円 / 410.0億円）</td></tr><tr><th>配当金</th><td>年間予想 20円</td></tr></table></div><div class="comment-box">サイバーエージェント 26年9月期 3Q決算発表。主力ゲームタイトルの好調に加え、カジュアルゲームがグローバル規模でヒットしたことで、ゲーム事業の売上高は1,933億9,100万円、営業利益は509億2,300万円と爆発的な伸びを記録しました。グループ全体の利益成長を大きく牽引しています。メディア＆IP事業は「ABEMA」や「WINTICKET」、アニメ＆IP事業が重層的に売上を積み上げ、売上高1,839億3,100万円となりました。特に「ABEMA」の黒字化定着が寄与し、同セグメントの営業利益は131億7,800万円と利益体質への転換が鮮明になっています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 AOKIホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>3億1,800万円（△75.6%）</td></tr><tr><th>通期予想</th><td>100億円（+5.7%）</td></tr><tr><th>利益進捗率</th><td>約3.2% （3.18億円 / 100.0億円）</td></tr><tr><th>配当金</th><td>年間予想 90円</td></tr></table></div><div class="comment-box">AOKIホールディングス 27年3月期 1Q決算発表。主力のファッション事業（AOKI・ORIHICA）において、高通気スーツやビジカジ商品の拡充を図ったものの、6月の天候不順・気温低下が影響し既存店売上が鈍化。ファッション事業単体で2億2百万円の営業損失に転落したことが全体の利益を大きく押し下げました。複合カフェ「快活CLUB」での鍵付完全個室の拡大や期間限定メニューの投入、フィットネス「FiT24」の会員獲得が奏功。エンターテイメント事業の売上高は185億96百万円、営業利益は16億8百万円と堅調に推移し、グループの収益を支えています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 共立メンテナンス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>30億4,000万円（△15.5%）</td></tr><tr><th>通期予想</th><td>180億円（+3.8%）</td></tr><tr><th>利益進捗率</th><td>約16.9% （30.40億円 / 180.0億円）</td></tr><tr><th>配当金</th><td>年間予想 46円</td></tr></table></div><div class="comment-box">共立メンテナンス 27年3月期 1Q決算発表。4月に全国で13事業所を新規開業し、期初稼働率は98.5%と極めて高水準でスタートしました。食材費等のコスト増を価格適正化で吸収し、寮事業の営業利益は22億69百万円と収益の牽引役となっています。ホテル事業は旺盛なインバウンド需要やレベニューマネジメントの徹底により売上高370億58百万円と伸長しました。一方で、新棟立ち上げや計画的な大規模リニューアル工事費用の増加が先行したため、セグメント営業利益は37億44百万円となっています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 森永製菓 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>44億5,800万円（△11.7%）</td></tr><tr><th>通期予想</th><td>165億円（△7.1%）</td></tr><tr><th>利益進捗率</th><td>約27.0% （44.58億円 / 165.00億円）</td></tr><tr><th>配当金</th><td>年間予想 70円</td></tr></table></div><div class="comment-box">森永製菓 27年3月期 1Q決算発表。米国最大手のモチアイス製造企業を持つMyMo Holdco, Inc.を子会社化したことで、米国事業の売上高が前年同期比+65.1%と急伸し、連結売上高は前年同期比+5.6%の636億17百万円と増収を達成しました。海外売上高比率も前年の13.5%から18.9%へ大きく拡大しています。国内の菓子食品事業や冷菓事業（チョコモナカジャンボ等）は価格改定効果で増益を確保したものの、MyMo社のM&Aに伴う取得関連費用やのれん償却費の発生、原材料・物流費の高騰が重しとなり、営業利益は前年同期比△13.7%の61億23百万円、最終利益は同△11.7%の減益となりました。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 ゼンショーホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>163億3,100万円（+56.6%）</td></tr><tr><th>通期予想</th><td>390億円</td></tr><tr><th>利益進捗率</th><td>約41.9% （163.3億円 / 390.0億円）</td></tr><tr><th>配当金</th><td>年間予想 50円</td></tr></table></div><div class="comment-box">ゼンショーホールディングス 27年3月期 1Q決算発表。すき家やはま寿司の海外展開に加え、北米や欧州におけるテイクアウト寿司などの「グローバル中食事業」の拡充を積極的に進めています。当第1四半期にも、欧州での事業基盤をさらに強化する攻めの経営を行っています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 SRSホールディングス 令和9年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>1億4,700万円（△46.6%）</td></tr><tr><th>通期予想</th><td>18億円（+6.2%）</td></tr><tr><th>利益進捗率</th><td>約8.2% （1.47億円 / 18.0億円）</td></tr><tr><th>配当金</th><td>年間予想 10円</td></tr></table></div><div class="comment-box">SRSホールディングス 令和9年3月期 1Q決算発表。新規出店などの効果で売上高は前年同期比+6.5%と伸びました。しかし、6月の梅雨や台風といった悪天候が週末に重なり客数が伸び悩んだことに加え、原材料費や人件費の高騰を吸収しきれず、利益面では約半減となる苦しいスタートとなっています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 FOOD & LIFE COMPANIES 26年9月期 3Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>265億7,800万円（+88.6%）</td></tr><tr><th>通期予想</th><td>31,500百万円</td></tr><tr><th>利益進捗率</th><td>約84.4% （265.7億円 / 315.0億円）</td></tr><tr><th>配当金</th><td>※配当予想の記載無し</td></tr></table></div><div class="comment-box">FOOD & LIFE COMPANIES 26年9月期 3Q決算発表。国内スシローの既存店がキャンペーンやIPコラボの効果で前年の高いハードルを越えて好調に推移したことに加え、海外事業が大幅に伸長しました。その結果、第3四半期累計の最終利益は前年比でほぼ倍増となり、通期の最終利益予想を期初計画の240億円から315億円へと大きく上方修正しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 日本マクドナルド 26年12月期 2Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>196億5,700万円（+17.0%）</td></tr><tr><th>通期予想</th><td>350億円</td></tr><tr><th>利益進捗率</th><td>約56.2% （196.5億円 / 350.0億円）</td></tr><tr><th>配当金</th><td>年間予想 64円（前期実績56円から増配見通し）</td></tr></table></div><div class="comment-box">日本マクドナルド 26年12月期 2Q決算発表。値上げを実施したにもかかわらず、既存店売上高は前年同期比で+5.9%増加しました。これにより、なんと2015年度第4四半期から43四半期連続での増加という、とてつもない記録を更新中です。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 住友商事 26年度1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>1Q利益</th><td>1,901億円</td></tr><tr><th>通期予想</th><td>6,300億円</td></tr><tr><th>利益進捗率</th><td>30%</td></tr><tr><th>配当金</th><td>40円変更無し</td></tr></table></div><div class="comment-box">住友商事26年度1Q決算発表。1Q利益1,901億円、利益進捗率30%、配当金40円。進捗率良く、次回の上半期決算で通期見通しの変更を宣言。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 双日 26年度1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>1Q利益</th><td>302億円（+43.4%）</td></tr><tr><th>通期予想</th><td>1,300億円変更無し</td></tr><tr><th>利益進捗率</th><td>23%</td></tr><tr><th>配当金</th><td>180円変更無し</td></tr></table></div><div class="comment-box">双日26年度1Q決算発表。1Q利益302億円、通期予想1,300億円、利益進捗率23%、配当金180円。特にサプライズなし、進捗率やや低めです。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 丸紅 26年度1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>1Q利益</th><td>1,864億円（+20.7%）</td></tr><tr><th>通期予想</th><td>5,800億円変更無し</td></tr><tr><th>利益進捗率</th><td>32%</td></tr><tr><th>配当金</th><td>115円変更無し</td></tr></table></div><div class="comment-box">丸紅26年度1Q決算発表。1Q利益1,864億円、利益進捗率32%、配当金115円。上方修正、増配はないですが前期比大幅増益で進捗率高く、自己株買い1,000億円。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 豊田通商 26年度1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>1Q利益</th><td>1,353億円（+37.5%）</td></tr><tr><th>通期予想</th><td>4,000→4,500億円上方修正</td></tr><tr><th>利益進捗率</th><td>修正後 29%</td></tr><tr><th>配当金</th><td>125円変更無し</td></tr></table></div><div class="comment-box">豊田通商26年度1Q決算発表。1Q利益1,353億円、通期予想4,000→4,500億円上方修正、利益進捗率29%、配当金125円。第一四半期決算で上方修正は強い。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 三井物産 26年1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>1Q利益</th><td>2,941億円（+53%）</td></tr><tr><th>通期予想</th><td>9,200億円変更無し</td></tr><tr><th>利益進捗率</th><td>32%</td></tr><tr><th>配当金</th><td>140円変更無し</td></tr></table></div><div class="comment-box">三井物産26年1Q決算発表。1Q利益2,941億円、利益進捗率32%、配当金140円。自己株買い2,000億円、基礎営業CF累計に対して50%超えに更新。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 三菱商事 26年度1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>1Q利益</th><td>2,985億円（+47%）</td></tr><tr><th>通期予想</th><td>1.1兆円変更無し</td></tr><tr><th>利益進捗率</th><td>27%</td></tr><tr><th>配当金</th><td>125円変更無し</td></tr></table></div><div class="comment-box">三菱商事26年度1Q決算発表。1Q利益2,985億円、利益進捗率27%、配当金125円。今回上方修正はありませんでしたが、第2四半期に上方修正余地を精査と匂わせありです。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/7 伊藤忠商事 26年度1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>1Q利益</th><td>2,938億円（+3%）</td></tr><tr><th>通期予想</th><td>9,500億円変更無し</td></tr><tr><th>利益進捗率</th><td>31%</td></tr><tr><th>配当金</th><td>44円変更無し</td></tr></table></div><div class="comment-box">伊藤忠商事26年度1Q決算発表。1Q利益2,938億円、利益進捗率31%、配当金44円。今回の決算発表に合わせて3,000億円の自社株買いの開始が発表。</div></div></details>
 
-                <details class="stock-card"><summary class="stock-summary">8020 兼松</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-                    <tr><th>業種</th><td>卸売業</td></tr>
-                    <tr><th>会社概要</th><td>【特色】老舗商社。電子・ＩＴ、食料、鉄鋼・プラントの３本柱。ＩＣＴ偏重から事業多角化へ投資。</td></tr>
-                    <tr><th>四季報の評価</th><td>【連続最高益】モバイル需要旺盛なＩＣＴが牽引。前期引当の一過性損失剥落。中東などのインフラ、機械が想定超え。純利益高水準。増配。26年３月期もＩＣＴ、機械などが好調維持。ただ税負担増で純益は小幅増。</td></tr>
-                    <tr><th>実績PER / PBR</th><td>PER 10.2倍 / PBR 1.70倍</td></tr><tr><th>配当利回り</th><td>実績：3.64% (90円)</td></tr>
-                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 1,067,665百万円 / 32,523百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 1,100,000百万円 / 35,000百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 1,150,000百万円 / 35,000百万円</span></td></tr>
-                    <tr><th>自己資本比率 / ROE</th><td>28.4% / 17.0%</td></tr>
-                </table></div></div></details>
+<!-- 2026/8/6 -->
+<details class="stock-card"><summary class="stock-summary">2026/8/6 丸大食品 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>10億1,600万円（△28.5%）</td></tr><tr><th>通期予想</th><td>64億円</td></tr><tr><th>利益進捗率</th><td>約15.9%</td></tr><tr><th>配当金</th><td>年間予想 80円</td></tr></table></div><div class="comment-box">丸大食品 27年3月期 1Q決算発表。調理加工食品（サラダチキンやスンドゥブ等）や食肉部門の販売伸長により、売上高は前年同期比+1.9%の605億29百万円と小幅増収を確保しました。しかし、相場高騰による食肉仕入コスト高を価格転嫁しきれなかったことや、節約志向・価格競争に伴うハム・ソーセージ主要品の数量減が響き、営業利益は同△33.4%の13億40百万円、純利益は同△28.5%の10億16百万円と減益となりました。1Q進捗率は約15.9%と慎重な滑り出しですが、通期の増益計画および年間80円への10円増配予想は維持されています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/6 楽天銀行 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>209億6,500万円（+24.5%）</td></tr><tr><th>通期予想</th><td>881億4,500万円（+20.6%）</td></tr><tr><th>利益進捗率</th><td>約23.8% （209.65億円 / 881.45億円）</td></tr><tr><th>配当金</th><td>年間予想 0円</td></tr></table></div><div class="comment-box">楽天銀行 27年3月期 1Q決算発表。日銀による政策金利引き上げに伴う運用利回りの上昇や運用資産の拡大を背景に、資金運用収益が630億95百万円へ大幅拡大しました。預金金利引き上げによる調達コスト増加をしっかり吸収し、経常収益は前年比+36.3%の784億25百万円、最終利益は同+24.5%の209億65百万円と大幅な増収増益を達成しています。2026年6月末時点で口座数は1,846万口座に到達し、単体預金残高も13.3兆円超へと事業規模を拡大。公金振替や各種決済サービスの拡充による生活口座化が進展し、口座振替やカード関連などの為替・役務取引等収益も前年同期比+13.0%の135億21百万円と堅調に積み上がっています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/6 ヤマダホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>99億8,400万円（+12.8%）</td></tr><tr><th>通期予想</th><td>278億円（+88.1%）</td></tr><tr><th>利益進捗率</th><td>約35.9% （99.84億円 / 278.0億円）</td></tr><tr><th>配当金</th><td>年間予想 17円</td></tr></table></div><div class="comment-box">ヤマダホールディングス 27年3月期 1Q決算発表。省エネ基準の引き上げに伴う買い替え需要が顕在化し、4月・5月を中心にエアコンが大きく伸長しました。テレビや洗濯機などの大型家電に加え、リフォームや家具・インテリアなどの非家電分野も好調に推移し、売上高は4,202億円、営業利益は156億円と大幅な増収増益を達成しています。「LIFE SELECT」を中心とする店舗改革とPB商品拡充：体験・体感・完結型店舗「LIFE SELECT」を中核とした店舗網の統廃合や改装を推進したことで、店舗の効率性と収益性が着実に向上しています。また、高粗利なプライベートブランドやSPAオリジナル商品の開発・売場展開を加速させており、収益力の底上げが進んでいます。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/6 東急不動産ホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>255億200万円（△16.8%）</td></tr><tr><th>通期予想</th><td>1,000億円（+3.4%）</td></tr><tr><th>利益進捗率</th><td>約25.5% （255.0億円 / 1,000.0億円）</td></tr><tr><th>配当金</th><td>年間予想 50円</td></tr></table></div><div class="comment-box">東急不動産ホールディングス 27年3月期 1Q決算発表。売上高は前年同期比0.8%減の2,857億7,400万円と微減でしたが、本業の儲けを示す営業利益は465億9,300万円と二桁増益を達成しました。一方で、前年同期に計上された関係会社株式売却益の反動が大きく、最終利益は同16.8%減の255億2百万円で着地しています。表面上の最終利益は前年割れとなったものの、一過性要因を除いた本業のペースは堅調です。通期の最終利益予想に対する進捗率は約25.5%と、第1四半期として目安の25%をクリアし計画通りに推移しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/6 富士フイルムホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>374億2,400万円（△30.4%）</td></tr><tr><th>通期予想</th><td>2,800億円（+1.2%）</td></tr><tr><th>利益進捗率</th><td>約13.4% （374.24億円 / 2,800.0億円）</td></tr><tr><th>配当金</th><td>年間予想 75円</td></tr></table></div><div class="comment-box">富士フイルムホールディングス 27年3月期 1Q決算発表。メディカルシステム、半導体材料、イメージング事業が牽引し、売上高は8,264億93百万円と伸長しました。為替の前提見直しやエレクトロニクスの好調を反映し、通期の売上高予想を従来の3兆4,700億円から3兆5,600億円へ上方修正しています。エレクトロニクス部門はAI半導体向け先端材料の需要を取り込み、営業利益が前年同期比+38.2%と急拡大しました。また、イメージング部門も高価格帯チェキ「instax」やデジタルカメラ「X100VI」などの旺盛な需要に支えられ増益を確保しています。年間配当は前期から5円増配の75円見通しを据え置いています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/6 マネックスグループ 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>19億2,200万円（+4.0%）</td></tr><tr><th>通期予想</th><td>非開示（市況環境に左右される金融商品取引業等のため開示なし）</td></tr><tr><th>利益進捗率</th><td>— （通期予想非開示のため）</td></tr><tr><th>配当金</th><td>年間予想 30.8円</td></tr></table></div><div class="comment-box">マネックスグループ 27年3月期 1Q決算発表。連結営業利益は2,800万円にとどまったものの、ドコモとの提携効果が続くマネックス証券や米Westfield社の持分法投資利益が前年同期比+55%の14億94百万円へと急伸。グループ全体の親会社株主帰属四半期利益は19億22百万円（前年比+4%）を確保しました。ロボアドバイザー「ON COMPASS」や機関投資家向け私募投信の拡大に加え、米Westfield社の好調により、アセマネ事業は2兆3,920億円に到達。相場環境に左右されにくい安定したフィービジネスの収益基盤が着実に育っています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/6 住友精化 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>32億6,300万円（+212.2%）</td></tr><tr><th>通期予想</th><td>80億円（+4.2%）</td></tr><tr><th>利益進捗率</th><td>約40.8% （32.63億円 / 80.0億円）</td></tr><tr><th>配当金</th><td>年間予想 70円</td></tr></table></div><div class="comment-box">住友精化 27年3月期 1Q決算発表。主力の吸水性樹脂セグメントにおいて、為替の円安推移や原燃料価格高騰分の販売価格への転嫁が進み、売上高は403億97百万円、営業利益は34億52百万円と大幅に拡大しました。為替差益や投資有価証券売却益等も寄与し、四半期純利益は前年同期の約3.1倍となる32億63百万円を記録しています。中東情勢の影響等で見送っていた通期予想を公表し、親会社株主帰属の当期純利益は80億円を見込んでいます。シンガポール拠点の製造設備増設に伴う固定費増等を織り込んでいるものの、第1四半期時点で通期計画に対して約40.8%を稼ぎ出す好スタートを切りました。</div></div></details>
 
-                <details class="stock-card"><summary class="stock-summary">8370 紀陽銀行</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-                    <tr><th>業種</th><td>銀行業</td></tr>
-                    <tr><th>会社概要</th><td>【特色】和歌山県唯一の地銀。県内シェアは断トツ。大阪にも展開。メイン化を軸とした本業支援に力点</td></tr>
-                    <tr><th>四季報の評価</th><td>【最高益続く】大阪軸にメイン化進め貸出金順調。利回り改善進む。有価証券利息も増勢。与信費用は例年並み。人件費や物件費増こなす。0.75％前提で最高益更新。配当性向40％目標。増配。【生産性】ＡＩ導入含め業務プロセス見直し、捻出した人員は大阪での営業強化に。人的資本投資による生産性測る独自指標も向上。株主優待新設。</td></tr>
-                    <tr><th>実績PER / PBR</th><td>--- 倍 / --- 倍</td></tr><tr><th>配当利回り</th><td>実績：6.28% (137円)</td></tr>
-                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 98,720百万円 / 17,618百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 114,870百万円 / 21,819百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 125,000百万円 / 25,000百万円</span></td></tr>
-                    <tr><th>自己資本比率 / ROE</th><td>4.0% / 9.0%</td></tr>
-                </table></div></div></details>
+<!-- 2026/8/5 -->
+<details class="stock-card"><summary class="stock-summary">2026/8/5 JR西日本 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>390億4,600万円（△20.1%）</td></tr><tr><th>通期予想</th><td>1,000億円</td></tr><tr><th>利益進捗率</th><td>約39.0%</td></tr><tr><th>配当金</th><td>年間予想 97.5円</td></tr></table></div><div class="comment-box">JR西日本 27年3月期 1Q決算発表。鉄道等のモビリティ業は利用回復により堅調だったものの、流通業や不動産業の反動減等により売上高は前年同期比△0.6%の4,244億3百万円、人件費・修繕費など営業費用の増加から営業利益は同△11.7%の559億89百万円となりました。さらに前年同期に計上した固定資産売却益などの特別利益が剥落したことで、純利益は同△20.1%の390億46百万円となっています。ただし、通期純利益予想（1,000億円）に対する1Q進捗率は約39.0%と高い水準を確保しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/5 エステー 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>△1,300万円（前年同期は3億5,200万円の黒字）</td></tr><tr><th>通期予想</th><td>18億円</td></tr><tr><th>利益進捗率</th><td>—</td></tr><tr><th>配当金</th><td>年間予想 46円</td></tr></table></div><div class="comment-box">エステー 27年3月期 1Q決算発表。業務用ニトリル手袋（+32.0%）や消臭芳香剤の新商品が伸長し、売上高は前年同期比+1.8%の111億55百万円を確保しました。しかし、中東情勢を受けた原材料コストの上昇や、前年に出稿を控えていた広告宣伝費の反動増（マーケティング費用増）が響き、営業損益は△4,700万円、四半期純損益は△1,300万円の赤字となりました。ただし、後発事象として保有株（PALTAC）のTOB応募に伴い第2四半期に約17.9億円の投資有価証券売却益を計上見込みであり、通期黒字化と増配予想は据え置かれています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/5 朝日放送グループホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>△1億3,000万円（前年同期は18億7,200万円の黒字）</td></tr><tr><th>通期予想</th><td>27億円</td></tr><tr><th>利益進捗率</th><td>—</td></tr><tr><th>配当金</th><td>年間予想 20円</td></tr></table></div><div class="comment-box">朝日放送グループホールディングス 27年3月期 1Q決算発表。動画配信やコンテンツ二次利用は増加したものの、主力のテレビスポット広告収入の減少や、前年に開催された大阪・関西万博に伴うイベント関連収入の剥落が重なり、売上高は前年同期比△7.5%の200億80百万円、営業損益は△3億4,600万円の赤字に転落しました。前年同期にあった大型の固定資産売却益の剥落もあり、四半期純損益は△1億3,000万円となりました。会社側は「想定の範囲内の進捗」として通期純利益予想（27億円）および年間20円配当計画を据え置いています。</div></div></details>
 
-                <details class="stock-card"><summary class="stock-summary">8386 百十四銀行</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-                    <tr><th>業種</th><td>銀行業</td></tr>
-                    <tr><th>会社概要</th><td>【特色】香川県を地盤に岡山県や大阪府など瀬戸内広域に展開。資金量は四国で２位。大企業取引多い</td></tr>
-                    <tr><th>四季報の評価</th><td>【連続増配】貸出金利回りの上昇に伴い、資金利益が順調に拡大。貸出先への事業支援などを通じた役務取引等利益も伸長。人件費やシステム費増の重しこなし、実質的に純益増。与信費用を抑制し純益連続増。増配。【中計】28年度に純利益100億円以上（26年３月期89億円）を目指す新中計スタート。生産性を引き上げ、新たな事業領域などへ人員を再配置。女性活躍推進で優良企業認定取得。</td></tr>
-                    <tr><th>実績PER / PBR</th><td>PER 8.2倍 / PBR 0.28倍</td></tr><tr><th>配当利回り</th><td>実績：8.40% (126円)</td></tr>
-                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 90,007百万円 / 13,700百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 108,556百万円 / 18,857百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 116,500百万円 / 21,000百万円</span></td></tr>
-                    <tr><th>自己資本比率 / ROE</th><td>6.6% / 5.2%</td></tr>
-                </table></div></div></details>
+<!-- 2026/8/4 -->
+<details class="stock-card"><summary class="stock-summary">2026/8/4 東武鉄道 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>141億9,300万円（+1.5%）</td></tr><tr><th>通期予想</th><td>560億円</td></tr><tr><th>利益進捗率</th><td>約25.3%</td></tr><tr><th>配当金</th><td>年間予想 75円</td></tr></table></div><div class="comment-box">東武鉄道 27年3月期 1Q決算発表。運輸事業や不動産事業など各セグメントが堅調に推移し、営業収益は前年同期比+5.2%の1,562億92百万円、営業利益は同+10.6%の210億17百万円と増収増益になりました。経常利益も同+9.5%の207億12百万円と伸長しましたが、法人税等合計が増加した影響等により、親会社株主に帰属する四半期純利益は同+1.5%の141億93百万円と小幅な増益にとどまっています。通期純利益目標（560億円）に対する1Q進捗率は約25.3%と順調な滑り出しを見せており、年間75円配当予想を据え置いています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/4 湖池屋 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>6億2,300万円（+87.1%）</td></tr><tr><th>通期予想</th><td>26億円</td></tr><tr><th>利益進捗率</th><td>約24.0%</td></tr><tr><th>配当金</th><td>年間予想 55円</td></tr></table></div><div class="comment-box">湖池屋 27年3月期 1Q決算発表。「湖池屋プライドポテト」などの高付加価値ブランドの拡販や、「スコーン」「ポリンキー」などのロングセラー商品が好調に推移し、売上高は前年同期比+2.0%の153億16百万円となりました。最大の課題であった馬鈴薯の品質悪化に対して保管環境改善等が奏功して歩留まりが向上したことに加え、海外事業（ベトナム、タイ、米国等）でのチャネル拡大が寄寄し、営業利益は同+33.6%の9億36百万円、純利益は同+87.1%の6億23百万円と大幅増益を達成しました。通期純利益予想（26億円）に対する進捗率は約24.0%で、年間55円配当予想を据え置いています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/4 フジ・メディア・ホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>102億1,800万円（+848.4%）</td></tr><tr><th>通期予想</th><td>261億円</td></tr><tr><th>利益進捗率</th><td>約39.2%</td></tr><tr><th>配当金</th><td>年間予想 200円</td></tr></table></div><div class="comment-box">フジ・メディア・ホールディングス 27年3月期 1Q決算発表。フジテレビの地上波広告収入がネット・ローカル・スポットの全分野で力強く回復したほか、配信広告、FOD課金、アニメ事業、ポニーキャニオンの黒字化などが寄与し、メディア・コンテンツ事業が劇的に黒字転換しました。連結全体の売上高は前年同期比+28.2%の1,488億40百万円、営業利益は160億25百万円（前年同期は△127億79百万円）、純利益は同約9.5倍の102億18百万円へと急回復しました。通期進捗率は約39.2%と好発進で、年間200円の大幅増配計画を維持しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/4 ハウス食品グループ本社 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>51億3,600万円（+185.3%）</td></tr><tr><th>通期予想</th><td>170億円（+131.0%）</td></tr><tr><th>利益進捗率</th><td>約30.2% （51.36億円 / 170.0億円）</td></tr><tr><th>配当金</th><td>年間予想 100円</td></tr></table></div><div class="comment-box">ハウス食品グループ本社 27年3月期 1Q決算発表。前年度に実施した総菜子会社の譲渡影響により売上高は751億39百万円と微減でしたが、既存事業ベースでは各セグメントとも増収を確保しました。香辛・調味加工食品事業の価格改定効果や海外の伸長により営業利益は同+17.1%の40億1百万円と伸長したほか、投資有価証券売却益35億4百万円を特別利益に計上したことで最終利益は51億36百万円へ急拡大しました。中東情勢等を背景とした原材料費・エネルギーコストの更なる上昇懸念を織り込み、通期の営業利益予想を従来の185億円から175億円へ、経常利益を197億円から187億円へとそれぞれ10億円下方修正しました。一方で、資産売却益などの下支えにより親会社株主帰属の当期純利益（170億円）は据え置かれています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/4 日清食品ホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>132億7,500万円（+18.3%）</td></tr><tr><th>通期予想</th><td>455億円〜480億円（+0.3%〜+5.8%）</td></tr><tr><th>利益進捗率</th><td>約27.6%〜29.1% （132.75億円 / 455.0億円〜480.0億円）</td></tr><tr><th>配当金</th><td>年間予想 70円</td></tr></table></div><div class="comment-box">日清食品ホールディングス 27年3月期 1Q決算発表。カップヌードルやどん兵衛などの主力ブランドが堅調に推移し、売上収益は1,946億65百万円となりました。原材料価格の上昇という逆風はあるものの増収効果で吸収し、本業の儲けを示す営業利益は179億61百万円、最終利益は132億75百万円と大幅な増益を達成しています。米国では価格改定の浸透に加えて普及価格帯商品の販売数量が増加し、米州地域のコア営業利益は大きく伸長しました。中国地域も高価格帯カップ麺が内陸部へ販路を広げており、コア営業利益が同+28.3%と海外市場が業績を力強く底上げしています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/4 ソフトバンク 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>1,500億7,000万円（+3.3%）</td></tr><tr><th>通期予想</th><td>5,600億円（+1.7%）</td></tr><tr><th>利益進捗率</th><td>約26.8% （1,500.7億円 / 5,600.0億円）</td></tr><tr><th>配当金</th><td>年間予想 8.8円</td></tr></table></div><div class="comment-box">ソフトバンク 27年3月期 1Q決算発表。売上高は1兆8,147億円、営業利益は3,022億円と、全5事業セグメント（コンシューマ、エンタープライズ、ディストリビューション、メディア・EC、ファイナンス）で増収を達成し、第1四半期として過去最高を記録しました。PayPayと法人AI・クラウド事業が利益成長を強力に牽引：セグメント別では、PayPayやPayPayカードの取扱高拡大により「ファイナンス事業」の営業利益が前年同期比+76.0%と急伸。さらに「エンタープライズ事業」も企業のデジタル化・AI需要を捉え、営業利益同+27.5%と大幅な増益を達成しています。</div></div></details>
 
-                <details class="stock-card"><summary class="stock-summary">8522 名古屋銀行</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-                    <tr><th>業種</th><td>銀行業</td></tr>
-                    <tr><th>会社概要</th><td>【特色】地銀中位。愛知県内３行中首位。第二地銀から転換。投信など個人向けと経営相談など法人向け両輪</td></tr>
-                    <tr><th>四季報の評価</th><td>【連続最高益】利上げで預貸金利ザヤが拡大。有価証券利息配当金も増え資金利益は堅調。人件費増こなし、与信費用は低水準。前段の政策保有株売却益減っても経常増益。配当性向40％メドに増配。【経営統合】28年４月をメドにしずおかＦＧと経営統合で基本合意、合併や店舗統廃合はしない方針。27年度純利益目標は280億円に引き上げ。</td></tr>
-                    <tr><th>実績PER / PBR</th><td>PER 12.4倍 / PBR 0.95倍</td></tr><tr><th>配当利回り</th><td>実績：1.97% (120円)</td></tr>
-                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 102,788百万円 / 14,730百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 124,456百万円 / 20,269百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 142,800百万円 / 23,000百万円</span></td></tr>
-                    <tr><th>自己資本比率 / ROE</th><td>5.0% / 6.9%</td></tr>
-                </table></div></div></details>
+<!-- 2026/8/3 -->
+<details class="stock-card"><summary class="stock-summary">2026/8/3 リコー 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>370億8,800万円（+284.1%）</td></tr><tr><th>通期予想</th><td>620億円</td></tr><tr><th>利益進捗率</th><td>約59.8%</td></tr><tr><th>配当金</th><td>年間予想 44円</td></tr></table></div><div class="comment-box">リコー 27年3月期 1Q決算発表。中国子会社の持分譲渡益（その他収益+180億円）に加え、米国の関税措置に係る還付金の計上や円安の追い風を受け、売上高は前年同期比+8.4%の6,298億12百万円、営業利益は同+277.8%の477億62百万円、親会社帰属利益は同+284.1%の370億88百万円と記録的な好決算となりました。ITサービス等のワークプレイスサービス事業も黒字転換を果たしています。通期の純利益目標（620億円）に対する1Q進捗率は約59.8%に達しており、年間44円への増配計画とともに高い利益水準を維持しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/8/3 大和証券グループ本社 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>564億1,400万円（+80.6%）</td></tr><tr><th>通期予想</th><td>非開示</td></tr><tr><th>利益進捗率</th><td>—</td></tr><tr><th>配当金</th><td>年間予想 44円</td></tr></table></div><div class="comment-box">大和証券グループ本社 27年3月期 1Q決算発表。活発な株式市場を背景に委託手数料や大型IPO等の引受手数料、トレーディング損益が大きく伸長しました。純営業収益は2,203億99百万円、経常利益は880億89百万円、最終利益は564億14百万円と極めて強い決算です。2026年8月3日付でオリックス銀行の全株式を取得し完全子会社化を完了。大和ネクスト銀行の預金基盤とオリックス銀行の不動産融資・信託機能を融合させ、富裕層向けコンサルティングおよびグループの安定収益力の大幅な底上げを図っています。</div></div></details>
 
-                <details class="stock-card"><summary class="stock-summary">8542 トマト銀行</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-                    <tr><th>業種</th><td>銀行業</td></tr>
-                    <tr><th>会社概要</th><td>【特色】地銀下位行。岡山県内２番手。第二地銀。倉敷市が地盤。広島、大阪にも拠点</td></tr>
-                    <tr><th>四季報の評価</th><td>【伸長】貸出金利回りの上昇で預貸金利益が拡大。役務取引等利益も投信販売などが牽引し堅調に推移。不良債権処理費用は例年並みに。人件費などの経費増を吸収して経常増益。株価上昇で有価証券評価損益改善。【生成ＡＩ】業務効率化に向け生成ＡＩを導入。行内規定やマニュアルなどの検索システムなどで活用。セキュリティに配慮し、外部サービスに頼らない独自のシステムを構築。</td></tr>
-                    <tr><th>実績PER / PBR</th><td>PER 11.0倍 / PBR 0.37倍</td></tr><tr><th>配当利回り</th><td>実績：1.65% (25円)</td></tr>
-                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 25,661百万円 / 1,817百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 26,577百万円 / 1,970百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 29,500百万円 / 2,000百万円</span></td></tr>
-                    <tr><th>自己資本比率 / ROE</th><td>4.1% / 3.4%</td></tr>
-                </table></div></div></details>
+<!-- 2026/7/31 -->
+<details class="stock-card"><summary class="stock-summary">2026/7/31 エスビー食品 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>34億9,200万円（+79.9%）</td></tr><tr><th>通期予想</th><td>81億円</td></tr><tr><th>利益進捗率</th><td>約43.1%</td></tr><tr><th>配当金</th><td>年間予想 60円</td></tr></table></div><div class="comment-box">エスビー食品 27年3月期 1Q決算発表。主力であるスパイス＆ハーブや香辛調味料グループが順調に推移し、売上高は前年同期比+8.8%の349億14百万円となりました。国内での価格改定効果の浸透や、米国事業での関税還付などが利益を大きく押し上げ、営業利益は同+63.0%の42億97百万円、親会社株主に帰属する四半期純利益は同+79.9%の34億92百万円と大幅増益を達成しました。1Q業績の好調を受けて第2四半期累計の業績予想を上方修正していますが、通期純利益予想（81億円）と年間60円配当予想は据え置かれており、1Q進捗率は約43.1%と極めて高い水準に達しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/31 キーコーヒー 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>6億2,700万円（+95.2%）</td></tr><tr><th>通期予想</th><td>7億5,000万円</td></tr><tr><th>利益進捗率</th><td>約83.6%</td></tr><tr><th>配当金</th><td>年間予想 12円</td></tr></table></div><div class="comment-box">キーコーヒー 27年3月期 1Q決算発表。コーヒー生豆相場の高止まりや円安基調が続く厳しい環境下でしたが、適正な価格転嫁と高付加価値商品の提案が奏功し、売上高は前年同期比+16.7%の241億18百万円、営業利益は同+95.3%の7億81百万円、純利益は同+95.2%の6億27百万円と大幅な増収増益を達成しました。前期にグループ入りした「イノダコーヒ」のインバウンド需要取り込みなど飲食関連事業も急伸（売上+61.2%）しています。下期の大規模販促費用等を見込んで通期予想は据え置かれましたが、進捗率は約83.6%と極めて高い水準です。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/31 WOWOW 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>9億9,200万円（△0.5%）</td></tr><tr><th>通期予想</th><td>6億円</td></tr><tr><th>利益進捗率</th><td>約165.3%</td></tr><tr><th>配当金</th><td>年間予想 30円</td></tr></table></div><div class="comment-box">WOWOW 27年3月期 1Q決算発表。動画配信サービスの普及等を背景に累計正味加入件数は208.7万件と減少が続き、会員収入減等から売上高は前年同期比△5.6%の176億44百万円、営業利益は同△21.7%の9億21百万円となりました。一方、為替差益の計上など営業外収益が下支えし、純利益は9億92百万円と前年並みを確保しています。通期の純利益予想（6億円）に対して1Qだけで約165.3%を達成しました。また、NTTドコモの配信事業「Lemino」の合弁会社化（出資比率51%）を伴う資本業務提携を進めており、今後のプラットフォーム拡大に注目です。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/31 ブルボン 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>14億3,200万円（+41.4%）</td></tr><tr><th>通期予想</th><td>41億円</td></tr><tr><th>利益進捗率</th><td>約34.9%</td></tr><tr><th>配当金</th><td>年間予想 44円</td></tr></table></div><div class="comment-box">ブルボン 27年3月期 1Q決算発表。「アルフォートミニチョコレート」や「プチシリーズ」、「ルマンド」などの主力ビスケット類が節約志向のなかでも堅調に推移し、売上高は前年同期比+3.2%の292億12百万円となりました。包材資材等のコスト上昇がみられるものの、一部商品の価格改定効果や生産性向上、コスト管理が奏功し、営業利益は同+18.7%の18億11百万円、純利益は同+41.4%の14億32百万円と大幅増益を記録しました。新中計「強さの再構築」初年度として好発進し、通期純利益予想（41億円）に対する進捗率は約34.9%に達しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/31 亀田製菓 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>13億7,500万円（△93.7%）</td></tr><tr><th>通期予想</th><td>43億円</td></tr><tr><th>利益進捗率</th><td>約32.0%</td></tr><tr><th>配当金</th><td>年間予想 24円（株式分割後換算）</td></tr></table></div><div class="comment-box">亀田製菓 27年3月期 1Q決算発表。純利益の大幅減は前年同期に米TH FOODS社の連結子会社化に伴う段階取得差益（約206億円）を計上していた反動によるものです。本業面は極めて好調で、価格改定の浸透や重点6ブランドへの集中、周年施策（柿の種60周年・ハッピーターン50周年）が奏功した国内米菓事業に加え、北米TH FOODS社の採算改善が牽引し、営業利益は前年同期比+43.5%の20億61百万円と急伸しました。売上高も同+4.4%の353億70百万円となり、通期純利益予想に対する進捗率は約32.0%と良好です。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/31 王将フードサービス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>9億8,800万円（△53.7%）</td></tr><tr><th>通期予想</th><td>70億9,600万円（△5.0%）</td></tr><tr><th>利益進捗率</th><td>約13.9% （9.88億円 / 70.96億円）</td></tr><tr><th>配当金</th><td>年間予想 56円</td></tr></table></div><div class="comment-box">王将フードサービス 27年3月期 1Q決算発表。原材料高や包材費・光熱費の上昇に加え、人件費等の増加が重なり、営業利益は同△52.8%の14億15百万円、最終利益は同△53.7%の9億88百万円と減益を余儀なくされています。ファン組織「ぎょうざ倶楽部」の会員数は過去最多の136万人を突破。1Qの利益進捗率は約13.9%にとどまったものの、7月から展開している同社史上初の季節限定「夏餃子」や「夏ラーメン」が好調に推移しており、第2四半期以降の収益回復を見込んで通期予想・配当予想ともに据え置いています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/31 三井住友フィナンシャルグループ 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>5,013億7,200万円（+33.0%）</td></tr><tr><th>通期予想</th><td>1兆7,000億円（+7.4%）</td></tr><tr><th>利益進捗率</th><td>約29.5% （5,013.7億円 / 17,000.0億円）</td></tr><tr><th>配当金</th><td>年間予想 180円</td></tr></table></div><div class="comment-box">三井住友フィナンシャルグループ 27年3月期 1Q決算発表。国内外での資金運用収益の拡大や各種手数料ビジネスの伸長により、経常収益は前年同期比+16.6%の2兆8,504億円、最終利益は同+33.0%の5,013億円と大幅な増収増益を達成しました。 全事業部門が好調で進捗率約29.5%の好発進：通期の最終利益予想（1兆7,000億円）に対して、第1四半期時点で約29.5%という高い進捗率を叩き出しました。ホールセールやリテール、グローバル、市場事業部門の全てにおいて本業の儲けを示す「業務純益」が前年を上回っており、死角のない決算となっています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/31 ヤクルト本社 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>135億9,100万円（+17.2%）</td></tr><tr><th>通期予想</th><td>465億円（+5.1%）</td></tr><tr><th>利益進捗率</th><td>約29.2% （135.91億円 / 465.0億円）</td></tr><tr><th>配当金</th><td>年間予想 72円</td></tr></table></div><div class="comment-box">ヤクルト本社 27年3月期 1Q決算発表。国内では物価高の影響で主力飲料が苦戦し、経常利益は156億47百万円と減益スタートになりました。しかし、アジア・オセアニア地域や米州地域など海外事業が力強く成長。投資有価証券売却益などの特別利益も加わり、最終利益は前年同期比+17.2%の増益を確保しています。成長エンジンのアジア市場では、インドネシアでの「ストロベリー風味」や中国での「マンゴー風味」、ベトナムでの「ピーチ風味」など、現地の嗜好に合わせた新商品を次々と投入。給食・病院への販路拡大やEC強化により、海外販売本数を着実に伸ばしています。自社株買い（553万株の消却）や、前期実績から2円の増配（年間72円予想）を実施しており、強固な財務と株主還元姿勢が光る決算です。</div></div></details>
 
-                <details class="stock-card"><summary class="stock-summary">8624 いちよし証券</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-                    <tr><th>業種</th><td>証券・商品先物</td></tr>
-                    <tr><th>会社概要</th><td>【特色】富裕層の個人営業主体で投信、ファンドラップ積上げに重心。中小型株中心に調査力に定評</td></tr>
-                    <tr><th>四季報の評価</th><td>【高水準】収益柱の投信やファンドラップの残高が資金流入と運用益で伸長。信託報酬が着実に増え、営業収益を牽引。人件費などの経費増を吸収し、営業益は高水準。特損見込まず純増。記念配ないが普通配増配。【新中計】28年度末の預かり資産残高は３兆円（26年３月末は２・６兆円）目標。中途採用の強化や、若手社員の定着率向上に向けた人事制度改定などを進め、人員純増へ。</td></tr>
-                    <tr><th>実績PER / PBR</th><td>--- 倍 / --- 倍</td></tr><tr><th>配当利回り</th><td>実績：7.61% (59円)</td></tr>
-                    <tr><th>業績予想<br>(営業収益 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 18,837百万円 / 1,929百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 24,579百万円 / 4,392百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 25,000百万円 / 4,400百万円</span></td></tr>
-                    <tr><th>自己資本比率 / ROE</th><td>56.2% / 15.0%</td></tr>
-                </table></div></div></details>
+<!-- 2026/7/30 -->
+<details class="stock-card"><summary class="stock-summary">2026/7/30 ノジマ 27年3月期 1Q決算 </summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>205億1,500万円（+100.0%）</td></tr><tr><th>通期予想</th><td>480億円</td></tr><tr><th>利益進捗率</th><td>約42.7%</td></tr><tr><th>配当金</th><td>年間予想 20円</td></tr></table></div><div class="comment-box">ノジマ 27年3月期 1Q決算発表。省エネ需要を背景としたエアコン・白物家電の好調により、売上高は前年同期比+6.1%の2,420億78百万円と1Qとして過去最高を更新しました。さらに投資有価証券売却益146億27百万円の計上等により、四半期純利益は前年同期から倍増（+100.0%）の205億15百万円と記録的な好決算となりました。デジタル家電専門店事業が堅調だったほか、AI対応モデルを投入したVAIO（プロダクト事業）も過去最高益を更新しています。好業績を踏まえ通期純利益予想を480億円へ上方修正しましたが、進捗率は1Q時点で約42.7%に達しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/30 オリエンタルランド 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>412億9,700万円（+50.3%）</td></tr><tr><th>通期予想</th><td>1,137億9,700万円（+6.6%）</td></tr><tr><th>利益進捗率</th><td>約36.3% （412.97億円 / 1,137.97億円）</td></tr><tr><th>配当金</th><td>年間予想 16円</td></tr></table></div><div class="comment-box">オリエンタルランド 27年3月期 1Q決算発表。最終純利益は412億97百万円と力強い成長を達成しました。テーマパーク事業においてアトラクション・ショー収入や商品・飲食販売が軒並み伸長し、業績を大きく押し上げています。通期の最終利益予想（1,137億97百万円）に対して、第1四半期だけで約36.3%を稼ぎ出しています。夏休みやハロウィーン、クリスマスといった後半の繁忙期を前に、年間目標達成に向けて非常に余裕のある好スタートです。今期より新規事業であるディズニークルーズの展開に向け「株式会社オリエンタルランド・クルーズ」を新たに連結子会社化しました。高い収益基盤と自己資本比率69.5%という強固な財務体質を背景に、年間配当は前期実績から16円への増配を予定しています。</div></div></details>
+
+<!-- 2026/7/29 -->
+<details class="stock-card"><summary class="stock-summary">2026/7/29 ANAホールディングス 27年3月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>194億1,100万円（△15.4%）</td></tr><tr><th>通期予想</th><td>960億円（△43.2%）</td></tr><tr><th>利益進捗率</th><td>約20.2% （194.11億円 / 960.0億円）</td></tr><tr><th>配当金</th><td>年間予想 60円</td></tr></table></div><div class="comment-box">ANAホールディングス 27年3月期 1Q決算発表。旺盛なインバウンド需要や国際線貨物の回復、さらにNCAの連結効果が加わり、売上高は6,727億円と大きく拡大しました。一方で、燃油費の上昇や人件費・機材関連費用の増加が重しとなり、営業利益は前年同期比43.5%減の207億円、最終利益は同15.4%減の194億円となっています。国際線旅客収入が前年同期比+20.0%、LCCのPeach事業が同+22.0%と、旺盛な訪日・レジャー需要を取り込み高稼働を維持。また、半導体需要や北米向け需要の回復を背景に国際線貨物収入も同+37.9%と力強く伸長しています。</div></div></details>
+
+<!-- 2026/7/15 -->
+<details class="stock-card"><summary class="stock-summary">2026/7/15 東宝 27年2月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>81億9,600万円（△29.1%）</td></tr><tr><th>通期予想</th><td>410億円（△20.8%）</td></tr><tr><th>利益進捗率</th><td>約20.0% （81.96億円 / 410.0億円）</td></tr><tr><th>配当金</th><td>※配当予想数値の直接記載なし</td></tr></table></div><div class="comment-box">東宝 27年2月期 1Q決算発表。営業収入は887億42百万円と増収だった一方、営業利益は同28.3%減、最終利益は同29.1%減となりました。これは海外事業を担う「TOHO Global」への会社分割に伴う決算期のズレが主因です。映画事業では「名探偵コナン ハイウェイの堕天使」や「ゴールデンカムイ」などが牽引し、映画興行・営業ともに前年同期比で増収増益を達成。夏以降も「キングダム 魂の決戦」「映画ちいかわ」「クレヨンしんちゃん」「ブルーロック」など大型話題作が目白押しです。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/15 コメダホールディングス 27年2月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>17億6,100万円（+14.7%）</td></tr><tr><th>通期予想</th><td>69億円（+6.8%）</td></tr><tr><th>利益進捗率</th><td>約25.5% （17.61億円 / 69.0億円）</td></tr><tr><th>配当金</th><td>年間予想 62円</td></tr></table></div><div class="comment-box">コメダホールディングス 27年2月期 1Q決算発表。国内事業において「ポケモンといっしょだモン」キャンペーンやロッテ「クランキー」とのコラボシロノワールなどの施策が人気を集め、FC加盟店向け卸売の既存店売上高は前年比107.4%と好調を維持しました。売上収益は前年同期比+12.7%の154億13百万円、営業利益は同+15.5%の26億46百万円と二桁の増収増益を達成しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/15 コジマ 2026年8月期 3Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>51億8,800万円（+30.5%）</td></tr><tr><th>通期予想</th><td>53億円（+12.5%）</td></tr><tr><th>利益進捗率</th><td>約97.9% （51.88億円 / 53.0億円）</td></tr><tr><th>配当金</th><td>年間予想 28円</td></tr></table></div><div class="comment-box">コジマ 2026年8月期 3Q決算発表。純利益は同+30.5%の51億88百万円と大幅な増収増益を達成しました。通期最終利益予想（53億円）に対する進捗率は約97.9%に達しており、通期業績の上振れ着地が極めて濃厚な状況です。東京都の助成制度拡充や買い替え需要を背景にエアコンが好調に推移したほか、スマートフォンやゲーム機、住宅設備も売上を伸ばしました。</div></div></details>
+
+<!-- 2026/7/14 -->
+<details class="stock-card"><summary class="stock-summary">2026/7/14 ビックカメラ 26年8月期 3Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>198億3,900万円（+31.1%）</td></tr><tr><th>通期予想</th><td>184億円（+5.3%）</td></tr><tr><th>利益進捗率</th><td>約107.8% （198.39億円 / 184.0億円）</td></tr><tr><th>配当金</th><td>年間予想 43円</td></tr></table></div><div class="comment-box">ビックカメラ 26年8月期 3Q決算発表。最終利益198億39百万円と、全ての段階利益で3Q累計として過去最高を更新しました。通期の最終利益予想を3Q時点で上回る進捗率107.8%を叩き出しており、期末に向けた業績上振れが強く期待される内容です。品目別ではスマートフォン、ゲーム、エアコン、パソコンなどが売上を牽引しました。さらに観光地・繁華街向けの厳選提案型店舗「ビックカメラSelect（札幌・那覇）」の出店や、統合オリジナルブランド「ビックアイデア」の立ち上げなど、客単価・収益性向上に向けた施策が実を結んでいます。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/14 クリエイト・レストランツ・ホールディングス 27年2月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>22億1,700万円（+6.1%）</td></tr><tr><th>通期予想</th><td>57億円（+21.9%）</td></tr><tr><th>利益進捗率</th><td>約38.9% （22.17億円 / 57.0億円）</td></tr><tr><th>配当金</th><td>年間予想 5.00円</td></tr></table></div><div class="comment-box">クリエイト・レストランツ・ホールディングス 27年2月期 1Q決算発表。営業利益33億78百万円と増収増益を達成しました。通期最終利益に対する進捗率も約38.9%と高水準で推移しています。国内では「らぁめん小池」などミシュラン掲載店を展開する人気ラーメン店グループの買収を発表し、麺事業ポートフォリオを強化。2026年7月1日付で「磯丸水産」などを展開するSFPホールディングスと合併し、親子上場を解消しました。本社機能やインフラの重複を解消して効率化を進めるとともに、物件情報の共有や人材の最適配置など、グループシナジーの創出を加速させています。</div></div></details>
+
+<!-- 2026/7/13 -->
+<details class="stock-card"><summary class="stock-summary">2026/7/13 U-NEXT HOLDINGS 26年8月期 3Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>129億1,900万円（△5%）</td></tr><tr><th>通期予想</th><td>185億円</td></tr><tr><th>利益進捗率</th><td>約69.8% （129.19億円 / 185.0億円）</td></tr><tr><th>配当金</th><td>※配当予想の具体的な記載なし</td></tr></table></div><div class="comment-box">U-NEXT HOLDINGS 26年8月期 3Q決算発表。最終利益が前年割れとなったのは、前期にあった営業外収益の剥落や、M&Aなどに伴う支払利息の増加が主な要因であり、本業が崩れたわけではありません。屋台骨であるコンテンツ配信事業（U-NEXT）は、課金ユーザー数が522万人（前年同期比+49万人）へと着実に拡大し、業績を強力に牽引しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/13 スタジオアリス 27年2月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>1億1,100万円（△29.0%）</td></tr><tr><th>通期予想</th><td>12億5,000万円（+7.6%）</td></tr><tr><th>利益進捗率</th><td>約8.9% （1.11億円 / 12.50億円）</td></tr><tr><th>配当金</th><td>年間予想 50円</td></tr></table></div><div class="comment-box">スタジオアリス 27年2月期 1Q決算発表。物価高に伴う節約志向や選別消費の影響を受け、売上高は75億46百万円となりました。しかし、店舗オペレーションの効率化やコスト最適化を進めたことで、本業の営業利益は前年同期比+8.5%の2億29百万円と増益を確保しています。営業利益・経常利益は増益だったものの、税金費用（法人税等）の増加や為替差損の計上等により、最終四半期純利益は前年同期比29.0%減の着地となりました。</div></div></details>
+
+<!-- 2026/7/10 -->
+<details class="stock-card"><summary class="stock-summary">2026/7/10 ジンズホールディングス 26年8月期 3Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>62億4,100万円（△0.7%）</td></tr><tr><th>通期予想</th><td>86億2,300万円（+3.5%）</td></tr><tr><th>利益進捗率</th><td>約72.4% （62.4億円 / 86.2億円）</td></tr><tr><th>配当金</th><td>年間予想 115円</td></tr></table></div><div class="comment-box">ジンズホールディングス 26年8月期 3Q決算発表。国内での高単価商品の好調や一式単価の上昇により、売上高は807億30百万円と大幅に伸長しました。一方で、大型旗艦店「JINS銀座店」「JINS新宿店」の立ち上げや新規出店に伴う先行投資、人件費等の増加により、ほぼ前年並みの着地となっています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/10 良品計画 26年8月期 3Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>585億5,300万円（+34.3%）</td></tr><tr><th>通期予想</th><td>670億円（+31.8%）</td></tr><tr><th>利益進捗率</th><td>約87.4% （585.5億円 / 670.0億円）</td></tr><tr><th>配当金</th><td>年間予想 32円</td></tr></table></div><div class="comment-box">良品計画 26年8月期 3Q決算発表。国内外での新規出店拡大や海外事業の好調に加え、生産体制の内製化による原価低減や値下げの抑制が奏功し、売上総利益率が大きく改善しました。本業の営業利益は前年同期比+36.0%の808億円、最終利益も+34.3%と力強く伸長し、通期業績予想を上方修正しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/10 近鉄百貨店 27年2月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>13億2,600万円</td></tr><tr><th>通期予想</th><td>39億円（+5.1%）</td></tr><tr><th>利益進捗率</th><td>約34.0% （13.26億円 / 39.0億円）</td></tr><tr><th>配当金</th><td>年間予想 20円</td></tr></table></div><div class="comment-box">近鉄百貨店 27年2月期 1Q決算発表。前年の大阪・関西万博オフィシャルショップ出店の反動減等により売上高は前年同期比△1.2%の294億7百万円と微減だったものの、営業利益は19億29百万円と急拡大。最終損益は13億26百万円の黒字へV字回復を果たし、通期業績予想も上方修正されました。あべのハルカス本店の改装効果と大型催事の成功：旗艦店である「あべのハルカス近鉄本店」で惣菜売場を改装オープンし食料品売上が大きく伸長したほか、「大北海道展」などの大型物産展やイベントが入店客数を牽引。ラグジュアリーブランドを中心とした免税売上も堅調に推移しています。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/10 リンガーハット 27年2月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>3億4,200万円（+6.7%）</td></tr><tr><th>通期予想</th><td>12億円（前期比 +30.5%）</td></tr><tr><th>利益進捗率</th><td>約28.5% （3.42億円 / 12.0億円）</td></tr><tr><th>配当金</th><td>年間予想 13円</td></tr></table></div><div class="comment-box">リンガーハット 27年2月期 1Q決算発表。売上高は前年同期比114億39百万円にとどまったものの、営業利益は5億99百万円と大幅に伸長しました。原材料・光熱費や人件費高騰の逆風の中、コストコントロールと商品力強化が利益改善に直結しています。主力事業では「麻婆なすの冷やしちゃんぽん」などの冷やし麺や、東西エリア限定メニューの投入が奏功し、既存店売上高は前年同期比104.3%、セグメント営業利益は大きく収益を牽引しました。</div></div></details>
+<details class="stock-card"><summary class="stock-summary">2026/7/10 イオン 2027年2月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>138億900万円（前年約2.1倍）</td></tr><tr><th>通期予想</th><td>73,000百万円（+0.4%）</td></tr><tr><th>利益進捗率</th><td>約18.9% （138.0億円 / 730.0億円）</td></tr><tr><th>配当金</th><td>年間予想 15円</td></tr></table></div><div class="comment-box">イオン 2027年2月期 1Q決算発表。営業収益は前年比+14.6%の2兆9,419億円、営業利益は+33.6%の752億円と、売上・営業利益・経常利益のすべてで第1四半期の過去最高を更新しました。インフレやコスト高が直撃しやすい小売業において、この業績は王者の地力を見せつける結果です。</div></div></details>
+
+<!-- 2026/7/8 -->
+<details class="stock-card"><summary class="stock-summary">2026/7/8 吉野家ホールディングス 27年2月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>18億1,400万円（+144.2%）</td></tr><tr><th>通期予想</th><td>49億円</td></tr><tr><th>利益進捗率</th><td>約37.0% （18.14億円 / 49.0億円）</td></tr><tr><th>配当金</th><td>年間予想 22円</td></tr></table></div><div class="comment-box">吉野家ホールディングス 27年2月期 1Q決算発表。原材料費や人件費の高騰という外食産業全体の逆風がある中、売上高が二桁成長しただけでなく、営業利益は前年比+140.8%、最終利益は+144.2%と、利益が前年の2.4倍以上に跳ね上がる特大の増益を叩き出しました。</div></div></details>
+
+<!-- 2026/6/30 -->
+<details class="stock-card"><summary class="stock-summary">2026/6/30 高島屋 27年2月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>110億8,200万円（+58.4%）</td></tr><tr><th>通期予想</th><td>380億円（+0.2%）</td></tr><tr><th>利益進捗率</th><td>約29.2% （110.8億円 / 380.0億円）</td></tr><tr><th>配当金</th><td>年間予想 40円</td></tr></table></div><div class="comment-box">高島屋 27年2月期 1Q決算発表。円安を背景としたインバウンド需要の増加に加え、国内顧客の売上も堅調に推移しました。特に利益率の低いラグジュアリーブランドの売上が大きく伸びたことで商品利益率はやや低下したものの、売上高そのものの増大により、大幅増益となりました。シンガポールやホーチミンの高島屋が増収増益となったほか、上海高島屋が黒字転換を達成するなど、海外事業が利益に貢献しています。</div></div></details>
+
+<!-- 2026/6/26 -->
+<details class="stock-card"><summary class="stock-summary">2026/6/26 壱番屋 2027年2月期 1Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>7億2,800万円（△21.1%）</td></tr><tr><th>通期予想</th><td>27億2,000万円（+6.1% ）</td></tr><tr><th>利益進捗率</th><td>約26.8% （7.28億円 / 27.2億円）</td></tr><tr><th>配当金</th><td>年間予想 16円</td></tr></table></div><div class="comment-box">壱番屋 2027年2月期 1Q決算発表。海外事業や国内子会社の新規出店が進んだことで、売上高は前年同期比+7.8%の169億76百万円と伸長しました。一方で、米をはじめとする食材仕入価格の上昇や物流費の増加が利益を圧迫し、最終利益も同21.1%減の減益スタートとなっています。国内店舗では、人気VTuberとのコラボや「ホロ肉ドカンと豪快カレー」の再販、限定メニューの投入などが奏功し、既存店売上高は前年同期比+2.5%と堅調に推移しています。</div></div></details>
+
+<!-- 2026/6/12 -->
+<details class="stock-card"><summary class="stock-summary">2026/6/12 くら寿司 26年10月期 2Q決算</summary><div class="stock-details"><div class="table-responsive"><table class="data-table"><tr><th>利益</th><td>18億3,500万円（△6.1%の減益）</td></tr><tr><th>通期予想</th><td>30億円（△16.8%）</td></tr><tr><th>利益進捗率</th><td>約61.2% （18.35億円 / 30.0億円）</td></tr><tr><th>配当金</th><td>年間予想 30円</td></tr></table></div><div class="comment-box">くら寿司 26年10月期 2Q決算発表。売上高は前年同期比+6.5%の1,252億円と好調に推移しました。しかし、お米をはじめとする原材料価格や人件費の高騰が重しとなり、本業の儲けを示す営業利益は前年比△14.7%の24億円、最終利益も△6.1%の減益での折り返しとなりました。</div></div></details>
+
             </div>
-            
+
+            <!-- 👇ここから「もっと見る」ボタン👇 -->
+            <div class="load-more-container">
+                <button id="loadMoreBtn" class="load-more-btn">もっと見る ▼</button>
+            </div>
+            <!-- 👆ここまで追加👆 -->
+
             <div class="pr-box" style="margin: 30px 0;">
                 <p style="font-size: 16px; font-weight: bold; margin-top: 0; text-align: center;">高配当株投資を始めるなら！手数料0円の松井証券</p>
                 <a href="https://px.a8.net/svt/ejp?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" rel="nofollow" class="pr-button">松井証券の口座開設はこちら</a>
                 <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" alt="">
             </div>
+
         </div>
 
         <div class="sidebar">
@@ -309,1061 +328,78 @@
         </div>
     </div>
 
-    <!-- 👇データベース検索の仕組み（JavaScript）👇 -->
+    <!-- 👇ここから機能（JavaScript）👇 -->
     <script>
-        // ▼▼▼ 四季報夏号 検索データベース（全銘柄統合・コード順） ▼▼▼
-        const shikihoData = [
-            {
-                code: "1952",
-                name: "新日本空調",
-                industry: "建設業（設備工事）",
-                outline: "【特色】三井系の空調設備工事会社。微粒子可視化システムなど独自技術を持つ。原子力施設向けに強み。",
-                evaluation: "【最高益】期初繰越高1487億円（前期比18%増）。大規模再開発や工場関連、データセンターが推移。リニューアルも寄与。生産性向上も効く。原子力は再稼働対応など増勢。人件費増こなし連続増益。増配。【中計】29年度売上高2000億円、営業利益240億円目標。成長投資額300億円。成長事業と生産性向上がカギ。建築設備CADの自動作図機能の共同開発始動。",
-                perPbr: "PER 11.8倍 / PBR 1.83倍",
-                yield: "3.60% (120円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 154,884百万円 / 9,656百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 160,000百万円 / 12,800百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 168,000百万円 / 13,500百万円</span>",
-                equityRoe: "61.0% / 16.0%"
-            },
-            {
-                code: "1982",
-                name: "日比谷綜合設備",
-                industry: "建設業（設備工事）",
-                outline: "【特色】空調主体の設備工事会社。ＮＴＴグループ向けに強み。データセンター等情報通信向けが伸びる。",
-                evaluation: "【最高益】期初繰越高1031億円（前期比20％増）。データセンター軸に、大型再開発や生産・物流施設の大型工事が牽引。資材費増こなす。連続増配。26年３月期はデータセンター上乗せ。人員増要員。",
-                perPbr: "PER 16.0倍 / PBR 1.66倍",
-                yield: "3.27% (100円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 94,080百万円 / 8,681百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 105,000百万円 / 8,700百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 108,000百万円 / 9,000百万円</span>",
-                equityRoe: "71.6% / 11.6%"
-            },
-            {
-                code: "2767",
-                name: "円谷フィールズホールディングス",
-                industry: "卸売業",
-                outline: "【特色】遊技機の企画開発、販売が軸。エヴァンゲリオン等有力IP多数。ウルトラマンの映像やライセンス収入も。",
-                evaluation: "【増勢】パチンコ・パチスロなど主力の遊技機は複数機種を増産。フィールズなどが好調。スマート機の浸透も追い風にメダルレス機の導入進む。ウルトラマンのイベントや映像等も伸びる。人件費増をこなし営業益続伸。中国でのライセンス収入等も堅調で最高純益。増配。<br>【ウルトラマン】新作TVシリーズ「ウルトラマンアーク」を7月に日本、中国、東南アジアなどで同時放送・配信開始。玩具展開などで若年層を取り込む。",
-                perPbr: "PER 15.2倍 / PBR 1.43倍",
-                yield: "5.01% (70円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 140,581百万円 / 11,158百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 174,142百万円 / 13,050百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 187,000百万円 / 13,500百万円</span>",
-                equityRoe: "58.9% / 23.3%"
-            },
-            {
-                code: "2768",
-                name: "双日",
-                industry: "卸売業",
-                outline: "【特色】総合商社。03年に日商岩井とニチメンが合併して誕生。自動車や航空、肥料に強み。生活インフラも。",
-                evaluation: "【好反発】大型石炭鉱山の売却で前期に一過性利益。その反動減をこなす。自動車関連が東南アジアなどで好調。石炭価格の上昇も利益を押し上げ。機能性化学品や航空関連も底堅く推移し、純益反発。連続増配。<br>【PPA】豪州で再生可能エネルギーの供給事業（PPA）に参画。国内でも太陽光発電などの開発を加速。",
-                perPbr: "PER 10.8倍 / PBR 1.05倍",
-                yield: "3.27% (180円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 2,509,714百万円 / 103,636百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 2,757,350百万円 / 103,611百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 2,780,000百万円 / 130,000百万円</span>",
-                equityRoe: "29.9% / 10.1%"
-            },
-            {
-                code: "4012",
-                name: "アクシス",
-                industry: "情報・通信",
-                outline: "【特色】金融機関、公的機関向け主体にシステム開発。クラウドサービスも展開。",
-                evaluation: "【増額】昨秋獲得した大型システム案件が通期寄与。順調な新卒採用などが先行し営業益微増にとどまるも、外注費のコントロールなどで営業益上振れ。前号比で増益幅拡大。",
-                perPbr: "PER 12.3倍 / PBR 1.69倍",
-                yield: "2.85% (46円)",
-                forecast: "・24年12月(実績)<br>&nbsp;&nbsp;- 8,134百万円 / 642百万円<br><span style='color: #1976d2; font-weight: bold;'>・25年12月(予想)<br>&nbsp;&nbsp;- 9,500百万円 / 730百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・26年12月(予想)<br>&nbsp;&nbsp;- 11,000百万円 / 840百万円</span>",
-                equityRoe: "75.7% / 16.8%"
-            },
-            {
-                code: "4658",
-                name: "日本空調サービス",
-                industry: "サービス業",
-                outline: "【特色】建物設備のメンテナンスが主体。独立系。工場や病院向けに強み。リニューアル工事も。",
-                evaluation: "【最高益】空調設備は新設物件獲得などで好調維持。テナントビル等のリニューアル工事も増勢。契約単価引き上げ浸透。人件費増こなす。営業外の助成金剥落でも純益高水準。連続増配。",
-                perPbr: "PER 13.6倍 / PBR 1.80倍",
-                yield: "2.59% (45円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 64,438百万円 / 3,102百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 69,245百万円 / 3,696百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 74,000百万円 / 3,900百万円</span>",
-                equityRoe: "57.6% / 13.1%"
-            },
-            {
-                code: "7175",
-                name: "今村証券",
-                industry: "証券・商品先物",
-                outline: "【特色】独立系、地方証券会社の雄。北陸３県が主地盤。対面営業とインターネット取引の２本柱。",
-                evaluation: "【好調】国内株式市場の好調を受け、株式委託手数料が増勢。世界的な株高を背景に投資信託販売も堅調。債券などのトレーディング収益建増。システム関連費用や人件費増を吸収し、営業益続伸。増配。",
-                perPbr: "PER 8.5倍 / PBR 0.52倍",
-                yield: "4.07% (55円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 4,186百万円 / 760百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 4,914百万円 / 1,055百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 5,100百万円 / 1,150百万円</span>",
-                equityRoe: "49.6% / 8.4%"
-            },
-            {
-                code: "7433",
-                name: "伯東",
-                industry: "卸売業",
-                outline: "【特色】半導体や機器の専門商社。自社製の産機開発に特色。電子部品やケミカル事業も併営。",
-                evaluation: "【急改善】工業向けは半導体が自動化設備投資の回復で底打ち。ルネサス製は代理店特約終了に伴う移管一服。自動車向けが好調維持。半導体製造装置は中国向けに出遅れ感あるが、下期から急回復。増配。",
-                perPbr: "PER 13.8倍 / PBR 1.22倍",
-                yield: "4.50% (200円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 183,133百万円 / 5,009百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 225,000百万円 / 6,100百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 240,000百万円 / 6,100百万円</span>",
-                equityRoe: "41.6% / 7.5%"
-            },
-            {
-                code: "8001",
-                name: "伊藤忠商事",
-                industry: "卸売業",
-                outline: "【特色】総合商社大手。非財閥系の雄。繊維や食品、情報・金融などに強い。傘下にファミリーマートなど有力企業。",
-                evaluation: "【最高益更新】モビリティ、北米電力など順調。デサントはブランド刷新効果など発現。建機、鉄鋼等追加出資貢献。伊藤忠食品、日立建機等も回復。ファミマ前期一過性減益は今期ない。最高益。増配。<br>【ＩＰ展開】北米でキャラクター等のＩＰ展開する米社に出資。機動的な資金力生かし今後も買収推進。設立来積極的な金属資源への投資姿勢は維持。",
-                perPbr: "PER 14.5倍 / PBR 2.04倍",
-                yield: "2.28% (予想利回り)",
-                forecast: "・26年3月(実績)<br>&nbsp;&nbsp;- 14,823,087百万円 / 900,283百万円<br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 15,500,000百万円 / 950,000百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・28年3月(予想)<br>&nbsp;&nbsp;- 15,800,000百万円 / 1,000,000百万円</span>",
-                equityRoe: "39.4% / 14.6%"
-            },
-            {
-                code: "8002",
-                name: "丸紅",
-                industry: "卸売業",
-                outline: "【特色】芙蓉グループの総合商社大手。穀物、発電で商社トップ級。ライフスタイルや輸送機も強い。",
-                evaluation: "【連続最高益】銅事業は資源価格高やチリ案件の増産等で伸長。食料や化学品、アグリも底堅い。航空機、建機なども好調維持。自動車は北米で販売増。エネルギー関連の小売り事業は一過性剥落。ただ非資源が牽引し純益最高益。連続増配。<br>【重点分野】航空、アグリ事業など重点７分野で買収推進、事業拡大。東南アジアのＩＴ関連や欧米の事業など継続。",
-                perPbr: "PER 10.8倍 / PBR 1.42倍",
-                yield: "2.20% (予想利回り)",
-                forecast: "・26年3月(実績)<br>&nbsp;&nbsp;- 8,265,841百万円 / 543,852百万円<br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 8,500,000百万円 / 595,000百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・28年3月(予想)<br>&nbsp;&nbsp;- 8,800,000百万円 / 620,000百万円</span>",
-                equityRoe: "41.4% / 13.6%"
-            },
-            {
-                code: "8015",
-                name: "豊田通商",
-                industry: "卸売業",
-                outline: "【特色】トヨタ系総合商社。自動車関連が営業益の約半分。アフリカ強化中。再生可能エネルギーも強み。",
-                evaluation: "【順調】アフリカやモビリティがトヨタ車の販売順調で増勢。再生エネ関連の利益貢献も伸びる。車両・部品輸送等の物流費増をこなし、連続最高益。増配。<br>【攻勢】鉄スクラップの事業拡大へ、南アフリカの同業最大手を買収。インド等で自動車生産の裾野が広がる中、リサイクル事業強化。",
-                perPbr: "PER 14.0倍 / PBR 2.29倍",
-                yield: "1.83% (155円)",
-                forecast: "・26年3月(実績)<br>&nbsp;&nbsp;- 11,561,935百万円 / 370,516百万円<br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 12,000,000百万円 / 400,000百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・28年3月(予想)<br>&nbsp;&nbsp;- 12,400,000百万円 / 440,000百万円</span>",
-                equityRoe: "37.0% / 12.8%"
-            },
-            {
-                code: "8016",
-                name: "オンワードホールディングス",
-                industry: "繊維製品",
-                outline: "【特色】アパレル大手。百貨店、SC向けに展開。24年にWEGO運営会社を完全子会社化。",
-                evaluation: "【連続増配】SC軸に店舗数純増。オーダーメード好採算の直営工場稼働率上がる。好採算のコスメ伸長。宣伝費増こなし営業増益。正社員化も効く。人件費上昇などはこなす。政策株式売却特益続く。<br>【拡大】5月下旬にWEGOが台湾に新店初出店。20年代に台湾で20店目指す。コスメは稼働中の新ドラッグストア店舗などで順次導入検討。",
-                perPbr: "PER 11.4倍 / PBR 1.06倍",
-                yield: "4.55% (26円)",
-                forecast: "・25年2月(実績)<br>&nbsp;&nbsp;- 208,393百万円 / 8,516百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年2月(予想)<br>&nbsp;&nbsp;- 236,804百万円 / 10,094百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年2月(予想)<br>&nbsp;&nbsp;- 247,000百万円 / 11,200百万円</span>",
-                equityRoe: "49.4% / 11.4%"
-            },
-            {
-                code: "8020",
-                name: "兼松",
-                industry: "卸売業",
-                outline: "【特色】老舗商社。電子・ＩＴ、食料、鉄鋼・プラントの３本柱。ＩＣＴ偏重から事業多角化へ投資。",
-                evaluation: "【連続最高益】モバイル需要旺盛なＩＣＴが牽引。前期引当の一過性損失剥落。中東などのインフラ、機械が想定超え。純利益高水準。増配。26年３月期もＩＣＴ、機械などが好調維持。ただ税負担増で純益は小幅増。",
-                perPbr: "PER 10.2倍 / PBR 1.70倍",
-                yield: "3.64% (90円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 1,067,665百万円 / 32,523百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 1,100,000百万円 / 35,000百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 1,150,000百万円 / 35,000百万円</span>",
-                equityRoe: "28.4% / 17.0%"
-            },
-            {
-                code: "8030",
-                name: "中央魚類",
-                industry: "卸売業",
-                outline: "【特色】水産荷受け大手。市場内取引多く、豊洲市場で首位争い。冷蔵倉庫も。",
-                evaluation: "【小幅減益】水産物の取扱量は減少。卸売手数料の調定率引き上げは寄与。冷蔵倉庫の稼働は着実。ただ、荷役関連費用や物流経費の増加が重い。一部減価償却費も増え営業減益。不動産賃貸等で補えずついに営業減益。配当は好採算の有価証券売却益等で補い連続最高純益。増配維持。<br>【合弁】グループ会社の統合へ、持分法適用会社と折半出資で新会社設立。物流網の共同利用で効率化等図る。",
-                perPbr: "PER 5.8倍 / PBR 0.38倍",
-                yield: "3.43% (120円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 158,598百万円 / 2,945百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 159,000百万円 / 2,200百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 162,000百万円 / 2,390百万円</span>",
-                equityRoe: "44.1% / 8.6%"
-            },
-            {
-                code: "8031",
-                name: "三井物産",
-                industry: "卸売業",
-                outline: "【特色】三井グループの中核総合商社。鉄鉱石、原油など資源ビジネスに強み。インフラやヘルスケアも。",
-                evaluation: "【最高益】LNG事業は一過性利益剥落で減益。だが鉄鉱石が価格上昇やコスト改善で想定超の伸び。北米での自動車事業も好調に推移。化学品も底堅い。持分法投資利益も増加し、純利益は連続で最高益更新。増配。<br>【新方針】資本効率向上へ、採算の悪い事業の売却・撤退を加速。政策保有株式の縮減も進める。",
-                perPbr: "PER 15.6倍 / PBR 1.73倍",
-                yield: "2.61% (115円)",
-                forecast: "・26年3月(実績)<br>&nbsp;&nbsp;- 13,995,222百万円 / 1,063,684百万円<br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 15,000,000百万円 / 920,000百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・28年3月(予想)<br>&nbsp;&nbsp;- 15,500,000百万円 / 1,000,000百万円</span>",
-                equityRoe: "42.1% / 10.2%"
-            },
-            {
-                code: "8053",
-                name: "住友商事",
-                industry: "卸売業",
-                outline: "【特色】住友系の総合商社。油井管など鋼管は強大。CATVなどメディアも強い。資源は非鉄が軸。",
-                evaluation: "【連続最高益】銅など資源相場高や円安が追い風。航空機リース売却益も貢献。自動車事業の回復も効く。減損等一過性損失をこなし純益は連続最高益。増配。<br>【新方針】次期中計に向け不採算事業の売却・撤退進める。政策保有株も縮減へ。不動産やインフラなど強みを持つ事業に資源集中。",
-                perPbr: "PER 11.7倍 / PBR 1.85倍",
-                yield: "2.23% (130円)",
-                forecast: "・26年3月(実績)<br>&nbsp;&nbsp;- 7,337,259百万円 / 600,334百万円<br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 7,800,000百万円 / 630,000百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・28年3月(予想)<br>&nbsp;&nbsp;- 8,000,000百万円 / 660,000百万円</span>",
-                equityRoe: "33.9% / 12.9%"
-            },
-            {
-                code: "8056",
-                name: "BIPROGY",
-                industry: "情報・通信",
-                outline: "【特色】金融や空運、流通など幅広い業種と取引。日本ユニシス、大日本印刷の系譜。",
-                evaluation: "【最高益】買収会社フル寄与。DXやレガシーシステム近代化等、企業の投資意欲は旺盛で開発案件底堅い。中小型案件も拡大。製品販売等も堅調。採算改善が効きシステム増等こなす。増配。<br>【新機軸】4月標準クラウドサービス拡充、クラウド環境の監視・運用を月額で提供。金融の勘定系システム内製化に移行する地銀等には軽量勘定系モデル等で対応。",
-                perPbr: "PER 19.4倍 / PBR 2.50倍",
-                yield: "3.03% (140円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 404,010百万円 / 26,965百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 433,686百万円 / 31,209百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 470,000百万円 / 32,200百万円</span>",
-                equityRoe: "47.0% / 17.9%"
-            },
-            {
-                code: "8057",
-                name: "内田洋行",
-                industry: "卸売業",
-                outline: "【特色】オフィス家具大手。学校備品・システムに強み。公共システムやライセンス販売にも展開。",
-                evaluation: "【快走】公共はGIGAスクールの端末更新需要がピーク。都市圏中心にオフィス環境構築案件も好調。人件費増こなし営業益拡大。ソフトウェアの保守等も堅調。配当増額。27年7月期は自治体案件底堅いが、GIGA関連減。利益やや反落。<br>【次世代校務DX】東京都や埼玉県などで、小中学校の教職員、生徒計2・1万人の利用予定。教職員の負担軽減。クラウド型ネットワークサービス導入は2万室突破。",
-                perPbr: "PER 8.7倍 / PBR 1.42倍",
-                yield: "3.54% (220円)",
-                forecast: "・25年7月(実績)<br>&nbsp;&nbsp;- 337,055百万円 / 9,825百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年7月(予想)<br>&nbsp;&nbsp;- 421,000百万円 / 11,500百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年7月(予想)<br>&nbsp;&nbsp;- 400,000百万円 / 10,700百万円</span>",
-                equityRoe: "38.1% / 14.5%"
-            },
-            {
-                code: "8058",
-                name: "三菱商事",
-                industry: "卸売業",
-                outline: "【特色】総合商社大手。三菱グループの中核。原料炭など資源事業に強み。機械、食品、化学品など多角展開。",
-                evaluation: "【急反発】北米シェールガス事業の売却益が前期で剥落。だが豪州原料炭の価格上昇が想定超で利益を大きく押し上げ。欧州の自動車関連も好調。チリ銅鉱山の一過性損失をこなし、純利益は急反発。連続増配。<br>【投資】洋上風力発電などの再生可能エネルギー分野や、脱炭素関連の投資を加速。海外での資源確保も推進。",
-                perPbr: "PER 19.7倍 / PBR 1.99倍",
-                yield: "2.44% (100円)",
-                forecast: "・26年3月(実績)<br>&nbsp;&nbsp;- 18,915,995百万円 / 1,096,094百万円<br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 20,000,000百万円 / 950,000百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・28年3月(予想)<br>&nbsp;&nbsp;- 21,000,000百万円 / 1,000,000百万円</span>",
-                equityRoe: "39.1% / 8.5%"
-            },
-            {
-                code: "8304",
-                name: "あおぞら銀行",
-                industry: "銀行業",
-                outline: "【特色】旧日債銀。不動産融資に強み。ＧＭＯとネット銀行展開。大和証券と資本業務提携。",
-                evaluation: "【好調】ＬＢＯローンなど国内貸出残高反転増。金利高水準や配当金等で資金利益伸長。海外ファンド投資益や不動産関連等の役務手数料も一段高。与信コスト増こなし営業増益。前期発生の米オフィス向け不動産引当金剝落で純益急回復。大幅増配。<br>【資本比率】信用リスク計測手法をＦＩＲ（基礎的内部格付手法）へ変更しＣＥＴ１比率０・８％押し上げ。２５年度のＲＯＥ８％目標。",
-                perPbr: "PER 13.9倍 / PBR 1.54倍",
-                yield: "3.75% (50円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 231,460百万円 / ▲49,904百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 242,314百万円 / 25,705百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 268,000百万円 / 37,000百万円</span>",
-                equityRoe: "5.6% / 5.5%"
-            },
-            {
-                code: "8306",
-                name: "三菱ＵＦＪフィナンシャル・グループ",
-                industry: "銀行業",
-                outline: "【特色】国内最大の民間金融グループ。銀行、信託、証券、カードなど。米州、アジアでの展開進む。",
-                evaluation: "【快走】国内大企業中心に貸出金増加。利ザヤ改善し資金利益伸長。信託報酬や融資関連手数料も堅調。モルスタの持分法投資利益も高水準で推移し、最高純益更新。増配。<br>【ＲＯＥ】２６年３月期最終年度の中計目標ＲＯＥ９％を、１年前倒しで今期達成へ。機動的な自己株買いや政策保有株の早期売却で、資本効率向上を図る。",
-                perPbr: "PER 15.7倍 / PBR 0.90倍",
-                yield: "3.17% (50円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 13,629,997百万円 / 1,490,781百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 14,620,843百万円 / 1,500,000百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 15,600,000百万円 / 1,600,000百万円</span>",
-                equityRoe: "5.2% / 10.2%"
-            },
-            {
-                code: "8308",
-                name: "りそなホールディングス",
-                industry: "銀行業",
-                outline: "【特色】旧大和・あさひ。傘下にりそな、埼玉りそな、関西みらい、みなとの４行。グループ連携を加速。",
-                evaluation: "【続伸】個人・法人向けとも貸出金残高増加。利回り改善し資金利益伸びる。投資信託等の役務取引等利益も順調。与信費用増加こなし経常増益。増配。<br>【始動】２８年度に純益３０００億円目指す新中計始動。政策保有株は現在約２５００万株、３５０億円上限に自己株買い。",
-                perPbr: "PER 18.5倍 / PBR 1.10倍",
-                yield: "1.81% (37円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 1,357,218百万円 / 217,713百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 1,550,000百万円 / 310,000百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 1,750,000百万円 / 350,000百万円</span>",
-                equityRoe: "3.8% / 9.2%"
-            },
-            {
-                code: "8309",
-                name: "三井住友トラストグループ",
-                industry: "銀行業",
-                outline: "【特色】傘下に三井住友信託銀行。資金運用、資産管理、不動産など手がける。信託財産残高首位。",
-                evaluation: "【連続最高益】前期膨らんだ債券売却損一服。資金利益伸長。株高水準で投資信託の販売手数料など非金利も堅調。外貨調達コスト増等こなし、経常大幅増。好採算のシステム開発案件が押し上げ。増配。<br>【優先株】２８年４月までに１００億円めどに優先株売却益を還元。総還元性向は５５％以上を目安に累進配当。残りは自己株取得で還元。",
-                perPbr: "PER 16.5倍 / PBR 1.59倍",
-                yield: "3.38% (105円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 2,983,544百万円 / 317,566百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 3,150,000百万円 / 380,000百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 3,280,000百万円 / 395,000百万円</span>",
-                equityRoe: "4.3% / 9.5%"
-            },
-            {
-                code: "8316",
-                name: "三井住友フィナンシャルグループ",
-                industry: "銀行業",
-                outline: "【特色】傘下に三井住友銀行、ＳＭＢＣ日興証券、プロミスなど。効率性トップ。",
-                evaluation: "【連続最高益】前期好調の市場部門は減益。だが、国内外の貸出金残高増や利回り上昇が牽引し、資金利益が順調に伸びる。決済・外為手数料や、クレジットカードの取扱高拡大で役務収益も増加。米国の航空機リース関連や、アジアの事業投資先の利益貢献も増す。連続最高純益。増配。<br>【新中計】２８年度に純利益１兆円超目指す新中計始動。",
-                perPbr: "PER 16.0倍 / PBR 1.29倍",
-                yield: "3.03% (78円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 10,174,894百万円 / 1,177,996百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 10,790,853百万円 / 1,582,973百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 11,020,000百万円 / 1,700,000百万円</span>",
-                equityRoe: "4.8% / 10.4%"
-            },
-            {
-                code: "8331",
-                name: "千葉銀行",
-                industry: "銀行業",
-                outline: "【特色】地銀大手。千葉県内で圧倒的。武蔵野銀行と包括提携。",
-                evaluation: "【最高益更新】預金利息は増加。日銀の利上げで貸出金利回り改善し、資金利益が順調に伸びる。法人向けのコンサルティング手数料や、個人向け投資信託などの役務収益も好調。与信費用増やシステム投資等の経費増を吸収し、最高純益更新。増配。<br>【統合】２７年１月に完全子会社のちばぎん証券と、持分法適用会社のちばぎんアセットマネジメントを統合する方針。",
-                perPbr: "PER 15.6倍 / PBR 1.05倍",
-                yield: "2.75% (32円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 362,179百万円 / 62,440百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 445,037百万円 / 74,259百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 507,000百万円 / 107,000百万円</span>",
-                equityRoe: "5.9% / 7.8%"
-            },
-            {
-                code: "8334",
-                name: "群馬銀行",
-                industry: "銀行業",
-                outline: "【特色】県内シェアは預金、貸出金とも３５％超と圧倒的。新座や新宿など７店舗を開設へ。",
-                evaluation: "【貸出金利回り】資金利益が一段と拡大。貸出金利回りの上昇が牽引。貸出金も伸びる。法人向け保険等の販売手数料など役務収益も増加。不良債権処理等の一過性費用を抑えて経常、純益とも拡大。連続増配。<br>【最終合意】第四北越ＦＧと広域連携協定。システム共同化、シンジケートローン等で合意。２７年３月に同行と地銀協Ｔｉｅｒ１合流へ。",
-                perPbr: "PER 10.7倍 / PBR 0.86倍",
-                yield: "3.09% (35円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 220,435百万円 / 43,900百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 264,965百万円 / 58,863百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 270,000百万円 / 65,000百万円</span>",
-                equityRoe: "5.7% / 10.0%"
-            },
-            {
-                code: "8336",
-                name: "武蔵野銀行",
-                industry: "銀行業",
-                outline: "【特色】地銀中位。さいたま市を中心に埼玉県全域に店舗網。千葉銀行と包括的業務提携（千葉・武蔵野アライアンス）。",
-                evaluation: "【増配】貸出金は法人向けが堅調、住宅ローンも水準キープ。役務収益は法人向けコンサル増え底堅い。有価証券の利息配当金も増勢。円安で外貨調達コストは重いが、資金利益は増加。不良債権処理等の一過性費用を吸収して連続増益。増配。<br>【新体制】２９年度に純利益１４０億円（２６年３月期は１１２億円）目指す新中期経営計画始動。",
-                perPbr: "PER 12.8倍 / PBR 1.39倍",
-                yield: "3.35% (41円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 84,084百万円 / 13,146百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 105,684百万円 / 15,412百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 115,000百万円 / 19,500百万円</span>",
-                equityRoe: "5.0% / 5.6%"
-            },
-            {
-                code: "8337",
-                name: "千葉興業銀行",
-                industry: "銀行業",
-                outline: "【特色】千葉県内３行中３番手。２７年４月千葉銀と包括的業務提携。みずほ銀との関係深い。",
-                evaluation: "【快走】利上げで預貸金利回り差さらに拡大。円安で役務も着実増。息も休めず。株式売却益増を軽く吸収。与信費用微減。営業増益。店舗統廃合は一服。持ち分法投資損益好転。純利益増。配当維持。<br>【包括提携】千葉銀と共同出資会社設立。２７年１月に共同株式移転方式により、両社の上場廃止はしない方針。",
-                perPbr: "PER 9.7倍 / PBR 0.72倍",
-                yield: "0.89% (20円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 56,910百万円 / 7,459百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 68,872百万円 / 8,612百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 74,500百万円 / 9,600百万円</span>",
-                equityRoe: "5.7% / 5.5%"
-            },
-            {
-                code: "8338",
-                name: "筑波銀行",
-                industry: "銀行業",
-                outline: "【特色】地銀中位。０３年に茨城銀と関東ツクバ銀が合併、１０年に旧関東つくばと旧茨城が合併。",
-                evaluation: "【株式売却益】事業性貸出や住宅ローン残高増える。利ザヤ改善し資金利益は前進。投信販売や法人向けコンサル手数料も堅調。国債等評価損は重いが株式売却益で補う。与信費用は増えても経常増益。<br>【企業支援】融資資金はリファイナンスや個人向けなどの法人向けサービスを強化。マンツーマンコンサルにも注力。",
-                perPbr: "PER 14.0倍 / PBR 0.84倍",
-                yield: "0.80% (5円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 41,126百万円 / 2,195百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 50,273百万円 / 4,103百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 51,000百万円 / 6,670百万円</span>",
-                equityRoe: "3.7% / 6.7%"
-            },
-            {
-                code: "8341",
-                name: "七十七銀行",
-                industry: "銀行業",
-                outline: "【特色】仙台地盤で東北最大の地銀。預貸率向上へ。",
-                evaluation: "【最高益】利上げで預貸金利回りが改善。貸出も伸びる。役務は手数料改定など効く。株式売却益減を補ってなお増益。連続最高純益。増配。",
-                perPbr: "PER 12.8倍 / PBR 0.61倍",
-                yield: "3.25% (130円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 171,553百万円 / 39,270百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 211,208百万円 / 54,007百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 224,000百万円 / 61,500百万円</span>",
-                equityRoe: "6.6% / 4.8%"
-            },
-            {
-                code: "8343",
-                name: "秋田銀行",
-                industry: "銀行業",
-                outline: "【特色】秋田県地盤の地銀。県内貸出金シェアは５割弱。",
-                evaluation: "【連続増配】資金利益は貸出金平残増や利上げ効果で底堅い。役務も法人向け中心に伸びる。有価証券の利息配当金も増加。不良債権処理等の一過性費用増を吸収して経常増益。増配。",
-                perPbr: "PER 11.6倍 / PBR 0.28倍",
-                yield: "4.36% (80円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 42,734百万円 / 4,541百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 52,214百万円 / 5,662百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 61,062百万円 / 7,692百万円</span>",
-                equityRoe: "5.0% / 2.4%"
-            },
-            {
-                code: "8344",
-                name: "山形銀行",
-                industry: "銀行業",
-                outline: "【特色】山形県内トップ。県や指定市の指定金融機関。",
-                evaluation: "【増益】中小企業、個人向けともに貸出金伸びる。貸出金利回りも改善し資金利益が堅調。有価証券利息配当金も増加。不良債権処理等の一過性費用減り、純利益は増益。",
-                perPbr: "PER 13.6倍 / PBR 0.70倍",
-                yield: "3.18% (45円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 55,097百万円 / 3,762百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 63,330百万円 / 6,528百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 65,100百万円 / 7,500百万円</span>",
-                equityRoe: "4.6% / 2.2%"
-            },
-            {
-                code: "8345",
-                name: "岩手銀行",
-                industry: "銀行業",
-                outline: "【特色】岩手県下トップ。秋田銀と包括提携。",
-                evaluation: "【大口融資】貸出金は県内中心に伸びる。日銀利上げ見込み利回りも改善。有価証券利息配当金も増加。与信費用は増えるが経常、純利益は増益。配当性向４０％メドに増配。",
-                perPbr: "PER 12.7倍 / PBR 0.83倍",
-                yield: "2.95% (65円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 49,178百万円 / 6,976百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 77,495百万円 / 8,919百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 70,000百万円 / 10,000百万円</span>",
-                equityRoe: "5.0% / 3.3%"
-            },
-            {
-                code: "8346",
-                name: "東邦銀行",
-                industry: "銀行業",
-                outline: "【特色】福島県地盤。茨城、東京にも店舗。",
-                evaluation: "【連続増配】貸出金利回りが一段と改善。資金利益が伸びる。法人向け保険等の役務も堅調。不良債権処理等の一過性費用を吸収して経常、純利益とも増益。連続増配。",
-                perPbr: "PER 8.4倍 / PBR 0.57倍",
-                yield: "2.75% (17円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 70,443百万円 / 7,445百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 92,465百万円 / 12,353百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 104,200百万円 / 13,000百万円</span>",
-                equityRoe: "3.2% / 3.1%"
-            },
-            {
-                code: "8349",
-                name: "東北銀行",
-                industry: "銀行業",
-                outline: "【特色】岩手県下３番手。中小企業等向け貸出が主。",
-                evaluation: "【横ばい】住宅ローンや中小企業等向け貸出は伸び悩む。有価証券の利息配当金も増勢一服。ただ、役務収益が堅調。不良債権処理等の一過性費用は減少。経常、純利益は前年並み維持。",
-                perPbr: "PER 12.9倍 / PBR 0.28倍",
-                yield: "3.53% (25円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 15,028百万円 / 1,447百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 17,932百万円 / 1,766百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 19,600百万円 / 1,650百万円</span>",
-                equityRoe: "3.3% / 1.2%"
-            },
-            {
-                code: "8354",
-                name: "ふくおかフィナンシャルグループ",
-                industry: "銀行業",
-                outline: "【特色】地銀首位。福岡、熊本、十八親和の各行を傘下。",
-                evaluation: "【大幅増益】貸出金残高が順調に伸びる。日銀利上げで貸出金利回りも改善し、資金利益が急拡大。役務収益も投資信託販売手数料など好調。与信費用増や経費増を吸収し、最高純益更新。大幅増配。",
-                perPbr: "PER 12.4倍 / PBR 1.23倍",
-                yield: "3.22% (130円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 455,711百万円 / 72,136百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 621,168百万円 / 85,428百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 615,000百万円 / 100,000百万円</span>",
-                equityRoe: "3.2% / 7.4%"
-            },
-            {
-                code: "8358",
-                name: "スルガ銀行",
-                industry: "銀行業",
-                outline: "【特色】静岡県沼津市地盤。個人向けローンに強み。",
-                evaluation: "【続伸】前期膨らんだ債券関係損一服。貸出金利回りの改善で資金利益も堅調。役務も法人向け中心に伸びる。経費増を吸収。政策株式売却益の計上もあり、経常、純益とも続伸。増配。",
-                perPbr: "PER 12.3倍 / PBR 0.74倍",
-                yield: "2.57% (25円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 91,447百万円 / 20,641百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 109,912百万円 / 20,177百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 123,200百万円 / 32,000百万円</span>",
-                equityRoe: "9.1% / 5.8%"
-            },
-            {
-                code: "8359",
-                name: "八十二銀行",
-                industry: "銀行業",
-                outline: "【特色】長野県首位。長野銀を吸収合併。",
-                evaluation: "【連続最高益】前期膨らんだ債券売却損一服。利上げで預貸金利回り差拡大。円安で役務も堅調。不良債権処理費用増を吸収。与信費用増えるが株式売却益などで補い、連続最高純益。配当性向４割以上。",
-                perPbr: "PER 14.6倍 / PBR 0.78倍",
-                yield: "2.83% (25円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 254,193百万円 / 47,982百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 305,443百万円 / 64,572百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 330,000百万円 / 73,000百万円</span>",
-                equityRoe: "8.5% / 4.4%"
-            },
-            {
-                code: "8360",
-                name: "山梨中央銀行",
-                industry: "銀行業",
-                outline: "【特色】山梨県唯一の地銀。県内融資シェア約５割。",
-                evaluation: "【大幅増益】都内での住宅ローンと法人向け貸出金が牽引し、資金利益好伸。役務は投信や保険販売が好調。有価証券利息配当金も増加。与信費用増こなす。連続最高純益。増配。",
-                perPbr: "PER 14.4倍 / PBR 0.91倍",
-                yield: "2.74% (35円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 60,481百万円 / 7,669百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 86,104百万円 / 9,987百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 107,000百万円 / 12,500百万円</span>",
-                equityRoe: "5.1% / 3.8%"
-            },
-            {
-                code: "8361",
-                name: "大垣共立銀行",
-                industry: "銀行業",
-                outline: "【特色】岐阜県西部地盤に愛知、三重、滋賀へも展開。",
-                evaluation: "【連続最高益】貸出金利回りが上昇。資金利益が改善。役務収益も投資信託販売手数料など堅調。不良債権処理費用増を吸収し、経常、純利益とも最高益。増配。",
-                perPbr: "PER 12.3倍 / PBR 0.72倍",
-                yield: "2.01% (55円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 131,360百万円 / 14,718百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 176,576百万円 / 19,382百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 190,000百万円 / 20,600百万円</span>",
-                equityRoe: "5.4% / 3.5%"
-            },
-            {
-                code: "8362",
-                name: "福井銀行",
-                industry: "銀行業",
-                outline: "【特色】福井県地盤。福邦銀行を完全子会社化。",
-                evaluation: "【統合費用】貸出金残高は伸びるが、利ザヤ改善し資金利益は堅調。役務取引等利益も投資信託販売手数料など好調。ただ、福邦銀行とのシステム統合費用がピーク。与信費用も増え、経常益は反落。",
-                perPbr: "PER 14.8倍 / PBR 0.84倍",
-                yield: "3.22% (75円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 64,366百万円 / 7,166百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 79,101百万円 / 8,601百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 83,000百万円 / 10,000百万円</span>",
-                equityRoe: "4.8% / 2.5%"
-            },
-            {
-                code: "8364",
-                name: "清水銀行",
-                industry: "銀行業",
-                outline: "【特色】地銀中下位行。静岡県内３番手。",
-                evaluation: "【利益続伸】資金利益が貸出金利回り上昇で拡大。役務収益も投資信託販売手数料など堅調。不良債権処理費用増や有価証券売却損をこなす。純利益は続伸。増配。",
-                perPbr: "PER 8.2倍 / PBR 0.36倍",
-                yield: "2.38% (60円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 29,143百万円 / 1,861百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 33,674百万円 / 2,000百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 37,800百万円 / 2,500百万円</span>",
-                equityRoe: "4.4% / 2.7%"
-            },
-            {
-                code: "8365",
-                name: "富山銀行",
-                industry: "銀行業",
-                outline: "【特色】富山県内の小規模地銀。預金量約５０００億円。",
-                evaluation: "【堅調】預金利息の負担増先行で資金利益は伸び悩む。有価証券売却損を抑制しながら、投資信託販売手数料など役務収益が牽引。与信費用は横ばい。純利益は堅調。増配。",
-                perPbr: "PER 11.4倍 / PBR 0.36倍",
-                yield: "2.64% (55円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 9,675百万円 / 954百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 13,771百万円 / 1,046百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 11,500百万円 / 1,350百万円</span>",
-                equityRoe: "5.5% / 3.5%"
-            },
-            {
-                code: "8366",
-                name: "滋賀銀行",
-                industry: "銀行業",
-                outline: "【特色】滋賀県内の融資シェア４割超。",
-                evaluation: "【大幅増益】貸出金は法人融資や住宅ローンが伸びる。利回り改善し資金利益が拡大。有価証券の利息配当金も増加。不良債権処理費用増を吸収。最高純益。増配。",
-                perPbr: "PER 12.3倍 / PBR 0.90倍",
-                yield: "2.39% (50円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 133,109百万円 / 18,720百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 159,056百万円 / 21,293百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 175,000百万円 / 28,500百万円</span>",
-                equityRoe: "6.6% / 4.3%"
-            },
-            {
-                code: "8367",
-                name: "南都銀行",
-                industry: "銀行業",
-                outline: "【特色】奈良県唯一の地銀で貸出金シェア５割。",
-                evaluation: "【連続最高益】貸出金は大阪中心に順調に伸びる。利回り改善し資金利益が拡大。役務取引等利益も投資信託販売手数料など増勢。不良債権処理費用増を吸収し、最高純益更新。増配。",
-                perPbr: "PER 16.8倍 / PBR 0.82倍",
-                yield: "3.24% (138円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 103,085百万円 / 13,510百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 115,665百万円 / 17,062百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 125,000百万円 / 22,000百万円</span>",
-                equityRoe: "5.7% / 5.9%"
-            },
-            {
-                code: "8368",
-                name: "百五銀行",
-                industry: "銀行業",
-                outline: "【特色】三重県で断トツ。愛知への進出進む。",
-                evaluation: "【連続最高益】貸出金は法人・個人向けとも順調に伸びる。利回りも改善し、資金利益が増加。役務取引等利益も投資信託販売手数料など堅調。与信費用増をこなして最高純益更新。増配。",
-                perPbr: "PER 11.3倍 / PBR 1.15倍",
-                yield: "2.15% (17円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 124,491百万円 / 18,042百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 162,399百万円 / 26,839百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 178,000百万円 / 28,900百万円</span>",
-                equityRoe: "6.8% / 3.6%"
-            },
-            {
-                code: "8370",
-                name: "紀陽銀行",
-                industry: "銀行業",
-                outline: "【特色】和歌山県唯一の地銀。県内シェアは断トツ。",
-                evaluation: "【最高益続く】大阪軸にメイン化進め貸出金順調。利回り改善進む。有価証券利息も増勢。与信費用は例年並み。人件費や物件費増こなす。0.75％前提で最高益更新。配当性向４０％目標。増配。",
-                perPbr: "PER 16.4倍 / PBR 0.92倍",
-                yield: "3.55% (156円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 98,720百万円 / 17,618百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 114,870百万円 / 21,819百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 125,000百万円 / 25,000百万円</span>",
-                equityRoe: "4.0% / 4.4%"
-            },
-            {
-                code: "8377",
-                name: "ほくほくフィナンシャルグループ",
-                industry: "銀行業",
-                outline: "【特色】傘下に北陸銀行と北海道銀行。広域統合。",
-                evaluation: "【連続増配】貸出金利回りが改善。資金利益が拡大。投資信託等の役務手数料も伸びる。不良債権処理費用増を吸収し、経常、純利益とも最高益。増配。",
-                perPbr: "PER 12.3倍 / PBR 0.98倍",
-                yield: "2.26% (45円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 210,180百万円 / 39,072百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 277,468百万円 / 58,899百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 285,000百万円 / 62,000百万円</span>",
-                equityRoe: "4.3% / 5.5%"
-            },
-            {
-                code: "8381",
-                name: "山陰合同銀行",
-                industry: "銀行業",
-                outline: "【特色】山陰地盤。鳥取、島根で預金シェア高い。",
-                evaluation: "【増益続く】東京や関西での貸出金が順調に伸びる。資金利益が牽引。役務も法人向け中心に堅調。不良債権処理費用増を吸収。有価証券利息配当金も増加し、最高純益更新。増配。",
-                perPbr: "PER 12.7倍 / PBR 1.15倍",
-                yield: "3.26% (45円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 135,314百万円 / 18,737百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 167,078百万円 / 22,698百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 197,600百万円 / 25,500百万円</span>",
-                equityRoe: "3.6% / 5.5%"
-            },
-            {
-                code: "8386",
-                name: "百十四銀行",
-                industry: "銀行業",
-                outline: "【特色】香川県を地盤に岡山県や大阪府など瀬戸内広域に展開。資金量は四国で２位。大企業取引多い",
-                evaluation: "【連続増配】貸出金利回りの上昇に伴い、資金利益が順調に拡大。貸出先への事業支援などを通じた役務取引等利益も伸長。人件費やシステム費増の重しこなし、実質的に純益増。与信費用を抑制し純益連続増。増配。【中計】28年度に純利益100億円以上（26年３月期89億円）を目指す新中計スタート。生産性を引き上げ、新たな事業領域などへ人員を再配置。女性活躍推進で優良企業認定取得。",
-                perPbr: "PER 8.2倍 / PBR 0.28倍",
-                yield: "8.40% (126円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 90,007百万円 / 13,700百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 108,556百万円 / 18,857百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 116,500百万円 / 21,000百万円</span>",
-                equityRoe: "6.6% / 5.2%"
-            },
-            {
-                code: "8387",
-                name: "四国銀行",
-                industry: "銀行業",
-                outline: "【特色】高知、徳島を中心に四国全県へ展開。財務省など公金預金に強み。地銀ネットやＳＢＩと提携。",
-                evaluation: "【連続増配】貸出金利回りの上昇で預貸金利回りが改善。有価証券利息配当金も増加。不良債権処理等の一過性費用は横ばい。株式売却益の計上などで経常、純利益とも増益。連続増配。<br>【新中計】２８年度に純益７０億円、ＲＯＥ４％目標とする新中計始動。経営指標に「ＲＯＩＣ（投下資本利益率）」を導入し、資本コストを意識した経営推進。総還元性向４０％以上を目標に自己株買い実施。",
-                perPbr: "PER 13.3倍 / PBR 0.51倍",
-                yield: "3.08% (86円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 53,833百万円 / 6,813百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 69,524百万円 / 17,445百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 60,000百万円 / 8,800百万円</span>",
-                equityRoe: "5.4% / 9.9%"
-            },
-            {
-                code: "8388",
-                name: "阿波銀行",
-                industry: "銀行業",
-                outline: "【特色】徳島県首位。県内貸出金シェア４割超。四国地銀４行で提携。ファンド運営。三菱ＵＦＪ銀と親密。",
-                evaluation: "【連続増配】貸出金利回り上昇で資金利益が改善。役務収益も投資信託販売手数料など堅調。不良債権処理等の一過性費用は減少。有価証券利息配当金も増加し、経常、純利益とも増益。連続増配。<br>【上方修正】２７年度に純利益１２５億円（２６年３月期は１１２億円）目指す中期経営計画を上方修正。ＲＯＥ４％以上の目標に対し、自己株取得などで早期達成目指す。還元性向４０％以上に引き上げ。",
-                perPbr: "PER 15.2倍 / PBR 0.67倍",
-                yield: "2.77% (60円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 78,964百万円 / 13,202百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 95,363百万円 / 21,825百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 117,600百万円 / 17,600百万円</span>",
-                equityRoe: "10.4% / 4.2%"
-            },
-            {
-                code: "8392",
-                name: "大分銀行",
-                industry: "銀行業",
-                outline: "【特色】大分県地盤。県内シェア３割強。福岡、宮崎、熊本などにも展開。東九州軸に広域連携模索。",
-                evaluation: "【連続増配】貸出金は法人、個人とも伸びる。預貸金利回り差が改善し資金利益が堅調。投資信託販売手数料など役務収益も増加。不良債権処理等の一過性費用増を吸収して経常、純益とも拡大。連続増配。<br>【新中計】２８年度に純益１００億円目指す新中計始動。ＲＯＥ４％目標に向け、稼ぐ力の向上と資本効率の改善を推進。地域経済の活性化支援を通じ、事業モデルの変革を図る。",
-                perPbr: "PER 14.5倍 / PBR 0.72倍",
-                yield: "2.14% (85円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 77,922百万円 / 7,555百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 99,429百万円 / 10,595百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 97,500百万円 / 12,200百万円</span>",
-                equityRoe: "4.7% / 4.7%"
-            },
-            {
-                code: "8393",
-                name: "宮崎銀行",
-                industry: "銀行業",
-                outline: "【特色】宮崎県の指定金融機関。鹿児島、福岡などにも出店。中小企業向け貸出比率高く、地域密着。",
-                evaluation: "【増益】貸出金残高積み増す。利ザヤも改善。有価証券利息配当金も増加し資金利益が伸長。役務等手数料は堅調。与信費用増や経費増を吸収し、経常利益は反発。純利益も増益。増配。<br>【新中計】２８年度に純益１００億円目指す新中計始動。ＲＯＥ４％目標に向け、資本効率の改善を図る。地元企業の課題解決支援などを通じ、収益力の底上げ目指す。投資額１００億円。",
-                perPbr: "PER 11.6倍 / PBR 0.76倍",
-                yield: "2.80% (110円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 80,192百万円 / 9,784百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 90,159百万円 / 14,094百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 95,400百万円 / 14,500百万円</span>",
-                equityRoe: "5.5% / 6.8%"
-            },
-            {
-                code: "8395",
-                name: "佐賀銀行",
-                industry: "銀行業",
-                outline: "【特色】佐賀県内貸出金シェア５割弱。福岡県にも多数出店。地銀広域連携「フィンクロス」に参加。",
-                evaluation: "【続伸】貸出金利回りの上昇で資金利益が拡大。役務収益も投資信託販売手数料など伸びる。不良債権処理等の一過性費用を吸収して経常、純利益とも続伸。有価証券利息配当金も増加。増配。<br>【待遇改善】優秀な人材の確保に向け、初任給の引き上げや若手行員の処遇改善を実施。新人事制度を導入し、専門人材の育成や多様な働き方を支援。",
-                perPbr: "PER 9.6倍 / PBR 0.71倍",
-                yield: "2.08% (55円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 55,231百万円 / 7,496百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 71,846百万円 / 8,585百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 66,000百万円 / 9,300百万円</span>",
-                equityRoe: "3.9% / 7.0%"
-            },
-            {
-                code: "8398",
-                name: "筑邦銀行",
-                industry: "銀行業",
-                outline: "【特色】久留米市中核に福岡県南部地盤。地銀下位。福岡銀と激戦。ＳＢＩと資本業務提携。",
-                evaluation: "【大幅増益】貸出金は法人向け中心に伸びる。預貸金利回り差の改善が寄与し資金利益が堅調。有価証券利息配当金も増加。不良債権処理費用増をこなして経常、純益とも急拡大。増配。<br>【省力化】店舗の統廃合や機能見直しを進め、人員配置を最適化。業務の効率化で経費削減を図る。顧客のデジタル化支援などを通じ、コンサルティング機能の強化目指す。",
-                perPbr: "PER 7.2倍 / PBR 0.30倍",
-                yield: "3.27% (50円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 19,173百万円 / 980百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 23,800百万円 / 1,487百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 25,000百万円 / 1,660百万円</span>",
-                equityRoe: "4.0% / 3.3%"
-            },
-            {
-                code: "8399",
-                name: "琉球銀行",
-                industry: "銀行業",
-                outline: "【特色】貸出、預金シェアは沖縄県トップ。ミニ店舗やローンセンターなどチャネル多様化を推進。",
-                evaluation: "【連続増配】法人向け貸出やシンジケートローン伸びる。個人向け住宅ローンが伸長。金利上昇で預貸金利回り差が改善。有価証券の利息配当金も増え資金利益が快走。役務も好調。与信費用は増えるが経常、純利益とも連続増益。増配。<br>【目標引き上げ】30年度純利益90億円（修正前90億円）とする中計目標を上方修正、28年度に前倒し達成目指す。10億円を上限に自己株取得も。",
-                perPbr: "PER 10.5倍 / PBR 0.73倍",
-                yield: "3.81% (49円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 69,193百万円 / 5,751百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 80,322百万円 / 9,084百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 88,000百万円 / 14,900百万円</span>",
-                equityRoe: "4.7% / 6.4%"
-            },
-            {
-                code: "8410",
-                name: "セブン銀行",
-                industry: "銀行業",
-                outline: "【特色】セブン＆アイ店舗中心にATM設置。海外展開も。ATM手数料が柱。セブン銀アプリ強化。",
-                evaluation: "【微減益】米国はスピードウェイへの設置進み順調。国内はATM台数増えるが、利用件数減。国内はATM利用件数減で減益。海外は競争激化で平均単価下落、資金調達費用も増し減益。カード事業の減損剥落などでも経常微減益。配当維持。<br>【新目標】28年度に経常利益400億円（26年3月期は302億円）目指す。ファミマへのATM導入を拡大し、シェア拡大へ。顔認証引出し手法の引き上げ計画に着手。",
-                perPbr: "PER 18.5倍 / PBR 1.12倍",
-                yield: "4.08% (11円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 197,877百万円 / 31,970百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 214,408百万円 / 18,221百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 220,025百万円 / 17,000百万円</span>",
-                equityRoe: "18.1% / 4.8%"
-            },
-            {
-                code: "8411",
-                name: "みずほフィナンシャルグループ",
-                industry: "銀行業",
-                outline: "【特色】3メガバンクの一角。旧富士、第一勧業、日本興業の3行が前身。証券との連携加速。",
-                evaluation: "【連続最高益】利上げで日銀預け金利息など増える。貸出金や円債の利回りも改善し、資金利益が順調に拡大。役務取引等利益も法人向け中心に伸びる。与信費用増をこなして経常、純利益とも最高益更新。増配。<br>【新目標】ROE8％超目標を1年前倒しで達成見込み。次期中計ではROE9％以上目指す方針。自己株取得など株主還元も強化へ。楽天カードと資本業務提携し、個人向けクレジットカード事業を強化。",
-                perPbr: "PER 13.4倍 / PBR 1.56倍",
-                yield: "2.08% (115円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 9,030,374百万円 / 678,993百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 9,085,438百万円 / 1,248,632百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 9,250,000百万円 / 1,300,000百万円</span>",
-                equityRoe: "3.7% / 11.4%"
-            },
-            {
-                code: "8416",
-                name: "高知銀行",
-                industry: "銀行業",
-                outline: "【特色】高知県の第二地銀。県内貸出金シェアは3割弱。",
-                evaluation: "【大幅増益】住宅ローンや中小企業向け貸出金が着実に伸びる。資金利益が改善。有価証券利息配当金も増加。不良債権処理等の一過性費用増を吸収して、経常、純利益とも大幅増益。増配。<br>【営業強化】法人向けはM＆Aや事業承継のコンサルティング営業を強化。個人向けは職域営業を推進し、資産運用提案などに注力。店舗ネットワークの最適化も継続し、経費削減を図る。",
-                perPbr: "PER 6.2倍 / PBR 0.32倍",
-                yield: "3.24% (30円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 26,373百万円 / 1,120百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 28,379百万円 / 2,040百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 34,000百万円 / 3,150百万円</span>",
-                equityRoe: "4.0% / 1.2%"
-            },
-            {
-                code: "8418",
-                name: "山口フィナンシャルグループ",
-                industry: "銀行業",
-                outline: "【特色】傘下に山口、もみじ、北九州銀。山口、広島、北九州の3県で3地銀網羅。証券や地域商社も。",
-                evaluation: "【急反発】役務伸び悩む。が、貸出金利回り改善など資金利益は大幅増。有価証券の利息配当金も伸長。与信費用は前年並み。株式売却益減るが経常反発。純益急反発。増配。<br>【コンサル】情報グループのコンサル会社をみずほ銀、日本政策投資銀行などと共同で設立。事業承継やM＆Aなどを支援。26年冬メドに中小企業の経営課題解決を総合サポートする新サービスを開始。",
-                perPbr: "PER 12.6倍 / PBR 0.86倍",
-                yield: "3.44% (48円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 213,435百万円 / 35,345百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 261,941百万円 / 33,008百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 257,000百万円 / 45,000百万円</span>",
-                equityRoe: "5.1% / 5.1%"
-            },
-            {
-                code: "8424",
-                name: "芙蓉総合リース",
-                industry: "その他金融",
-                outline: "【特色】みずほ（旧富士銀）系。不動産リースに強み。ファイナンス、航空機など幅広く展開。BPOも拡充。",
-                evaluation: "【V字回復】前上期発生の海外再エネ開発ファンドの損失一巡。リースは航空機やモビリティ中心に伸長。不動産の売却益も上乗せ。金利上昇の調達コスト増を吸収。増益反転。連続増配。<br>【持分化】米国で再エネ事業を展開するパシフィカ社を持分化。事業規模の拡大を推進。太陽光パネルのリース事業を強化。脱炭素関連のビジネスを加速。",
-                perPbr: "PER 11.5倍 / PBR 0.75倍",
-                yield: "4.11% (172円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 678,395百万円 / 45,277百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 788,669百万円 / 21,565百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 800,000百万円 / 48,000百万円</span>",
-                equityRoe: "13.1% / 4.4%"
-            },
-            {
-                code: "8425",
-                name: "みずほリース",
-                industry: "その他金融",
-                outline: "【特色】旧興銀系。みずほFGの顧客基盤活用しリース、割賦など。19年に丸紅と持分法適用会社に。",
-                evaluation: "【連続増配】柱の不動産や再エネ施設などのリース稼ぐ。物件売却益やシステム売却益など乗る。資金調達コスト増加すむ。人件費やシステム費増こなす。為替差損見込まず営業増益。純益連続最高。連続増配。<br>【新中計】29年3月期純益600億円目標。みずほグループや丸紅などとの協業推進。25％出資し持分会社にしたスターアジアの不動産ファンドなどへの投資育成にも注力。",
-                perPbr: "PER 7.8倍 / PBR 0.86倍",
-                yield: "4.00% (170円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 695,423百万円 / 42,038百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 921,592百万円 / 47,609百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 950,000百万円 / 52,000百万円</span>",
-                equityRoe: "10.3% / 11.7%"
-            },
-            {
-                code: "8439",
-                name: "東京センチュリー",
-                industry: "その他金融",
-                outline: "【特色】伊藤忠系と旧第一勧銀系が合併して誕生。リース大手。情報機器に強み。事業投資、海外展開。",
-                evaluation: "【最高益】国内リースは利ザヤ改善。不動産や事業投資の売却益などの伸びで補う。海外の航空機リースは金利上昇やインフレを売却益でカバー。調達コスト増などで減損一服し純益最高更新。増配。<br>【新中計】27年度純益2000億円目標。国内の再生エネ関連投資は年間1000億円規模へ。成長投資は27年度まで3500億円。米国中心に周辺事業も開拓へ。",
-                perPbr: "PER 9.5倍 / PBR 1.04倍",
-                yield: "3.78% (90円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 1,368,635百万円 / 85,279百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 1,457,670百万円 / 111,299百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 1,500,000百万円 / 123,000百万円</span>",
-                equityRoe: "15.5% / 10.4%"
-            },
-            {
-                code: "8473",
-                name: "ＳＢＩホールディングス",
-                industry: "証券・商品先物",
-                outline: "【特色】国内外ベンチャー企業投資、ネット証券首位、銀行など総合金融サービスを志向。新生銀を子会社化。",
-                evaluation: "【反落】金利上昇で銀行業着実、証券も株高で活況。PE投資のIPO件数増加。中国の不動産市況悪化に伴う評価損など一過性利益剥落し反落。証券のシステム関連費用増も重い。ただ実力ベースの利益は高水準。配当維持か。<br>【新構想】台湾に半導体工場を建設する構想は提携先の台湾企業と破談に。撤退せず新たなパートナーを模索する方針。半導体投資のファンド設立など次世代産業の育成に注力。",
-                perPbr: "PER 6.3倍 / PBR 1.06倍",
-                yield: "2.90% (150円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 1,443,733百万円 / 162,120百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 1,896,607百万円 / 427,577百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 1,450,000百万円 / 300,000百万円</span>",
-                equityRoe: "4.7% / 28.0%"
-            },
-            {
-                code: "8508",
-                name: "Ｊトラスト",
-                industry: "その他金融",
-                outline: "【特色】金融グループ。保証、債権回収、アジアの銀行業、国内アセットマネジメント。不動産事業も。",
-                evaluation: "【増勢】国内は保証事業が伸長。韓国の貯蓄銀行も貸出金残高伸ばす。インドネシアやカンボジアなど東南アジアの銀行業は貸出金利回り改善し資金利益が拡大。与信関連費用増や為替差損を吸収し、営業益急反発。増配。<br>【アライアンス】東南アジアでの事業拡大に向け、現地の有力企業との提携を推進。国内では不動産事業の収益力強化を図る。保証事業は他社との協業深耕しシェア拡大へ。",
-                perPbr: "PER 16.4倍 / PBR 0.92倍",
-                yield: "2.21% (14円)",
-                forecast: "・25年12月(実績)<br>&nbsp;&nbsp;- 124,265百万円 / 7,939百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年12月(予想)<br>&nbsp;&nbsp;- 132,000百万円 / 8,400百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年12月(予想)<br>&nbsp;&nbsp;- 138,000百万円 / 9,400百万円</span>",
-                equityRoe: "12.6% / 5.0%"
-            },
-            {
-                code: "8511",
-                name: "日本証券金融",
-                industry: "その他金融",
-                outline: "【特色】制度信用取引の決済に必要な資金・株券を貸し出す。証券金融業務に特化。日銀、東証などが出資。",
-                evaluation: "【最高益更新】日本株の活況受け、信用取引向け貸出金が急増。金利上昇で貸付金利息も伸びる。貸株超過による品貸料収入も高水準。有価証券利息配当金も増加し、営業益大幅増。純益最高益更新。連続増配。<br>【自己株買い】資本効率の向上と株主還元強化を目的に、自己株取得を機動的に実施。27年3月末までに総還元性向100％を目指す。PBR1倍割れの早期解消に向け、収益力強化策も推進。",
-                perPbr: "PER 16.3倍 / PBR 1.34倍",
-                yield: "4.12% (47円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 59,486百万円 / 10,375百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 114,211百万円 / 10,611百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 117,000百万円 / 11,300百万円</span>",
-                equityRoe: "0.9% / 7.8%"
-            },
-            {
-                code: "8518",
-                name: "日本アジア投資",
-                industry: "証券・商品先物",
-                outline: "【特色】VC（ベンチャーキャピタル）中堅。日本と中国で事業展開。メガソーラー中心に再生可能エネルギー投資育成も。",
-                evaluation: "【浮上】不動産開発は建築費や金利上昇で苦戦。売却時期ずれになった未上場株も利益貢献乏しい。ただ、主力のVC事業でファンド運用報酬が増勢。営業益は黒字浮上。特別利益に投資有価証券売却益を計上し純益反発。<br>【九州】台湾の半導体メーカー進出で沸く九州エリアで、事業承継やスタートアップ支援ファンドの組成を推進。地場企業との連携を強化し、優良案件の発掘を急ぐ。",
-                perPbr: "PER 35.9倍 / PBR 0.46倍",
-                yield: "0.0% (無配)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 3,092百万円 / 400百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 2,117百万円 / 46百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 2,200百万円 / 100百万円</span>",
-                equityRoe: "35.9% / 0.6%"
-            },
-            {
-                code: "8522",
-                name: "名古屋銀行",
-                industry: "銀行業",
-                outline: "【特色】地銀中位。愛知県内３行中首位。第二地銀から転換。投信など個人向けと経営相談など法人向け両輪",
-                evaluation: "【連続最高益】利上げで預貸金利回り差が拡大。有価証券利息配当金も増え資金利益は堅調。人件費増こなし、与信費用は低水準。前段の政策保有株売却益減っても経常増益。配当性向４０％メドに増配。<br>【経営統合】２８年４月をメドにしずおかＦＧと経営統合で基本合意、合併や店舗統廃合はしない方針。２７年度純利益目標は２８０億円に引き上げ。",
-                perPbr: "PER 13.0倍 / PBR 0.95倍",
-                yield: "3.29% (150円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 102,788百万円 / 14,730百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 124,456百万円 / 20,269百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 142,800百万円 / 23,000百万円</span>",
-                equityRoe: "5.0% / 6.9%"
-            },
-            {
-                code: "8524",
-                name: "北洋銀行",
-                industry: "銀行業",
-                outline: "【特色】北海道地盤。道内預貸金シェア3割超と圧倒的。",
-                evaluation: "【拡大】道内の企業、個人向けとも融資堅調。金利上昇で預貸金利ザヤ改善。債券入れ替えで評価損抱えた債券売却し、有価証券利息配当金が大幅増。与信費用は軽い。経常益拡大続く。増配。<br>【新中計】28年度純益500億円、ROE5％目標の次期中計スタート。ROA向上へ、取引先の資金繰り支援やDX化支援などコンサルティング営業を強化。",
-                perPbr: "PER 12.5倍 / PBR 0.72倍",
-                yield: "3.26% (29円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 150,637百万円 / 20,608百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 235,927百万円 / 25,601百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 225,200百万円 / 29,400百万円</span>",
-                equityRoe: "2.9% / 6.6%"
-            },
-            {
-                code: "8537",
-                name: "大光銀行",
-                industry: "銀行業",
-                outline: "【特色】新潟の第二地銀。県内シェア２番手。中小企業等向け貸出比率が高い。埼玉へ店舗網拡大。",
-                evaluation: "【連続増益】貸出金利回りの上昇で資金利益が改善。有価証券利息配当金も増加。不良債権処理等の一過性費用増をこなす。経常、純利益とも連続増益。増配。<br>【新店舗】埼玉県内の営業強化に向け、新たな店舗を開設。中小企業向けの事業承継支援やＭ＆Ａコンサルティングなどに注力。",
-                perPbr: "PER 11.2倍 / PBR 0.53倍",
-                yield: "3.69% (65円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 22,436百万円 / 2,495百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 29,344百万円 / 2,799百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 29,100百万円 / 3,300百万円</span>",
-                equityRoe: "4.7% / 3.6%"
-            },
-            {
-                code: "8541",
-                name: "愛媛銀行",
-                industry: "銀行業",
-                outline: "【特色】愛媛県内の第二地銀。四国全域へ展開。中小企業等向け貸出比率高い。船舶向け融資に強み。",
-                evaluation: "【高水準】貸出金利回り上昇し資金利益が堅調。有価証券利息配当金も増加。不良債権処理等の一過性費用を吸収。与信費用は増えるが経常、純利益とも高水準を維持。増配。<br>【店舗再編】店舗の統廃合や店舗内店舗方式を活用し、営業網の効率化を推進。人員の再配置によりコンサルティング営業を強化。",
-                perPbr: "PER 10.5倍 / PBR 0.73倍",
-                yield: "2.47% (46円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 66,146百万円 / 5,055百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 68,517百万円 / 7,212百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 70,000百万円 / 10,000百万円</span>",
-                equityRoe: "5.0% / 5.2%"
-            },
-            {
-                code: "8542",
-                name: "トマト銀行",
-                industry: "銀行業",
-                outline: "【特色】地銀下位行。岡山県内２番手。第二地銀。倉敷市が地盤。広島、大阪にも拠点",
-                evaluation: "【伸長】貸出金利回りの上昇で資金利益が拡大。役務取引等利益も投信販売などが牽引し堅調に推移。不良債権処理費用は例年並みに。人件費などの経費増を吸収して経常増益。株価上昇で有価証券評価損益改善。<br>【生成ＡＩ】業務効率化に向け生成ＡＩを導入。行内規定やマニュアルなどの検索システムなどで活用。セキュリティに配慮し、外部サービスに頼らない独自のシステムを構築。",
-                perPbr: "PER 15.2倍 / PBR 0.90倍",
-                yield: "3.31% (50円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 25,661百万円 / 1,817百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 26,577百万円 / 1,970百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 29,500百万円 / 2,000百万円</span>",
-                equityRoe: "4.1% / 3.4%"
-            },
-            {
-                code: "8544",
-                name: "京葉銀行",
-                industry: "銀行業",
-                outline: "【特色】千葉県下２番手。都市部に強み。住宅ローンや中小企業向け貸出比率が高い。",
-                evaluation: "【最高益】法人、個人向けとも貸出金が順調に伸びる。金利上昇で預貸金利ザヤが改善し資金利益が大幅増。有価証券の利息配当金も増加。与信費用増や経費増を吸収し、最高純益更新。増配。<br>【新体制】次期中計に向け、経営体制を刷新。デジタル化の推進や、コンサルティング営業の強化を図る。総還元性向４０％メド。",
-                perPbr: "PER 15.3倍 / PBR 0.86倍",
-                yield: "2.73% (66円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 80,370百万円 / 12,756百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 108,656百万円 / 15,912百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 110,000百万円 / 19,000百万円</span>",
-                equityRoe: "4.9% / 5.0%"
-            },
-            {
-                code: "8550",
-                name: "栃木銀行",
-                industry: "銀行業",
-                outline: "【特色】第二地銀。栃木２番手。埼玉、群馬、東京、茨城へ展開。",
-                evaluation: "【増配】貸出金利回り上昇で資金利益が改善。役務も投資信託販売手数料など堅調。不良債権処理等の一過性費用増を吸収。有価証券利息配当金も増加し、経常、純利益とも増益。増配。<br>【新中計】２６年３月期に単体コア業務純益３０億円以上（２４年３月期は２１億円）を目指す新中計策定。",
-                perPbr: "PER 11.1倍 / PBR 0.61倍",
-                yield: "3.12% (12円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 45,087百万円 / 23,641百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 54,551百万円 / 8,289百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 60,800百万円 / 8,000百万円</span>",
-                equityRoe: "4.8% / 5.3%"
-            },
-            {
-                code: "8551",
-                name: "北日本銀行",
-                industry: "銀行業",
-                outline: "【特色】第二地銀。岩手県中南部中心に展開。宮城、青森、秋田にも店舗。",
-                evaluation: "【連続増益】貸出金残高は横ばいだが、利回り上昇し資金利益が堅調。有価証券利息配当金も増加。不良債権処理等の一過性費用増を吸収。経常、純利益とも連続増益。増配。<br>【ＤＸ】業務のデジタル化を推進。店舗ネットワークの見直しや人員の再配置により、営業体制の効率化とコンサルティング機能の強化を図る。",
-                perPbr: "PER 10.0倍 / PBR 0.47倍",
-                yield: "3.49% (80円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 26,396百万円 / 3,073百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 30,308百万円 / 4,011百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 31,000百万円 / 4,363百万円</span>",
-                equityRoe: "6.1% / 4.8%"
-            },
-            {
-                code: "8554",
-                name: "南日本銀行",
-                industry: "銀行業",
-                outline: "【特色】鹿児島が地盤の第二地銀。県内融資シェア１割強。",
-                evaluation: "【大幅減益】貸出金利回り上昇で資金利益が改善。役務取引等利益も伸びる。ただ、前期にあった貸倒引当金戻入益が剥落し、与信関連費用が増加。株式等売却益も減少。経常、純利益とも大幅減益。減配。<br>【新戦略】ＡＩ・データサイエンス活用した業務効率化や、顧客ＤＸ推進を支援。",
-                perPbr: "PER 6.6倍 / PBR 0.27倍",
-                yield: "3.91% (50円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 16,517百万円 / 2,188百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 17,141百万円 / 2,800百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 17,200百万円 / 1,500百万円</span>",
-                equityRoe: "5.1% / 6.5%"
-            },
-            {
-                code: "8558",
-                name: "東和銀行",
-                industry: "銀行業",
-                outline: "【特色】第二地銀。群馬２番手。埼玉、東京にも店舗網。ＳＢＩと資本業務提携。",
-                evaluation: "【黒字転換】貸出金利回り上昇に伴い預貸金利ザヤが改善。有価証券利息配当金も増加。不良債権処理等の一過性費用増をこなす。前期計上した有価証券売却損が剥落し、純損益は黒字転換。復配。<br>【信託業】信託業務の本格展開へ、信託契約代理店の登録を完了。資産承継ニーズの取り込みを図る。",
-                perPbr: "PER 8.2倍 / PBR 0.51倍",
-                yield: "3.84% (25円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 34,138百万円 / ▲4,335百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 43,504百万円 / 4,520百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 37,000百万円 / 5,500百万円</span>",
-                equityRoe: "6.7% / 27.2%"
-            },
-            {
-                code: "8559",
-                name: "豊和銀行",
-                industry: "銀行業",
-                outline: "【特色】大分の第二地銀。中小企業向け貸出比率が高い。ＳＢＩと資本業務提携。",
-                evaluation: "【横ばい】貸出金利回り上昇で預貸金利回りの改善進む。有価証券利息配当金も増加。ただ、不良債権処理等の一過性費用増が重い。経費増もあり、経常、純利益は横ばい圏。配当維持。<br>【定期預金】金利上昇局面を捉え、個人向けの新たな定期預金商品を投入。預金獲得に注力。",
-                perPbr: "PER 7.6倍 / PBR 0.29倍",
-                yield: "2.07% (10円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 10,380百万円 / 1,037百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 12,042百万円 / 819百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 11,000百万円 / 1,220百万円</span>",
-                equityRoe: "4.7% / 2.6%"
-            },
-            {
-                code: "8560",
-                name: "宮崎太陽銀行",
-                industry: "銀行業",
-                outline: "【特色】宮崎県の第二地銀。鹿児島にも展開。中小企業等向け貸出比率が高い。公的資金は完済。",
-                evaluation: "【横ばい】貸出金利回りの上昇に伴い、預貸金利回り差が改善。有価証券の利息配当金も増加。ただ、不良債権処理等の一過性費用増や、人件費、システム費などの経費増が重い。経常、純利益は横ばい圏。<br>【連携】他行との連携によるＡＴＭの相互利用などを開始。利便性の向上を図る。",
-                perPbr: "PER 12.3倍 / PBR 0.29倍",
-                yield: "2.21% (50円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 14,859百万円 / 1,187百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 18,046百万円 / 2,590百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 17,200百万円 / 2,700百万円</span>",
-                equityRoe: "5.5% / 3.3%"
-            },
-            {
-                code: "8562",
-                name: "福島銀行",
-                industry: "銀行業",
-                outline: "【特色】福島県内２位。ＳＢＩと資本業務提携。次世代基幹システムなどに共同出資。",
-                evaluation: "【大幅増益】役務は伸び悩む。だが、貸出金利回り改善し預貸金利回り差が改善。有価証券の利息配当金も増加。不良債権処理等の一過性費用増を吸収して経常、純利益とも大幅増益。増配。<br>【ＳＢＩ連携】ＳＢＩグループとの連携を強化し、有価証券運用や投資信託販売を拡充。次期システムへの移行準備も進める。",
-                perPbr: "PER 13.8倍 / PBR 0.52倍",
-                yield: "1.40% (5円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 13,417百万円 / ▲1,252百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 15,175百万円 / 736百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 16,600百万円 / 900百万円</span>",
-                equityRoe: "3.0% / 0.1%"
-            },
-            {
-                code: "8563",
-                name: "大東銀行",
-                industry: "銀行業",
-                outline: "【特色】福島県で資金量２位。郡山本拠。中小企業等向け貸出比率が高い。",
-                evaluation: "【前期並み】地元企業への貸出金残高は伸びるが、預貸金利回りの改善は小幅。有価証券の利息配当金も伸び悩む。不良債権処理等の一過性費用は前年並み。経常、純利益は前期並み維持。<br>【新中計】最終年度に実質コア業務純益１３億円（前期約２７億円）目指す新中計始動。ＤＸの推進などに注力。",
-                perPbr: "PER 7.9倍 / PBR 0.43倍",
-                yield: "4.01% (40円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 13,233百万円 / 1,330百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 15,499百万円 / 1,680百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 15,000百万円 / 1,600百万円</span>",
-                equityRoe: "3.3% / 5.5%"
-            },
-            {
-                code: "8566",
-                name: "リコーリース",
-                industry: "その他金融",
-                outline: "【特色】リコー系。中小企業が顧客基盤。集金代行、環境関連など強化。みずほリースと資本提携。",
-                evaluation: "【減益続く】ファイナンスリースは前期比６％増の期首営業資産残高が寄与。だが、金利上昇による資金調達コスト増や、人件費、オフィス、システムなどの販管費増加が重し。営業減益。配当増額。<br>【中計】２６年３月期純利益２００億円を目指す中計策定。重点分野の環境やヘルスケアなどへの投資を拡大。",
-                perPbr: "PER 15.3倍 / PBR 0.77倍",
-                yield: "4.22% (150円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 312,156百万円 / 15,658百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 338,579百万円 / 12,821百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 370,000百万円 / 11,900百万円</span>",
-                equityRoe: "16.5% / 5.4%"
-            },
-            {
-                code: "8570",
-                name: "イオンフィナンシャルサービス",
-                industry: "その他金融",
-                outline: "【特色】イオン系の金融サービスを統括。グループでクレジットカードなど展開。東南アジアにも力。",
-                evaluation: "【続落】カードはリボ残高増や利用増で手数料増。ただ、国内外で資金調達コストの上昇が響く。貸倒引当金繰入額も増加。システム関連費用や人件費などの経費増も重い。営業益は反落。配当維持。<br>【新中計】２６年度に営業利益６００億円を目指す新中計を策定。国内外でのカード会員獲得を強化。ＡＩを活用した業務効率化も推進。",
-                perPbr: "PER 15.3倍 / PBR 0.70倍",
-                yield: "3.44% (53円)",
-                forecast: "・25年2月(実績)<br>&nbsp;&nbsp;- 533,262百万円 / 15,644百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年2月(予想)<br>&nbsp;&nbsp;- 569,370百万円 / 21,092百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年2月(予想)<br>&nbsp;&nbsp;- 600,000百万円 / 22,000百万円</span>",
-                equityRoe: "5.7% / 4.5%"
-            },
-            {
-                code: "8572",
-                name: "アコム",
-                industry: "その他金融",
-                outline: "【特色】ＭＵＦＧ子会社。消費者ローン専業最大手。信用保証、海外金融事業の３本柱。",
-                evaluation: "【微減益】資金需要堅調、新規客も伸長し個人の貸付残高は伸びる。海外もタイなどが堅調に推移し利息収入増。だが、過払い金返還の引当金積み増しが重い。与信費用も微増。営業益は微減益。配当は維持。<br>【ＡＩ】生成ＡＩの導入に向けた実証実験を開始。社内での業務効率化や、顧客対応の自動化などに活用し、生産性向上を目指す。",
-                perPbr: "PER 11.4倍 / PBR 1.01倍",
-                yield: "4.75% (11円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 317,742百万円 / 32,124百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 337,709百万円 / 63,800百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 356,000百万円 / 79,635百万円</span>",
-                equityRoe: "44.5% / 11.6%"
-            },
-            {
-                code: "8584",
-                name: "ジャックス",
-                industry: "その他金融",
-                outline: "【特色】ＭＵＦＧの信販大手。オートローン主力。マンションの家賃保証を強化。東南アジア展開。",
-                evaluation: "【大幅減益】カードは残高の伸びや手数料値上げで堅調。だが、主力のオートローンで中古車販売会社の不正問題が響き、取扱高が伸び悩む。資金調達費用や人件費、システム関連費用などの販管費増加が重い。営業益は大幅減益。減配。<br>【海外】アセアンでの事業展開を強化。ベトナムなどでの業容拡大に向け、現地企業との提携などを推進する。",
-                perPbr: "PER 16.9倍 / PBR 0.94倍",
-                yield: "5.80% (100円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 190,978百万円 / 18,620百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 192,315百万円 / 15,314百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 193,800百万円 / 15,500百万円</span>",
-                equityRoe: "7.9% / 5.6%"
-            },
-            {
-                code: "8585",
-                name: "オリエントコーポレーション",
-                industry: "その他金融",
-                outline: "【特色】信販大手。オートローンは最大手。銀行保証が収益柱。みずほ銀行と伊藤忠商事が大株主。",
-                evaluation: "【微増益】柱のオートローンは中古車向けが好調で順調に伸びる。銀行保証は残高の伸びが牽引し手数料増。カードの取扱高も堅調。調達金利の上昇や、次期システム開発等に伴う償却費増や販管費増をこなし、営業益は微増。<br>【シノバ】みずほ銀、同銀が７９％出資する米国のファンド、当社でコンソーシアムを組成。米国で割賦事業等展開の米社に１・５億ドルを投資。１４％を持ち分法適用会社へ。",
-                perPbr: "PER 11.6倍 / PBR 0.60倍",
-                yield: "0.0% (無配)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 247,631百万円 / 14,444百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 260,000百万円 / 15,000百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 263,000百万円 / 17,000百万円</span>",
-                equityRoe: "8.8% / 5.2%"
-            },
-            {
-                code: "8591",
-                name: "オリックス",
-                industry: "その他金融",
-                outline: "【特色】リース手始めに保険、不動産など多角化。海外展開突出。エネルギー、空港運営等も。",
-                evaluation: "【快走】事業投資が着実。海外は米国の事業売却益が寄与。不動産や環境エネルギーも堅調。調達金利上昇によるコスト増をこなし、純利益は連続最高益。増配。<br>【事業再編】環境エネルギーや不動産など注力領域への投資を加速。一方、ノンコア事業の売却も進め、ポートフォリオの入れ替えを図る。自己株取得にも積極的。",
-                perPbr: "PER 12.8倍 / PBR 1.51倍",
-                yield: "3.0% (99.2円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 2,874,821百万円 / 351,630百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 3,330,831百万円 / 447,265百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 4,000,000百万円 / 530,000百万円</span>",
-                equityRoe: "24.9% / 10.4%"
-            },
-            {
-                code: "8593",
-                name: "三菱ＨＣキャピタル",
-                industry: "その他金融",
-                outline: "【特色】三菱ＵＦＪグループ。日立キャピタルと２１年に統合。リース首位級。海外展開加速。",
-                evaluation: "【足踏み】国内リースは資産入れ替えで堅調。海外リースは米州や欧州の航空機やコンテナなどが収益貢献。ただ、資金調達コストの上昇や、前期の資産売却益の反動が重い。営業益は足踏み。純利益も微増。連続増配。<br>【新中計】２６年３月期に純利益１６００億円を目指す新中計が始動。環境エネルギー分野や航空分野などへの投資を加速。",
-                perPbr: "PER 11.8倍 / PBR 0.95倍",
-                yield: "3.89% (40円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 2,090,808百万円 / 135,165百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 2,215,384百万円 / 162,206百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 2,200,000百万円 / 160,000百万円</span>",
-                equityRoe: "15.2% / 8.6%"
-            },
-            {
-                code: "8594",
-                name: "中道リース",
-                industry: "その他金融",
-                outline: "【特色】北海道地盤のリース会社。土木建機、医療機器に強い。関東、東北を開拓。不動産賃貸も。",
-                evaluation: "【減益幅縮小】不動産賃貸は新規フル寄与。リース・割賦も堅調。ただ、前期の大型案件の反動減が重い。資金調達コストの上昇や、与信費用も増加。営業益は減益。ただ、前期にあった投資有価証券売却損がなくなり、純益の減益幅は縮小。配当維持。<br>【営業戦略】地盤の北海道に加え、首都圏や東北地方での営業を強化。建設機械や医療機器向けのリースに注力。",
-                perPbr: "PER 7.9倍 / PBR 0.75倍",
-                yield: "2.17% (18円)",
-                forecast: "・24年12月(実績)<br>&nbsp;&nbsp;- 49,540百万円 / 1,234百万円<br><span style='color: #1976d2; font-weight: bold;'>・25年12月(予想)<br>&nbsp;&nbsp;- 51,234百万円 / 1,108百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・26年12月(予想)<br>&nbsp;&nbsp;- 53,200百万円 / 990百万円</span>",
-                equityRoe: "9.0% / 8.8%"
-            },
-            {
-                code: "8624",
-                name: "いちよし証券",
-                industry: "証券・商品先物",
-                outline: "【特色】富裕層の個人営業主体で投信、ファンドラップ積上げに重心。中小型株中心に調査力に定評",
-                evaluation: "【高水準】収益柱の投信やファンドラップの残高が資金流入と運用益で伸長。信託報酬が着実に増え、営業収益を牽引。人件費などの経費増を吸収し、営業益は高水準。特損見込まず純増。記念配ないが普通配増配。【新中計】28年度末の預かり資産残高は３兆円（26年３月末は２・６兆円）目標。中途採用の強化や、若手社員の定着率向上に向けた人事制度改定などを進め、人員純増へ。",
-                perPbr: "--- 倍 / --- 倍",
-                yield: "7.61% (59円)",
-                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 18,837百万円 / 1,929百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 24,579百万円 / 4,392百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 25,000百万円 / 4,400百万円</span>",
-                equityRoe: "56.2% / 15.0%"
-            }
-        ];
-        // ▲▲▲ データ追加エリア ここまで ▲▲▲
+        document.addEventListener('DOMContentLoaded', function() {
+            const stockCards = Array.from(document.querySelectorAll('.stock-card'));
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const searchInput = document.getElementById('searchInput');
+            const noResultMessage = document.getElementById('noResultMessage');
+            
+            let itemsToShow = 10; // 最初に見せる件数
+            let isSearching = false;
 
-        const searchInput = document.getElementById('shikihoSearchInput');
-        const resultsContainer = document.getElementById('shikihoSearchResults');
-        const noResultMessage = document.getElementById('noResultMessage');
-
-        searchInput.addEventListener('input', function() {
-            const query = this.value.toLowerCase().trim();
-            resultsContainer.innerHTML = ''; 
-
-            if (query.length === 0) {
-                noResultMessage.style.display = 'none';
-                return; 
-            }
-
-            let matchCount = 0;
-
-            shikihoData.forEach(item => {
-                const searchTarget = `${item.code} ${item.name} ${item.industry} ${item.outline} ${item.evaluation}`.toLowerCase();
+            // リストの表示を更新する機能
+            function updateVisibility() {
+                if (isSearching) return; // 検索中は触らない
                 
-                if (searchTarget.includes(query)) {
-                    matchCount++;
-                    const cardHTML = `
-                        <details class="stock-card" open style="border: 2px solid #2c7cbf;">
-                            <summary class="stock-summary" style="background-color: #e2eef7;">${item.code} ${item.name}</summary>
-                            <div class="stock-details">
-                                <div class="table-responsive">
-                                    <table class="data-table">
-                                        <tr><th>業種</th><td>${item.industry}</td></tr>
-                                        <tr><th>会社概要</th><td>${item.outline}</td></tr>
-                                        <tr><th>四季報の評価</th><td>${item.evaluation}</td></tr>
-                                        <tr><th>実績PER / PBR</th><td>${item.perPbr}</td></tr>
-                                        <tr><th>配当利回り</th><td>${item.yield}</td></tr>
-                                        <tr><th>業績予想<br>(売上高 / 純利益)</th><td>${item.forecast}</td></tr>
-                                        <tr><th>自己資本比率 / ROE</th><td>${item.equityRoe}</td></tr>
-                                    </table>
-                                </div>
-                            </div>
-                        </details>
-                    `;
-                    resultsContainer.insertAdjacentHTML('beforeend', cardHTML);
+                let currentVisible = 0;
+                stockCards.forEach(function(card, index) {
+                    if (index < itemsToShow) {
+                        card.style.display = '';
+                        currentVisible++;
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+
+                // すべて表示したら「もっと見る」ボタンを隠す
+                if (currentVisible >= stockCards.length) {
+                    loadMoreBtn.style.display = 'none';
+                } else {
+                    loadMoreBtn.style.display = 'inline-block';
+                }
+            }
+
+            // 「もっと見る」ボタンが押された時の動き
+            loadMoreBtn.addEventListener('click', function() {
+                itemsToShow += 10; // 10件ずつ増やす
+                updateVisibility();
+            });
+
+            // 検索バーに文字が入力された時の動き
+            searchInput.addEventListener('input', function() {
+                const searchQuery = this.value.toLowerCase();
+                isSearching = searchQuery.length > 0;
+                let visibleCount = 0;
+
+                if (isSearching) {
+                    loadMoreBtn.style.display = 'none'; // 検索中はボタンを隠す
+                    
+                    stockCards.forEach(function(card) {
+                        const cardText = card.textContent.toLowerCase();
+                        if (cardText.includes(searchQuery)) {
+                            card.style.display = '';
+                            visibleCount++;
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                    
+                    // 結果がゼロの場合のメッセージ
+                    if (visibleCount === 0) {
+                        noResultMessage.style.display = 'block';
+                    } else {
+                        noResultMessage.style.display = 'none';
+                    }
+                } else {
+                    noResultMessage.style.display = 'none';
+                    updateVisibility(); // 検索が空になったら元の件数に戻す
                 }
             });
 
-            if (matchCount === 0) {
-                noResultMessage.style.display = 'block';
-            } else {
-                noResultMessage.style.display = 'none';
-            }
+            // はじめに1回だけ実行して、最初の10件だけ表示する
+            updateVisibility();
         });
     </script>
 </body>
