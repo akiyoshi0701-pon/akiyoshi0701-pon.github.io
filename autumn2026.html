@@ -10,7 +10,7 @@
     </script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>2026四季報秋号 - 1億円投資家の優良配当株選び</title>
+    <title>2026四季報秋号 データベース - 1億円投資家の優良配当株選び</title>
     <style>
         * { box-sizing: border-box; }
         body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; background-color: #f0f4f8; color: #333; margin: 0; padding: 0; line-height: 1.6; }
@@ -28,7 +28,7 @@
         .container { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 20px auto; padding: 0 15px; gap: 20px; }
         .main-content { flex: 1 1 600px; min-width: 0; max-width: 100%; overflow: hidden; }
         .sidebar { flex: 1 1 300px; min-width: 0; max-width: 100%; overflow: hidden; }
-        .page-title { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 5px solid #ff9800; }
+        .page-title { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 5px solid #4CAF50; }
         .page-title h2 { margin: 0; color: #2c7cbf; font-size: 22px; }
         .page-title p { margin: 10px 0 0 0; color: #555; font-size: 14px; }
         .stock-list { display: flex; flex-direction: column; gap: 15px; }
@@ -44,21 +44,17 @@
         .data-table th, .data-table td { border: 1px solid #e0e0e0; padding: 12px; font-size: 14px; }
         .data-table th { background-color: #f4f7fa; width: 28%; text-align: left; color: #333; font-weight: bold; }
         .data-table td { background-color: #fff; color: #444; line-height: 1.5; }
-        .perf-table th, .perf-table td { white-space: nowrap; }
-        .perf-table th { background-color: #e2eef7; text-align: center; }
-        .perf-table th:not(:first-child), .perf-table td:not(:first-child) { text-align: right; width: 25%; }
-        .highlight-red { color: #d32f2f; font-weight: bold; }
-        .highlight-blue { color: #1976d2; font-weight: bold; }
         .pr-box { background-color: white; border: 2px solid #ffebd6; border-radius: 8px; padding: 15px; text-align: center; margin-bottom: 20px; }
         .pr-button { display: inline-block; background-color: #f39c12; color: white; text-decoration: none; font-weight: bold; padding: 15px 20px; border-radius: 6px; width: 90%; box-sizing: border-box; box-shadow: 0 3px 0 #d68910; }
         
-        /* 検索バーのデザイン（大型化版） */
+        /* 検索バーのデザイン */
         .search-box { margin-bottom: 25px; }
         .search-box input { width: 100%; padding: 18px 20px; font-size: 18px; border: 2px solid #c8dfee; border-radius: 12px; outline: none; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05); transition: all 0.3s ease; box-sizing: border-box; }
         .search-box input:focus { border-color: #1a5b92; box-shadow: 0 4px 12px rgba(26, 91, 146, 0.15); }
-        .db-result-area { margin-bottom: 40px; }
-        .no-result-msg { display: none; text-align: center; padding: 20px; background-color: white; border-radius: 8px; color: #888; border: 1px solid #e0e0e0; margin-bottom: 20px; }
-        
+        .db-result-area { margin-bottom: 40px; min-height: 100px; }
+        .no-result-msg { display: none; text-align: center; padding: 30px 20px; background-color: white; border-radius: 8px; color: #888; border: 1px solid #e0e0e0; margin-bottom: 20px; }
+        .initial-msg { text-align: center; padding: 50px 20px; color: #777; background-color: white; border-radius: 8px; border: 1px dashed #ccd9e2; }
+
         @media (max-width: 600px) {
             header { padding: 30px 15px; }
             header h1 { font-size: 18px; word-break: keep-all; }
@@ -82,7 +78,7 @@
     <nav>
         <a href="index.html">ホーム</a>
         <a href="financials.html">決算情報</a>
-                <a href="autumn2026.html" class="active-nav">2026四季報秋号</a>
+        <a href="autumn2026.html" class="active-nav">2026四季報秋号</a>
         <a href="summer2026.html">2026四季報夏号</a>
         <a href="spring2026.html">2026四季報春号</a>
     </nav>
@@ -90,40 +86,26 @@
     <div class="container">
         <div class="main-content">
             
-            <!-- ① データベース検索エリア -->
-            <div class="page-title" style="border-left-color: #4CAF50;">
-                <h2>🔍 2026四季報秋号 情報検索</h2>
-                <p>四季報データから気になる銘柄を検索できます。銘柄名・コード・キーワード（増配など）を入力してください。</p>
-            </div>
-            <div class="search-box">
-                <input type="text" id="shikihoSearchInput" placeholder="例：8001、伊藤忠商事、増配...">
-            </div>
-            <div id="shikihoSearchResults" class="db-result-area stock-list"></div>
-
-            <!-- ② 厳選リストエリア -->
             <div class="page-title">
-                <h2>🍂 2026四季報秋号 厳選リスト</h2>
-                <p>9月16日発売の四季報秋号から、スクリーニング基準をクリアしたお宝銘柄を随時追加していきます。</p>
-                
-                <details class="stock-card" style="margin-top: 15px; border-left: 5px solid #2c7cbf;">
-                    <summary class="stock-summary" style="background-color: #f4f7fa; color: #1a5b92;">
-                        📊 日経平均との比較（集計待ち）
-                    </summary>
-                    <div class="stock-details">
-                        <p style="font-size: 14px; color: #555;">日経平均の上がり率よりもピックアップ銘柄が上がっているか検証</p>
-                        <div style="background-color: #f4f7fa; padding: 20px; border-radius: 6px; text-align: center; color: #888;">
-                            ※秋号発売後に集計を開始します。
-                        </div>
-                    </div>
-                </details>
+                <h2>🔍 2026四季報秋号 データベース検索</h2>
+                <p>9月16日発売の最新四季報秋号データを網羅。銘柄名・コード・キーワード（増配、最高益など）で検索できます。</p>
             </div>
 
-            <div class="stock-list">
-                <!-- 発売後にここへ銘柄を追加していきます -->
-                <div style="text-align: center; padding: 40px 20px; color: #888; background-color: white; border-radius: 8px; border: 1px dashed #ddd;">
-                    📝 2026四季報秋号の発売（9/16）をお待ちください。
-                </div>
+            <div class="search-box">
+                <input type="text" id="shikihoSearchInput" placeholder="🔍 銘柄名・証券コード・キーワードを入力...">
             </div>
+
+            <div id="initialMessage" class="initial-msg">
+                📖 上の検索バーにキーワードを入力して検索してください。<br>
+                <small style="color: #999; margin-top: 8px; display: inline-block;">（9/16発売以降、抽出データを随時追加・拡充していきます）</small>
+            </div>
+
+            <div id="noResultMessage" class="no-result-msg">
+                該当する銘柄が見つかりませんでした。
+            </div>
+
+            <!-- 検索結果カードの表示エリア -->
+            <div id="shikihoSearchResults" class="db-result-area stock-list"></div>
 
             <div class="pr-box" style="margin: 30px 0;">
                 <p style="font-size: 16px; font-weight: bold; margin-top: 0; text-align: center;">高配当株投資を始めるなら！手数料0円の松井証券</p>
@@ -177,27 +159,41 @@
         </div>
     </div>
 
-    <!-- 👇データベース検索の仕組み（JavaScript）👇 -->
     <script>
-        // ▼▼▼ 今後ここに秋号データを追加していきます ▼▼▼
+        // ▼▼▼ 9/16発売以降、ここに秋号の銘柄データを追加していきます ▼▼▼
         const shikihoData = [
-            
+            /*
+            {
+                code: "XXXX",
+                name: "会社名",
+                industry: "業種",
+                outline: "【特色】...",
+                evaluation: "【見出し】...",
+                perPbr: "PER XX倍 / PBR XX倍",
+                yield: "X.XX% (XX円)",
+                forecast: "・XX年X月(実績)...",
+                equityRoe: "XX% / XX%"
+            }
+            */
         ];
         // ▲▲▲ データ追加エリア ここまで ▲▲▲
 
         const searchInput = document.getElementById('shikihoSearchInput');
         const resultsContainer = document.getElementById('shikihoSearchResults');
         const noResultMessage = document.getElementById('noResultMessage');
+        const initialMessage = document.getElementById('initialMessage');
 
         searchInput.addEventListener('input', function() {
             const query = this.value.toLowerCase().trim();
-            resultsContainer.innerHTML = ''; 
+            resultsContainer.innerHTML = '';
 
             if (query.length === 0) {
+                initialMessage.style.display = 'block';
                 noResultMessage.style.display = 'none';
-                return; 
+                return;
             }
 
+            initialMessage.style.display = 'none';
             let matchCount = 0;
 
             shikihoData.forEach(item => {
