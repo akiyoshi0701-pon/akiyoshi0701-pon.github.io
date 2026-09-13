@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 <head>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ZBSS7W0R67"></script>
-<script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBSS7W0R67"></script>
+    <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-ZBSS7W0R67');
     </script>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>2026四季報春号 - 1億円投資家の優良配当株選び</title>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026四季報春号 データベース - 1億円投資家の優良配当株選び</title>
+    <style>
         * { box-sizing: border-box; }
         body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; background-color: #f0f4f8; color: #333; margin: 0; padding: 0; line-height: 1.6; }
         header { position: relative; background-image: url('IMG_0372.jpeg'); background-size: cover; background-position: center; color: white; padding: 50px 20px; text-align: center; }
@@ -29,7 +28,7 @@
         .container { display: flex; flex-wrap: wrap; max-width: 1000px; margin: 20px auto; padding: 0 15px; gap: 20px; }
         .main-content { flex: 1 1 600px; min-width: 0; max-width: 100%; overflow: hidden; }
         .sidebar { flex: 1 1 300px; min-width: 0; max-width: 100%; overflow: hidden; }
-        .page-title { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 5px solid #ff9800; }
+        .page-title { background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.05); margin-bottom: 20px; border-left: 5px solid #e91e63; }
         .page-title h2 { margin: 0; color: #2c7cbf; font-size: 22px; }
         .page-title p { margin: 10px 0 0 0; color: #555; font-size: 14px; }
         .stock-list { display: flex; flex-direction: column; gap: 15px; }
@@ -45,14 +44,17 @@
         .data-table th, .data-table td { border: 1px solid #e0e0e0; padding: 12px; font-size: 14px; }
         .data-table th { background-color: #f4f7fa; width: 28%; text-align: left; color: #333; font-weight: bold; }
         .data-table td { background-color: #fff; color: #444; line-height: 1.5; }
-        .perf-table th, .perf-table td { white-space: nowrap; }
-        .perf-table th { background-color: #e2eef7; text-align: center; }
-        .perf-table th:not(:first-child), .perf-table td:not(:first-child) { text-align: right; width: 25%; }
-        .highlight-red { color: #d32f2f; font-weight: bold; }
-        .highlight-blue { color: #1976d2; font-weight: bold; }
-        .price-current { font-size: 16px; font-weight: bold; color: #1976d2; }
         .pr-box { background-color: white; border: 2px solid #ffebd6; border-radius: 8px; padding: 15px; text-align: center; margin-bottom: 20px; }
         .pr-button { display: inline-block; background-color: #f39c12; color: white; text-decoration: none; font-weight: bold; padding: 15px 20px; border-radius: 6px; width: 90%; box-sizing: border-box; box-shadow: 0 3px 0 #d68910; }
+        
+        /* 検索バーのデザイン */
+        .search-box { margin-bottom: 25px; }
+        .search-box input { width: 100%; padding: 18px 20px; font-size: 18px; border: 2px solid #c8dfee; border-radius: 12px; outline: none; box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05); transition: all 0.3s ease; box-sizing: border-box; }
+        .search-box input:focus { border-color: #1a5b92; box-shadow: 0 4px 12px rgba(26, 91, 146, 0.15); }
+        .db-result-area { margin-bottom: 40px; min-height: 100px; }
+        .no-result-msg { display: none; text-align: center; padding: 30px 20px; background-color: white; border-radius: 8px; color: #888; border: 1px solid #e0e0e0; margin-bottom: 20px; }
+        .initial-msg { text-align: center; padding: 50px 20px; color: #777; background-color: white; border-radius: 8px; border: 1px dashed #ccd9e2; }
+
         @media (max-width: 600px) {
             header { padding: 30px 15px; }
             header h1 { font-size: 18px; word-break: keep-all; }
@@ -67,243 +69,219 @@
     </style>
 </head>
 <body>
-<header>
-<h1>1億円投資家の優良配当株選び</h1>
-<p>〜全3,800銘柄から厳選！初心者でも安心のバリュー投資〜</p>
-</header>
-<nav>
-<a href="index.html">ホーム</a>
-<a href="financials.html">決算情報</a>
-<a href="autumn2026.html">2026四季報秋号</a>
-<a href="summer2026.html">2026四季報夏号</a>
-<a class="active-nav" href="spring2026.html">2026四季報春号</a>
-</nav>
-<div class="container">
-<div class="main-content">
-<div class="page-title">
-<h2>🌸 2026四季報春号 厳選リスト</h2>
-<p>四季報の全ページを読み込み、スクリーニング基準をクリアした銘柄を紹介。各銘柄をクリックすると詳細な分析データを確認できます。</p>
-<details class="stock-card" style="margin-top: 15px; border-left: 5px solid #2c7cbf;">
-<summary class="stock-summary" style="background-color: #f4f7fa; color: #1a5b92;">
-                        📊 日経平均との比較
-                    </summary>
-<div class="stock-details">
-<p style="font-size: 14px; color: #555;">日経平均の上がり率よりもピックアップ銘柄が上がっているか検証</p>
-<div style="background-color: #e2eef7; padding: 10px; border-radius: 6px; margin-bottom: 15px; text-align: center;">
-<span style="font-size: 14px; font-weight: bold;">🎯 日経平均超え：</span>
-<span id="nikkei-win-rate" style="font-size: 20px; font-weight: bold; color: #1976d2;">73.3%</span>
-<span style="font-size: 14px; color: #444;">（11銘柄 / 15銘柄中）</span>
-</div>
-<div class="table-responsive">
-<table class="data-table perf-table">
-<tr>
-<th>銘柄名</th>
-<th>増減率</th>
-</tr>
-<tr style="background-color: #fffde7; font-weight: bold;">
-<td>日経平均株価 (基準)</td>
-<td class="stock-perf highlight-blue" data-code="NIKKEI">+19.2%</td>
-</tr>
-<tr><td>2674 ハードオフコーポレーション</td><td class="stock-perf highlight-blue" data-code="2674">+29.7%</td></tr>
-<tr><td>296A 令和アカウンティング</td><td class="stock-perf highlight-blue" data-code="296A">+82.0%</td></tr>
-<tr><td>3231 野村不動産ホールディングス</td><td class="stock-perf highlight-red" data-code="3231">-13.2%</td></tr>
-<tr><td>3766 システムズ・デザイン</td><td class="stock-perf highlight-blue" data-code="3766">+16.6%</td></tr>
-<tr><td>3934 ベネフィットジャパン</td><td class="stock-perf highlight-blue" data-code="3934">+18.7%</td></tr>
-<tr><td>4012 アクシス</td><td class="stock-perf highlight-blue" data-code="4012">+11.1%</td></tr>
-<tr><td>4221 大倉工業</td><td class="stock-perf highlight-blue" data-code="4221">+17.9%</td></tr>
-<tr><td>4463 日華化学</td><td class="stock-perf highlight-blue" data-code="4463">+13.3%</td></tr>
-<tr><td>5576 オービーシステム</td><td class="stock-perf highlight-blue" data-code="5576">+16.2%</td></tr>
-<tr><td>5832 ちゅうぎんＦＧ</td><td class="stock-perf highlight-blue" data-code="5832">+27.1%</td></tr>
-<tr><td>6349 小森コーポレーション</td><td class="stock-perf highlight-blue" data-code="6349">+20.5%</td></tr>
-<tr><td>7337 ひろぎんホールディングス</td><td class="stock-perf highlight-blue" data-code="7337">+33.0%</td></tr>
-<tr><td>8334 群馬銀行</td><td class="stock-perf highlight-blue" data-code="8334">+40.8%</td></tr>
-<tr><td>8554 南日本銀行</td><td class="stock-perf highlight-blue" data-code="8554">+4.6%</td></tr>
-<tr><td>8622 水戸証券</td><td class="stock-perf highlight-blue" data-code="8622">+37.2%</td></tr>
-</table>
-</div>
-</div>
-</details>
-</div>
-<div class="stock-list">
-<details class="stock-card"><summary class="stock-summary">2674 ハードオフコーポレーション</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>現在株価</th><td><span class="stock-price price-current" data-code="2674">2,501円</span></td></tr>
-<tr><th>業種</th><td>小売業</td></tr>
-<tr><th>会社概要</th><td>【特色】総合リユース業。PC、家電、衣料等。直営やFCで展開。</td></tr>
-<tr><th>四季報の評価</th><td>【続伸】前期純増20が通期化。既存店が活性化策効き期末に向け前年同期超え。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 13.7倍 / PBR 1.70倍</td></tr><tr><th>配当利回り</th><td>実績：78〜82円</td></tr>
-<tr><th>業績予想<br/>(売上高 / 純利益)</th><td>・26年3月(予想)<br/>  - 38,500百万円 / 2,600百万円</td></tr>
-<tr><th>自己資本比率 / ROE</th><td>60.7% / 13.2%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">296A 令和アカウンティング・ホールディングス</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>現在株価</th><td><span class="stock-price price-current" data-code="296A">1,161円</span></td></tr>
-<tr><th>業種</th><td>サービス業</td></tr>
-<tr><th>会社概要</th><td>【特色】税理士法人や公認会計士が起業。コンサルティング業務等。</td></tr>
-<tr><th>四季報の評価</th><td>【続伸】会計コンサル堅調。税理士法人等連携で案件増。生産性向上効き増益。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER ---倍 / PBR 12.21倍</td></tr><tr><th>配当利回り</th><td>予想：12.5円</td></tr>
-<tr><th>業績予想<br/>(売上高 / 純利益)</th><td>・25年12月(予想)<br/>  - 3,527百万円 / 614百万円</td></tr>
-<tr><th>自己資本比率 / ROE</th><td>63.8% / 37.3%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">3231 野村不動産ホールディングス</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>現在株価</th><td><span class="stock-price price-current" data-code="3231">902円</span></td></tr>
-<tr><th>業種</th><td>不動産</td></tr>
-<tr><th>会社概要</th><td>【特色】野村証券系。マンション開発等。</td></tr>
-<tr><th>四季報の評価</th><td>【連続最高益】マンション好調。物件売却等も寄与し最高益。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 8.6倍 / PBR 0.87倍</td></tr><tr><th>配当利回り</th><td>予想：145円</td></tr>
-<tr><th>業績予想<br/>(営業収益 / 純利益)</th><td>・26年3月(予想)<br/>  - 950,000百万円 / 75,000百万円</td></tr>
-<tr><th>自己資本比率 / ROE</th><td>26.3% / 10.4%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">3766 システムズ・デザイン</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>現在株価</th><td><span class="stock-price price-current" data-code="3766">1,420円</span></td></tr>
-<tr><th>業種</th><td>情報・通信</td></tr>
-<tr><th>会社概要</th><td>【特色】独立系。システム開発等が中心。</td></tr>
-<tr><th>四季報の評価</th><td>【着実増】教育事業。開発案件牽引。保険業務等も拡大。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER ---倍 / PBR 0.94倍</td></tr><tr><th>配当利回り</th><td>予想：27円</td></tr>
-<tr><th>業績予想<br/>(売上高 / 純利益)</th><td>・26年3月(予想)<br/>  - 10,100百万円 / 400百万円</td></tr>
-<tr><th>自己資本比率 / ROE</th><td>72.7% / 6.6%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">3934 ベネフィットジャパン</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>現在株価</th><td><span class="stock-price price-current" data-code="3934">2,267円</span></td></tr>
-<tr><th>業種</th><td>情報・通信</td></tr>
-<tr><th>会社概要</th><td>【特色】持ち運び可能なWi-Fi端末等。</td></tr>
-<tr><th>四季報の評価</th><td>【連続増益】拡大期。店舗獲得等の初期費用こなし利益拡大。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 14.8倍 / PBR 1.49倍</td></tr><tr><th>配当利回り</th><td>予想：43円</td></tr>
-<tr><th>業績予想<br/>(売上高 / 純利益)</th><td>・26年3月(予想)<br/>  - 19,500百万円 / 1,700百万円</td></tr>
-<tr><th>自己資本比率 / ROE</th><td>62.4% / 11.0%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">4012 アクシス</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>現在株価</th><td><span class="stock-price price-current" data-code="4012">1,676円</span></td></tr>
-<tr><th>業種</th><td>情報・通信</td></tr>
-<tr><th>会社概要</th><td>【特色】金融機関向けシステム開発が主力。</td></tr>
-<tr><th>四季報の評価</th><td>【続伸】システム構築等堅調。中堅向け等クラウドも順調。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 14.2倍 / PBR 1.34倍</td></tr><tr><th>配当利回り</th><td>予想：46円</td></tr>
-<tr><th>業績予想<br/>(売上高 / 純利益)</th><td>・25年12月(予想)<br/>  - 9,400百万円 / 700百万円</td></tr>
-<tr><th>自己資本比率 / ROE</th><td>75.4% / 16.8%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">4221 大倉工業</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>現在株価</th><td><span class="stock-price price-current" data-code="4221">5,390円</span></td></tr>
-<tr><th>業種</th><td>化学</td></tr>
-<tr><th>会社概要</th><td>【特色】包装用フィルム等。</td></tr>
-<tr><th>四季報の評価</th><td>【強含み】円安一服等による原料高落ち着き寄与。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 15.3倍 / PBR 0.65倍</td></tr><tr><th>配当利回り</th><td>予想：110円</td></tr>
-<tr><th>業績予想<br/>(売上高 / 純利益)</th><td>・25年12月(予想)<br/>  - 98,700百万円 / 4,300百万円</td></tr>
-<tr><th>自己資本比率 / ROE</th><td>61.2% / 6.1%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">4463 日華化学</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>現在株価</th><td><span class="stock-price price-current" data-code="4463">1,901円</span></td></tr>
-<tr><th>業種</th><td>化学</td></tr>
-<tr><th>会社概要</th><td>【特色】繊維加工用界面活性剤等。</td></tr>
-<tr><th>四季報の評価</th><td>【反発】価格改定効果等で増益。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 13.3倍 / PBR 0.83倍</td></tr><tr><th>配当利回り</th><td>予想：35円</td></tr>
-<tr><th>業績予想<br/>(売上高 / 純利益)</th><td>・25年12月(予想)<br/>  - 55,705百万円 / 1,752百万円</td></tr>
-<tr><th>自己資本比率 / ROE</th><td>47.5% / 6.9%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">5576 オービーシステム</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>現在株価</th><td><span class="stock-price price-current" data-code="5576">2,990円</span></td></tr>
-<tr><th>業種</th><td>情報・通信</td></tr>
-<tr><th>会社概要</th><td>【特色】独立系。金融向け等システム構築。</td></tr>
-<tr><th>四季報の評価</th><td>【続伸】主力の金融は順調。人材投資等こなし増益基調。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 17.4倍 / PBR 1.14倍</td></tr><tr><th>配当利回り</th><td>予想：50〜70円</td></tr>
-<tr><th>業績予想<br/>(売上高 / 純利益)</th><td>・26年3月(予想)<br/>  - 9,400百万円 / 580百万円</td></tr>
-<tr><th>自己資本比率 / ROE</th><td>74.9% / 9.9%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">5832 ちゅうぎんフィナンシャルグループ</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>現在株価</th><td><span class="stock-price price-current" data-code="5832">3,508円</span></td></tr>
-<tr><th>業種</th><td>銀行</td></tr>
-<tr><th>会社概要</th><td>【特色】中国銀行を中核とするFG。</td></tr>
-<tr><th>四季報の評価</th><td>【増益続く】貸出金利息等増え資金利益拡大。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 10.8倍 / PBR 0.90倍</td></tr><tr><th>配当利回り</th><td>予想：46円</td></tr>
-<tr><th>業績予想<br/>(経常収益 / 純利益)</th><td>・26年3月(予想)<br/>  - 242,000百万円 / 37,000百万円</td></tr>
-<tr><th>自己資本比率 / ROE</th><td>5.3% / 4.8%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">6349 小森コーポレーション</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>現在株価</th><td><span class="stock-price price-current" data-code="6349">1,947円</span></td></tr>
-<tr><th>業種</th><td>機械</td></tr>
-<tr><th>会社概要</th><td>【特色】印刷機械専業で首位。</td></tr>
-<tr><th>四季報の評価</th><td>【好調】国内は横ばいもインド等アジア堅調。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 12.0倍 / PBR 0.79倍</td></tr><tr><th>配当利回り</th><td>予想：35〜40円</td></tr>
-<tr><th>業績予想<br/>(売上高 / 純利益)</th><td>・26年3月(予想)<br/>  - 124,500百万円 / 7,300百万円</td></tr>
-<tr><th>自己資本比率 / ROE</th><td>66.3% / 6.3%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">7337 ひろぎんホールディングス</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>現在株価</th><td><span class="stock-price price-current" data-code="7337">2,361円</span></td></tr>
-<tr><th>業種</th><td>銀行</td></tr>
-<tr><th>会社概要</th><td>【特色】広島銀行が中核。</td></tr>
-<tr><th>四季報の評価</th><td>【連続最高益】事業性融資等伸び資金利益想定超。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 9.6倍 / PBR 0.99倍</td></tr><tr><th>配当利回り</th><td>予想：31円</td></tr>
-<tr><th>業績予想<br/>(経常収益 / 純利益)</th><td>・26年3月(予想)<br/>  - 260,000百万円 / 46,000百万円</td></tr>
-<tr><th>自己資本比率 / ROE</th><td>4.4% / 6.9%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">8334 群馬銀行</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>現在株価</th><td><span class="stock-price price-current" data-code="8334">2,891円</span></td></tr>
-<tr><th>業種</th><td>銀行</td></tr>
-<tr><th>会社概要</th><td>【特色】県内シェアは預金、貸出金とも約35％。</td></tr>
-<tr><th>四季報の評価</th><td>【連続増益】貸出金利回り上昇で資金利益拡大。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 10.4倍 / PBR 1.30倍</td></tr><tr><th>配当利回り</th><td>予想：30円</td></tr>
-<tr><th>業績予想<br/>(経常収益 / 純利益)</th><td>・26年3月(予想)<br/>  - 260,000百万円 / 41,000百万円</td></tr>
-<tr><th>自己資本比率 / ROE</th><td>16.20% / 7.7%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">8554 南日本銀行</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>現在株価</th><td><span class="stock-price price-current" data-code="8554">---円</span></td></tr>
-<tr><th>業種</th><td>銀行</td></tr>
-<tr><th>会社概要</th><td>【特色】鹿児島県が地盤の第二地銀。</td></tr>
-<tr><th>四季報の評価</th><td>【小幅増益】貸出金利回り上昇等で資金利益増。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 7.3倍 / PBR 0.47倍</td></tr><tr><th>配当利回り</th><td>予想：50円</td></tr>
-<tr><th>業績予想<br/>(経常収益 / 純利益)</th><td>・26年3月(予想)<br/>  - 16,700百万円 / 2,400百万円</td></tr>
-<tr><th>自己資本比率 / ROE</th><td>5.1% / 5.3%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">8622 水戸証券</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>現在株価</th><td><span class="stock-price price-current" data-code="8622">951円</span></td></tr>
-<tr><th>業種</th><td>証券・商品先物</td></tr>
-<tr><th>会社概要</th><td>【特色】対面営業が軸。関東中心。</td></tr>
-<tr><th>四季報の評価</th><td>【伸長】日本株の売買堅調。営業益反発。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 15.9倍 / PBR 1.63倍</td></tr><tr><th>配当利回り</th><td>予想：15円</td></tr>
-<tr><th>業績予想<br/>(営業収益 / 純利益)</th><td>・26年3月(予想)<br/>  - 15,000百万円 / 3,000百万円</td></tr>
-<tr><th>自己資本比率 / ROE</th><td>51.9% / 5.8%</td></tr>
-</table></div></div></details>
-</div>
-<div class="pr-box" style="margin: 30px 0;">
-<p style="font-size: 16px; font-weight: bold; margin-top: 0; text-align: center;">高配当株投資を始めるなら！手数料0円の松井証券</p>
-<a class="pr-button" href="https://px.a8.net/svt/ejp?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" rel="nofollow">松井証券の口座開設はこちら</a>
-<img alt="" border="0" height="1" src="https://www16.a8.net/0.gif?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" width="1"/>
-</div>
-</div>
-<div class="sidebar">
-<div class="pr-box">
-<p style="font-size: 14px; font-weight: bold; margin-top: 0;">投資の必須アイテム！</p>
-<a class="pr-button" href="https://rpx.a8.net/svt/ejp?a8mat=4B9X1F+4JQ84Y+2HOM+6V4LU&amp;rakuten=y&amp;a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2F0eac8dc2.9a477d4e.0eac8dc3.0aa56a48%2Fa26080341016_4B9X1F_4JQ84Y_2HOM_6V4LU%3Fpc%3Dhttp%253A%252F%252Fbooks.rakuten.co.jp%252F%26m%3Dhttp%253A%252F%252Fbooks.rakuten.co.jp%252F" rel="nofollow">楽天ブックスで四季報を探す</a>
-<img alt="" border="0" height="1" src="https://www16.a8.net/0.gif?a8mat=4B9X1F+4JQ84Y+2HOM+6V4LU" width="1"/>
-</div>
-<div class="pr-box" style="padding: 10px;">
-<a href="https://px.a8.net/svt/ejp?a8mat=4BAEXE+7EQ7SI+5W58+5YZ75" rel="nofollow">
-<img alt="" border="0" src="https://www21.a8.net/svt/bgt?aid=260826386448&amp;wid=001&amp;eno=01&amp;mid=s00000027494001003000&amp;mc=1" style="max-width: 300px; height: auto; border-radius: 4px;" width="100%"/></a>
-<img alt="" border="0" height="1" src="https://www17.a8.net/0.gif?a8mat=4BAEXE+7EQ7SI+5W58+5YZ75" width="1"/>
-</div>
-<div class="pr-box" style="padding: 10px;">
-<a href="https://px.a8.net/svt/ejp?a8mat=4B9XT9+C4ER76+3XCC+BYT9D" rel="nofollow">
-<img alt="" border="0" src="https://www22.a8.net/svt/bgt?aid=260804205733&amp;wid=001&amp;eno=01&amp;mid=s00000018318002010000&amp;mc=1" style="max-width: 300px; height: auto; border-radius: 4px;" width="100%"/></a>
-<img alt="" border="0" height="1" src="https://www15.a8.net/0.gif?a8mat=4B9XT9+C4ER76+3XCC+BYT9D" width="1"/>
-</div>
-<div class="pr-box" style="padding: 10px;">
-<a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+2A5U9E+2PEO+1I5DGX" rel="nofollow">
-<img alt="" border="0" src="https://www29.a8.net/svt/bgt?aid=260828404138&amp;wid=001&amp;eno=01&amp;mid=s00000012624009095000&amp;mc=1" style="max-width: 300px; height: auto; border-radius: 4px;" width="100%"/></a>
-<img alt="" border="0" height="1" src="https://www10.a8.net/0.gif?a8mat=4BAGHG+2A5U9E+2PEO+1I5DGX" width="1"/>
-</div>
-<div class="pr-box" style="padding: 10px;">
-<a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+30YCHE+50+7S2AYP" rel="nofollow">
-<img alt="" border="0" src="https://www20.a8.net/svt/bgt?aid=260828404183&amp;wid=001&amp;eno=01&amp;mid=s00000000018047040000&amp;mc=1" style="max-width: 300px; height: auto; border-radius: 4px;" width="100%"/></a>
-<img alt="" border="0" height="1" src="https://www15.a8.net/0.gif?a8mat=4BAGHG+30YCHE+50+7S2AYP" width="1"/>
-</div>
-<div class="pr-box" style="padding: 10px;">
-<a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+3BO5DE+5VDQ+BXB8X" rel="nofollow">
-<img alt="" border="0" src="https://www27.a8.net/svt/bgt?aid=260828404201&amp;wid=001&amp;eno=01&amp;mid=s00000027395002003000&amp;mc=1" style="max-width: 300px; height: auto; border-radius: 4px;" width="100%"/></a>
-<img alt="" border="0" height="1" src="https://www16.a8.net/0.gif?a8mat=4BAGHG+3BO5DE+5VDQ+BXB8X" width="1"/>
-</div>
-<div class="pr-box" style="padding: 10px;">
-<a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+34IY42+5EX8+BYT9D" rel="nofollow">
-<img alt="" border="0" src="https://www26.a8.net/svt/bgt?aid=260828404189&amp;wid=001&amp;eno=01&amp;mid=s00000025262002010000&amp;mc=1" style="max-width: 300px; height: auto; border-radius: 4px;" width="100%"/></a>
-<img alt="" border="0" height="1" src="https://www17.a8.net/0.gif?a8mat=4BAGHG+34IY42+5EX8+BYT9D" width="1"/>
-</div>
-</div>
-</div>
+
+    <header>
+        <h1>1億円投資家の優良配当株選び</h1>
+        <p>〜全3,800銘柄から厳選！初心者でも安心のバリュー投資〜</p>
+    </header>
+
+    <nav>
+        <a href="index.html">ホーム</a>
+        <a href="financials.html">決算情報</a>
+        <a href="autumn2026.html">2026四季報秋号</a>
+        <a href="summer2026.html">2026四季報夏号</a>
+        <a href="spring2026.html" class="active-nav">2026四季報春号</a>
+    </nav>
+
+    <div class="container">
+        <div class="main-content">
+            
+            <div class="page-title">
+                <h2>🌸 2026四季報春号 データベース検索</h2>
+                <p>四季報春号のデータを網羅。銘柄名・コード・キーワード（増配、最高益など）で検索できます。</p>
+            </div>
+
+            <div class="search-box">
+                <input type="text" id="shikihoSearchInput" placeholder="🔍 銘柄名・証券コード・キーワードを入力...">
+            </div>
+
+            <div id="initialMessage" class="initial-msg">
+                📖 上の検索バーにキーワードを入力して検索してください。<br>
+            </div>
+
+            <div id="noResultMessage" class="no-result-msg">
+                該当する銘柄が見つかりませんでした。
+            </div>
+
+            <!-- 検索結果カードの表示エリア -->
+            <div id="shikihoSearchResults" class="db-result-area stock-list"></div>
+
+            <div class="pr-box" style="margin: 30px 0;">
+                <p style="font-size: 16px; font-weight: bold; margin-top: 0; text-align: center;">高配当株投資を始めるなら！手数料0円の松井証券</p>
+                <a href="https://px.a8.net/svt/ejp?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" rel="nofollow" class="pr-button">松井証券の口座開設はこちら</a>
+                <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" alt="">
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <!-- ▼▼ 広告エリア開始 ▼▼ -->
+            
+            <!-- 楽天 横並び広告（枠なし） -->
+            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px;">
+                <div style="flex: 1; text-align: center;">
+                    <a href="https://rpx.a8.net/svt/ejp?a8mat=4B9X1F+4JQ84Y+2HOM+5ZU29&rakuten=y&a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2F0ea62065.34400275.0ea62066.204f04c0%2Fa26080341016_4B9X1F_4JQ84Y_2HOM_5ZU29%3Fpc%3Dhttp%253A%252F%252Fwww.rakuten.co.jp%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252F" rel="nofollow">
+                    <img src="http://hbb.afl.rakuten.co.jp/hsb/0eb4bbb2.58d658fd.0eb4bbaa.95151395/" border="0" style="max-width: 100%; height: auto;"></a>
+                    <img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4B9X1F+4JQ84Y+2HOM+5ZU29" alt="">
+                </div>
+                <div style="flex: 1; text-align: center;">
+                    <a href="https://rpx.a8.net/svt/ejp?a8mat=4B9X1F+4JQ84Y+2HOM+661TT&rakuten=y&a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2F0ea62065.34400275.0ea62066.204f04c0%2Fa26080341016_4B9X1F_4JQ84Y_2HOM_661TT%3Fpc%3Dhttp%253A%252F%252Fwww.rakuten.co.jp%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252F" rel="nofollow">
+                    <img src="http://hbb.afl.rakuten.co.jp/hsb/0eb4bbb6.0a5d235c.0eb4bbaa.95151395/" border="0" style="max-width: 100%; height: auto;"></a>
+                    <img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4B9X1F+4JQ84Y+2HOM+661TT" alt="">
+                </div>
+            </div>
+
+            <!-- アフィリエイト広告群 -->
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BAEXE+7EQ7SI+5W58+5YZ75" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www21.a8.net/svt/bgt?aid=260826386448&wid=001&eno=01&mid=s00000027494001003000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BAEXE+7EQ7SI+5W58+5YZ75" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4B9XT9+C4ER76+3XCC+BYT9D" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www22.a8.net/svt/bgt?aid=260804205733&wid=001&eno=01&mid=s00000018318002010000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4B9XT9+C4ER76+3XCC+BYT9D" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+2A5U9E+2PEO+1I5DGX" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www29.a8.net/svt/bgt?aid=260828404138&wid=001&eno=01&mid=s00000012624009095000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BAGHG+2A5U9E+2PEO+1I5DGX" alt="">
+            </div>
+            
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BC36J+79YQYA+5WG2+5YZ75" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www24.a8.net/svt/bgt?aid=260904475440&wid=001&eno=01&mid=s00000027533001003000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BC36J+79YQYA+5WG2+5YZ75" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+30YCHE+50+7S2AYP" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www20.a8.net/svt/bgt?aid=260828404183&wid=001&eno=01&mid=s00000000018047040000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BAGHG+30YCHE+50+7S2AYP" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+3BO5DE+5VDQ+BXB8X" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www27.a8.net/svt/bgt?aid=260828404201&wid=001&eno=01&mid=s00000027395002003000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BAGHG+3BO5DE+5VDQ+BXB8X" alt="">
+            </div>
+            
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BC36J+7WL7XU+5NJ8+5Z6WX" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www25.a8.net/svt/bgt?aid=260904475478&wid=001&eno=01&mid=s00000026378001004000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BC36J+7WL7XU+5NJ8+5Z6WX" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BC36J+834ZLE+5PLE+5YZ75" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www24.a8.net/svt/bgt?aid=260904475489&wid=001&eno=01&mid=s00000026645001003000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4BC36J+834ZLE+5PLE+5YZ75" alt="">
+            </div>
+            
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BC4QQ+CDXOVM+2QOI+1BQJA9" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www20.a8.net/svt/bgt?aid=260906498749&wid=001&eno=01&mid=s00000012789008018000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4BC4QQ+CDXOVM+2QOI+1BQJA9" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+34IY42+5EX8+BYT9D" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www26.a8.net/svt/bgt?aid=260828404189&wid=001&eno=01&mid=s00000025262002010000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BAGHG+34IY42+5EX8+BYT9D" alt="">
+            </div>
+            
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BC6AW+GF7GHE+5VT0+5YZ75" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www22.a8.net/svt/bgt?aid=260908520993&wid=001&eno=01&mid=s00000027450001003000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BC6AW+GF7GHE+5VT0+5YZ75" alt="">
+            </div>
+            
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BC36J+73EZAQ+5988+HVV0H" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www21.a8.net/svt/bgt?aid=260904475429&wid=001&eno=01&mid=s00000024524003004000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BC36J+73EZAQ+5988+HVV0H" alt="">
+            </div>
+            
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BC36J+74LUIA+5X7K+5YZ75" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www27.a8.net/svt/bgt?aid=260904475431&wid=001&eno=01&mid=s00000027632001003000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4BC36J+74LUIA+5X7K+5YZ75" alt="">
+            </div>
+            <!-- ▲▲ 広告エリア終了 ▲▲ -->
+        </div>
+    </div>
+
+    <script>
+        // ▼▼▼ ここに春号の銘柄データを追加していきます ▼▼▼
+        const shikihoData = [
+            /*
+            {
+                code: "XXXX",
+                name: "会社名",
+                industry: "業種",
+                outline: "【特色】...",
+                evaluation: "【見出し】...",
+                perPbr: "PER XX倍 / PBR XX倍",
+                yield: "X.XX% (XX円)",
+                forecast: "・XX年X月(実績)...",
+                equityRoe: "XX% / XX%"
+            }
+            */
+        ];
+        // ▲▲▲ データ追加エリア ここまで ▲▲▲
+
+        const searchInput = document.getElementById('shikihoSearchInput');
+        const resultsContainer = document.getElementById('shikihoSearchResults');
+        const noResultMessage = document.getElementById('noResultMessage');
+        const initialMessage = document.getElementById('initialMessage');
+
+        searchInput.addEventListener('input', function() {
+            const query = this.value.toLowerCase().trim();
+            resultsContainer.innerHTML = '';
+
+            if (query.length === 0) {
+                initialMessage.style.display = 'block';
+                noResultMessage.style.display = 'none';
+                return;
+            }
+
+            initialMessage.style.display = 'none';
+            let matchCount = 0;
+
+            shikihoData.forEach(item => {
+                const searchTarget = `${item.code} ${item.name} ${item.industry} ${item.outline} ${item.evaluation}`.toLowerCase();
+                
+                if (searchTarget.includes(query)) {
+                    matchCount++;
+                    const cardHTML = `
+                        <details class="stock-card" open style="border: 2px solid #2c7cbf;">
+                            <summary class="stock-summary" style="background-color: #e2eef7;">${item.code} ${item.name}</summary>
+                            <div class="stock-details">
+                                <div class="table-responsive">
+                                    <table class="data-table">
+                                        <tr><th>業種</th><td>${item.industry}</td></tr>
+                                        <tr><th>会社概要</th><td>${item.outline}</td></tr>
+                                        <tr><th>四季報の評価</th><td>${item.evaluation}</td></tr>
+                                        <tr><th>実績PER / PBR</th><td>${item.perPbr}</td></tr>
+                                        <tr><th>配当利回り</th><td>${item.yield}</td></tr>
+                                        <tr><th>業績予想<br>(売上高 / 純利益)</th><td>${item.forecast}</td></tr>
+                                        <tr><th>自己資本比率 / ROE</th><td>${item.equityRoe}</td></tr>
+                                    </table>
+                                </div>
+                            </div>
+                        </details>
+                    `;
+                    resultsContainer.insertAdjacentHTML('beforeend', cardHTML);
+                }
+            });
+
+            if (matchCount === 0) {
+                noResultMessage.style.display = 'block';
+            } else {
+                noResultMessage.style.display = 'none';
+            }
+        });
+    </script>
 </body>
 </html>
