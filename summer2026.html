@@ -1,18 +1,17 @@
 <!DOCTYPE html>
-
 <html lang="ja">
 <head>
-<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-ZBSS7W0R67"></script>
-<script>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBSS7W0R67"></script>
+    <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-ZBSS7W0R67');
     </script>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>2026四季報夏号 - 1億円投資家の優良配当株選び</title>
-<style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2026四季報夏号 - 1億円投資家の優良配当株選び</title>
+    <style>
         * { box-sizing: border-box; }
         body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; background-color: #f0f4f8; color: #333; margin: 0; padding: 0; line-height: 1.6; }
         header { position: relative; background-image: url('IMG_0372.jpeg'); background-size: cover; background-position: center; color: white; padding: 50px 20px; text-align: center; }
@@ -74,217 +73,300 @@
     </style>
 </head>
 <body>
-<header>
-<h1>1億円投資家の優良配当株選び</h1>
-<p>〜全3,800銘柄から厳選！初心者でも安心のバリュー投資〜</p>
-</header>
-<nav>
-<a href="index.html">ホーム</a>
-<a href="financials.html">決算情報</a>
-<a href="autumn2026.html">2026四季報秋号</a>
-<a class="active-nav" href="summer2026.html">2026四季報夏号</a>
-<a href="spring2026.html">2026四季報春号</a>
-</nav>
-<div class="container">
-<div class="main-content">
-<!-- ① データベース検索エリア -->
-<div class="page-title" style="border-left-color: #4CAF50;">
-<h2>🔍 2026四季報夏号 情報検索</h2>
-<p>四季報データから気になる銘柄を検索できます。銘柄名・コード・キーワード（増配など）を入力してください。</p>
-</div>
-<div class="search-box">
-<input id="shikihoSearchInput" placeholder="例：新日本空調、8020、増配..." type="text"/>
-</div>
-<!-- 検索結果がここに入ります（普段は空っぽ） -->
-<div class="db-result-area stock-list" id="shikihoSearchResults"></div>
-<!-- ② 厳選リストエリア -->
-<div class="page-title">
-<h2>📚 2026四季報夏号 厳選リスト</h2>
-<p>四季報夏号の全ページを読み込み、スクリーニング基準をクリアした銘柄を紹介します。各銘柄をクリックすると詳細な分析データを確認できます。</p>
-<details class="stock-card" style="margin-top: 15px; border-left: 5px solid #2c7cbf;">
-<summary class="stock-summary" style="background-color: #f4f7fa; color: #1a5b92;">
+
+    <header>
+        <h1>1億円投資家の優良配当株選び</h1>
+        <p>〜全3,800銘柄から厳選！初心者でも安心のバリュー投資〜</p>
+    </header>
+
+    <nav>
+        <a href="index.html">ホーム</a>
+        <a href="financials.html">決算情報</a>
+        <a href="autumn2026.html">2026四季報秋号</a>
+        <a href="summer2026.html" class="active-nav">2026四季報夏号</a>
+        <a href="spring2026.html">2026四季報春号</a>
+    </nav>
+
+    <div class="container">
+        <div class="main-content">
+            
+            <!-- ① データベース検索エリア -->
+            <div class="page-title" style="border-left-color: #4CAF50;">
+                <h2>🔍 2026四季報夏号 情報検索</h2>
+                <p>四季報データから気になる銘柄を検索できます。銘柄名・コード・キーワード（増配など）を入力してください。</p>
+            </div>
+            <div class="search-box">
+                <input type="text" id="shikihoSearchInput" placeholder="例：新日本空調、8020、増配...">
+            </div>
+            <!-- 検索結果がここに入ります（普段は空っぽ） -->
+            <div id="shikihoSearchResults" class="db-result-area stock-list"></div>
+
+            <!-- ② 厳選リストエリア -->
+            <div class="page-title">
+                <h2>📚 2026四季報夏号 厳選リスト</h2>
+                <p>四季報夏号の全ページを読み込み、スクリーニング基準をクリアした銘柄を紹介します。各銘柄をクリックすると詳細な分析データを確認できます。</p>
+                
+                <details class="stock-card" style="margin-top: 15px; border-left: 5px solid #2c7cbf;">
+                    <summary class="stock-summary" style="background-color: #f4f7fa; color: #1a5b92;">
                         📊 日経平均との比較
                     </summary>
-<div class="stock-details">
-<p style="font-size: 14px; color: #555;">日経平均の上がり率よりもピックアップ銘柄が上がっているか検証</p>
-<div style="background-color: #e2eef7; padding: 10px; border-radius: 6px; margin-bottom: 15px; text-align: center;">
-<span style="font-size: 14px; font-weight: bold;">🎯 日経平均超え：</span>
-<span id="nikkei-win-rate" style="font-size: 20px; font-weight: bold; color: #1976d2;">72.7%</span>
-<span style="font-size: 14px; color: #444;">（8銘柄 / 11銘柄中）</span>
-</div>
-<div class="table-responsive">
-<table class="data-table perf-table">
-<tr>
-<th>銘柄名</th>
-<th>増減率</th>
-</tr>
-<tr style="background-color: #fffde7; font-weight: bold;">
-<td>日経平均株価 (基準)</td>
-<td class="stock-perf highlight-red" data-code="NIKKEI">-8.4%</td>
-</tr>
-<tr><td>1952 新日本空調</td><td class="stock-perf highlight-red" data-code="1952">-10.7%</td></tr>
-<tr><td>1982 日比谷綜合設備</td><td class="stock-perf highlight-blue" data-code="1982">+0.0%</td></tr>
-<tr><td>4012 アクシス</td><td class="stock-perf highlight-blue" data-code="4012">+4.8%</td></tr>
-<tr><td>4658 日本空調サービス</td><td class="stock-perf highlight-red" data-code="4658">-1.7%</td></tr>
-<tr><td>7175 今村証券</td><td class="stock-perf highlight-blue" data-code="7175">+45.4%</td></tr>
-<tr><td>7433 伯東</td><td class="stock-perf highlight-blue" data-code="7433">+20.2%</td></tr>
-<tr><td>8020 兼松</td><td class="stock-perf highlight-blue" data-code="8020">+8.2%</td></tr>
-<tr><td>8370 紀陽銀行</td><td class="stock-perf highlight-blue" data-code="8370">+14.0%</td></tr>
-<tr><td>8386 百十四銀行</td><td class="stock-perf highlight-blue" data-code="8386">+26.9%</td></tr>
-<tr><td>8522 名古屋銀行</td><td class="stock-perf highlight-blue" data-code="8522">+22.6%</td></tr>
-<tr><td>8542 トマト銀行</td><td class="stock-perf highlight-blue" data-code="8542">+29.5%</td></tr>
-<tr><td>8624 いちよし証券</td><td class="stock-perf highlight-blue" data-code="8624">+24.5%</td></tr>
-</table>
-</div>
-</div>
-</details>
-</div>
-<div class="stock-list">
-<details class="stock-card"><summary class="stock-summary">1952 新日本空調</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>業種</th><td>建設業（設備工事）</td></tr>
-<tr><th>会社概要</th><td>【特色】三井系の空調設備工事会社。微粒子可視化システムなど独自技術を持つ。原子力施設向けに強み。</td></tr>
-<tr><th>四季報の評価</th><td>【最高益】期初繰越高1487億円（前期比18%増）。大規模再開発や工場関連、データセンターが推移。リニューアルも寄与。生産性向上も効く。原子力は再稼働対応など増勢。人件費増こなし連続増益。増配。【中計】29年度売上高2000億円、営業利益240億円目標。成長投資額300億円。成長事業と生産性向上がカギ。建築設備CADの自動作図機能の共同開発始動。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 11.8倍 / PBR 1.83倍</td></tr><tr><th>配当利回り</th><td>実績：3.60% (120円)</td></tr>
-<tr><th>業績予想<br/>(売上高 / 純利益)</th><td>・25年3月(実績)<br/>  - 154,884百万円 / 9,656百万円<br/><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br/>  - 160,000百万円 / 12,800百万円</span><br/><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br/>  - 168,000百万円 / 13,500百万円</span></td></tr>
-<tr><th>自己資本比率 / ROE</th><td>61.0% / 16.0%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">1982 日比谷綜合設備</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>業種</th><td>建設業（設備工事）</td></tr>
-<tr><th>会社概要</th><td>【特色】空調主体の設備工事会社。ＮＴＴグループ向けに強み。データセンター等情報通信向けが伸びる。</td></tr>
-<tr><th>四季報の評価</th><td>【最高益】期初繰越高1031億円（前期比20％増）。データセンター軸に、大型再開発や生産・物流施設の大型工事が牽引。資材費増こなす。連続増配。26年３月期はデータセンター上乗せ。人員増要員。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 16.0倍 / PBR 1.66倍</td></tr><tr><th>配当利回り</th><td>実績：3.27% (100円)</td></tr>
-<tr><th>業績予想<br/>(売上高 / 純利益)</th><td>・25年3月(実績)<br/>  - 94,080百万円 / 8,681百万円<br/><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br/>  - 105,000百万円 / 8,700百万円</span><br/><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br/>  - 108,000百万円 / 9,000百万円</span></td></tr>
-<tr><th>自己資本比率 / ROE</th><td>71.6% / 11.6%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">4012 アクシス</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>業種</th><td>情報・通信</td></tr>
-<tr><th>会社概要</th><td>【特色】金融機関、公的機関向け主体にシステム開発。クラウドサービスも展開。</td></tr>
-<tr><th>四季報の評価</th><td>【増額】昨秋獲得した大型システム案件が通期寄与。順調な新卒採用などが先行し営業益微増にとどまるも、外注費のコントロールなどで営業益上振れ。前号比で増益幅拡大。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 12.3倍 / PBR 1.69倍</td></tr><tr><th>配当利回り</th><td>実績：2.85% (46円)</td></tr>
-<tr><th>業績予想<br/>(売上高 / 純利益)</th><td>・24年12月(実績)<br/>  - 8,134百万円 / 642百万円<br/><span style="color: #1976d2; font-weight: bold;">・25年12月(予想)<br/>  - 9,500百万円 / 730百万円</span><br/><span style="color: #1976d2; font-weight: bold;">・26年12月(予想)<br/>  - 11,000百万円 / 840百万円</span></td></tr>
-<tr><th>自己資本比率 / ROE</th><td>75.7% / 16.8%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">4658 日本空調サービス</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>業種</th><td>サービス業</td></tr>
-<tr><th>会社概要</th><td>【特色】建物設備のメンテナンスが主体。独立系。工場や病院向けに強み。リニューアル工事も。</td></tr>
-<tr><th>四季報の評価</th><td>【最高益】空調設備は新設物件獲得などで好調維持。テナントビル等のリニューアル工事も増勢。契約単価引き上げ浸透。人件費増こなす。営業外の助成金剥落でも純益高水準。連続増配。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 13.6倍 / PBR 1.80倍</td></tr><tr><th>配当利回り</th><td>実績：2.59% (45円)</td></tr>
-<tr><th>業績予想<br/>(売上高 / 純利益)</th><td>・25年3月(実績)<br/>  - 64,438百万円 / 3,102百万円<br/><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br/>  - 69,245百万円 / 3,696百万円</span><br/><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br/>  - 74,000百万円 / 3,900百万円</span></td></tr>
-<tr><th>自己資本比率 / ROE</th><td>57.6% / 13.1%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">7175 今村証券</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>業種</th><td>証券・商品先物</td></tr>
-<tr><th>会社概要</th><td>【特色】独立系、地方証券会社の雄。北陸３県が主地盤。対面営業とインターネット取引の２本柱。</td></tr>
-<tr><th>四季報の評価</th><td>【好調】国内株式市場の好調を受け、株式委託手数料が増勢。世界的な株高を背景に投資信託販売も堅調。債券などのトレーディング収益建増。システム関連費用や人件費増を吸収し、営業益続伸。増配。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 8.5倍 / PBR 0.52倍</td></tr><tr><th>配当利回り</th><td>実績：4.07% (55円)</td></tr>
-<tr><th>業績予想<br/>(営業収益 / 純利益)</th><td>・25年3月(実績)<br/>  - 4,186百万円 / 760百万円<br/><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br/>  - 4,914百万円 / 1,055百万円</span><br/><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br/>  - 5,100百万円 / 1,150百万円</span></td></tr>
-<tr><th>自己資本比率 / ROE</th><td>49.6% / 8.4%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">7433 伯東</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>業種</th><td>卸売業</td></tr>
-<tr><th>会社概要</th><td>【特色】半導体や機器の専門商社。自社製の産機開発に特色。電子部品やケミカル事業も併営。</td></tr>
-<tr><th>四季報の評価</th><td>【急改善】工業向けは半導体が自動化設備投資の回復で底打ち。ルネサス製は代理店特約終了に伴う移管一服。自動車向けが好調維持。半導体製造装置は中国向けに出遅れ感あるが、下期から急回復。増配。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 13.8倍 / PBR 1.22倍</td></tr><tr><th>配当利回り</th><td>実績：4.50% (200円)</td></tr>
-<tr><th>業績予想<br/>(売上高 / 純利益)</th><td>・25年3月(実績)<br/>  - 183,133百万円 / 5,009百万円<br/><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br/>  - 225,000百万円 / 6,100百万円</span><br/><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br/>  - 240,000百万円 / 6,100百万円</span></td></tr>
-<tr><th>自己資本比率 / ROE</th><td>41.6% / 7.5%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">8020 兼松</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>業種</th><td>卸売業</td></tr>
-<tr><th>会社概要</th><td>【特色】老舗商社。電子・ＩＴ、食料、鉄鋼・プラントの３本柱。ＩＣＴ偏重から事業多角化へ投資。</td></tr>
-<tr><th>四季報の評価</th><td>【連続最高益】モバイル需要旺盛なＩＣＴが牽引。前期引当の一過性損失剥落。中東などのインフラ、機械が想定超え。純利益高水準。増配。26年３月期もＩＣＴ、機械などが好調維持。ただ税負担増で純益は小幅増。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 10.2倍 / PBR 1.70倍</td></tr><tr><th>配当利回り</th><td>実績：3.64% (90円)</td></tr>
-<tr><th>業績予想<br/>(売上高 / 純利益)</th><td>・25年3月(実績)<br/>  - 1,067,665百万円 / 32,523百万円<br/><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br/>  - 1,100,000百万円 / 35,000百万円</span><br/><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br/>  - 1,150,000百万円 / 35,000百万円</span></td></tr>
-<tr><th>自己資本比率 / ROE</th><td>28.4% / 17.0%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">8370 紀陽銀行</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>業種</th><td>銀行業</td></tr>
-<tr><th>会社概要</th><td>【特色】和歌山県唯一の地銀。県内シェアは断トツ。大阪にも展開。メイン化を軸とした本業支援に力点</td></tr>
-<tr><th>四季報の評価</th><td>【最高益続く】大阪軸にメイン化進め貸出金順調。利回り改善進む。有価証券利息も増勢。与信費用は例年並み。人件費や物件費増こなす。0.75％前提で最高益更新。配当性向40％目標。増配。【生産性】ＡＩ導入含め業務プロセス見直し、捻出した人員は大阪での営業強化に。人的資本投資による生産性測る独自指標も向上。株主優待新設。</td></tr>
-<tr><th>実績PER / PBR</th><td>--- 倍 / --- 倍</td></tr><tr><th>配当利回り</th><td>実績：6.28% (137円)</td></tr>
-<tr><th>業績予想<br/>(経常収益 / 純利益)</th><td>・25年3月(実績)<br/>  - 98,720百万円 / 17,618百万円<br/><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br/>  - 114,870百万円 / 21,819百万円</span><br/><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br/>  - 125,000百万円 / 25,000百万円</span></td></tr>
-<tr><th>自己資本比率 / ROE</th><td>4.0% / 9.0%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">8386 百十四銀行</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>業種</th><td>銀行業</td></tr>
-<tr><th>会社概要</th><td>【特色】香川県を地盤に岡山県や大阪府など瀬戸内広域に展開。資金量は四国で２位。大企業取引多い</td></tr>
-<tr><th>四季報の評価</th><td>【連続増配】貸出金利回りの上昇に伴い、資金利益が順調に拡大。貸出先への事業支援などを通じた役務取引等利益も伸長。人件費やシステム費増の重しこなし、実質的に純益増。与信費用を抑制し純益連続増。増配。【中計】28年度に純利益100億円以上（26年３月期89億円）を目指す新中計スタート。生産性を引き上げ、新たな事業領域などへ人員を再配置。女性活躍推進で優良企業認定取得。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 8.2倍 / PBR 0.28倍</td></tr><tr><th>配当利回り</th><td>実績：8.40% (126円)</td></tr>
-<tr><th>業績予想<br/>(経常収益 / 純利益)</th><td>・25年3月(実績)<br/>  - 90,007百万円 / 13,700百万円<br/><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br/>  - 108,556百万円 / 18,857百万円</span><br/><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br/>  - 116,500百万円 / 21,000百万円</span></td></tr>
-<tr><th>自己資本比率 / ROE</th><td>6.6% / 5.2%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">8522 名古屋銀行</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>業種</th><td>銀行業</td></tr>
-<tr><th>会社概要</th><td>【特色】地銀中位。愛知県内３行中首位。第二地銀から転換。投信など個人向けと経営相談など法人向け両輪</td></tr>
-<tr><th>四季報の評価</th><td>【連続最高益】利上げで預貸金利ザヤが拡大。有価証券利息配当金も増え資金利益は堅調。人件費増こなし、与信費用は低水準。前段の政策保有株売却益減っても経常増益。配当性向40％メドに増配。【経営統合】28年４月をメドにしずおかＦＧと経営統合で基本合意、合併や店舗統廃合はしない方針。27年度純利益目標は280億円に引き上げ。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 12.4倍 / PBR 0.95倍</td></tr><tr><th>配当利回り</th><td>実績：1.97% (120円)</td></tr>
-<tr><th>業績予想<br/>(経常収益 / 純利益)</th><td>・25年3月(実績)<br/>  - 102,788百万円 / 14,730百万円<br/><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br/>  - 124,456百万円 / 20,269百万円</span><br/><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br/>  - 142,800百万円 / 23,000百万円</span></td></tr>
-<tr><th>自己資本比率 / ROE</th><td>5.0% / 6.9%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">8542 トマト銀行</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>業種</th><td>銀行業</td></tr>
-<tr><th>会社概要</th><td>【特色】地銀下位行。岡山県内２番手。第二地銀。倉敷市が地盤。広島、大阪にも拠点</td></tr>
-<tr><th>四季報の評価</th><td>【伸長】貸出金利回りの上昇で預貸金利益が拡大。役務取引等利益も投信販売などが牽引し堅調に推移。不良債権処理費用は例年並みに。人件費などの経費増を吸収して経常増益。株価上昇で有価証券評価損益改善。【生成ＡＩ】業務効率化に向け生成ＡＩを導入。行内規定やマニュアルなどの検索システムなどで活用。セキュリティに配慮し、外部サービスに頼らない独自のシステムを構築。</td></tr>
-<tr><th>実績PER / PBR</th><td>PER 11.0倍 / PBR 0.37倍</td></tr><tr><th>配当利回り</th><td>実績：1.65% (25円)</td></tr>
-<tr><th>業績予想<br/>(経常収益 / 純利益)</th><td>・25年3月(実績)<br/>  - 25,661百万円 / 1,817百万円<br/><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br/>  - 26,577百万円 / 1,970百万円</span><br/><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br/>  - 29,500百万円 / 2,000百万円</span></td></tr>
-<tr><th>自己資本比率 / ROE</th><td>4.1% / 3.4%</td></tr>
-</table></div></div></details>
-<details class="stock-card"><summary class="stock-summary">8624 いちよし証券</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
-<tr><th>業種</th><td>証券・商品先物</td></tr>
-<tr><th>会社概要</th><td>【特色】富裕層の個人営業主体で投信、ファンドラップ積上げに重心。中小型株中心に調査力に定評</td></tr>
-<tr><th>四季報の評価</th><td>【高水準】収益柱の投信やファンドラップの残高が資金流入と運用益で伸長。信託報酬が着実に増え、営業収益を牽引。人件費などの経費増を吸収し、営業益は高水準。特損見込まず純増。記念配ないが普通配増配。【新中計】28年度末の預かり資産残高は３兆円（26年３月末は２・６兆円）目標。中途採用の強化や、若手社員の定着率向上に向けた人事制度改定などを進め、人員純増へ。</td></tr>
-<tr><th>実績PER / PBR</th><td>--- 倍 / --- 倍</td></tr><tr><th>配当利回り</th><td>実績：7.61% (59円)</td></tr>
-<tr><th>業績予想<br/>(営業収益 / 純利益)</th><td>・25年3月(実績)<br/>  - 18,837百万円 / 1,929百万円<br/><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br/>  - 24,579百万円 / 4,392百万円</span><br/><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br/>  - 25,000百万円 / 4,400百万円</span></td></tr>
-<tr><th>自己資本比率 / ROE</th><td>56.2% / 15.0%</td></tr>
-</table></div></div></details>
-</div>
-<div class="pr-box" style="margin: 30px 0;">
-<p style="font-size: 16px; font-weight: bold; margin-top: 0; text-align: center;">高配当株投資を始めるなら！手数料0円の松井証券</p>
-<a class="pr-button" href="https://px.a8.net/svt/ejp?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" rel="nofollow">松井証券の口座開設はこちら</a>
-<img alt="" border="0" height="1" src="https://www16.a8.net/0.gif?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" width="1"/>
-</div>
-</div>
-<div class="sidebar">
-<div class="pr-box">
-<p style="font-size: 14px; font-weight: bold; margin-top: 0;">投資の必須アイテム！</p>
-<a class="pr-button" href="https://rpx.a8.net/svt/ejp?a8mat=4B9X1F+4JQ84Y+2HOM+6V4LU&amp;rakuten=y&amp;a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2F0eac8dc2.9a477d4e.0eac8dc3.0aa56a48%2Fa26080341016_4B9X1F_4JQ84Y_2HOM_6V4LU%3Fpc%3Dhttp%253A%252F%252Fbooks.rakuten.co.jp%252F%26m%3Dhttp%253A%252F%252Fbooks.rakuten.co.jp%252F" rel="nofollow">楽天ブックスで四季報を探す</a>
-<img alt="" border="0" height="1" src="https://www16.a8.net/0.gif?a8mat=4B9X1F+4JQ84Y+2HOM+6V4LU" width="1"/>
-</div>
-<div class="pr-box" style="padding: 10px;">
-<a href="https://px.a8.net/svt/ejp?a8mat=4BAEXE+7EQ7SI+5W58+5YZ75" rel="nofollow">
-<img alt="" border="0" src="https://www21.a8.net/svt/bgt?aid=260826386448&amp;wid=001&amp;eno=01&amp;mid=s00000027494001003000&amp;mc=1" style="max-width: 300px; height: auto; border-radius: 4px;" width="100%"/></a>
-<img alt="" border="0" height="1" src="https://www17.a8.net/0.gif?a8mat=4BAEXE+7EQ7SI+5W58+5YZ75" width="1"/>
-</div>
-<div class="pr-box" style="padding: 10px;">
-<a href="https://px.a8.net/svt/ejp?a8mat=4B9XT9+C4ER76+3XCC+BYT9D" rel="nofollow">
-<img alt="" border="0" src="https://www22.a8.net/svt/bgt?aid=260804205733&amp;wid=001&amp;eno=01&amp;mid=s00000018318002010000&amp;mc=1" style="max-width: 300px; height: auto; border-radius: 4px;" width="100%"/></a>
-<img alt="" border="0" height="1" src="https://www15.a8.net/0.gif?a8mat=4B9XT9+C4ER76+3XCC+BYT9D" width="1"/>
-</div>
-<div class="pr-box" style="padding: 10px;">
-<a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+2A5U9E+2PEO+1I5DGX" rel="nofollow">
-<img alt="" border="0" src="https://www29.a8.net/svt/bgt?aid=260828404138&amp;wid=001&amp;eno=01&amp;mid=s00000012624009095000&amp;mc=1" style="max-width: 300px; height: auto; border-radius: 4px;" width="100%"/></a>
-<img alt="" border="0" height="1" src="https://www10.a8.net/0.gif?a8mat=4BAGHG+2A5U9E+2PEO+1I5DGX" width="1"/>
-</div>
-<div class="pr-box" style="padding: 10px;">
-<a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+30YCHE+50+7S2AYP" rel="nofollow">
-<img alt="" border="0" src="https://www20.a8.net/svt/bgt?aid=260828404183&amp;wid=001&amp;eno=01&amp;mid=s00000000018047040000&amp;mc=1" style="max-width: 300px; height: auto; border-radius: 4px;" width="100%"/></a>
-<img alt="" border="0" height="1" src="https://www15.a8.net/0.gif?a8mat=4BAGHG+30YCHE+50+7S2AYP" width="1"/>
-</div>
-<div class="pr-box" style="padding: 10px;">
-<a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+3BO5DE+5VDQ+BXB8X" rel="nofollow">
-<img alt="" border="0" src="https://www27.a8.net/svt/bgt?aid=260828404201&amp;wid=001&amp;eno=01&amp;mid=s00000027395002003000&amp;mc=1" style="max-width: 300px; height: auto; border-radius: 4px;" width="100%"/></a>
-<img alt="" border="0" height="1" src="https://www16.a8.net/0.gif?a8mat=4BAGHG+3BO5DE+5VDQ+BXB8X" width="1"/>
-</div>
-<div class="pr-box" style="padding: 10px;">
-<a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+34IY42+5EX8+BYT9D" rel="nofollow">
-<img alt="" border="0" src="https://www26.a8.net/svt/bgt?aid=260828404189&amp;wid=001&amp;eno=01&amp;mid=s00000025262002010000&amp;mc=1" style="max-width: 300px; height: auto; border-radius: 4px;" width="100%"/></a>
-<img alt="" border="0" height="1" src="https://www17.a8.net/0.gif?a8mat=4BAGHG+34IY42+5EX8+BYT9D" width="1"/>
-</div>
-</div>
-</div>
-<!-- 👇データベース検索の仕組み（JavaScript）👇 -->
-<script>
-        // ▼▼▼ 今後ここに四季報データを追加していきます ▼▼▼
-const shikihoData = [
+                    <div class="stock-details">
+                        <p style="font-size: 14px; color: #555;">日経平均の上がり率よりもピックアップ銘柄が上がっているか検証</p>
+                        
+                        <div style="background-color: #e2eef7; padding: 10px; border-radius: 6px; margin-bottom: 15px; text-align: center;">
+                            <span style="font-size: 14px; font-weight: bold;">🎯 日経平均超え：</span>
+                            <span style="font-size: 20px; font-weight: bold; color: #1976d2;" id="nikkei-win-rate">72.7%</span>
+                            <span style="font-size: 14px; color: #444;">（8銘柄 / 11銘柄中）</span>
+                        </div>
+
+                        <div class="table-responsive">
+                            <table class="data-table perf-table">
+                                <tr>
+                                    <th>銘柄名</th>
+                                    <th>増減率</th>
+                                </tr>
+                                <tr style="background-color: #fffde7; font-weight: bold;">
+                                    <td>日経平均株価 (基準)</td>
+                                    <td class="stock-perf" data-code="NIKKEI">+2.6%</td>
+                                </tr>
+                                <tr><td>1952 新日本空調</td><td class="stock-perf highlight-blue" data-code="1952">+5.2%</td></tr>
+                                <tr><td>1982 日比谷綜合設備</td><td class="stock-perf highlight-blue" data-code="1982">+4.7%</td></tr>
+                                <tr><td>4012 アクシス</td><td class="stock-perf highlight-red" data-code="4012">-0.7%</td></tr>
+                                <tr><td>4658 日本空調サービス</td><td class="stock-perf highlight-blue" data-code="4658">+3.7%</td></tr>
+                                <tr><td>7175 今村証券</td><td class="stock-perf highlight-blue" data-code="7175">+3.7%</td></tr>
+                                <tr><td>7433 伯東</td><td class="stock-perf highlight-blue" data-code="7433">+3.6%</td></tr>
+                                <tr><td>8020 兼松</td><td class="stock-perf highlight-red" data-code="8020">+1.3%</td></tr>
+                                <tr><td>8370 紀陽銀行</td><td class="stock-perf highlight-blue" data-code="8370">+5.4%</td></tr>
+                                <tr><td>8386 百十四銀行</td><td class="stock-perf highlight-blue" data-code="8386">+3.4%</td></tr>
+                                <tr><td>8522 名古屋銀行</td><td class="stock-perf highlight-blue" data-code="8522">+3.6%</td></tr>
+                                <tr><td>8542 トマト銀行</td><td class="stock-perf highlight-red" data-code="8542">-0.8%</td></tr>
+                                <tr><td>8624 いちよし証券</td><td class="stock-perf highlight-blue" data-code="8624">+5.9%</td></tr>
+                            </table>
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="stock-list">
+                <details class="stock-card"><summary class="stock-summary">1952 新日本空調</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
+                    <tr><th>業種</th><td>建設業（設備工事）</td></tr>
+                    <tr><th>会社概要</th><td>【特色】三井系の空調設備工事会社。微粒子可視化システムなど独自技術を持つ。原子力施設向けに強み。</td></tr>
+                    <tr><th>四季報の評価</th><td>【最高益】期初繰越高1487億円（前期比18%増）。大規模再開発や工場関連、データセンターが推移。リニューアルも寄与。生産性向上も効く。原子力は再稼働対応など増勢。人件費増こなし連続増益。増配。【中計】29年度売上高2000億円、営業利益240億円目標。成長投資額300億円。成長事業と生産性向上がカギ。建築設備CADの自動作図機能の共同開発始動。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 11.8倍 / PBR 1.83倍</td></tr><tr><th>配当利回り</th><td>実績：3.60% (120円)</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 154,884百万円 / 9,656百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 160,000百万円 / 12,800百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 168,000百万円 / 13,500百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>61.0% / 16.0%</td></tr>
+                </table></div></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">1982 日比谷綜合設備</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
+                    <tr><th>業種</th><td>建設業（設備工事）</td></tr>
+                    <tr><th>会社概要</th><td>【特色】空調主体の設備工事会社。ＮＴＴグループ向けに強み。データセンター等情報通信向けが伸びる。</td></tr>
+                    <tr><th>四季報の評価</th><td>【最高益】期初繰越高1031億円（前期比20％増）。データセンター軸に、大型再開発や生産・物流施設の大型工事が牽引。資材費増こなす。連続増配。26年３月期はデータセンター上乗せ。人員増要員。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 16.0倍 / PBR 1.66倍</td></tr><tr><th>配当利回り</th><td>実績：3.27% (100円)</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 94,080百万円 / 8,681百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 105,000百万円 / 8,700百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 108,000百万円 / 9,000百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>71.6% / 11.6%</td></tr>
+                </table></div></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">4012 アクシス</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
+                    <tr><th>業種</th><td>情報・通信</td></tr>
+                    <tr><th>会社概要</th><td>【特色】金融機関、公的機関向け主体にシステム開発。クラウドサービスも展開。</td></tr>
+                    <tr><th>四季報の評価</th><td>【増額】昨秋獲得した大型システム案件が通期寄与。順調な新卒採用などが先行し営業益微増にとどまるも、外注費のコントロールなどで営業益上振れ。前号比で増益幅拡大。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 12.3倍 / PBR 1.69倍</td></tr><tr><th>配当利回り</th><td>実績：2.85% (46円)</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・24年12月(実績)<br>&nbsp;&nbsp;- 8,134百万円 / 642百万円<br><span style="color: #1976d2; font-weight: bold;">・25年12月(予想)<br>&nbsp;&nbsp;- 9,500百万円 / 730百万円</span><br><span style="color: #1976d2; font-weight: bold;">・26年12月(予想)<br>&nbsp;&nbsp;- 11,000百万円 / 840百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>75.7% / 16.8%</td></tr>
+                </table></div></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">4658 日本空調サービス</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
+                    <tr><th>業種</th><td>サービス業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】建物設備のメンテナンスが主体。独立系。工場や病院向けに強み。リニューアル工事も。</td></tr>
+                    <tr><th>四季報の評価</th><td>【最高益】空調設備は新設物件獲得などで好調維持。テナントビル等のリニューアル工事も増勢。契約単価引き上げ浸透。人件費増こなす。営業外の助成金剥落でも純益高水準。連続増配。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 13.6倍 / PBR 1.80倍</td></tr><tr><th>配当利回り</th><td>実績：2.59% (45円)</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 64,438百万円 / 3,102百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 69,245百万円 / 3,696百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 74,000百万円 / 3,900百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>57.6% / 13.1%</td></tr>
+                </table></div></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">7175 今村証券</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
+                    <tr><th>業種</th><td>証券・商品先物</td></tr>
+                    <tr><th>会社概要</th><td>【特色】独立系、地方証券会社の雄。北陸３県が主地盤。対面営業とインターネット取引の２本柱。</td></tr>
+                    <tr><th>四季報の評価</th><td>【好調】国内株式市場の好調を受け、株式委託手数料が増勢。世界的な株高を背景に投資信託販売も堅調。債券などのトレーディング収益建増。システム関連費用や人件費増を吸収し、営業益続伸。増配。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 8.5倍 / PBR 0.52倍</td></tr><tr><th>配当利回り</th><td>実績：4.07% (55円)</td></tr>
+                    <tr><th>業績予想<br>(営業収益 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 4,186百万円 / 760百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 4,914百万円 / 1,055百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 5,100百万円 / 1,150百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>49.6% / 8.4%</td></tr>
+                </table></div></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">7433 伯東</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
+                    <tr><th>業種</th><td>卸売業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】半導体や機器の専門商社。自社製の産機開発に特色。電子部品やケミカル事業も併営。</td></tr>
+                    <tr><th>四季報の評価</th><td>【急改善】工業向けは半導体が自動化設備投資の回復で底打ち。ルネサス製は代理店特約終了に伴う移管一服。自動車向けが好調維持。半導体製造装置は中国向けに出遅れ感あるが、下期から急回復。増配。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 13.8倍 / PBR 1.22倍</td></tr><tr><th>配当利回り</th><td>実績：4.50% (200円)</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 183,133百万円 / 5,009百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 225,000百万円 / 6,100百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 240,000百万円 / 6,100百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>41.6% / 7.5%</td></tr>
+                </table></div></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">8020 兼松</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
+                    <tr><th>業種</th><td>卸売業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】老舗商社。電子・ＩＴ、食料、鉄鋼・プラントの３本柱。ＩＣＴ偏重から事業多角化へ投資。</td></tr>
+                    <tr><th>四季報の評価</th><td>【連続最高益】モバイル需要旺盛なＩＣＴが牽引。前期引当の一過性損失剥落。中東などのインフラ、機械が想定超え。純利益高水準。増配。26年３月期もＩＣＴ、機械などが好調維持。ただ税負担増で純益は小幅増。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 10.2倍 / PBR 1.70倍</td></tr><tr><th>配当利回り</th><td>実績：3.64% (90円)</td></tr>
+                    <tr><th>業績予想<br>(売上高 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 1,067,665百万円 / 32,523百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 1,100,000百万円 / 35,000百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 1,150,000百万円 / 35,000百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>28.4% / 17.0%</td></tr>
+                </table></div></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">8370 紀陽銀行</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
+                    <tr><th>業種</th><td>銀行業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】和歌山県唯一の地銀。県内シェアは断トツ。大阪にも展開。メイン化を軸とした本業支援に力点</td></tr>
+                    <tr><th>四季報の評価</th><td>【最高益続く】大阪軸にメイン化進め貸出金順調。利回り改善進む。有価証券利息も増勢。与信費用は例年並み。人件費や物件費増こなす。0.75％前提で最高益更新。配当性向40％目標。増配。【生産性】ＡＩ導入含め業務プロセス見直し、捻出した人員は大阪での営業強化に。人的資本投資による生産性測る独自指標も向上。株主優待新設。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>--- 倍 / --- 倍</td></tr><tr><th>配当利回り</th><td>実績：6.28% (137円)</td></tr>
+                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 98,720百万円 / 17,618百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 114,870百万円 / 21,819百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 125,000百万円 / 25,000百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>4.0% / 9.0%</td></tr>
+                </table></div></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">8386 百十四銀行</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
+                    <tr><th>業種</th><td>銀行業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】香川県を地盤に岡山県や大阪府など瀬戸内広域に展開。資金量は四国で２位。大企業取引多い</td></tr>
+                    <tr><th>四季報の評価</th><td>【連続増配】貸出金利回りの上昇に伴い、資金利益が順調に拡大。貸出先への事業支援などを通じた役務取引等利益も伸長。人件費やシステム費増の重しこなし、実質的に純益増。与信費用を抑制し純益連続増。増配。【中計】28年度に純利益100億円以上（26年３月期89億円）を目指す新中計スタート。生産性を引き上げ、新たな事業領域などへ人員を再配置。女性活躍推進で優良企業認定取得。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 8.2倍 / PBR 0.28倍</td></tr><tr><th>配当利回り</th><td>実績：8.40% (126円)</td></tr>
+                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 90,007百万円 / 13,700百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 108,556百万円 / 18,857百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 116,500百万円 / 21,000百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>6.6% / 5.2%</td></tr>
+                </table></div></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">8522 名古屋銀行</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
+                    <tr><th>業種</th><td>銀行業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】地銀中位。愛知県内３行中首位。第二地銀から転換。投信など個人向けと経営相談など法人向け両輪</td></tr>
+                    <tr><th>四季報の評価</th><td>【連続最高益】利上げで預貸金利ザヤが拡大。有価証券利息配当金も増え資金利益は堅調。人件費増こなし、与信費用は低水準。前段の政策保有株売却益減っても経常増益。配当性向40％メドに増配。【経営統合】28年４月をメドにしずおかＦＧと経営統合で基本合意、合併や店舗統廃合はしない方針。27年度純利益目標は280億円に引き上げ。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 12.4倍 / PBR 0.95倍</td></tr><tr><th>配当利回り</th><td>実績：1.97% (120円)</td></tr>
+                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 102,788百万円 / 14,730百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 124,456百万円 / 20,269百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 142,800百万円 / 23,000百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>5.0% / 6.9%</td></tr>
+                </table></div></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">8542 トマト銀行</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
+                    <tr><th>業種</th><td>銀行業</td></tr>
+                    <tr><th>会社概要</th><td>【特色】地銀下位行。岡山県内２番手。第二地銀。倉敷市が地盤。広島、大阪にも拠点</td></tr>
+                    <tr><th>四季報の評価</th><td>【伸長】貸出金利回りの上昇で預貸金利益が拡大。役務取引等利益も投信販売などが牽引し堅調に推移。不良債権処理費用は例年並みに。人件費などの経費増を吸収して経常増益。株価上昇で有価証券評価損益改善。【生成ＡＩ】業務効率化に向け生成ＡＩを導入。行内規定やマニュアルなどの検索システムなどで活用。セキュリティに配慮し、外部サービスに頼らない独自のシステムを構築。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>PER 11.0倍 / PBR 0.37倍</td></tr><tr><th>配当利回り</th><td>実績：1.65% (25円)</td></tr>
+                    <tr><th>業績予想<br>(経常収益 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 25,661百万円 / 1,817百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 26,577百万円 / 1,970百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 29,500百万円 / 2,000百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>4.1% / 3.4%</td></tr>
+                </table></div></div></details>
+
+                <details class="stock-card"><summary class="stock-summary">8624 いちよし証券</summary><div class="stock-details"><div class="table-responsive"><table class="data-table">
+                    <tr><th>業種</th><td>証券・商品先物</td></tr>
+                    <tr><th>会社概要</th><td>【特色】富裕層の個人営業主体で投信、ファンドラップ積上げに重心。中小型株中心に調査力に定評</td></tr>
+                    <tr><th>四季報の評価</th><td>【高水準】収益柱の投信やファンドラップの残高が資金流入と運用益で伸長。信託報酬が着実に増え、営業収益を牽引。人件費などの経費増を吸収し、営業益は高水準。特損見込まず純増。記念配ないが普通配増配。【新中計】28年度末の預かり資産残高は３兆円（26年３月末は２・６兆円）目標。中途採用の強化や、若手社員の定着率向上に向けた人事制度改定などを進め、人員純増へ。</td></tr>
+                    <tr><th>実績PER / PBR</th><td>--- 倍 / --- 倍</td></tr><tr><th>配当利回り</th><td>実績：7.61% (59円)</td></tr>
+                    <tr><th>業績予想<br>(営業収益 / 純利益)</th><td>・25年3月(実績)<br>&nbsp;&nbsp;- 18,837百万円 / 1,929百万円<br><span style="color: #1976d2; font-weight: bold;">・26年3月(予想)<br>&nbsp;&nbsp;- 24,579百万円 / 4,392百万円</span><br><span style="color: #1976d2; font-weight: bold;">・27年3月(予想)<br>&nbsp;&nbsp;- 25,000百万円 / 4,400百万円</span></td></tr>
+                    <tr><th>自己資本比率 / ROE</th><td>56.2% / 15.0%</td></tr>
+                </table></div></div></details>
+            </div>
+            
+            <div class="pr-box" style="margin: 30px 0;">
+                <p style="font-size: 16px; font-weight: bold; margin-top: 0; text-align: center;">高配当株投資を始めるなら！手数料0円の松井証券</p>
+                <a href="https://px.a8.net/svt/ejp?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" rel="nofollow" class="pr-button">松井証券の口座開設はこちら</a>
+                <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4B9XT9+C4ER76+3XCC+BXQOI" alt="">
+            </div>
+        </div>
+
+        <div class="sidebar">
+            <!-- ▼▼ 広告エリア開始 ▼▼ -->
+            
+            <!-- 楽天 横並び広告（枠なし） -->
+            <div style="display: flex; justify-content: center; align-items: center; gap: 10px; margin-bottom: 20px;">
+                <div style="flex: 1; text-align: center;">
+                    <a href="https://rpx.a8.net/svt/ejp?a8mat=4B9X1F+4JQ84Y+2HOM+5ZU29&rakuten=y&a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2F0ea62065.34400275.0ea62066.204f04c0%2Fa26080341016_4B9X1F_4JQ84Y_2HOM_5ZU29%3Fpc%3Dhttp%253A%252F%252Fwww.rakuten.co.jp%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252F" rel="nofollow">
+                    <img src="http://hbb.afl.rakuten.co.jp/hsb/0eb4bbb2.58d658fd.0eb4bbaa.95151395/" border="0" style="max-width: 100%; height: auto;"></a>
+                    <img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4B9X1F+4JQ84Y+2HOM+5ZU29" alt="">
+                </div>
+                <div style="flex: 1; text-align: center;">
+                    <a href="https://rpx.a8.net/svt/ejp?a8mat=4B9X1F+4JQ84Y+2HOM+661TT&rakuten=y&a8ejpredirect=http%3A%2F%2Fhb.afl.rakuten.co.jp%2Fhgc%2F0ea62065.34400275.0ea62066.204f04c0%2Fa26080341016_4B9X1F_4JQ84Y_2HOM_661TT%3Fpc%3Dhttp%253A%252F%252Fwww.rakuten.co.jp%252F%26m%3Dhttp%253A%252F%252Fm.rakuten.co.jp%252F" rel="nofollow">
+                    <img src="http://hbb.afl.rakuten.co.jp/hsb/0eb4bbb6.0a5d235c.0eb4bbaa.95151395/" border="0" style="max-width: 100%; height: auto;"></a>
+                    <img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4B9X1F+4JQ84Y+2HOM+661TT" alt="">
+                </div>
+            </div>
+
+            <!-- アフィリエイト広告群 -->
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BAEXE+7EQ7SI+5W58+5YZ75" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www21.a8.net/svt/bgt?aid=260826386448&wid=001&eno=01&mid=s00000027494001003000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BAEXE+7EQ7SI+5W58+5YZ75" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4B9XT9+C4ER76+3XCC+BYT9D" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www22.a8.net/svt/bgt?aid=260804205733&wid=001&eno=01&mid=s00000018318002010000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4B9XT9+C4ER76+3XCC+BYT9D" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+2A5U9E+2PEO+1I5DGX" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www29.a8.net/svt/bgt?aid=260828404138&wid=001&eno=01&mid=s00000012624009095000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BAGHG+2A5U9E+2PEO+1I5DGX" alt="">
+            </div>
+            
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BC36J+79YQYA+5WG2+5YZ75" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www24.a8.net/svt/bgt?aid=260904475440&wid=001&eno=01&mid=s00000027533001003000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BC36J+79YQYA+5WG2+5YZ75" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+30YCHE+50+7S2AYP" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www20.a8.net/svt/bgt?aid=260828404183&wid=001&eno=01&mid=s00000000018047040000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BAGHG+30YCHE+50+7S2AYP" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+3BO5DE+5VDQ+BXB8X" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www27.a8.net/svt/bgt?aid=260828404201&wid=001&eno=01&mid=s00000027395002003000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www16.a8.net/0.gif?a8mat=4BAGHG+3BO5DE+5VDQ+BXB8X" alt="">
+            </div>
+            
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BC36J+7WL7XU+5NJ8+5Z6WX" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www25.a8.net/svt/bgt?aid=260904475478&wid=001&eno=01&mid=s00000026378001004000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www15.a8.net/0.gif?a8mat=4BC36J+7WL7XU+5NJ8+5Z6WX" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BC36J+834ZLE+5PLE+5YZ75" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www24.a8.net/svt/bgt?aid=260904475489&wid=001&eno=01&mid=s00000026645001003000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4BC36J+834ZLE+5PLE+5YZ75" alt="">
+            </div>
+            
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BC4QQ+CDXOVM+2QOI+1BQJA9" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www20.a8.net/svt/bgt?aid=260906498749&wid=001&eno=01&mid=s00000012789008018000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www14.a8.net/0.gif?a8mat=4BC4QQ+CDXOVM+2QOI+1BQJA9" alt="">
+            </div>
+
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BAGHG+34IY42+5EX8+BYT9D" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www26.a8.net/svt/bgt?aid=260828404189&wid=001&eno=01&mid=s00000025262002010000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www17.a8.net/0.gif?a8mat=4BAGHG+34IY42+5EX8+BYT9D" alt="">
+            </div>
+            
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BC6AW+GF7GHE+5VT0+5YZ75" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www22.a8.net/svt/bgt?aid=260908520993&wid=001&eno=01&mid=s00000027450001003000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BC6AW+GF7GHE+5VT0+5YZ75" alt="">
+            </div>
+            
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BC36J+73EZAQ+5988+HVV0H" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www21.a8.net/svt/bgt?aid=260904475429&wid=001&eno=01&mid=s00000024524003004000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www10.a8.net/0.gif?a8mat=4BC36J+73EZAQ+5988+HVV0H" alt="">
+            </div>
+            
+            <div class="pr-box" style="padding: 10px;">
+                <a href="https://px.a8.net/svt/ejp?a8mat=4BC36J+74LUIA+5X7K+5YZ75" rel="nofollow">
+                <img border="0" width="100%" style="max-width: 300px; height: auto; border-radius: 4px;" alt="" src="https://www27.a8.net/svt/bgt?aid=260904475431&wid=001&eno=01&mid=s00000027632001003000&mc=1"></a>
+                <img border="0" width="1" height="1" src="https://www19.a8.net/0.gif?a8mat=4BC36J+74LUIA+5X7K+5YZ75" alt="">
+            </div>
+            <!-- ▲▲ 広告エリア終了 ▲▲ -->
+        </div>
+    </div>
+
+    <!-- 👇データベース検索の仕組み（JavaScript）👇 -->
+    <script>
+        // ▼▼▼ 四季報夏号 検索データベース（全銘柄統合・コード順） ▼▼▼
+        const shikihoData = [
             {
                 code: "1952",
                 name: "新日本空調",
@@ -587,7 +669,7 @@ const shikihoData = [
                 name: "千葉興業銀行",
                 industry: "銀行業",
                 outline: "【特色】千葉県内３行中３番手。２７年４月千葉銀と包括的業務提携。みずほ銀との関係深い。",
-                evaluation: "【快走】利上げで預貸金利回り差さらに拡大。円安で役務も着実増。株式売却益増を軽く吸収。与信費用微減。営業増益。店舗統廃合は一服。持ち分法投資損益好転。純利益増。配当維持。<br>【包括提携】千葉銀と共同出資会社設立。２７年１月に共同株式移転方式により、両社の上場廃止はしない方針。",
+                evaluation: "【快走】利上げで預貸金利回り差さらに拡大。円安で役務も着実増。息も休めず。株式売却益増を軽く吸収。与信費用微減。営業増益。店舗統廃合は一服。持ち分法投資損益好転。純利益増。配当維持。<br>【包括提携】千葉銀と共同出資会社設立。２７年１月に共同株式移転方式により、両社の上場廃止はしない方針。",
                 perPbr: "PER 9.7倍 / PBR 0.72倍",
                 yield: "0.89% (20円)",
                 forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 56,910百万円 / 7,459百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 68,872百万円 / 8,612百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 74,500百万円 / 9,600百万円</span>",
@@ -836,26 +918,444 @@ const shikihoData = [
                 equityRoe: "6.6% / 5.2%"
             },
             {
+                code: "8387",
+                name: "四国銀行",
+                industry: "銀行業",
+                outline: "【特色】高知、徳島を中心に四国全県へ展開。財務省など公金預金に強み。地銀ネットやＳＢＩと提携。",
+                evaluation: "【連続増配】貸出金利回りの上昇で預貸金利回りが改善。有価証券利息配当金も増加。不良債権処理等の一過性費用は横ばい。株式売却益の計上などで経常、純利益とも増益。連続増配。<br>【新中計】２８年度に純益７０億円、ＲＯＥ４％目標とする新中計始動。経営指標に「ＲＯＩＣ（投下資本利益率）」を導入し、資本コストを意識した経営推進。総還元性向４０％以上を目標に自己株買い実施。",
+                perPbr: "PER 13.3倍 / PBR 0.51倍",
+                yield: "3.08% (86円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 53,833百万円 / 6,813百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 69,524百万円 / 17,445百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 60,000百万円 / 8,800百万円</span>",
+                equityRoe: "5.4% / 9.9%"
+            },
+            {
+                code: "8388",
+                name: "阿波銀行",
+                industry: "銀行業",
+                outline: "【特色】徳島県首位。県内貸出金シェア４割超。四国地銀４行で提携。ファンド運営。三菱ＵＦＪ銀と親密。",
+                evaluation: "【連続増配】貸出金利回り上昇で資金利益が改善。役務収益も投資信託販売手数料など堅調。不良債権処理等の一過性費用は減少。有価証券利息配当金も増加し、経常、純利益とも増益。連続増配。<br>【上方修正】２７年度に純利益１２５億円（２６年３月期は１１２億円）目指す中期経営計画を上方修正。ＲＯＥ４％以上の目標に対し、自己株取得などで早期達成目指す。還元性向４０％以上に引き上げ。",
+                perPbr: "PER 15.2倍 / PBR 0.67倍",
+                yield: "2.77% (60円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 78,964百万円 / 13,202百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 95,363百万円 / 21,825百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 117,600百万円 / 17,600百万円</span>",
+                equityRoe: "10.4% / 4.2%"
+            },
+            {
+                code: "8392",
+                name: "大分銀行",
+                industry: "銀行業",
+                outline: "【特色】大分県地盤。県内シェア３割強。福岡、宮崎、熊本などにも展開。東九州軸に広域連携模索。",
+                evaluation: "【連続増配】貸出金は法人、個人とも伸びる。預貸金利回り差が改善し資金利益が堅調。投資信託販売手数料など役務収益も増加。不良債権処理等の一過性費用増を吸収して経常、純益とも拡大。連続増配。<br>【新中計】２８年度に純益１００億円目指す新中計始動。ＲＯＥ４％目標に向け、稼ぐ力の向上と資本効率の改善を推進。地域経済の活性化支援を通じ、事業モデルの変革を図る。",
+                perPbr: "PER 14.5倍 / PBR 0.72倍",
+                yield: "2.14% (85円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 77,922百万円 / 7,555百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 99,429百万円 / 10,595百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 97,500百万円 / 12,200百万円</span>",
+                equityRoe: "4.7% / 4.7%"
+            },
+            {
+                code: "8393",
+                name: "宮崎銀行",
+                industry: "銀行業",
+                outline: "【特色】宮崎県の指定金融機関。鹿児島、福岡などにも出店。中小企業向け貸出比率高く、地域密着。",
+                evaluation: "【増益】貸出金残高積み増す。利ザヤも改善。有価証券利息配当金も増加し資金利益が伸長。役務等手数料は堅調。与信費用増や経費増を吸収し、経常利益は反発。純利益も増益。増配。<br>【新中計】２８年度に純益１００億円目指す新中計始動。ＲＯＥ４％目標に向け、資本効率の改善を図る。地元企業の課題解決支援などを通じ、収益力の底上げ目指す。投資額１００億円。",
+                perPbr: "PER 11.6倍 / PBR 0.76倍",
+                yield: "2.80% (110円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 80,192百万円 / 9,784百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 90,159百万円 / 14,094百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 95,400百万円 / 14,500百万円</span>",
+                equityRoe: "5.5% / 6.8%"
+            },
+            {
+                code: "8395",
+                name: "佐賀銀行",
+                industry: "銀行業",
+                outline: "【特色】佐賀県内貸出金シェア５割弱。福岡県にも多数出店。地銀広域連携「フィンクロス」に参加。",
+                evaluation: "【続伸】貸出金利回りの上昇で資金利益が拡大。役務収益も投資信託販売手数料など伸びる。不良債権処理等の一過性費用を吸収して経常、純利益とも続伸。有価証券利息配当金も増加。増配。<br>【待遇改善】優秀な人材の確保に向け、初任給の引き上げや若手行員の処遇改善を実施。新人事制度を導入し、専門人材の育成や多様な働き方を支援。",
+                perPbr: "PER 9.6倍 / PBR 0.71倍",
+                yield: "2.08% (55円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 55,231百万円 / 7,496百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 71,846百万円 / 8,585百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 66,000百万円 / 9,300百万円</span>",
+                equityRoe: "3.9% / 7.0%"
+            },
+            {
+                code: "8398",
+                name: "筑邦銀行",
+                industry: "銀行業",
+                outline: "【特色】久留米市中核に福岡県南部地盤。地銀下位。福岡銀と激戦。ＳＢＩと資本業務提携。",
+                evaluation: "【大幅増益】貸出金は法人向け中心に伸びる。預貸金利回り差の改善が寄与し資金利益が堅調。有価証券利息配当金も増加。不良債権処理費用増をこなして経常、純益とも急拡大。増配。<br>【省力化】店舗の統廃合や機能見直しを進め、人員配置を最適化。業務の効率化で経費削減を図る。顧客のデジタル化支援などを通じ、コンサルティング機能の強化目指す。",
+                perPbr: "PER 7.2倍 / PBR 0.30倍",
+                yield: "3.27% (50円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 19,173百万円 / 980百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 23,800百万円 / 1,487百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 25,000百万円 / 1,660百万円</span>",
+                equityRoe: "4.0% / 3.3%"
+            },
+            {
+                code: "8399",
+                name: "琉球銀行",
+                industry: "銀行業",
+                outline: "【特色】貸出、預金シェアは沖縄県トップ。ミニ店舗やローンセンターなどチャネル多様化を推進。",
+                evaluation: "【連続増配】法人向け貸出やシンジケートローン伸びる。個人向け住宅ローンが伸長。金利上昇で預貸金利回り差が改善。有価証券の利息配当金も増え資金利益が快走。役務も好調。与信費用は増えるが経常、純利益とも連続増益。増配。<br>【目標引き上げ】30年度純利益90億円（修正前90億円）とする中計目標を上方修正、28年度に前倒し達成目指す。10億円を上限に自己株取得も。",
+                perPbr: "PER 10.5倍 / PBR 0.73倍",
+                yield: "3.81% (49円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 69,193百万円 / 5,751百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 80,322百万円 / 9,084百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 88,000百万円 / 14,900百万円</span>",
+                equityRoe: "4.7% / 6.4%"
+            },
+            {
+                code: "8410",
+                name: "セブン銀行",
+                industry: "銀行業",
+                outline: "【特色】セブン＆アイ店舗中心にATM設置。海外展開も。ATM手数料が柱。セブン銀アプリ強化。",
+                evaluation: "【微減益】米国はスピードウェイへの設置進み順調。国内はATM台数増えるが、利用件数減。国内はATM利用件数減で減益。海外は競争激化で平均単価下落、資金調達費用も増し減益。カード事業の減損剥落などでも経常微減益。配当維持。<br>【新目標】28年度に経常利益400億円（26年3月期は302億円）目指す。ファミマへのATM導入を拡大し、シェア拡大へ。顔認証引出し手法の引き上げ計画に着手。",
+                perPbr: "PER 18.5倍 / PBR 1.12倍",
+                yield: "4.08% (11円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 197,877百万円 / 31,970百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 214,408百万円 / 18,221百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 220,025百万円 / 17,000百万円</span>",
+                equityRoe: "18.1% / 4.8%"
+            },
+            {
+                code: "8411",
+                name: "みずほフィナンシャルグループ",
+                industry: "銀行業",
+                outline: "【特色】3メガバンクの一角。旧富士、第一勧業、日本興業の3行が前身。証券との連携加速。",
+                evaluation: "【連続最高益】利上げで日銀預け金利息など増える。貸出金や円債の利回りも改善し、資金利益が順調に拡大。役務取引等利益も法人向け中心に伸びる。与信費用増をこなして経常、純利益とも最高益更新。増配。<br>【新目標】ROE8％超目標を1年前倒しで達成見込み。次期中計ではROE9％以上目指す方針。自己株取得など株主還元も強化へ。楽天カードと資本業務提携し、個人向けクレジットカード事業を強化。",
+                perPbr: "PER 13.4倍 / PBR 1.56倍",
+                yield: "2.08% (115円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 9,030,374百万円 / 678,993百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 9,085,438百万円 / 1,248,632百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 9,250,000百万円 / 1,300,000百万円</span>",
+                equityRoe: "3.7% / 11.4%"
+            },
+            {
+                code: "8416",
+                name: "高知銀行",
+                industry: "銀行業",
+                outline: "【特色】高知県の第二地銀。県内貸出金シェアは3割弱。",
+                evaluation: "【大幅増益】住宅ローンや中小企業向け貸出金が着実に伸びる。資金利益が改善。有価証券利息配当金も増加。不良債権処理等の一過性費用増を吸収して、経常、純利益とも大幅増益。増配。<br>【営業強化】法人向けはM＆Aや事業承継のコンサルティング営業を強化。個人向けは職域営業を推進し、資産運用提案などに注力。店舗ネットワークの最適化も継続し、経費削減を図る。",
+                perPbr: "PER 6.2倍 / PBR 0.32倍",
+                yield: "3.24% (30円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 26,373百万円 / 1,120百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 28,379百万円 / 2,040百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 34,000百万円 / 3,150百万円</span>",
+                equityRoe: "4.0% / 1.2%"
+            },
+            {
+                code: "8418",
+                name: "山口フィナンシャルグループ",
+                industry: "銀行業",
+                outline: "【特色】傘下に山口、もみじ、北九州銀。山口、広島、北九州の3県で3地銀網羅。証券や地域商社も。",
+                evaluation: "【急反発】役務伸び悩む。が、貸出金利回り改善など資金利益は大幅増。有価証券の利息配当金も伸長。与信費用は前年並み。株式売却益減るが経常反発。純益急反発。増配。<br>【コンサル】情報グループのコンサル会社をみずほ銀、日本政策投資銀行などと共同で設立。事業承継やM＆Aなどを支援。26年冬メドに中小企業の経営課題解決を総合サポートする新サービスを開始。",
+                perPbr: "PER 12.6倍 / PBR 0.86倍",
+                yield: "3.44% (48円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 213,435百万円 / 35,345百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 261,941百万円 / 33,008百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 257,000百万円 / 45,000百万円</span>",
+                equityRoe: "5.1% / 5.1%"
+            },
+            {
+                code: "8424",
+                name: "芙蓉総合リース",
+                industry: "その他金融",
+                outline: "【特色】みずほ（旧富士銀）系。不動産リースに強み。ファイナンス、航空機など幅広く展開。BPOも拡充。",
+                evaluation: "【V字回復】前上期発生の海外再エネ開発ファンドの損失一巡。リースは航空機やモビリティ中心に伸長。不動産の売却益も上乗せ。金利上昇の調達コスト増を吸収。増益反転。連続増配。<br>【持分化】米国で再エネ事業を展開するパシフィカ社を持分化。事業規模の拡大を推進。太陽光パネルのリース事業を強化。脱炭素関連のビジネスを加速。",
+                perPbr: "PER 11.5倍 / PBR 0.75倍",
+                yield: "4.11% (172円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 678,395百万円 / 45,277百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 788,669百万円 / 21,565百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 800,000百万円 / 48,000百万円</span>",
+                equityRoe: "13.1% / 4.4%"
+            },
+            {
+                code: "8425",
+                name: "みずほリース",
+                industry: "その他金融",
+                outline: "【特色】旧興銀系。みずほFGの顧客基盤活用しリース、割賦など。19年に丸紅と持分法適用会社に。",
+                evaluation: "【連続増配】柱の不動産や再エネ施設などのリース稼ぐ。物件売却益やシステム売却益など乗る。資金調達コスト増加すむ。人件費やシステム費増こなす。為替差損見込まず営業増益。純益連続最高。連続増配。<br>【新中計】29年3月期純益600億円目標。みずほグループや丸紅などとの協業推進。25％出資し持分会社にしたスターアジアの不動産ファンドなどへの投資育成にも注力。",
+                perPbr: "PER 7.8倍 / PBR 0.86倍",
+                yield: "4.00% (170円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 695,423百万円 / 42,038百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 921,592百万円 / 47,609百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 950,000百万円 / 52,000百万円</span>",
+                equityRoe: "10.3% / 11.7%"
+            },
+            {
+                code: "8439",
+                name: "東京センチュリー",
+                industry: "その他金融",
+                outline: "【特色】伊藤忠系と旧第一勧銀系が合併して誕生。リース大手。情報機器に強み。事業投資、海外展開。",
+                evaluation: "【最高益】国内リースは利ザヤ改善。不動産や事業投資の売却益などの伸びで補う。海外の航空機リースは金利上昇やインフレを売却益でカバー。調達コスト増などで減損一服し純益最高更新。増配。<br>【新中計】27年度純益2000億円目標。国内の再生エネ関連投資は年間1000億円規模へ。成長投資は27年度まで3500億円。米国中心に周辺事業も開拓へ。",
+                perPbr: "PER 9.5倍 / PBR 1.04倍",
+                yield: "3.78% (90円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 1,368,635百万円 / 85,279百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 1,457,670百万円 / 111,299百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 1,500,000百万円 / 123,000百万円</span>",
+                equityRoe: "15.5% / 10.4%"
+            },
+            {
+                code: "8473",
+                name: "ＳＢＩホールディングス",
+                industry: "証券・商品先物",
+                outline: "【特色】国内外ベンチャー企業投資、ネット証券首位、銀行など総合金融サービスを志向。新生銀を子会社化。",
+                evaluation: "【反落】金利上昇で銀行業着実、証券も株高で活況。PE投資のIPO件数増加。中国の不動産市況悪化に伴う評価損など一過性利益剥落し反落。証券のシステム関連費用増も重い。ただ実力ベースの利益は高水準。配当維持か。<br>【新構想】台湾に半導体工場を建設する構想は提携先の台湾企業と破談に。撤退せず新たなパートナーを模索する方針。半導体投資のファンド設立など次世代産業の育成に注力。",
+                perPbr: "PER 6.3倍 / PBR 1.06倍",
+                yield: "2.90% (150円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 1,443,733百万円 / 162,120百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 1,896,607百万円 / 427,577百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 1,450,000百万円 / 300,000百万円</span>",
+                equityRoe: "4.7% / 28.0%"
+            },
+            {
+                code: "8508",
+                name: "Ｊトラスト",
+                industry: "その他金融",
+                outline: "【特色】金融グループ。保証、債権回収、アジアの銀行業、国内アセットマネジメント。不動産事業も。",
+                evaluation: "【増勢】国内は保証事業が伸長。韓国の貯蓄銀行も貸出金残高伸ばす。インドネシアやカンボジアなど東南アジアの銀行業は貸出金利回り改善し資金利益が拡大。与信関連費用増や為替差損を吸収し、営業益急反発。増配。<br>【アライアンス】東南アジアでの事業拡大に向け、現地の有力企業との提携を推進。国内では不動産事業の収益力強化を図る。保証事業は他社との協業深耕しシェア拡大へ。",
+                perPbr: "PER 16.4倍 / PBR 0.92倍",
+                yield: "2.21% (14円)",
+                forecast: "・25年12月(実績)<br>&nbsp;&nbsp;- 124,265百万円 / 7,939百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年12月(予想)<br>&nbsp;&nbsp;- 132,000百万円 / 8,400百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年12月(予想)<br>&nbsp;&nbsp;- 138,000百万円 / 9,400百万円</span>",
+                equityRoe: "12.6% / 5.0%"
+            },
+            {
+                code: "8511",
+                name: "日本証券金融",
+                industry: "その他金融",
+                outline: "【特色】制度信用取引の決済に必要な資金・株券を貸し出す。証券金融業務に特化。日銀、東証などが出資。",
+                evaluation: "【最高益更新】日本株の活況受け、信用取引向け貸出金が急増。金利上昇で貸付金利息も伸びる。貸株超過による品貸料収入も高水準。有価証券利息配当金も増加し、営業益大幅増。純益最高益更新。連続増配。<br>【自己株買い】資本効率の向上と株主還元強化を目的に、自己株取得を機動的に実施。27年3月末までに総還元性向100％を目指す。PBR1倍割れの早期解消に向け、収益力強化策も推進。",
+                perPbr: "PER 16.3倍 / PBR 1.34倍",
+                yield: "4.12% (47円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 59,486百万円 / 10,375百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 114,211百万円 / 10,611百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 117,000百万円 / 11,300百万円</span>",
+                equityRoe: "0.9% / 7.8%"
+            },
+            {
+                code: "8518",
+                name: "日本アジア投資",
+                industry: "証券・商品先物",
+                outline: "【特色】VC（ベンチャーキャピタル）中堅。日本と中国で事業展開。メガソーラー中心に再生可能エネルギー投資育成も。",
+                evaluation: "【浮上】不動産開発は建築費や金利上昇で苦戦。売却時期ずれになった未上場株も利益貢献乏しい。ただ、主力のVC事業でファンド運用報酬が増勢。営業益は黒字浮上。特別利益に投資有価証券売却益を計上し純益反発。<br>【九州】台湾の半導体メーカー進出で沸く九州エリアで、事業承継やスタートアップ支援ファンドの組成を推進。地場企業との連携を強化し、優良案件の発掘を急ぐ。",
+                perPbr: "PER 35.9倍 / PBR 0.46倍",
+                yield: "0.0% (無配)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 3,092百万円 / 400百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 2,117百万円 / 46百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 2,200百万円 / 100百万円</span>",
+                equityRoe: "35.9% / 0.6%"
+            },
+            {
                 code: "8522",
                 name: "名古屋銀行",
                 industry: "銀行業",
                 outline: "【特色】地銀中位。愛知県内３行中首位。第二地銀から転換。投信など個人向けと経営相談など法人向け両輪",
-                evaluation: "【連続最高益】利上げで預貸金利ザヤが拡大。有価証券利息配当金も増え資金利益は堅調。人件費増こなし、与信費用は低水準。前段の政策保有株売却益減っても経常増益。配当性向40％メドに増配。【経営統合】28年４月をメドにしずおかＦＧと経営統合で基本合意、合併や店舗統廃合はしない方針。27年度純利益目標は280億円に引き上げ。",
-                perPbr: "PER 12.4倍 / PBR 0.95倍",
-                yield: "1.97% (120円)",
+                evaluation: "【連続最高益】利上げで預貸金利回り差が拡大。有価証券利息配当金も増え資金利益は堅調。人件費増こなし、与信費用は低水準。前段の政策保有株売却益減っても経常増益。配当性向４０％メドに増配。<br>【経営統合】２８年４月をメドにしずおかＦＧと経営統合で基本合意、合併や店舗統廃合はしない方針。２７年度純利益目標は２８０億円に引き上げ。",
+                perPbr: "PER 13.0倍 / PBR 0.95倍",
+                yield: "3.29% (150円)",
                 forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 102,788百万円 / 14,730百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 124,456百万円 / 20,269百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 142,800百万円 / 23,000百万円</span>",
                 equityRoe: "5.0% / 6.9%"
+            },
+            {
+                code: "8524",
+                name: "北洋銀行",
+                industry: "銀行業",
+                outline: "【特色】北海道地盤。道内預貸金シェア3割超と圧倒的。",
+                evaluation: "【拡大】道内の企業、個人向けとも融資堅調。金利上昇で預貸金利ザヤ改善。債券入れ替えで評価損抱えた債券売却し、有価証券利息配当金が大幅増。与信費用は軽い。経常益拡大続く。増配。<br>【新中計】28年度純益500億円、ROE5％目標の次期中計スタート。ROA向上へ、取引先の資金繰り支援やDX化支援などコンサルティング営業を強化。",
+                perPbr: "PER 12.5倍 / PBR 0.72倍",
+                yield: "3.26% (29円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 150,637百万円 / 20,608百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 235,927百万円 / 25,601百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 225,200百万円 / 29,400百万円</span>",
+                equityRoe: "2.9% / 6.6%"
+            },
+            {
+                code: "8537",
+                name: "大光銀行",
+                industry: "銀行業",
+                outline: "【特色】新潟の第二地銀。県内シェア２番手。中小企業等向け貸出比率が高い。埼玉へ店舗網拡大。",
+                evaluation: "【連続増益】貸出金利回りの上昇で資金利益が改善。有価証券利息配当金も増加。不良債権処理等の一過性費用増をこなす。経常、純利益とも連続増益。増配。<br>【新店舗】埼玉県内の営業強化に向け、新たな店舗を開設。中小企業向けの事業承継支援やＭ＆Ａコンサルティングなどに注力。",
+                perPbr: "PER 11.2倍 / PBR 0.53倍",
+                yield: "3.69% (65円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 22,436百万円 / 2,495百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 29,344百万円 / 2,799百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 29,100百万円 / 3,300百万円</span>",
+                equityRoe: "4.7% / 3.6%"
+            },
+            {
+                code: "8541",
+                name: "愛媛銀行",
+                industry: "銀行業",
+                outline: "【特色】愛媛県内の第二地銀。四国全域へ展開。中小企業等向け貸出比率高い。船舶向け融資に強み。",
+                evaluation: "【高水準】貸出金利回り上昇し資金利益が堅調。有価証券利息配当金も増加。不良債権処理等の一過性費用を吸収。与信費用は増えるが経常、純利益とも高水準を維持。増配。<br>【店舗再編】店舗の統廃合や店舗内店舗方式を活用し、営業網の効率化を推進。人員の再配置によりコンサルティング営業を強化。",
+                perPbr: "PER 10.5倍 / PBR 0.73倍",
+                yield: "2.47% (46円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 66,146百万円 / 5,055百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 68,517百万円 / 7,212百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 70,000百万円 / 10,000百万円</span>",
+                equityRoe: "5.0% / 5.2%"
             },
             {
                 code: "8542",
                 name: "トマト銀行",
                 industry: "銀行業",
                 outline: "【特色】地銀下位行。岡山県内２番手。第二地銀。倉敷市が地盤。広島、大阪にも拠点",
-                evaluation: "【伸長】貸出金利回りの上昇で預貸金利益が拡大。役務取引等利益も投信販売などが牽引し堅調に推移。不良債権処理費用は例年並みに。人件費などの経費増を吸収して経常増益。株価上昇で有価証券評価損益改善。【生成ＡＩ】業務効率化に向け生成ＡＩを導入。行内規定やマニュアルなどの検索システムなどで活用。セキュリティに配慮し、外部サービスに頼らない独自のシステムを構築。",
-                perPbr: "PER 11.0倍 / PBR 0.37倍",
-                yield: "1.65% (25円)",
+                evaluation: "【伸長】貸出金利回りの上昇で資金利益が拡大。役務取引等利益も投信販売などが牽引し堅調に推移。不良債権処理費用は例年並みに。人件費などの経費増を吸収して経常増益。株価上昇で有価証券評価損益改善。<br>【生成ＡＩ】業務効率化に向け生成ＡＩを導入。行内規定やマニュアルなどの検索システムなどで活用。セキュリティに配慮し、外部サービスに頼らない独自のシステムを構築。",
+                perPbr: "PER 15.2倍 / PBR 0.90倍",
+                yield: "3.31% (50円)",
                 forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 25,661百万円 / 1,817百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 26,577百万円 / 1,970百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 29,500百万円 / 2,000百万円</span>",
                 equityRoe: "4.1% / 3.4%"
+            },
+            {
+                code: "8544",
+                name: "京葉銀行",
+                industry: "銀行業",
+                outline: "【特色】千葉県下２番手。都市部に強み。住宅ローンや中小企業向け貸出比率が高い。",
+                evaluation: "【最高益】法人、個人向けとも貸出金が順調に伸びる。金利上昇で預貸金利ザヤが改善し資金利益が大幅増。有価証券の利息配当金も増加。与信費用増や経費増を吸収し、最高純益更新。増配。<br>【新体制】次期中計に向け、経営体制を刷新。デジタル化の推進や、コンサルティング営業の強化を図る。総還元性向４０％メド。",
+                perPbr: "PER 15.3倍 / PBR 0.86倍",
+                yield: "2.73% (66円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 80,370百万円 / 12,756百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 108,656百万円 / 15,912百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 110,000百万円 / 19,000百万円</span>",
+                equityRoe: "4.9% / 5.0%"
+            },
+            {
+                code: "8550",
+                name: "栃木銀行",
+                industry: "銀行業",
+                outline: "【特色】第二地銀。栃木２番手。埼玉、群馬、東京、茨城へ展開。",
+                evaluation: "【増配】貸出金利回り上昇で資金利益が改善。役務も投資信託販売手数料など堅調。不良債権処理等の一過性費用増を吸収。有価証券利息配当金も増加し、経常、純利益とも増益。増配。<br>【新中計】２６年３月期に単体コア業務純益３０億円以上（２４年３月期は２１億円）を目指す新中計策定。",
+                perPbr: "PER 11.1倍 / PBR 0.61倍",
+                yield: "3.12% (12円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 45,087百万円 / 23,641百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 54,551百万円 / 8,289百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 60,800百万円 / 8,000百万円</span>",
+                equityRoe: "4.8% / 5.3%"
+            },
+            {
+                code: "8551",
+                name: "北日本銀行",
+                industry: "銀行業",
+                outline: "【特色】第二地銀。岩手県中南部中心に展開。宮城、青森、秋田にも店舗。",
+                evaluation: "【連続増益】貸出金残高は横ばいだが、利回り上昇し資金利益が堅調。有価証券利息配当金も増加。不良債権処理等の一過性費用増を吸収。経常、純利益とも連続増益。増配。<br>【ＤＸ】業務のデジタル化を推進。店舗ネットワークの見直しや人員の再配置により、営業体制の効率化とコンサルティング機能の強化を図る。",
+                perPbr: "PER 10.0倍 / PBR 0.47倍",
+                yield: "3.49% (80円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 26,396百万円 / 3,073百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 30,308百万円 / 4,011百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 31,000百万円 / 4,363百万円</span>",
+                equityRoe: "6.1% / 4.8%"
+            },
+            {
+                code: "8554",
+                name: "南日本銀行",
+                industry: "銀行業",
+                outline: "【特色】鹿児島が地盤の第二地銀。県内融資シェア１割強。",
+                evaluation: "【大幅減益】貸出金利回り上昇で資金利益が改善。役務取引等利益も伸びる。ただ、前期にあった貸倒引当金戻入益が剥落し、与信関連費用が増加。株式等売却益も減少。経常、純利益とも大幅減益。減配。<br>【新戦略】ＡＩ・データサイエンス活用した業務効率化や、顧客ＤＸ推進を支援。",
+                perPbr: "PER 6.6倍 / PBR 0.27倍",
+                yield: "3.91% (50円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 16,517百万円 / 2,188百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 17,141百万円 / 2,800百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 17,200百万円 / 1,500百万円</span>",
+                equityRoe: "5.1% / 6.5%"
+            },
+            {
+                code: "8558",
+                name: "東和銀行",
+                industry: "銀行業",
+                outline: "【特色】第二地銀。群馬２番手。埼玉、東京にも店舗網。ＳＢＩと資本業務提携。",
+                evaluation: "【黒字転換】貸出金利回り上昇に伴い預貸金利ザヤが改善。有価証券利息配当金も増加。不良債権処理等の一過性費用増をこなす。前期計上した有価証券売却損が剥落し、純損益は黒字転換。復配。<br>【信託業】信託業務の本格展開へ、信託契約代理店の登録を完了。資産承継ニーズの取り込みを図る。",
+                perPbr: "PER 8.2倍 / PBR 0.51倍",
+                yield: "3.84% (25円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 34,138百万円 / ▲4,335百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 43,504百万円 / 4,520百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 37,000百万円 / 5,500百万円</span>",
+                equityRoe: "6.7% / 27.2%"
+            },
+            {
+                code: "8559",
+                name: "豊和銀行",
+                industry: "銀行業",
+                outline: "【特色】大分の第二地銀。中小企業向け貸出比率が高い。ＳＢＩと資本業務提携。",
+                evaluation: "【横ばい】貸出金利回り上昇で預貸金利回りの改善進む。有価証券利息配当金も増加。ただ、不良債権処理等の一過性費用増が重い。経費増もあり、経常、純利益は横ばい圏。配当維持。<br>【定期預金】金利上昇局面を捉え、個人向けの新たな定期預金商品を投入。預金獲得に注力。",
+                perPbr: "PER 7.6倍 / PBR 0.29倍",
+                yield: "2.07% (10円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 10,380百万円 / 1,037百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 12,042百万円 / 819百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 11,000百万円 / 1,220百万円</span>",
+                equityRoe: "4.7% / 2.6%"
+            },
+            {
+                code: "8560",
+                name: "宮崎太陽銀行",
+                industry: "銀行業",
+                outline: "【特色】宮崎県の第二地銀。鹿児島にも展開。中小企業等向け貸出比率が高い。公的資金は完済。",
+                evaluation: "【横ばい】貸出金利回りの上昇に伴い、預貸金利回り差が改善。有価証券の利息配当金も増加。ただ、不良債権処理等の一過性費用増や、人件費、システム費などの経費増が重い。経常、純利益は横ばい圏。<br>【連携】他行との連携によるＡＴＭの相互利用などを開始。利便性の向上を図る。",
+                perPbr: "PER 12.3倍 / PBR 0.29倍",
+                yield: "2.21% (50円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 14,859百万円 / 1,187百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 18,046百万円 / 2,590百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 17,200百万円 / 2,700百万円</span>",
+                equityRoe: "5.5% / 3.3%"
+            },
+            {
+                code: "8562",
+                name: "福島銀行",
+                industry: "銀行業",
+                outline: "【特色】福島県内２位。ＳＢＩと資本業務提携。次世代基幹システムなどに共同出資。",
+                evaluation: "【大幅増益】役務は伸び悩む。だが、貸出金利回り改善し預貸金利回り差が改善。有価証券の利息配当金も増加。不良債権処理等の一過性費用増を吸収して経常、純利益とも大幅増益。増配。<br>【ＳＢＩ連携】ＳＢＩグループとの連携を強化し、有価証券運用や投資信託販売を拡充。次期システムへの移行準備も進める。",
+                perPbr: "PER 13.8倍 / PBR 0.52倍",
+                yield: "1.40% (5円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 13,417百万円 / ▲1,252百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 15,175百万円 / 736百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 16,600百万円 / 900百万円</span>",
+                equityRoe: "3.0% / 0.1%"
+            },
+            {
+                code: "8563",
+                name: "大東銀行",
+                industry: "銀行業",
+                outline: "【特色】福島県で資金量２位。郡山本拠。中小企業等向け貸出比率が高い。",
+                evaluation: "【前期並み】地元企業への貸出金残高は伸びるが、預貸金利回りの改善は小幅。有価証券の利息配当金も伸び悩む。不良債権処理等の一過性費用は前年並み。経常、純利益は前期並み維持。<br>【新中計】最終年度に実質コア業務純益１３億円（前期約２７億円）目指す新中計始動。ＤＸの推進などに注力。",
+                perPbr: "PER 7.9倍 / PBR 0.43倍",
+                yield: "4.01% (40円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 13,233百万円 / 1,330百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 15,499百万円 / 1,680百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 15,000百万円 / 1,600百万円</span>",
+                equityRoe: "3.3% / 5.5%"
+            },
+            {
+                code: "8566",
+                name: "リコーリース",
+                industry: "その他金融",
+                outline: "【特色】リコー系。中小企業が顧客基盤。集金代行、環境関連など強化。みずほリースと資本提携。",
+                evaluation: "【減益続く】ファイナンスリースは前期比６％増の期首営業資産残高が寄与。だが、金利上昇による資金調達コスト増や、人件費、オフィス、システムなどの販管費増加が重し。営業減益。配当増額。<br>【中計】２６年３月期純利益２００億円を目指す中計策定。重点分野の環境やヘルスケアなどへの投資を拡大。",
+                perPbr: "PER 15.3倍 / PBR 0.77倍",
+                yield: "4.22% (150円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 312,156百万円 / 15,658百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 338,579百万円 / 12,821百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 370,000百万円 / 11,900百万円</span>",
+                equityRoe: "16.5% / 5.4%"
+            },
+            {
+                code: "8570",
+                name: "イオンフィナンシャルサービス",
+                industry: "その他金融",
+                outline: "【特色】イオン系の金融サービスを統括。グループでクレジットカードなど展開。東南アジアにも力。",
+                evaluation: "【続落】カードはリボ残高増や利用増で手数料増。ただ、国内外で資金調達コストの上昇が響く。貸倒引当金繰入額も増加。システム関連費用や人件費などの経費増も重い。営業益は反落。配当維持。<br>【新中計】２６年度に営業利益６００億円を目指す新中計を策定。国内外でのカード会員獲得を強化。ＡＩを活用した業務効率化も推進。",
+                perPbr: "PER 15.3倍 / PBR 0.70倍",
+                yield: "3.44% (53円)",
+                forecast: "・25年2月(実績)<br>&nbsp;&nbsp;- 533,262百万円 / 15,644百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年2月(予想)<br>&nbsp;&nbsp;- 569,370百万円 / 21,092百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年2月(予想)<br>&nbsp;&nbsp;- 600,000百万円 / 22,000百万円</span>",
+                equityRoe: "5.7% / 4.5%"
+            },
+            {
+                code: "8572",
+                name: "アコム",
+                industry: "その他金融",
+                outline: "【特色】ＭＵＦＧ子会社。消費者ローン専業最大手。信用保証、海外金融事業の３本柱。",
+                evaluation: "【微減益】資金需要堅調、新規客も伸長し個人の貸付残高は伸びる。海外もタイなどが堅調に推移し利息収入増。だが、過払い金返還の引当金積み増しが重い。与信費用も微増。営業益は微減益。配当は維持。<br>【ＡＩ】生成ＡＩの導入に向けた実証実験を開始。社内での業務効率化や、顧客対応の自動化などに活用し、生産性向上を目指す。",
+                perPbr: "PER 11.4倍 / PBR 1.01倍",
+                yield: "4.75% (11円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 317,742百万円 / 32,124百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 337,709百万円 / 63,800百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 356,000百万円 / 79,635百万円</span>",
+                equityRoe: "44.5% / 11.6%"
+            },
+            {
+                code: "8584",
+                name: "ジャックス",
+                industry: "その他金融",
+                outline: "【特色】ＭＵＦＧの信販大手。オートローン主力。マンションの家賃保証を強化。東南アジア展開。",
+                evaluation: "【大幅減益】カードは残高の伸びや手数料値上げで堅調。だが、主力のオートローンで中古車販売会社の不正問題が響き、取扱高が伸び悩む。資金調達費用や人件費、システム関連費用などの販管費増加が重い。営業益は大幅減益。減配。<br>【海外】アセアンでの事業展開を強化。ベトナムなどでの業容拡大に向け、現地企業との提携などを推進する。",
+                perPbr: "PER 16.9倍 / PBR 0.94倍",
+                yield: "5.80% (100円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 190,978百万円 / 18,620百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 192,315百万円 / 15,314百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 193,800百万円 / 15,500百万円</span>",
+                equityRoe: "7.9% / 5.6%"
+            },
+            {
+                code: "8585",
+                name: "オリエントコーポレーション",
+                industry: "その他金融",
+                outline: "【特色】信販大手。オートローンは最大手。銀行保証が収益柱。みずほ銀行と伊藤忠商事が大株主。",
+                evaluation: "【微増益】柱のオートローンは中古車向けが好調で順調に伸びる。銀行保証は残高の伸びが牽引し手数料増。カードの取扱高も堅調。調達金利の上昇や、次期システム開発等に伴う償却費増や販管費増をこなし、営業益は微増。<br>【シノバ】みずほ銀、同銀が７９％出資する米国のファンド、当社でコンソーシアムを組成。米国で割賦事業等展開の米社に１・５億ドルを投資。１４％を持ち分法適用会社へ。",
+                perPbr: "PER 11.6倍 / PBR 0.60倍",
+                yield: "0.0% (無配)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 247,631百万円 / 14,444百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 260,000百万円 / 15,000百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 263,000百万円 / 17,000百万円</span>",
+                equityRoe: "8.8% / 5.2%"
+            },
+            {
+                code: "8591",
+                name: "オリックス",
+                industry: "その他金融",
+                outline: "【特色】リース手始めに保険、不動産など多角化。海外展開突出。エネルギー、空港運営等も。",
+                evaluation: "【快走】事業投資が着実。海外は米国の事業売却益が寄与。不動産や環境エネルギーも堅調。調達金利上昇によるコスト増をこなし、純利益は連続最高益。増配。<br>【事業再編】環境エネルギーや不動産など注力領域への投資を加速。一方、ノンコア事業の売却も進め、ポートフォリオの入れ替えを図る。自己株取得にも積極的。",
+                perPbr: "PER 12.8倍 / PBR 1.51倍",
+                yield: "3.0% (99.2円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 2,874,821百万円 / 351,630百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 3,330,831百万円 / 447,265百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 4,000,000百万円 / 530,000百万円</span>",
+                equityRoe: "24.9% / 10.4%"
+            },
+            {
+                code: "8593",
+                name: "三菱ＨＣキャピタル",
+                industry: "その他金融",
+                outline: "【特色】三菱ＵＦＪグループ。日立キャピタルと２１年に統合。リース首位級。海外展開加速。",
+                evaluation: "【足踏み】国内リースは資産入れ替えで堅調。海外リースは米州や欧州の航空機やコンテナなどが収益貢献。ただ、資金調達コストの上昇や、前期の資産売却益の反動が重い。営業益は足踏み。純利益も微増。連続増配。<br>【新中計】２６年３月期に純利益１６００億円を目指す新中計が始動。環境エネルギー分野や航空分野などへの投資を加速。",
+                perPbr: "PER 11.8倍 / PBR 0.95倍",
+                yield: "3.89% (40円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 2,090,808百万円 / 135,165百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 2,215,384百万円 / 162,206百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・27年3月(予想)<br>&nbsp;&nbsp;- 2,200,000百万円 / 160,000百万円</span>",
+                equityRoe: "15.2% / 8.6%"
+            },
+            {
+                code: "8594",
+                name: "中道リース",
+                industry: "その他金融",
+                outline: "【特色】北海道地盤のリース会社。土木建機、医療機器に強い。関東、東北を開拓。不動産賃貸も。",
+                evaluation: "【減益幅縮小】不動産賃貸は新規フル寄与。リース・割賦も堅調。ただ、前期の大型案件の反動減が重い。資金調達コストの上昇や、与信費用も増加。営業益は減益。ただ、前期にあった投資有価証券売却損がなくなり、純益の減益幅は縮小。配当維持。<br>【営業戦略】地盤の北海道に加え、首都圏や東北地方での営業を強化。建設機械や医療機器向けのリースに注力。",
+                perPbr: "PER 7.9倍 / PBR 0.75倍",
+                yield: "2.17% (18円)",
+                forecast: "・24年12月(実績)<br>&nbsp;&nbsp;- 49,540百万円 / 1,234百万円<br><span style='color: #1976d2; font-weight: bold;'>・25年12月(予想)<br>&nbsp;&nbsp;- 51,234百万円 / 1,108百万円</span><br><span style='color: #1976d2; font-weight: bold;'>・26年12月(予想)<br>&nbsp;&nbsp;- 53,200百万円 / 990百万円</span>",
+                equityRoe: "9.0% / 8.8%"
             },
             {
                 code: "8624",
