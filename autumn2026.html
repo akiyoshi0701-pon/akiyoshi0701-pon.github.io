@@ -214,23 +214,51 @@
     </div>
 
     <script>
-        // ▼▼▼ 9/16発売以降、ここに秋号の銘柄データを追加していきます ▼▼▼
+        // 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
+        // ▼▼▼ ここから株価情報（四季報データ）を追加 ▼▼▼
+        // 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
+        
         const shikihoData = [
-            /*
+            // --- ここから下がダミーデータ ---
             {
-                code: "XXXX",
-                name: "会社名",
-                industry: "業種",
-                outline: "【特色】...",
-                evaluation: "【見出し】...",
-                perPbr: "PER XX倍 / PBR XX倍",
-                yield: "X.XX% (XX円)",
-                forecast: "・XX年X月(実績)...",
-                equityRoe: "XX% / XX%"
+                code: "9991",
+                name: "ダミー商事",
+                industry: "卸売業",
+                outline: "【特色】架空の総合商社。世界中で架空の取引を展開。最近はメタバース領域での資源開発に注力。",
+                evaluation: "【最高益】メタバース内での架空鉱石価格が高騰し、利益が想定を上回る。架空のAI社員導入により人件費も大幅削減。連続最高益を更新し、大幅増配の見込み。",
+                perPbr: "PER 12.3倍 / PBR 1.25倍",
+                yield: "4.50% (150円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 1,200,000百万円 / 50,000百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 1,350,000百万円 / 65,000百万円</span>",
+                equityRoe: "45.0% / 12.5%"
+            },
+            {
+                code: "9992",
+                name: "ダミー銀行",
+                industry: "銀行業",
+                outline: "【特色】架空都市を地盤とする地方銀行。仮想通貨の貸出に強み。近隣のテスト銀行との経営統合を模索中。",
+                evaluation: "【連続増配】架空金利の引き上げに伴い、預貸金利回りが劇的に改善。AIシステムによる不良債権処理も順調に進み、資金利益が拡大。連続増配。",
+                perPbr: "PER 8.5倍 / PBR 0.60倍",
+                yield: "3.80% (45円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 85,000百万円 / 12,000百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 92,000百万円 / 14,500百万円</span>",
+                equityRoe: "5.5% / 6.8%"
+            },
+            {
+                code: "9993",
+                name: "ダミーフーズ",
+                industry: "食料品",
+                outline: "【特色】架空の食品メーカー。デジタル食品の開発で業界をリード。主力は「ホログラム寿司」。",
+                evaluation: "【増益】原材料であるデータ容量のコスト上昇は、サブスクリプション型モデルへの転換でカバー。海外サーバーでの販売が急拡大しており、営業益は大きく上振れ。",
+                perPbr: "PER 15.0倍 / PBR 2.10倍",
+                yield: "2.10% (60円)",
+                forecast: "・25年3月(実績)<br>&nbsp;&nbsp;- 250,000百万円 / 18,000百万円<br><span style='color: #1976d2; font-weight: bold;'>・26年3月(予想)<br>&nbsp;&nbsp;- 280,000百万円 / 22,000百万円</span>",
+                equityRoe: "52.0% / 14.0%"
             }
-            */
+            // --- ここまでがダミーデータ ---
         ];
-        // ▲▲▲ データ追加エリア ここまで ▲▲▲
+
+        // 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
+        // ▲▲▲ 株価情報（四季報データ）を追加するのはここまで ▲▲▲
+        // 🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟🌟
 
         const searchInput = document.getElementById('shikihoSearchInput');
         const resultsContainer = document.getElementById('shikihoSearchResults');
